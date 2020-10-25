@@ -52,9 +52,6 @@ module RN
         end
       
         def call(name: nil, **options)
-
-            end
-          end
           #Si recibo el nombre, borrar ese directorio y todos sus archivos
           warn "TODO: Implementar borrado del cuaderno de notas con nombre '#{name}' (global=#{global}).\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
         end
