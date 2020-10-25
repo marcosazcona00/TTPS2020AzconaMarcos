@@ -34,8 +34,10 @@ module RN
       end
 
       class Delete < Dry::CLI::Command
+        attr_accessor :relative_path
+        
         desc 'Delete a book'
-
+      
         argument :name, required: false, desc: 'Name of the book'
         option :global, type: :boolean, default: false, desc: 'Operate on the global book'
 
@@ -45,8 +47,15 @@ module RN
           'Memoires  # Deletes a book named "Memoires" and all of its notes'
         ]
 
+        def initialize 
+          self.relative_path = ENV['HOME'] + '/' + '.my_rns' + '/'
+        end
+      
         def call(name: nil, **options)
-          global = options[:global]
+
+            end
+          end
+          #Si recibo el nombre, borrar ese directorio y todos sus archivos
           warn "TODO: Implementar borrado del cuaderno de notas con nombre '#{name}' (global=#{global}).\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
         end
       end
