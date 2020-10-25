@@ -51,9 +51,40 @@ module RN
           self.relative_path = ENV['HOME'] + '/' + '.my_rns' + '/'
         end
       
+        @private
+        def delete_files(dir_path)
+          Dir.foreach(dir_path) do |file|
+            if file == '.' or file == '..'
+              next
+            end
+            File.delete(dir_path + '/' + file)
+          end
+        end
+
         def call(name: nil, **options)
-          #Si recibo el nombre, borrar ese directorio y todos sus archivos
-          warn "TODO: Implementar borrado del cuaderno de notas con nombre '#{name}' (global=#{global}).\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
+          global = options[:global]
+          #Si recibo global activo, borrar las notas del cuaderno global
+          if global
+            dir_path = self.relative_path  + 'cuaderno global'
+            self.delete_files(dir_path)  
+          end
+          
+          if name.nil?
+            #Salimos porque no hay que hacer nada
+            return 
+          end
+
+          dir_path = self.relative_path + name
+          if !File.exist?(dir_path)
+            puts "El directorio #{name} no existe"
+            return 
+          end
+
+          #Existe el directorio
+          self.delete_files(dir_path)
+
+          
+
         end
       end
 
