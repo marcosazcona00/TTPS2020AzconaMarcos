@@ -2,6 +2,7 @@ module RN
   module Commands
     module Notes
       class Create < Dry::CLI::Command
+        
         desc 'Create a note'
 
         argument :title, required: true, desc: 'Title of the note'
@@ -16,6 +17,7 @@ module RN
         def call(title:, **options)
           book = options[:book]
           warn "TODO: Implementar creación de la nota con título '#{title}' (en el libro '#{book}').\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
+        
         end
       end
 

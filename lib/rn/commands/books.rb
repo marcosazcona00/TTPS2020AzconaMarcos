@@ -18,12 +18,10 @@ module RN
         end
 
         def call(name:, **kwargs)
-          #Preguntar: El cuaderno es un archivo o directorio???
-          if !kwargs[:args].nil? 
-            "Si recibi algun argumento es porque el nombre vino con espacios y sin comillas"
-            name =  (name + " " + (kwargs[:args].join " ")) #.gsub(" ","\\ ") 
-          end
-
+          #Caracteres que hay que evitar que no puede llevar
+          #\ / : * ? " < > |
+          
+          #TODO armar la expresion regular
           file_path = self.relative_path + '/' + name
           if File.exist?(file_path)
             puts "El archivo #{name} ya existe dentro del directorio #{self.relative_path}"
@@ -31,7 +29,7 @@ module RN
           end
           
           "No existe el cuaderno, lo creamos"
-          File.new(file_path,"w")
+          Dir.mkdir(file_path)
         end
       end
 
