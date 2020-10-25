@@ -51,7 +51,6 @@ module RN
           self.relative_path = ENV['HOME'] + '/' + '.my_rns' + '/'
         end
       
-        @private
         def delete_files(dir_path)
           Dir.foreach(dir_path) do |file|
             if file == '.' or file == '..'
@@ -82,10 +81,9 @@ module RN
 
           #Existe el directorio
           self.delete_files(dir_path)
-
-          
-
         end
+      
+        private :delete_files
       end
 
       class List < Dry::CLI::Command
