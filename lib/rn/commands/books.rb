@@ -14,7 +14,7 @@ module RN
         ]
 
         def initialize 
-          self.relative_path = ENV['HOME'] + '/' + '.my_rns' 
+          self.relative_path = File.join(Dir.home, '.my_rns')
         end
 
         def call(name:, **kwargs)
@@ -22,7 +22,7 @@ module RN
           #\ / : * ? " < > |
           
           #TODO armar la expresion regular
-          file_path = self.relative_path + '/' + name
+          file_path = File.join(self.relative_path,name)
           if File.exist?(file_path)
             puts "El archivo #{name} ya existe dentro del directorio #{self.relative_path}"
             return 
@@ -48,23 +48,23 @@ module RN
         ]
 
         def initialize 
-          self.relative_path = ENV['HOME'] + '/' + '.my_rns' + '/'
+          self.relative_path = File.join(Dir.home, '.my_rns')
         end
       
         def delete_files(dir_path)
           Dir.foreach(dir_path) do |file|
-            if file == '.' or file == '..'
+            if file  == '.' or file == '..'
               next
             end
-            File.delete(dir_path + '/' + file)
+            File.delete(File.join(dir_path,file))
           end
         end
 
         def call(name: nil, **options)
           global = options[:global]
-          #Si recibo global activo, borrar las notas del cuaderno global
+
           if global
-            dir_path = self.relative_path  + 'cuaderno global'
+            dir_path = File.join(self.relative_path, 'cuaderno global')
             self.delete_files(dir_path)  
           end
           
@@ -72,7 +72,7 @@ module RN
             return 
           end
 
-          dir_path = self.relative_path + name
+          dir_path = File.join(self.relative_path, name)
           if !File.exist?(dir_path)
             puts "El directorio #{name} no existe"
             return 
@@ -95,13 +95,13 @@ module RN
         ]
         
         def initialize 
-          self.relative_path = ENV['HOME'] + '/' + '.my_rns' 
+          self.relative_path = File.join(Dir.home, '.my_rns')
         end
         
         def call(*)
           puts '---Listado Cuadernos---'
           Dir.foreach(self.relative_path) do |file|
-            if file == '.' or file == '..'
+            if ['.','..'].include?(file)
               next
             end
             puts '--> ' + file
@@ -125,7 +125,7 @@ module RN
         ]
 
         def initialize 
-          self.relative_path = ENV['HOME'] + '/' + '.my_rns' + '/'
+          self.relative_path = File.join(Dir.home, '.my_rns')
         end
 
         def call(old_name:, new_name:, **)
@@ -136,21 +136,20 @@ module RN
           end
           
           #Verificamos si el cuaderno que quiere renombrar existe
-          old_name_path = self.relative_path + old_name
+          old_name_path = File.join(self.relative_path, old_name)
           if !File.exist?(old_name_path)
             puts "El cuaderno que quiere renombrar con nombre '#{old_name}' no existe dentro del directorio"
             return
           end
           
           #Verificamos si no existe ya un cuaderno con el nuevo nombre
-          new_name_path = self.relative_path + new_name
+          new_name_path = File.join(self.relative_path, new_name)
           if File.exist?(new_name_path)
             puts "El cuaderno con el nombre #{new_name} ya existe dentro del directorio"
             return
           end
 
           File.rename(old_name_path,new_name_path)
-          
         end
       end
     end
