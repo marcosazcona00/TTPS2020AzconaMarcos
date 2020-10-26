@@ -25,7 +25,7 @@ module RN
           file_path = self.relative_path + '/' + name
           if File.exist?(file_path)
             puts "El archivo #{name} ya existe dentro del directorio #{self.relative_path}"
-            return -1
+            return 
           end
           
           "No existe el cuaderno, lo creamos"
@@ -69,7 +69,6 @@ module RN
           end
           
           if name.nil?
-            #Salimos porque no hay que hacer nada
             return 
           end
 
@@ -87,14 +86,28 @@ module RN
       end
 
       class List < Dry::CLI::Command
+        attr_accessor :relative_path
+        
         desc 'List books'
 
         example [
           '          # Lists every available book'
         ]
-
+        
+        def initialize 
+          self.relative_path = ENV['HOME'] + '/' + '.my_rns' 
+        end
+        
         def call(*)
-          warn "TODO: Implementar listado de los cuadernos de notas.\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
+          puts '---Listado Cuadernos---'
+          Dir.foreach(self.relative_path) do |file|
+            if file == '.' or file == '..'
+              next
+            end
+            
+            puts '--> ' + file
+          end
+          puts '--Fin Listado Cuadernos--'
         end
       end
 
@@ -111,7 +124,7 @@ module RN
         ]
 
         def call(old_name:, new_name:, **)
-          warn "TODO: Implementar renombrado del cuaderno de notas con nombre '#{old_name}' para que pase a llamarse '#{new_name}'.\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
+          warn "TODO: Implementar renombrado del cuaderno de notas con nombre '#{old_name}' para que pase a llamarse '#{new_name}'.\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}." 
         end
       end
     end
