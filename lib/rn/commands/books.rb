@@ -104,7 +104,6 @@ module RN
             if file == '.' or file == '..'
               next
             end
-            
             puts '--> ' + file
           end
           puts '--Fin Listado Cuadernos--'
@@ -112,6 +111,8 @@ module RN
       end
 
       class Rename < Dry::CLI::Command
+        attr_accessor :relative_path
+        
         desc 'Rename a book'
 
         argument :old_name, required: true, desc: 'Current name of the book'
@@ -123,8 +124,33 @@ module RN
           '"TODO - Name this book" Wiki # Renames the book "TODO - Name this book" to "Wiki"'
         ]
 
+        def initialize 
+          self.relative_path = ENV['HOME'] + '/' + '.my_rns' + '/'
+        end
+
         def call(old_name:, new_name:, **)
-          warn "TODO: Implementar renombrado del cuaderno de notas con nombre '#{old_name}' para que pase a llamarse '#{new_name}'.\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}." 
+          #Asumo que el nombre del cuaderno global no puede renombrar
+          if old_name == 'cuaderno global'
+            puts "El cuaderno global no puede ser renombrado"
+            return
+          end
+          
+          #Verificamos si el cuaderno que quiere renombrar existe
+          old_name_path = self.relative_path + old_name
+          if !File.exist?(old_name_path)
+            puts "El cuaderno que quiere renombrar con nombre '#{old_name}' no existe dentro del directorio"
+            return
+          end
+          
+          #Verificamos si no existe ya un cuaderno con el nuevo nombre
+          new_name_path = self.relative_path + new_name
+          if File.exist?(new_name_path)
+            puts "El cuaderno con el nombre #{new_name} ya existe dentro del directorio"
+            return
+          end
+
+          File.rename(old_name_path,new_name_path)
+          
         end
       end
     end
