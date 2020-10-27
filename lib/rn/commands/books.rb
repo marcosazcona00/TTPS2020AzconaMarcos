@@ -1,3 +1,4 @@
+require 'rn/configuration'  
 module RN
   module Commands
     module Books
@@ -13,18 +14,15 @@ module RN
           'Memoires  # Creates a new book named "Memoires"'
         ]
 
-        def initialize 
-          self.relative_path = File.join(Dir.home, '.my_rns')
-        end
-
-        def call(name:, **kwargs)
-          #Caracteres que hay que evitar que no puede llevar
-          #\ / : * ? " < > |
+        def call(name:, **kwargs)    
+          if Configuration::ConfigurationDirectory.validate_filename(name)
+            puts "El titulo del cuaderno #{name} no es valido"
+            return
+          end
           
-          #TODO armar la expresion regular
-          file_path = File.join(self.relative_path,name)
-          if File.exist?(file_path)
-            puts "El archivo #{name} ya existe dentro del directorio #{self.relative_path}"
+          file_path = Configuration::ConfigurationDirectory.relative_path(name)
+          if Dir.exist?(file_path)
+            puts "El cuaderno #{name} ya existe dentro del directorio #{Configuration::ConfigurationDirectory.relative_path}"
             return 
           end
           
@@ -46,14 +44,10 @@ module RN
           '"My book" # Deletes a book named "My book" and all of its notes',
           'Memoires  # Deletes a book named "Memoires" and all of its notes'
         ]
-
-        def initialize 
-          self.relative_path = File.join(Dir.home, '.my_rns')
-        end
       
         def delete_files(dir_path)
           Dir.foreach(dir_path) do |file|
-            if file  == '.' or file == '..'
+            if ['.','..'].include?(file)
               next
             end
             File.delete(File.join(dir_path,file))
@@ -61,10 +55,15 @@ module RN
         end
 
         def call(name: nil, **options)
+          if name == 'cuaderno global'
+            puts "El #{name} no puede ser borrado"
+          end
+
           global = options[:global]
 
+
           if global
-            dir_path = File.join(self.relative_path, 'cuaderno global')
+            dir_path = Configuration::ConfigurationDirectory.relative_path('cuaderno global')
             self.delete_files(dir_path)  
           end
           
@@ -72,14 +71,15 @@ module RN
             return 
           end
 
-          dir_path = File.join(self.relative_path, name)
-          if !File.exist?(dir_path)
-            puts "El directorio #{name} no existe"
+          dir_path = Configuration::ConfigurationDirectory.relative_path(name)
+          if !Dir.exist?(dir_path)
+            puts "El cuaderno #{name} que desea borrar no existe"
             return 
           end
 
           #Existe el directorio
           self.delete_files(dir_path)
+          Dir.delete(dir_path)
         end
       
         private :delete_files
@@ -94,13 +94,9 @@ module RN
           '          # Lists every available book'
         ]
         
-        def initialize 
-          self.relative_path = File.join(Dir.home, '.my_rns')
-        end
-        
         def call(*)
           puts '---Listado Cuadernos---'
-          Dir.foreach(self.relative_path) do |file|
+          Dir.foreach(Configuration::ConfigurationDirectory.relative_path) do |file|
             if ['.','..'].include?(file)
               next
             end
@@ -124,10 +120,6 @@ module RN
           '"TODO - Name this book" Wiki # Renames the book "TODO - Name this book" to "Wiki"'
         ]
 
-        def initialize 
-          self.relative_path = File.join(Dir.home, '.my_rns')
-        end
-
         def call(old_name:, new_name:, **)
           #Asumo que el nombre del cuaderno global no puede renombrar
           if old_name == 'cuaderno global'
@@ -135,16 +127,21 @@ module RN
             return
           end
           
+          if Configuration::ConfigurationDirectory.validate_filename(new_name)
+            puts "El titulo del cuaderno #{new_name} a renombrar no es valido"
+            return
+          end
+
           #Verificamos si el cuaderno que quiere renombrar existe
-          old_name_path = File.join(self.relative_path, old_name)
-          if !File.exist?(old_name_path)
+          old_name_path = Configuration::ConfigurationDirectory.relative_path(old_name)
+          if !Dir.exist?(old_name_path)
             puts "El cuaderno que quiere renombrar con nombre '#{old_name}' no existe dentro del directorio"
             return
           end
           
           #Verificamos si no existe ya un cuaderno con el nuevo nombre
-          new_name_path = File.join(self.relative_path, new_name)
-          if File.exist?(new_name_path)
+          new_name_path = Configuration::ConfigurationDirectory.relative_path(new_name)
+          if Dir.exist?(new_name_path)
             puts "El cuaderno con el nombre #{new_name} ya existe dentro del directorio"
             return
           end

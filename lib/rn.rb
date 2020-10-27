@@ -6,4 +6,5 @@ module RN
   # módulos del modelo de datos.
   # Por ejemplo:
   # autoload :Note, 'rn/note'
+
 end
