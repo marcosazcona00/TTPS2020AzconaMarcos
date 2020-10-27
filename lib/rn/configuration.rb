@@ -4,7 +4,7 @@ module Configuration
     end  
 
     def validate_filename(name)
-        return !((/[*?!|<>.]+/.match(name)).nil?)
+        return (/[*?!|<>.]+/.match(name)).nil?
     end
 
     class ConfigurationDirectory

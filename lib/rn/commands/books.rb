@@ -1,7 +1,7 @@
-require 'rn/configuration'  
 module RN
   module Commands
     module Books
+      require 'rn/configuration'  
       class Create < Dry::CLI::Command
         desc 'Create a book'
 
@@ -15,7 +15,7 @@ module RN
         ]
 
         def call(name:, **kwargs)    
-          if Configuration::ConfigurationDirectory.validate_filename(name)
+          if !Configuration::ConfigurationDirectory.validate_filename(name)
             puts "El titulo del cuaderno #{name} no es valido"
             return
           end
@@ -55,20 +55,20 @@ module RN
         end
 
         def call(name: nil, **options)
-          if name == 'cuaderno global'
-            puts "El #{name} no puede ser borrado"
-          end
-
           global = options[:global]
-
 
           if global
             dir_path = Configuration::ConfigurationDirectory.relative_path('cuaderno global')
             self.delete_files(dir_path)  
           end
-          
-          if name.nil?
+    
+          if name.nil? or name == ''
             return 
+          end
+          
+          if name == 'cuaderno global'
+            puts "El #{name} no puede ser borrado"
+            return
           end
 
           dir_path = Configuration::ConfigurationDirectory.relative_path(name)
@@ -127,7 +127,7 @@ module RN
             return
           end
           
-          if Configuration::ConfigurationDirectory.validate_filename(new_name)
+          if !Configuration::ConfigurationDirectory.validate_filename(new_name)
             puts "El titulo del cuaderno #{new_name} a renombrar no es valido"
             return
           end
