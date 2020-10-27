@@ -4,7 +4,7 @@ module Configuration
     end  
 
     def validate_filename(name)
-        return (/[*?!|<>.]+/.match(name)).nil?
+        return (/[*?!|<>.|\/|\|\\|]+/.match(name)).nil?
     end
 
     class ConfigurationDirectory
@@ -18,5 +18,15 @@ module Configuration
                 Dir.mkdir(File.join(relative_path,'cuaderno global'))
             end
         end
+    end
+
+    class ConfigurationFile
+        extend Configuration
+
+        def self.file_relative_path(title, book = '')
+            return File.join(ConfigurationFile.relative_path(book),title += '.rn')    
+        end
+
+
     end
 end

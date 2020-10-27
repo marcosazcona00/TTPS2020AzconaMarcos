@@ -1,7 +1,9 @@
 module RN
   module Commands
     module Notes
+      require 'rn/configuration'  
       class Create < Dry::CLI::Command
+        extend Configuration
         
         desc 'Create a note'
 
@@ -16,8 +18,21 @@ module RN
 
         def call(title:, **options)
           book = options[:book]
-          warn "TODO: Implementar creación de la nota con título '#{title}' (en el libro '#{book}').\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
-        
+          if !Create.validate_filename(title)
+            puts "El nombre de la nota #{title} no es valido"
+            return
+          end
+          
+          book = if book.nil? then 'cuaderno global' else book end
+
+          if File.exist?(Configuration::ConfigurationFile.file_relative_path(title, book))
+            puts "El cuaderno '#{title}' ya existe dentro del cuaderno '#{book}'"
+            return
+          end
+
+          puts Configuration::ConfigurationFile.file_relative_path(title, book)
+          #warn "TODO: Implementar creación de la nota con título '#{title}' (en el libro '#{book}').\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
+          
         end
       end
 
