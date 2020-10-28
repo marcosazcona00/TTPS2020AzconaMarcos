@@ -1,3 +1,4 @@
+require 'tty-editor'
 module RN
   module Commands
     module Notes
@@ -6,16 +7,16 @@ module RN
         extend Configuration
         
         desc 'Create a note'
-
+        
         argument :title, required: true, desc: 'Title of the note'
         option :book, type: :string, desc: 'Book'
-
+        
         example [
           'todo                        # Creates a note titled "todo" in the global book',
           '"New note" --book "My book" # Creates a note titled "New note" in the book "My book"',
           'thoughts --book Memoires    # Creates a note titled "thoughts" in the book "Memoires"'
         ]
-
+        
         def call(title:, **options)
           book = options[:book]
           if !Create.validate_filename(title)
@@ -24,19 +25,29 @@ module RN
           end
           
           book = if book.nil? then 'cuaderno global' else book end
-
-          if File.exist?(Configuration::ConfigurationFile.file_relative_path(title, book))
-            puts "El cuaderno '#{title}' ya existe dentro del cuaderno '#{book}'"
+          
+          if !Dir.exist?(Create.relative_path(book))
+            puts "El cuaderno '#{book}'' sobre el que quiere crear la nota '#{title}' no existe"
             return
           end
 
-          puts Configuration::ConfigurationFile.file_relative_path(title, book)
-          #warn "TODO: Implementar creación de la nota con título '#{title}' (en el libro '#{book}').\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
+          if File.exist?(Configuration::ConfigurationFile.file_relative_path(title, book))
+            puts "La nota '#{title}' ya existe dentro del cuaderno '#{book}'"
+            return
+          end
+
+          #w+ es para escritura y lectura y lo crea vacio
+          File.new(Configuration::ConfigurationFile.file_relative_path(title, book), "w+")
           
+          #Abre un editor para poner el contenido del archivo
+          TTY::Editor.open(Configuration::ConfigurationFile.file_relative_path(title, book))
+
         end
       end
 
       class Delete < Dry::CLI::Command
+        extend Configuration
+
         desc 'Delete a note'
 
         argument :title, required: true, desc: 'Title of the note'
@@ -48,9 +59,30 @@ module RN
           'thoughts --book Memoires    # Deletes a note titled "thoughts" from the book "Memoires"'
         ]
 
+        def delete_note(title, book)
+          "Retorna un boolean indicando si pudo o no borrarse"
+          if !File.exist?(Configuration::ConfigurationFile.file_relative_path(title,book))
+            puts "La nota '#{title}' no existe dentro del '#{book}'"
+            return
+          end
+          File.delete(Configuration::ConfigurationFile.file_relative_path(title,book))
+          puts "Borrado exitosamente la nota '#{title}'  del cuaderno '#{book}"
+        end
+
         def call(title:, **options)
           book = options[:book]
-          warn "TODO: Implementar borrado de la nota con título '#{title}' (del libro '#{book}').\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
+          if !book.nil? and book == ''
+            puts "El parametro --books no puede ser vacio"
+            return
+          end
+
+          if !Dir.exist?(Delete.relative_path(book))
+            puts "El cuaderno '#{book}'' sobre el que quiere eliminar la nota '#{title}' no existe"
+            return
+          end
+
+          book = if book.nil? then 'cuaderno global' else book end
+          self.delete_note(title,book)
         end
       end
 
@@ -68,7 +100,8 @@ module RN
 
         def call(title:, **options)
           book = options[:book]
-          warn "TODO: Implementar modificación de la nota con título '#{title}' (del libro '#{book}').\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
+          book = if book.nil? then 'cuaderno global' else book end
+            
         end
       end
 
