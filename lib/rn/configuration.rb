@@ -18,6 +18,7 @@ module Configuration
                 Dir.mkdir(File.join(relative_path,'cuaderno global'))
             end
         end
+
     end
 
     class ConfigurationFile

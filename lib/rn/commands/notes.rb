@@ -2,7 +2,7 @@ require 'tty-editor'
 module RN
   module Commands
     module Notes
-      require 'rn/configuration'  
+      require 'rn/configuration'
       class Create < Dry::CLI::Command
         extend Configuration
         
@@ -19,6 +19,7 @@ module RN
         
         def call(title:, **options)
           book = options[:book]
+          
           if !Create.validate_filename(title)
             puts "El nombre de la nota #{title} no es valido"
             return
@@ -87,6 +88,8 @@ module RN
       end
 
       class Edit < Dry::CLI::Command
+        extend Configuration
+
         desc 'Edit the content a note'
 
         argument :title, required: true, desc: 'Title of the note'
@@ -100,8 +103,25 @@ module RN
 
         def call(title:, **options)
           book = options[:book]
+          #TODO refactorizar con respecto al Delete. Tienen una estructura similar
+          if !book.nil? and book == ''
+            puts "El parametro --books no puede ser vacio"
+            return
+          end
+          
           book = if book.nil? then 'cuaderno global' else book end
-            
+          
+          if !Dir.exist?(Edit.relative_path(book))
+            puts "El cuaderno '#{book}'' sobre el que quiere editar la nota '#{title}' no existe"
+            return
+          end
+
+          if !File.exist?(Configuration::ConfigurationFile.file_relative_path(title,book))
+            puts "La nota #{title} no existe"
+            return
+          end
+
+          TTY::Editor.open(Configuration::ConfigurationFile.file_relative_path(title, book))
         end
       end
 
