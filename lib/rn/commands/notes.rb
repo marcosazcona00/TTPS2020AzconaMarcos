@@ -145,6 +145,8 @@ module RN
       end
 
       class List < Dry::CLI::Command
+        extend Configuration
+
         desc 'List notes'
 
         option :book, type: :string, desc: 'Book'
@@ -157,10 +159,42 @@ module RN
           '--book Memoires  # Lists notes from the book named "Memoires"'
         ]
 
+        def list_notes_book(book = '')
+          puts "'#{book}'"
+          Dir.foreach(List.relative_path(book)) do |file|
+            if ['.','..'].include?(file)
+              return
+            end
+            puts "   |---> #{file}"
+          end
+        end
+        
         def call(**options)
           book = options[:book]
           global = options[:global]
-          warn "TODO: Implementar listado de las notas del libro '#{book}' (global=#{global}).\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
+
+          if !global and book.nil?
+            self.list_notes_book
+            return            
+          end
+
+          if global
+            self.list_notes_book("cuaderno global")
+          end
+
+          if !Dir.exist?(List.relative_path(book))
+            puts "El cuaderno '#{book}'' que quiere listar no existe"
+            return
+          end
+
+          if book == ''
+            puts 'El parametro de --books no puede ser vacio'
+            return
+          end
+            
+          if !book.nil?
+            self.list_notes_book(book)
+          end
         end
       end
 
