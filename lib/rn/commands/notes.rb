@@ -178,8 +178,27 @@ module RN
 
         def call(title:, **options)
           book = options[:book]
-          warn "TODO: Implementar vista de la nota con título '#{title}' (del libro '#{book}').\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
-        end
+          if !book.nil? and book == ''
+            puts "El parametro --books no puede ser vacio"
+            return
+          end
+          
+          book = if book.nil? then 'cuaderno global' else book end
+          
+          if !Dir.exist?(Edit.relative_path(book))
+            puts "El cuaderno '#{book}'' sobre el que quiere mostrar la nota '#{title}' no existe"
+            return
+          end
+
+          if !File.exist?(Configuration::ConfigurationFile.file_relative_path(title,book))
+            puts "La nota '#{title}' no existe dentro del cuaderno '#{book}'"
+            return
+          end
+          puts "---Contenido Nota #{title}---"
+          File.foreach(Configuration::ConfigurationFile.file_relative_path(title,book)) do |line|
+            puts line
+          end
+        end      
       end
     end
   end
