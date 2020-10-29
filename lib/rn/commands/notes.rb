@@ -17,6 +17,10 @@ module RN
           '"New note" --book "My book" # Creates a note titled "New note" in the book "My book"',
           'thoughts --book Memoires    # Creates a note titled "thoughts" in the book "Memoires"'
         ]
+        def type_operation
+          return "crear"
+        end
+
         def validation(title,book)
           if !Create.validate_filename(title)
             raise Configuration::FileDirError.new("El nombre de la nota #{title} no es valido")
@@ -32,6 +36,7 @@ module RN
         end    
 
         def call(title:, **options)
+          puts Create.relative_path
           begin
             self.template(title,**options)
           rescue => error
@@ -39,38 +44,10 @@ module RN
           end
         end
       end
-=begin        
-        def call(title:, **options)
-          book = options[:book]
-          
-          if !Create.validate_filename(title)
-            puts "El nombre de la nota #{title} no es valido"
-            return
-          end
-          
-          book = if book.nil? then 'cuaderno global' else book end
-          
-          if !Dir.exist?(Create.relative_path(book))
-            puts "El cuaderno '#{book}'' sobre el que quiere crear la nota '#{title}' no existe"
-            return
-          end
 
-          if File.exist?(Configuration::ConfigurationFile.file_relative_path(title, book))
-            puts "La nota '#{title}' ya existe dentro del cuaderno '#{book}'"
-            return
-          end
-
-          #w+ es para escritura y lectura y lo crea vacio
-          File.new(Configuration::ConfigurationFile.file_relative_path(title, book), "w+")
-          
-          #Abre un editor para poner el contenido del archivo
-          TTY::Editor.open(Configuration::ConfigurationFile.file_relative_path(title, book))
-
-        end
-      end
-=end
       class Delete < Dry::CLI::Command
         extend Configuration
+        include Configuration::TemplateMethod
 
         desc 'Delete a note'
 
@@ -82,74 +59,88 @@ module RN
           '"New note" --book "My book" # Deletes a note titled "New note" from the book "My book"',
           'thoughts --book Memoires    # Deletes a note titled "thoughts" from the book "Memoires"'
         ]
+        def type_operation
+          return "eliminar"
+        end
 
         def delete_note(title, book)
           "Retorna un boolean indicando si pudo o no borrarse"
           if !File.exist?(Configuration::ConfigurationFile.file_relative_path(title,book))
-            puts "La nota '#{title}' no existe dentro del '#{book}'"
-            return
+            raise Configuration::FileDirError.new("La nota '#{title}' no existe dentro del '#{book}'")
           end
           File.delete(Configuration::ConfigurationFile.file_relative_path(title,book))
           puts "Borrado exitosamente la nota '#{title}'  del cuaderno '#{book}"
         end
 
-        def call(title:, **options)
-          book = options[:book]
+        def validation(title,book)
           if !book.nil? and book == ''
-            puts "El parametro --books no puede ser vacio"
-            return
+            raise Configuration::FileDirError.new("El parametro --books no puede ser vacio")
           end
+        end
 
-          if !Dir.exist?(Delete.relative_path(book))
-            puts "El cuaderno '#{book}'' sobre el que quiere eliminar la nota '#{title}' no existe"
-            return
-          end
+        def file_exist?(title,book) end
 
-          book = if book.nil? then 'cuaderno global' else book end
+        def operation(title,book)
           self.delete_note(title,book)
+        end
+
+        def call(title:, **options)
+          begin
+            self.template(title,**options)
+          rescue => error
+            puts error
+          end
         end
       end
 
       class Edit < Dry::CLI::Command
         extend Configuration
+        include Configuration::TemplateMethod
 
         desc 'Edit the content a note'
-
         argument :title, required: true, desc: 'Title of the note'
         option :book, type: :string, desc: 'Book'
-
+      
         example [
-          'todo                        # Edits a note titled "todo" from the global book',
-          '"New note" --book "My book" # Edits a note titled "New note" from the book "My book"',
-          'thoughts --book Memoires    # Edits a note titled "thoughts" from the book "Memoires"'
-        ]
-
-        def call(title:, **options)
-          book = options[:book]
-          #TODO refactorizar con respecto al Delete. Tienen una estructura similar
+            'todo                        # Edits a note titled "todo" from the global book',
+            '"New note" --book "My book" # Edits a note titled "New note" from the book "My book"',
+            'thoughts --book Memoires    # Edits a note titled "thoughts" from the book "Memoires"'
+          ]
+          
+        def validation(title,book)
           if !book.nil? and book == ''
-            puts "El parametro --books no puede ser vacio"
+            raise Configuration::FileDirError.new("El parametro --books no puede ser vacio")
             return
           end
-          
-          book = if book.nil? then 'cuaderno global' else book end
-          
-          if !Dir.exist?(Edit.relative_path(book))
-            puts "El cuaderno '#{book}'' sobre el que quiere editar la nota '#{title}' no existe"
-            return
-          end
+        end
 
-          if !File.exist?(Configuration::ConfigurationFile.file_relative_path(title,book))
-            puts "La nota #{title} no existe"
-            return
+        def type_operation
+          return "editar"
+        end
+        
+        def file_exist?(title,book)
+          if !File.exist?(Configuration::ConfigurationFile.file_relative_path(title, book))
+              raise Configuration::FileDirError.new("La nota '#{title}' que desea editar no existe dentro del cuaderno '#{book}'")
           end
+        end
 
+        def operation(title,book)
           TTY::Editor.open(Configuration::ConfigurationFile.file_relative_path(title, book))
         end
-      end
 
-    class Retitle < Dry::CLI::Command
+        def call(title:, **options)
+          begin
+            self.template(title,**options)
+          rescue => error
+            puts error
+          end
+        end
+      end
+ 
+      class Retitle < Dry::CLI::Command
         extend Configuration
+        include Configuration::TemplateMethod
+
         desc 'Retitle a note'
 
         argument :old_title, required: true, desc: 'Current title of the note'
@@ -162,31 +153,53 @@ module RN
           'thoughts thinking --book Memoires         # Changes the title of the note titled "thoughts" from the book "Memoires" to "thinking"'
         ]
 
-        def call(old_title:, new_title:, **options)
-          book = options[:book]
-          
-          if !Retitle.validate_filename(new_title)
-            puts "El nombre de la nota '#{new_title}' no es valido"
-            return
+        attr_accessor :new_title, :old_title
+
+        def initialize
+          self.old_title = ''
+          self.new_title = ''          
+        end 
+
+        def type_operation
+          return "editar"
+        end
+
+        def validation(title,book)
+          if !book.nil? and book == ''
+            raise Configuration::FileDirError.new("El parametro --books no puede ser vacio")
           end
 
-          book = if book.nil? then 'cuaderno global' else book end
-          if !Dir.exist?(Retitle.relative_path(book)) 
-            puts "El cuaderno '#{book}' no existe"
-            return
+          if !Retitle.validate_filename(title)
+            raise Configuration::FileDirError.new("El nombre de la nota '#{title}' no es valido")
           end
+        end
 
-          if File.exist?(Configuration::ConfigurationFile.file_relative_path(new_title,book))
-            puts "La nota '#{new_title}' ya existe dentro del cuaderno '#{book}'"
-            return
+        def file_exist?(title,book)
+          if !File.exist?(Configuration::ConfigurationFile.file_relative_path(old_title,book))
+            raise Configuration::FileDirError.new("La nota '#{old_title}' no existe dentro del cuaderno '#{book}'")
           end
+          super(title,book)
+        end
 
+        def operation(title,book)
           File.rename(Configuration::ConfigurationFile.file_relative_path(old_title,book),Configuration::ConfigurationFile.file_relative_path(new_title,book))
+        end
+
+        def call(old_title:, new_title:, **options)
+          self.old_title = old_title
+          self.new_title = new_title
+          
+          begin
+            self.template(new_title,**options)
+          rescue => error
+            puts error
+          end
         end
       end
 
       class List < Dry::CLI::Command
         extend Configuration
+        include Configuration::TemplateMethod
 
         desc 'List notes'
 
@@ -215,31 +228,42 @@ module RN
           global = options[:global]
 
           if !global and book.nil?
+            #Si no pidio global y no hay libro, lista todo
             self.list_notes_book
+            puts '-' *40
+            Dir.foreach(List.relative_path) do |book|
+              if ['.','..'].include?(book)
+                next
+              end
+              self.list_notes_book(book)
+            end
             return            
           end
-
+          
           if global
             self.list_notes_book("cuaderno global")
           end
-
-          if !Dir.exist?(List.relative_path(book))
-            puts "El cuaderno '#{book}'' que quiere listar no existe"
-            return
-          end
-
-          if book == ''
-            puts 'El parametro de --books no puede ser vacio'
-            return
-          end
-            
-          if !book.nil?
-            self.list_notes_book(book)
+          begin
+            self.dir_exist?(book = book)
+          
+            if book == ''
+              puts 'El parametro de --books no puede ser vacio'
+              return
+            end
+              
+            if !book.nil?
+              self.list_notes_book(book)
+            end
+          rescue => error
+            puts error
           end
         end
       end
 
       class Show < Dry::CLI::Command
+        extend Configuration
+        include Configuration::TemplateMethod
+
         desc 'Show a note'
 
         argument :title, required: true, desc: 'Title of the note'
@@ -251,30 +275,36 @@ module RN
           'thoughts --book Memoires    # Shows a note titled "thoughts" from the book "Memoires"'
         ]
 
-        def call(title:, **options)
-          book = options[:book]
+        def validation(title,book)
           if !book.nil? and book == ''
-            puts "El parametro --books no puede ser vacio"
-            return
+            raise Configuration::FileDirError.new("El parametro --books no puede ser vacio")
           end
-          
-          book = if book.nil? then 'cuaderno global' else book end
-          
-          if !Dir.exist?(Edit.relative_path(book))
-            puts "El cuaderno '#{book}'' sobre el que quiere mostrar la nota '#{title}' no existe"
-            return
-          end
+        end
 
+        def file_exist?(title,book)
           if !File.exist?(Configuration::ConfigurationFile.file_relative_path(title,book))
-            puts "La nota '#{title}' no existe dentro del cuaderno '#{book}'"
-            return
+            raise Configuration::FileDirError.new("La nota '#{title}' no existe dentro del cuaderno '#{book}'")
           end
+        end
+
+        def operation(title,book)
           puts "---Contenido Nota #{title}---"
           File.foreach(Configuration::ConfigurationFile.file_relative_path(title,book)) do |line|
             puts line
           end
-        end      
+        end
+
+        def call(title:, **options)
+          begin
+            self.template(title,**options)
+          rescue => error
+            puts error
+          end
+        end
       end
     end
   end
 end
+
+
+

@@ -45,18 +45,23 @@ module Configuration
             operation(title,book)
         end
 
-        def dir_exist?(title,book)
+        def dir_exist?(title=nil,book)
             if !Dir.exist?(TemplateMethod.relative_path(book))
-                raise FileDirError.new("El cuaderno '#{book}'' sobre el que quiere crear la nota '#{title}' no existe")
+                raise FileDirError.new("El cuaderno '#{book}' no existe")
             end
         end	
         
         def file_exist?(title,book)
+            "Override en caso de no querer utilizar esta funcionalidad"
             if File.exist?(Configuration::ConfigurationFile.file_relative_path(title, book))
                 raise FileDirError.new("La nota '#{title}' ya existe dentro del cuaderno '#{book}'")
             end
         end
         
+        def type_operation
+            "HOOK"
+        end
+
         def validation(title,book)
             "HOOK"
         end
