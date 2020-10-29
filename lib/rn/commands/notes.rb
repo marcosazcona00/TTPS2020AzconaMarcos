@@ -126,6 +126,7 @@ module RN
       end
 
       class Retitle < Dry::CLI::Command
+        extend Configuration
         desc 'Retitle a note'
 
         argument :old_title, required: true, desc: 'Current title of the note'
@@ -140,7 +141,24 @@ module RN
 
         def call(old_title:, new_title:, **options)
           book = options[:book]
-          warn "TODO: Implementar cambio del título de la nota con título '#{old_title}' hacia '#{new_title}' (del libro '#{book}').\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
+          
+          book = if book.nil? then 'cuaderno global' else book end
+          if !Dir.exist?(Retitle.relative_path(book)) 
+            puts "El cuaderno '#{book}' no existe"
+            return
+          end
+
+          if !Retitle.validate_filename(new_title)
+            puts "El nombre de la nota '#{new_title}' no es valido"
+            return
+          end
+
+          if File.exist?(Configuration::ConfigurationFile.file_relative_path(new_title,book))
+            puts "La nota '#{new_title}' ya existe dentro del cuaderno '#{book}'"
+            return
+          end
+
+          File.rename(Configuration::ConfigurationFile.file_relative_path(old_title,book),Configuration::ConfigurationFile.file_relative_path(new_title,book))
         end
       end
 
