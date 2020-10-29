@@ -5,7 +5,8 @@ module RN
       require 'rn/configuration'
       class Create < Dry::CLI::Command
         extend Configuration
-        
+        include Configuration::TemplateMethod
+
         desc 'Create a note'
         
         argument :title, required: true, desc: 'Title of the note'
@@ -16,7 +17,29 @@ module RN
           '"New note" --book "My book" # Creates a note titled "New note" in the book "My book"',
           'thoughts --book Memoires    # Creates a note titled "thoughts" in the book "Memoires"'
         ]
+        def validation(title,book)
+          if !Create.validate_filename(title)
+            raise Configuration::FileDirError.new("El nombre de la nota #{title} no es valido")
+          end
+        end
         
+        def operation(title,book)
+          #w+ es para escritura y lectura y lo crea vacio
+          File.new(Configuration::ConfigurationFile.file_relative_path(title, book), "w+")
+          
+          #Abre un editor para poner el contenido del archivo
+          TTY::Editor.open(Configuration::ConfigurationFile.file_relative_path(title, book))
+        end    
+
+        def call(title:, **options)
+          begin
+            self.template(title,**options)
+          rescue => error
+            puts error
+          end
+        end
+      end
+=begin        
         def call(title:, **options)
           book = options[:book]
           
@@ -45,7 +68,7 @@ module RN
 
         end
       end
-
+=end
       class Delete < Dry::CLI::Command
         extend Configuration
 
