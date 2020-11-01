@@ -36,7 +36,6 @@ module RN
         end    
 
         def call(title:, **options)
-          puts Create.relative_path
           begin
             self.template(title,**options)
           rescue => error
@@ -305,6 +304,3 @@ module RN
     end
   end
 end
-
-
-
