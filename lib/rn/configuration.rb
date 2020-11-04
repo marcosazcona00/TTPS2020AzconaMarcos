@@ -36,13 +36,18 @@ module Configuration
 
     module TemplateMethod 
         extend Configuration
+    
         def template(title,**options)
-            book = options[:book]
-            book = if book.nil? then 'cuaderno global' else book end
-            validation(title,book)
-            dir_exist?(title,book)
-            file_exist?(title,book)
-            operation(title,book)
+            begin
+                book = options[:book]
+                book = if book.nil? then 'cuaderno global' else book end
+                validation(title,book)
+                dir_exist?(title,book)
+                file_exist?(title,book)
+                operation(title,book)
+            rescue => error
+                puts error
+            end
         end
 
         def dir_exist?(title=nil,book)

@@ -7,16 +7,18 @@ module RN
         extend Configuration
         include Configuration::TemplateMethod
 
-        desc 'Create a note'
-        
         argument :title, required: true, desc: 'Title of the note'
         option :book, type: :string, desc: 'Book'
+
+        desc 'Create a note'
+        
         
         example [
           'todo                        # Creates a note titled "todo" in the global book',
           '"New note" --book "My book" # Creates a note titled "New note" in the book "My book"',
-          'thoughts --book Memoires    # Creates a note titled "thoughts" in the book "Memoires"'
+          'thoughts --book Memoires    # Creates a note titled "thoughts" in the book "Memoitleires"'
         ]
+
         def type_operation
           return "crear"
         end
@@ -34,7 +36,7 @@ module RN
           #Abre un editor para poner el contenido del archivo
           TTY::Editor.open(Configuration::ConfigurationFile.file_relative_path(title, book))
         end    
-
+      
         def call(title:, **options)
           begin
             self.template(title,**options)
@@ -43,7 +45,7 @@ module RN
           end
         end
       end
-
+    
       class Delete < Dry::CLI::Command
         extend Configuration
         include Configuration::TemplateMethod
@@ -228,6 +230,7 @@ module RN
 
           if !global and book.nil?
             #Si no pidio global y no hay libro, lista todo
+            puts "--Todos los cuadernos-- "
             self.list_notes_book
             puts '-' *40
             Dir.foreach(List.relative_path) do |book|
@@ -242,6 +245,7 @@ module RN
           if global
             self.list_notes_book("cuaderno global")
           end
+
           begin
             self.dir_exist?(book = book)
           
@@ -303,4 +307,4 @@ module RN
       end
     end
   end
-end
+end 
