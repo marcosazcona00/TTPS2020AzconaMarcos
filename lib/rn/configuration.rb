@@ -90,12 +90,12 @@ module Configuration
 
         def validation(title,global)
             if !global.nil? and global == ''
+                #Esta validacion esta por si en un futuro hay cuadernos dentro de los cuadernos
                 raise FileDirError.new("El cuaderno del parametro --book no puede ser vacio")
-            end
+             end
             if !TemplateBook.validate_filename(title)
                 raise  FileDirError.new("El titulo del cuaderno #{title} no es valido")
             end
-
         end
 
         def dir_exist?(title)
