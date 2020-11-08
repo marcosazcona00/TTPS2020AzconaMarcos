@@ -51,6 +51,9 @@ module Configuration
         end
 
         def dir_exist?(title=nil,book)
+            if !book.nil? and book == ''
+                raise FileDirError.new("El cuaderno del parametro --book no puede ser vacio")
+            end
             if !Dir.exist?(TemplateMethod.relative_path(book))
                 raise FileDirError.new("El cuaderno '#{book}' no existe")
             end
@@ -63,10 +66,6 @@ module Configuration
             end
         end
         
-        def type_operation
-            "HOOK"
-        end
-
         def validation(title,book)
             "HOOK"
         end

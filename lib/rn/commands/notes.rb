@@ -19,10 +19,6 @@ module RN
           'thoughts --book Memoires    # Creates a note titled "thoughts" in the book "Memoitleires"'
         ]
 
-        def type_operation
-          return "crear"
-        end
-
         def validation(title,book)
           if !Create.validate_filename(title)
             raise Configuration::FileDirError.new("El nombre de la nota #{title} no es valido")
@@ -60,9 +56,6 @@ module RN
           '"New note" --book "My book" # Deletes a note titled "New note" from the book "My book"',
           'thoughts --book Memoires    # Deletes a note titled "thoughts" from the book "Memoires"'
         ]
-        def type_operation
-          return "eliminar"
-        end
 
         def delete_note(title, book)
           "Retorna un boolean indicando si pudo o no borrarse"
@@ -73,11 +66,11 @@ module RN
           puts "Borrado exitosamente la nota '#{title}'  del cuaderno '#{book}"
         end
 
-        def validation(title,book)
-          if !book.nil? and book == ''
-            raise Configuration::FileDirError.new("El parametro --books no puede ser vacio")
-          end
-        end
+        #def validation(title,book)
+        #  if !book.nil? and book == ''
+        #    raise Configuration::FileDirError.new("El parametro --books no puede ser vacio")
+        #  end
+        #end
 
         def file_exist?(title,book) end
 
@@ -107,17 +100,13 @@ module RN
             '"New note" --book "My book" # Edits a note titled "New note" from the book "My book"',
             'thoughts --book Memoires    # Edits a note titled "thoughts" from the book "Memoires"'
           ]
-          
-        def validation(title,book)
-          if !book.nil? and book == ''
-            raise Configuration::FileDirError.new("El parametro --books no puede ser vacio")
-            return
-          end
-        end
-
-        def type_operation
-          return "editar"
-        end
+        
+        #def validation(title,book)
+        #  if !book.nil? and book == ''
+        #    raise Configuration::FileDirError.new("El parametro --books no puede ser vacio")
+        #    return
+        #  end
+        #end
         
         def file_exist?(title,book)
           if !File.exist?(Configuration::ConfigurationFile.file_relative_path(title, book))
@@ -154,42 +143,32 @@ module RN
           'thoughts thinking --book Memoires         # Changes the title of the note titled "thoughts" from the book "Memoires" to "thinking"'
         ]
 
-        attr_accessor :new_title, :old_title
+        attr_accessor :old_title
 
         def initialize
           self.old_title = ''
-          self.new_title = ''          
         end 
 
-        def type_operation
-          return "editar"
-        end
-
         def validation(title,book)
-          if !book.nil? and book == ''
-            raise Configuration::FileDirError.new("El parametro --books no puede ser vacio")
-          end
-
+          super(title,book)
           if !Retitle.validate_filename(title)
             raise Configuration::FileDirError.new("El nombre de la nota '#{title}' no es valido")
           end
         end
 
         def file_exist?(title,book)
-          if !File.exist?(Configuration::ConfigurationFile.file_relative_path(old_title,book))
-            raise Configuration::FileDirError.new("La nota '#{old_title}' no existe dentro del cuaderno '#{book}'")
+          if !File.exist?(Configuration::ConfigurationFile.file_relative_path(self.old_title,book))
+            raise Configuration::FileDirError.new("La nota '#{self.old_title}' no existe dentro del cuaderno '#{book}'")
           end
           super(title,book)
         end
 
         def operation(title,book)
-          File.rename(Configuration::ConfigurationFile.file_relative_path(old_title,book),Configuration::ConfigurationFile.file_relative_path(new_title,book))
+          File.rename(Configuration::ConfigurationFile.file_relative_path(self.old_title,book),Configuration::ConfigurationFile.file_relative_path(title,book))
         end
 
         def call(old_title:, new_title:, **options)
           self.old_title = old_title
-          self.new_title = new_title
-          
           begin
             self.template(new_title,**options)
           rescue => error
@@ -230,6 +209,7 @@ module RN
 
           if !global and book.nil?
             #Si no pidio global y no hay libro, lista todo
+            
             puts "--Todos los cuadernos-- "
             self.list_notes_book
             puts '-' *40
