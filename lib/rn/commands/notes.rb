@@ -5,14 +5,13 @@ module RN
       require 'rn/configuration'
       class Create < Dry::CLI::Command
         extend Configuration
-        include Configuration::TemplateMethod
+        include Configuration::TemplateFile
 
         argument :title, required: true, desc: 'Title of the note'
         option :book, type: :string, desc: 'Book'
 
         desc 'Create a note'
-        
-        
+      
         example [
           'todo                        # Creates a note titled "todo" in the global book',
           '"New note" --book "My book" # Creates a note titled "New note" in the book "My book"',
@@ -34,17 +33,13 @@ module RN
         end    
       
         def call(title:, **options)
-          begin
-            self.template(title,**options)
-          rescue => error
-            puts error
-          end
+          self.template(title,**options)
         end
       end
     
       class Delete < Dry::CLI::Command
         extend Configuration
-        include Configuration::TemplateMethod
+        include Configuration::TemplateFile
 
         desc 'Delete a note'
 
@@ -66,12 +61,6 @@ module RN
           puts "Borrado exitosamente la nota '#{title}'  del cuaderno '#{book}"
         end
 
-        #def validation(title,book)
-        #  if !book.nil? and book == ''
-        #    raise Configuration::FileDirError.new("El parametro --books no puede ser vacio")
-        #  end
-        #end
-
         def file_exist?(title,book) end
 
         def operation(title,book)
@@ -79,17 +68,13 @@ module RN
         end
 
         def call(title:, **options)
-          begin
-            self.template(title,**options)
-          rescue => error
-            puts error
-          end
+          self.template(title,**options)
         end
       end
 
       class Edit < Dry::CLI::Command
         extend Configuration
-        include Configuration::TemplateMethod
+        include Configuration::TemplateFile
 
         desc 'Edit the content a note'
         argument :title, required: true, desc: 'Title of the note'
@@ -100,14 +85,7 @@ module RN
             '"New note" --book "My book" # Edits a note titled "New note" from the book "My book"',
             'thoughts --book Memoires    # Edits a note titled "thoughts" from the book "Memoires"'
           ]
-        
-        #def validation(title,book)
-        #  if !book.nil? and book == ''
-        #    raise Configuration::FileDirError.new("El parametro --books no puede ser vacio")
-        #    return
-        #  end
-        #end
-        
+                
         def file_exist?(title,book)
           if !File.exist?(Configuration::ConfigurationFile.file_relative_path(title, book))
               raise Configuration::FileDirError.new("La nota '#{title}' que desea editar no existe dentro del cuaderno '#{book}'")
@@ -119,17 +97,13 @@ module RN
         end
 
         def call(title:, **options)
-          begin
-            self.template(title,**options)
-          rescue => error
-            puts error
-          end
+          self.template(title,**options)
         end
       end
  
       class Retitle < Dry::CLI::Command
         extend Configuration
-        include Configuration::TemplateMethod
+        include Configuration::TemplateFile
 
         desc 'Retitle a note'
 
@@ -169,17 +143,13 @@ module RN
 
         def call(old_title:, new_title:, **options)
           self.old_title = old_title
-          begin
-            self.template(new_title,**options)
-          rescue => error
-            puts error
-          end
+          self.template(new_title,**options)
         end
       end
 
       class List < Dry::CLI::Command
         extend Configuration
-        include Configuration::TemplateMethod
+        include Configuration::TemplateFile
 
         desc 'List notes'
 
@@ -245,7 +215,7 @@ module RN
 
       class Show < Dry::CLI::Command
         extend Configuration
-        include Configuration::TemplateMethod
+        include Configuration::TemplateFile
 
         desc 'Show a note'
 
@@ -278,11 +248,7 @@ module RN
         end
 
         def call(title:, **options)
-          begin
-            self.template(title,**options)
-          rescue => error
-            puts error
-          end
+          self.template(title,**options)
         end
       end
     end

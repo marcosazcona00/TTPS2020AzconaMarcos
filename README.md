@@ -55,6 +55,17 @@ documentación necesaria para entender el funcionamiento y uso de la herramienta
 implementado, junto con cualquier decisión de diseño del modelo de datos que consideres
 necesario documentar.
 
+## Modelo
+  - Se cuenta con un módulo Configuration dentro del archivo `configuration.rb` que encapsula la lógica auxiliar que se necesitará para la extensión de las funcionalidades en el modelo propuesto, con mensajes por parte del módulo para validación de filenames y obtención de path relativo; una excepción personalizada para los errores pertinentes a Cuadernos y Notas y dos Mixins Templates.
+  - Los Mixins previamente mencionados (TemplateFile y TemplateBook) permite a las clases que extiendan su comportamiento Template (definido en el mensaje template), el cual establece una serie de pasos comunes y HOOKS que permiten ser sobreescritos para adicionar comportamiento con la finalidad de realizar las operaciones propuestas
+  - Por otra parte se cuenta con las clases ConfigurationFile y ConfigurationDirectory. 
+    - ConfigurationDirectory provee la inicialización del directorio `.my_rns` y el `cuaderno global` en caso de no existir en el filesystem del usuario que utilice la aplicación.
+    - ConfigurationFile extiende el comportamiento ofrecido por el modulo Configuration para poder agregar al path relativo el libro donde se desee realizar la operación de la nota, como también agregar la extensión .rn
+
+## Gema
+  - Se utiliza la gema TTY:Editor la cual permite la apertura y edición de archivos de texto, utilizando los editores que se encuentren habilitados en su Sistema Operativo. Se encuentra incluido en el archivo `Gemfile` de la forma `gem 'tty-editor', '~> 0.6'`
+   
+
 ## Desarrollo
 
 Esta sección provee algunos tips para el desarrollo de tu entrega a partir de esta

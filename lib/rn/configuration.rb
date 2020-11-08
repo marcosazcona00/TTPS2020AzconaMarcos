@@ -4,7 +4,7 @@ module Configuration
     end  
 
     def validate_filename(name)
-        return (/[*?!|<>.|\/|\|\\|]+/.match(name)).nil?
+        return (/[*?!¡|<>.|\/|\|\\|]+/.match(name)).nil?
     end
 
     class ConfigurationDirectory
@@ -18,7 +18,6 @@ module Configuration
                 Dir.mkdir(File.join(relative_path,'cuaderno global'))
             end
         end
-
     end
 
     class ConfigurationFile
@@ -34,7 +33,7 @@ module Configuration
         end
     end
 
-    module TemplateMethod 
+    module TemplateFile
         extend Configuration
     
         def template(title,**options)
@@ -54,7 +53,7 @@ module Configuration
             if !book.nil? and book == ''
                 raise FileDirError.new("El cuaderno del parametro --book no puede ser vacio")
             end
-            if !Dir.exist?(TemplateMethod.relative_path(book))
+            if !Dir.exist?(TemplateFile.relative_path(book))
                 raise FileDirError.new("El cuaderno '#{book}' no existe")
             end
         end	
@@ -77,6 +76,7 @@ module Configuration
 
     module TemplateBook
         extend Configuration
+
         def template(title,**kwargs)
             global = kwargs.has_key?(:global) ? kwargs[:global] : nil
             begin
