@@ -99,14 +99,13 @@ module Configuration
         end
 
         def dir_exist?(title)
-            if !title.nil?
+            if !title.nil? #Se verifica que no sea nil porque en el Delete puede llegar con nil
                 file_path = TemplateBook.relative_path(title)
                 puts file_path.inspect
                 if !Dir.exist?(file_path)
                   raise FileDirError.new("El cuaderno '#{title}' no existe dentro del directorio '#{file_path}'")
                 end
             end
-            puts 'Era nil'
         end
     end
 end

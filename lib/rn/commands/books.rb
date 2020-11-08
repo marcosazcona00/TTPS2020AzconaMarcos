@@ -106,7 +106,10 @@ module RN
       end
 
       class Rename < Dry::CLI::Command
-        attr_accessor :relative_path
+        extend Configuration
+        include Configuration::TemplateBook
+
+        attr_accessor :old_name
         
         desc 'Rename a book'
 
@@ -118,34 +121,29 @@ module RN
           'Memoires Memories            # Renames the book "Memoires" to "Memories"',
           '"TODO - Name this book" Wiki # Renames the book "TODO - Name this book" to "Wiki"'
         ]
+        def dir_exist?(new_title)
+          super(self.old_name)
+          new_name_path = Rename.relative_path(new_title)
+          if Dir.exist?(new_name_path)
+            raise Configuration::FileDirError.new("El cuaderno con el nombre #{new_title} ya existe dentro del directorio")
+          end
+        end
+
+        def operation(new_title)
+          File.rename(Rename.relative_path(self.old_name),Rename.relative_path(new_title))
+        end
 
         def call(old_name:, new_name:, **)
-          #Asumo que el nombre del cuaderno global no puede renombrar
-          if old_name == 'cuaderno global'
-            puts "El cuaderno global no puede ser renombrado"
-            return
+          begin
+            if old_name == 'cuaderno global'
+              raise Configuration::FileDirError.new("El cuaderno global no puede ser renombrado")
+            end
+          rescue => error
+            puts error
+          else
+            self.old_name = old_name
+            self.template(new_name)
           end
-          
-          if !Configuration::ConfigurationDirectory.validate_filename(new_name)
-            puts "El titulo del cuaderno #{new_name} a renombrar no es valido"
-            return
-          end
-
-          #Verificamos si el cuaderno que quiere renombrar existe
-          old_name_path = Configuration::ConfigurationDirectory.relative_path(old_name)
-          if !Dir.exist?(old_name_path)
-            puts "El cuaderno que quiere renombrar con nombre '#{old_name}' no existe dentro del directorio"
-            return
-          end
-          
-          #Verificamos si no existe ya un cuaderno con el nuevo nombre
-          new_name_path = Configuration::ConfigurationDirectory.relative_path(new_name)
-          if Dir.exist?(new_name_path)
-            puts "El cuaderno con el nombre #{new_name} ya existe dentro del directorio"
-            return
-          end
-
-          File.rename(old_name_path,new_name_path)
         end
       end
     end
