@@ -75,4 +75,35 @@ module Configuration
         end       
     end
 
+
+    module TemplateBook
+        extend Configuration
+        def template(title,**kwargs)
+            global = kwargs.has_key?("global") ? kwargs[:global] : nil
+            begin
+                self.validation(title,global)
+                self.dir_exist?(title)
+                self.operation(title)
+            rescue => error
+                puts error
+            end
+        end
+
+        def validation(title,global)
+            if !global.nil? and global == ''
+                raise FileDirError.new("El cuaderno del parametro --book no puede ser vacio")
+            end
+            if !TemplateBook.validate_filename(title)
+                raise  FileDirError.new("El titulo del cuaderno #{title} no es valido")
+            end
+        end
+
+        def dir_exist?(title)
+            file_path = TemplateBook.relative_path(name)
+            if !Dir.exist?(file_path)
+              puts "El cuaderno #{name} no existe dentro del directorio #{file_path}"
+              return 
+            end
+        end
+    end
 end

@@ -4,6 +4,8 @@ module RN
       require 'rn/configuration'  
       class Create < Dry::CLI::Command
         desc 'Create a book'
+        extend Configuration
+        include Configuration::TemplateBook
 
         attr_accessor :relative_path
 
@@ -14,20 +16,18 @@ module RN
           'Memoires  # Creates a new book named "Memoires"'
         ]
 
-        def call(name:, **kwargs)    
-          if !Configuration::ConfigurationDirectory.validate_filename(name)
-            puts "El titulo del cuaderno #{name} no es valido"
-            return
+        def dir_exist?(title)
+          if Dir.exist?(Create.relative_path(title))
+            raise Configuration::FileDirError.new("El cuaderno #{title} ya existe dentro del directorio #{Create.relative_path}")
           end
-          
-          file_path = Configuration::ConfigurationDirectory.relative_path(name)
-          if Dir.exist?(file_path)
-            puts "El cuaderno #{name} ya existe dentro del directorio #{Configuration::ConfigurationDirectory.relative_path}"
-            return 
-          end
-          
-          "No existe el cuaderno, lo creamos"
-          Dir.mkdir(file_path)
+        end
+
+        def operation(title)
+          Dir.mkdir(Configuration::ConfigurationDirectory.relative_path(title))
+        end
+
+        def call(name:, **kwargs) 
+          self.template(name,**kwargs)
         end
       end
 
