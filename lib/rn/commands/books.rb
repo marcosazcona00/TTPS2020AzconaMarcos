@@ -3,9 +3,10 @@ module RN
     module Books
       require 'rn/configuration'  
       class Create < Dry::CLI::Command
-        desc 'Create a book'
         extend Configuration
         include Configuration::TemplateBook
+        
+        desc 'Create a book'
 
         attr_accessor :relative_path
 
@@ -32,6 +33,9 @@ module RN
       end
 
       class Delete < Dry::CLI::Command
+        extend Configuration
+        include Configuration::TemplateBook
+
         attr_accessor :relative_path
         
         desc 'Delete a book'
@@ -54,34 +58,29 @@ module RN
           end
         end
 
+        def validation(title,global)
+          super(title,global)
+          if title == 'cuaderno global'
+            raise  Configuration::FileDirError.new("El #{title} no puede ser borrado")
+          end
+        end
+
+        def operation(title)
+          if !title.nil?
+            dir_path = Delete.relative_path(title)
+            self.delete_files(dir_path)
+            Dir.delete(dir_path)
+          end
+        end
+
         def call(name: nil, **options)
           global = options[:global]
-
           if global
             dir_path = Configuration::ConfigurationDirectory.relative_path('cuaderno global')
             self.delete_files(dir_path)  
           end
-    
-          if name.nil? or name == ''
-            return 
-          end
-          
-          if name == 'cuaderno global'
-            puts "El #{name} no puede ser borrado"
-            return
-          end
-
-          dir_path = Configuration::ConfigurationDirectory.relative_path(name)
-          if !Dir.exist?(dir_path)
-            puts "El cuaderno #{name} que desea borrar no existe"
-            return 
-          end
-
-          #Existe el directorio
-          self.delete_files(dir_path)
-          Dir.delete(dir_path)
-        end
-      
+          self.template(name,**options)
+        end      
         private :delete_files
       end
 
