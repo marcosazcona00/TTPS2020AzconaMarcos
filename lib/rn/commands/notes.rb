@@ -167,7 +167,7 @@ module RN
           puts "'#{book}'"
           Dir.foreach(List.relative_path(book)) do |file|
             if ['.','..'].include?(file)
-              return
+              next
             end
             puts "   |---> #{file}"
           end
