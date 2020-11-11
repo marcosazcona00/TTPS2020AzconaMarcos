@@ -46,6 +46,8 @@ module Configuration
                 operation(title,book)
             rescue => error
                 puts error
+            else
+                self.successfull_operation(title)
             end
         end
 
@@ -65,6 +67,10 @@ module Configuration
             end
         end
         
+        def successfull_operation(title)
+            "HOOK"    
+        end
+
         def validation(title,book)
             "HOOK"
         end
@@ -85,6 +91,8 @@ module Configuration
                 self.operation(title)
             rescue => error
                 puts error
+            else
+                self.successfull_operation(title)
             end
         end
 
@@ -101,11 +109,14 @@ module Configuration
         def dir_exist?(title)
             if !title.nil? #Se verifica que no sea nil porque en el Delete puede llegar con nil
                 file_path = TemplateBook.relative_path(title)
-                puts file_path.inspect
                 if !Dir.exist?(file_path)
                   raise FileDirError.new("El cuaderno '#{title}' no existe dentro del directorio '#{file_path}'")
                 end
             end
+        end
+
+        def successfull_operation(title)
+            "HOOK"    
         end
     end
 end

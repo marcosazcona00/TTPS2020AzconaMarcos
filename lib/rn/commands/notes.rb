@@ -24,6 +24,10 @@ module RN
           end
         end
         
+        def successfull_operation(title)
+          puts "La nota #{title} se ha creado exitosamente" 
+        end
+
         def operation(title,book)
           #w+ es para escritura y lectura y lo crea vacio
           File.new(Configuration::ConfigurationFile.file_relative_path(title, book), "w+")
@@ -58,13 +62,16 @@ module RN
             raise Configuration::FileDirError.new("La nota '#{title}' no existe dentro del '#{book}'")
           end
           File.delete(Configuration::ConfigurationFile.file_relative_path(title,book))
-          puts "Borrado exitosamente la nota '#{title}'  del cuaderno '#{book}"
         end
 
         def file_exist?(title,book) end
 
         def operation(title,book)
           self.delete_note(title,book)
+        end
+
+        def successfull_operation(title)
+          puts "La nota '#{title}' se ha eliminado exitosamente"
         end
 
         def call(title:, **options)
@@ -94,6 +101,10 @@ module RN
 
         def operation(title,book)
           TTY::Editor.open(Configuration::ConfigurationFile.file_relative_path(title, book))
+        end
+
+        def successfull_operation(title)
+          puts "La nota '#{title}' se ha editado exitosamente"
         end
 
         def call(title:, **options)
@@ -139,6 +150,10 @@ module RN
 
         def operation(title,book)
           File.rename(Configuration::ConfigurationFile.file_relative_path(self.old_title,book),Configuration::ConfigurationFile.file_relative_path(title,book))
+        end
+
+        def successfull_operation(title)
+          puts "La nota '#{self.old_title}' a '#{title}' se ha renombrado exitosamente"
         end
 
         def call(old_title:, new_title:, **options)
@@ -200,7 +215,7 @@ module RN
             self.dir_exist?(book = book)
           
             if book == ''
-              puts 'El parametro de --books no puede ser vacio'
+              raise Configuration::FileDirError.new('El parametro de --books no puede ser vacio')
               return
             end
               

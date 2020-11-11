@@ -27,7 +27,11 @@ module RN
           Dir.mkdir(Configuration::ConfigurationDirectory.relative_path(title))
         end
 
-        def call(name:, **kwargs) 
+        def successfull_operation(title)
+          puts "El libro #{title} se ha creado exitosamente"
+        end
+
+        def call(name:, **kwargs)
           self.template(name,**kwargs)
         end
       end
@@ -71,6 +75,10 @@ module RN
             self.delete_files(dir_path)
             Dir.delete(dir_path)
           end
+        end
+
+        def successfull_operation(title)
+          puts "El libro #{title} se ha eliminado exitosamente"
         end
 
         def call(name: nil, **options)
@@ -131,6 +139,10 @@ module RN
 
         def operation(new_title)
           File.rename(Rename.relative_path(self.old_name),Rename.relative_path(new_title))
+        end
+
+        def successfull_operation(new_title)
+          puts "El cuaderno #{self.old_name} a #{new_title} se ha renombrado exitosamente"
         end
 
         def call(old_name:, new_name:, **)
