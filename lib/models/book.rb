@@ -1,107 +1,79 @@
 module RN
-    module Book
-        require 'fileutils'
-        require 'rn/configuration'
+    require 'fileutils'
+    class BookModel
+        include Configuration
+
+        attr_accessor :title
         
-        class BookModel
-            extend Configuration
-            def self.create(name, **kwargs)
-                if !self.validate_filename(name)
-                    warn "El nombre del cuaderno #{name} no es valido"
-                    return
-                end
-                begin
-                    Dir.mkdir(self.relative_path(name))
-                rescue Errno::EEXIST 
-                    puts "El cuaderno #{name} ya existe"
-                else
-                    puts "El cuaderno #{name} fue creado exitosamente"
-                end
-            end
+        def initialize(title = '')
+            self.title = title
+        end
 
-            def self.list()
-                if Dir.empty?(self.relative_path)
-                    warn "Aun no hay cuadernos "
-                    return
-                end
-                puts '--Listado Cuadernos--'
-
-                books(self.relative_path).each do |file|
-                  if ['.','..'].include?(file)
-                    next
-                  end
-                  puts '--> ' + file
-                end
-                puts '--Fin Listado Cuadernos--'
+        def create
+            puts "Create"
+            if !self.validate_filename(self.title)
+                return "El nombre del cuaderno '#{self.title}' no es valido"
             end
+            begin
+                Dir.mkdir(self.relative_path(self.title))
+            rescue Errno::EEXIST 
+                return "El cuaderno '#{self.title}' ya existe"
+            else
+                return "El cuaderno '#{self.title}' fue creado exitosamente"
+            end
+        end
         
-            def self.rename(old_name,new_name)
-                if Dir.exist?(self.relative_path(new_name))
-                    warn "El cuaderno '#{new_name}' ya existe"
-                    return
-                end
-                if !self.validate_filename(new_name)
-                    warn "El nombre del cuaderno #{new_name} no es valido"
-                    return
-                end
-
-                begin
-                    File.rename(self.relative_path(old_name),self.relative_path(new_name))
-                rescue Errno::ENOENT  
-                    warn "El cuaderno que quiere renombrar '#{old_name}' no existe"
-                else
-                    warn "El cuaderno '#{old_name}' ha sido renombrado como '#{new_name}' correctamente"
-                end
+        def books
+            '''
+                Devuelve los cuadernos de un cuaderno
+            '''
+            book = self.relative_path
+            books = Dir.entries(book).select do |file|
+                File.directory?(File.join(book,file)) and !(['.','..'].include?(file))
             end
-            
-            def self.books(book)
-                books = Dir.entries(book).select do |file|
-                    File.directory?(File.join(book,file)) and !(['.','..'].include?(file))
-                end
-                return books
+            return books
+        end
+
+        def rename(new_name)
+            if Dir.exist?(self.relative_path(new_name))
+                return "El cuaderno '#{new_name}' ya existe"
+                
+            end
+            if !self.validate_filename(new_name)
+                return "El nombre del cuaderno #{new_name} no es valido"
             end
 
-            def self.delete_files(dir_path)
-                Dir.foreach(dir_path) do |file|
-                  if ['.','..'].include?(file)
-                    next
-                  end
-                  File.delete(File.join(dir_path,file))
+            begin
+                File.rename(self.relative_path(self.title),self.relative_path(new_name))
+            rescue Errno::ENOENT  
+                return "El cuaderno que quiere renombrar '#{self.title}' no existe"
+            else
+                self.title = new_name #Actualizamos el nombre del libro dentro de la instancia
+                return "El cuaderno '#{self.title}' ha sido renombrado como '#{new_name}' correctamente"
+            end
+        end
+        
+        def delete_global
+            self.books().each do |dir|
+                FileUtils.rm_rf(self.relative_path(dir))
+            end
+        end 
+
+        def delete(global)
+            dir_path = self.relative_path(title)
+            if !global
+                if !Dir.exist?(dir_path)
+                    return "El cuaderno '#{self.title}' no existe"
                 end
-              end
-      
-            
-              def self.delete_book(book)
-                books(book).each do |dir|    
-                    path_book = File.join(book,dir)
-                    delete_files(path_book)
-                end
-                FileUtils.rm_rf(book)
+                FileUtils.rm_rf(dir_path)
+                return "El cauderno #{self.title} ha sido borrado exitosamente"
             end
 
-            def self.delete(name,global)
-                if global
-                    if books(self.relative_path).empty?
-                        warn "El cuaderno global no tiene cuadernos"
-                    else
-                        delete_book(self.relative_path)
-                        warn 'El contenido del cuaderno global fue borrado exitosamente'
-                        return
-                    end
-                end
-
-                if !name.nil?
-                    path_book = File.join(self.relative_path,name)
-                    if !Dir.exist?(path_book)
-                        warn "El cuaderno '#{name}' no existe"
-                        return
-                    end
-                    delete_book(path_book)
-                    warn "El cuaderno #{name} fue borrado exitosamente"
-                end
-            end
-
-            private_class_method :delete_files, :delete_book
+            #Se pidio opcion global. Borramos del GLOBAL
+            self.delete_global()
+            return "Los cuadernos del cuaderno global fueron borrados exitosamente"
         end
     end
-end 
+end
+
+

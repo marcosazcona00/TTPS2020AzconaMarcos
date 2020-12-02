@@ -11,7 +11,10 @@ module RN
           'Memoires  # Creates a new book named "Memoires"'
         ]
         def call(name:, **kwargs) 
-          Book::BookModel.create(name,**kwargs)
+          book = BookModel.new(name)
+          output = book.create()
+          warn output
+          #Book::BookModel.create(name,**kwargs)
         end
       end
 
@@ -29,7 +32,17 @@ module RN
     
         def call(name: nil, **options)
           global = options[:global]
-          Book::BookModel.delete(name,global)
+          name = if name.nil? then '' else name end
+          book = BookModel.new(name)
+
+          if !global and name.strip.empty?
+            warn "Al menos debe ingresar el nombre del cuaderno o el parametro --global"
+            return
+          end
+
+          output = book.delete(global)
+          warn output
+          #Book::BookModel.delete(name,global)
         end      
       end
 
@@ -58,7 +71,10 @@ module RN
         ]
 
         def call(old_name:, new_name:, **)
-          Book::BookModel.rename(old_name,new_name)
+          book = BookModel.new(old_name)
+          output = book.rename(new_name)
+          warn output
+          #Book::BookModel.rename(old_name,new_name)
         end
       end
     end

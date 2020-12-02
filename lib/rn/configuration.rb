@@ -19,13 +19,6 @@ module Configuration
         end
 
     end
-
-    #class ConfigurationFile
-    #    extend Configuration
-    #    def self.file_relative_path(title, book = '')
-    #        return File.join(ConfigurationFile.relative_path(book),title += '.rn')    
-    #    end
-    #end
 end
 
 module Errno
