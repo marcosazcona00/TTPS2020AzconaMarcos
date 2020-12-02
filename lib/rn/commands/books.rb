@@ -54,7 +54,12 @@ module RN
         ]
         
         def call(*)
-            Book::BookModel.list()
+            books = BookModel.new().books()
+            if books.empty?
+              warn "No hay cuadernos"
+              return
+            end
+            puts books
         end
       end
 
