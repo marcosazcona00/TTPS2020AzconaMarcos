@@ -1,50 +1,29 @@
+
 require 'tty-editor'
 module RN
   module Commands
     module Notes
-      require 'rn/configuration'
       class Create < Dry::CLI::Command
-        extend Configuration
-        include Configuration::TemplateFile
-
         argument :title, required: true, desc: 'Title of the note'
         option :book, type: :string, desc: 'Book'
 
         desc 'Create a note'
-      
+        
+        
         example [
           'todo                        # Creates a note titled "todo" in the global book',
           '"New note" --book "My book" # Creates a note titled "New note" in the book "My book"',
           'thoughts --book Memoires    # Creates a note titled "thoughts" in the book "Memoitleires"'
         ]
-
-        def validation(title,book)
-          if !Create.validate_filename(title)
-            raise Configuration::FileDirError.new("El nombre de la nota #{title} no es valido")
-          end
-        end
-        
-        def successfull_operation(title)
-          puts "La nota #{title} se ha creado exitosamente" 
-        end
-
-        def operation(title,book)
-          #w+ es para escritura y lectura y lo crea vacio
-          File.new(Configuration::ConfigurationFile.file_relative_path(title, book), "w+")
-          
-          #Abre un editor para poner el contenido del archivo
-          TTY::Editor.open(Configuration::ConfigurationFile.file_relative_path(title, book))
-        end    
       
         def call(title:, **options)
-          self.template(title,**options)
+          note = NoteModel.new(options[:book],title)
+          output = note.create()
+          warn output
         end
       end
     
       class Delete < Dry::CLI::Command
-        extend Configuration
-        include Configuration::TemplateFile
-
         desc 'Delete a note'
 
         argument :title, required: true, desc: 'Title of the note'
@@ -56,33 +35,14 @@ module RN
           'thoughts --book Memoires    # Deletes a note titled "thoughts" from the book "Memoires"'
         ]
 
-        def delete_note(title, book)
-          "Retorna un boolean indicando si pudo o no borrarse"
-          if !File.exist?(Configuration::ConfigurationFile.file_relative_path(title,book))
-            raise Configuration::FileDirError.new("La nota '#{title}' no existe dentro del '#{book}'")
-          end
-          File.delete(Configuration::ConfigurationFile.file_relative_path(title,book))
-        end
-
-        def file_exist?(title,book) end
-
-        def operation(title,book)
-          self.delete_note(title,book)
-        end
-
-        def successfull_operation(title)
-          puts "La nota '#{title}' se ha eliminado exitosamente"
-        end
-
         def call(title:, **options)
-          self.template(title,**options)
+          note = NoteModel.new(options[:book],title)
+          output = note.delete()
+          warn output
         end
       end
 
       class Edit < Dry::CLI::Command
-        extend Configuration
-        include Configuration::TemplateFile
-
         desc 'Edit the content a note'
         argument :title, required: true, desc: 'Title of the note'
         option :book, type: :string, desc: 'Book'
@@ -92,29 +52,15 @@ module RN
             '"New note" --book "My book" # Edits a note titled "New note" from the book "My book"',
             'thoughts --book Memoires    # Edits a note titled "thoughts" from the book "Memoires"'
           ]
-                
-        def file_exist?(title,book)
-          if !File.exist?(Configuration::ConfigurationFile.file_relative_path(title, book))
-              raise Configuration::FileDirError.new("La nota '#{title}' que desea editar no existe dentro del cuaderno '#{book}'")
-          end
-        end
-
-        def operation(title,book)
-          TTY::Editor.open(Configuration::ConfigurationFile.file_relative_path(title, book))
-        end
-
-        def successfull_operation(title)
-          puts "La nota '#{title}' se ha editado exitosamente"
-        end
 
         def call(title:, **options)
-          self.template(title,**options)
+          note = NoteModel.new(options[:book],title)
+          output = note.edit()
+          warn output
         end
       end
  
       class Retitle < Dry::CLI::Command
-        extend Configuration
-        include Configuration::TemplateFile
 
         desc 'Retitle a note'
 
@@ -128,44 +74,14 @@ module RN
           'thoughts thinking --book Memoires         # Changes the title of the note titled "thoughts" from the book "Memoires" to "thinking"'
         ]
 
-        attr_accessor :old_title
-
-        def initialize
-          self.old_title = ''
-        end 
-
-        def validation(title,book)
-          super(title,book)
-          if !Retitle.validate_filename(title)
-            raise Configuration::FileDirError.new("El nombre de la nota '#{title}' no es valido")
-          end
-        end
-
-        def file_exist?(title,book)
-          if !File.exist?(Configuration::ConfigurationFile.file_relative_path(self.old_title,book))
-            raise Configuration::FileDirError.new("La nota '#{self.old_title}' no existe dentro del cuaderno '#{book}'")
-          end
-          super(title,book)
-        end
-
-        def operation(title,book)
-          File.rename(Configuration::ConfigurationFile.file_relative_path(self.old_title,book),Configuration::ConfigurationFile.file_relative_path(title,book))
-        end
-
-        def successfull_operation(title)
-          puts "La nota '#{self.old_title}' a '#{title}' se ha renombrado exitosamente"
-        end
-
         def call(old_title:, new_title:, **options)
-          self.old_title = old_title
-          self.template(new_title,**options)
+          note = NoteModel.new(options[:book],old_title)
+          output = note.retitle(new_title)
+          warn output
         end
       end
 
       class List < Dry::CLI::Command
-        extend Configuration
-        include Configuration::TemplateFile
-
         desc 'List notes'
 
         option :book, type: :string, desc: 'Book'
@@ -177,61 +93,44 @@ module RN
           '--book "My book" # Lists notes from the book named "My book"',
           '--book Memoires  # Lists notes from the book named "Memoires"'
         ]
-
-        def list_notes_book(book = '')
-          puts "'#{book}'"
-          Dir.foreach(List.relative_path(book)) do |file|
-            if ['.','..'].include?(file)
-              next
-            end
-            puts "   |---> #{file}"
-          end
-        end
         
         def call(**options)
+          note = NoteModel.new(options[:book])
           book = options[:book]
           global = options[:global]
 
-          if !global and book.nil?
-            #Si no pidio global y no hay libro, lista todo
-            
-            puts "--Todos los cuadernos-- "
-            self.list_notes_book
-            puts '-' *40
-            Dir.foreach(List.relative_path) do |book|
-              if ['.','..'].include?(book)
-                next
-              end
-              self.list_notes_book(book)
-            end
-            return            
-          end
-          
           if global
-            self.list_notes_book("cuaderno global")
+            notes = note.list_global()
+            puts "*** Notas cuaderno global ***"
+            output = if !notes.empty? then notes else "Sin Notas" end
+            puts output
+            return
           end
 
-          begin
-            self.dir_exist?(book = book)
-          
-            if book == ''
-              raise Configuration::FileDirError.new('El parametro de --books no puede ser vacio')
-              return
-            end
-              
-            if !book.nil?
-              self.list_notes_book(book)
-            end
-          rescue => error
-            puts error
+          if !book.nil?
+            output, is_valid = note.list_notes_book()
+            if !is_valid
+              warn output
+            else
+              puts "*** Notas cuaderno '#{book}' ***"
+              output = if !output.empty? then output else "Sin Notas" end
+              puts output
+            end 
+            return
+          end
+
+          #Imprimo todas
+          notes = note.all_notes()
+          notes.each do |book,notes|
+            puts "*********#{book}*************"
+            output = if !notes.empty? then notes else "Sin notas" end
+            puts output
+            puts "**************************************\n\n"
           end
         end
       end
 
       class Show < Dry::CLI::Command
-        extend Configuration
-        include Configuration::TemplateFile
-
         desc 'Show a note'
 
         argument :title, required: true, desc: 'Title of the note'
@@ -242,29 +141,32 @@ module RN
           '"New note" --book "My book" # Shows a note titled "New note" from the book "My book"',
           'thoughts --book Memoires    # Shows a note titled "thoughts" from the book "Memoires"'
         ]
-
-        def validation(title,book)
-          if !book.nil? and book == ''
-            raise Configuration::FileDirError.new("El parametro --books no puede ser vacio")
-          end
-        end
-
-        def file_exist?(title,book)
-          if !File.exist?(Configuration::ConfigurationFile.file_relative_path(title,book))
-            raise Configuration::FileDirError.new("La nota '#{title}' no existe dentro del cuaderno '#{book}'")
-          end
-        end
-
-        def operation(title,book)
-          puts "---Contenido Nota #{title}---"
-          File.foreach(Configuration::ConfigurationFile.file_relative_path(title,book)) do |line|
-            puts line
-          end
-        end
-
+        
         def call(title:, **options)
-          self.template(title,**options)
+          note = NoteModel.new(options[:book],title)
+          output = note.show()
+          warn output
         end
+      end
+
+      class Export < Dry::CLI::Command
+        desc 'Export a note'
+
+        option :title, type: :string, desc: 'Title of the note to export'
+        option :book,  type: :string, desc: 'Book'
+
+        example [
+          '                                 # Export all notes',
+          '--title note1                    # Export the note "note1" to html from global',
+          '--title note2 --book "My Book"   # Export the note "note1" from the book "My Book" to html'
+        ]
+
+        def call(**options)
+          note = NoteModel.new(options[:book],options[:title])
+          output = note.export()
+          warn output          
+          #Note::NoteModel.export(options)
+        end 
       end
     end
   end
