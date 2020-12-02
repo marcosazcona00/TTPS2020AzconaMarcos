@@ -152,8 +152,9 @@ module RN
                 self.path_book = self.relative_path(book) 
                 notes[book] = notes()
             end
-
-            notes['Cuaderno Global'] = self.list_global()
+            
+            #Como no existe el cuaderno global como cuaderno no puedo hacer esto debido a que puede haber un cuaderno que se llame asi
+            #notes['Notas del Cuaderno Global'] = self.list_global()
             return notes
         end
 

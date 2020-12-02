@@ -121,6 +121,11 @@ module RN
 
           #Imprimo todas
           notes = note.all_notes()
+          
+          puts "*******Notas del cajon global********"
+          puts note.list_global()
+          puts "*************************************\n\n"
+          
           notes.each do |book,notes|
             puts "*********#{book}*************"
             output = if !notes.empty? then notes else "Sin notas" end
