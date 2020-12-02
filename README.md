@@ -57,7 +57,8 @@ necesario documentar.
 
 ## Modelo
   - Se cuenta con un módulo Configuration dentro del archivo `configuration.rb` que encapsula la lógica auxiliar que se necesitará para la extensión de las funcionalidades en el modelo propuesto, con mensajes por parte del módulo para validación de filenames y obtención de path relativo y una excepción personalizada. Dentro encontramos la clase ConfigurationDirectory que provee la inicialización del directorio `.my_rns` en caso de no existir en el filesystem del usuario que utilice la aplicación.
-  - Se cuenta con las Clases BookModel y NoteModel, las cuales contienen encapsulada la lógica necesaria para realizar las operaciones fundamentales que requieren los comandos del módulo Commands  
+  - Se cuenta con la Clase Modelo BookModel, la cual encapsula toda la lógica de creación, renombre, eliminación de libros, como también la obtención de los libros del cuaderno global
+  - Se cuenta con la Clase Modelo NoteModel, la cual contiene encapsulada la lógica necesaria para realizar las operaciones de creacion, renombre, edición, muestra, exportado y listado de las notas de los cuadernos del cajón de notas
   
 ## Gema
   - Se utiliza la gema TTY:Editor la cual permite la apertura y edición de archivos de texto, utilizando los editores que se encuentren habilitados en su Sistema Operativo. Se encuentra incluido en el archivo `Gemfile` de la forma `gem 'tty-editor', '~> 0.6'`

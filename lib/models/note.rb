@@ -196,7 +196,7 @@ module RN
                 Exporta las notas de los cuadernos
             '''
 
-            books = BookModel.new('').books()
+            books = BookModel.new().books()
             
             books.each do |book|
                 self.path_book = self.relative_path(book)
