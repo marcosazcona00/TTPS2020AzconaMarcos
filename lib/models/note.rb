@@ -146,7 +146,7 @@ module RN
         end
 
         def all_notes()
-            books = BookModel.new().books()
+            books = BookModel.new('').books()
             notes = {}            
             books.each do |book|
                 self.path_book = self.relative_path(book) 
@@ -195,7 +195,8 @@ module RN
             '''
                 Exporta las notas de los cuadernos
             '''
-            books = Book::BookModel.books(self.relative_path)
+
+            books = BookModel.new('').books()
             
             books.each do |book|
                 self.path_book = self.relative_path(book)
@@ -209,7 +210,7 @@ module RN
                 #Verificar si es valido
                 is_valid_book, msg = self.validate_book()
                 if !is_valid_book
-                    return msg 
+                    return msg
                 end
                 
                 if !self.title.nil?
