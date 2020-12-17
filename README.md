@@ -1,121 +1,24 @@
-# rn
+# README
 
-Plantilla para comenzar con el Trabajo Práctico Integrador de la cursada 2020 de la materia
-Taller de Tecnologías de Producción de Software - Opción Ruby, de la Facultad de Informática
-de la Universidad Nacional de La Plata.
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-Ruby Notes, o simplemente `rn`, es un gestor de notas concebido como un clon simplificado
-de la excelente herramienta [TomBoy](https://wiki.gnome.org/Apps/Tomboy).
+Things you may want to cover:
 
-Este proyecto es simplemente una plantilla para comenzar a implementar la herramienta e
-intenta proveer un punto de partida para el desarrollo, simplificando el _bootstrap_ del
-proyecto que puede ser una tarea que consume mucho tiempo y conlleva la toma de algunas
-decisiones que pueden tener efectos tanto positivos como negativos en el proyecto.
+* Ruby version
 
-## Uso de `rn`
+* System dependencies
 
-Para ejecutar el comando principal de la herramienta se utiliza el script `bin/rn`, el cual
-puede correrse de las siguientes manera:
+* Configuration
 
-```bash
-$ ruby bin/rn [args]
-```
+* Database creation
 
-O bien:
+* Database initialization
 
-```bash
-$ bundle exec bin/rn [args]
-```
+* How to run the test suite
 
-O simplemente:
+* Services (job queues, cache servers, search engines, etc.)
 
-```bash
-$ bin/rn [args]
-```
+* Deployment instructions
 
-Si se agrega el directorio `bin/` del proyecto a la variable de ambiente `PATH` de la shell,
-el comando puede utilizarse sin prefijar `bin/`:
-
-```bash
-# Esto debe ejecutarse estando ubicad@ en el directorio raiz del proyecto, una única vez
-# por sesión de la shell
-$ export PATH="$(pwd)/bin:$PATH"
-$ rn [args]
-```
-
-> Notá que para la ejecución de la herramienta, es necesario tener una versión reciente de
-> Ruby (2.5 o posterior) y tener instaladas sus dependencias, las cuales se manejan con
-> Bundler. Para más información sobre la instalación de las dependencias, consultar la
-> siguiente sección ("Desarrollo").
-
-Documentar el uso para usuarios finales de la herramienta queda fuera del alcance de esta
-plantilla y **se deja como una tarea para que realices en tu entrega**, pisando el contenido
-de este archivo `README.md` o bien en uno nuevo. Ese archivo deberá contener cualquier
-documentación necesaria para entender el funcionamiento y uso de la herramienta que hayas
-implementado, junto con cualquier decisión de diseño del modelo de datos que consideres
-necesario documentar.
-
-## Modelo
-  - Se cuenta con un módulo Configuration dentro del archivo `configuration.rb` que encapsula la lógica auxiliar que se necesitará para la extensión de las funcionalidades en el modelo propuesto, con mensajes por parte del módulo para validación de filenames y obtención de path relativo y una excepción personalizada. Dentro encontramos la clase ConfigurationDirectory que provee la inicialización del directorio `.my_rns` en caso de no existir en el filesystem del usuario que utilice la aplicación.
-  - Se cuenta con la Clase Modelo BookModel, la cual encapsula toda la lógica de creación, renombre, eliminación de libros, como también la obtención de los libros del cuaderno global
-  - Se cuenta con la Clase Modelo NoteModel, la cual contiene encapsulada la lógica necesaria para realizar las operaciones de creacion, renombre, edición, muestra, exportado y listado de las notas de los cuadernos del cajón de notas
-  
-## Gema
-  - Se utiliza la gema TTY:Editor la cual permite la apertura y edición de archivos de texto, utilizando los editores que se encuentren habilitados en su Sistema Operativo. Se encuentra incluido en el archivo `Gemfile` de la forma `gem 'tty-editor', '~> 0.6'`
-  - Se utiliza la gema `kramdown`, la cual permite exportar archivos de texto Markdown, GFM y HTML a texto rico PDF,HTML,LaTeX.
-    Github: https://github.com/gettalong/kramdown
-
-## Desarrollo
-
-Esta sección provee algunos tips para el desarrollo de tu entrega a partir de esta
-plantilla.
-
-### Instalación de dependencias
-
-Este proyecto utiliza Bundler para manejar sus dependencias. Si aún no sabés qué es eso
-o cómo usarlo, no te preocupes: ¡lo vamos a ver en breve en la materia! Mientras tanto,
-todo lo que necesitás saber es que Bundler se encarga de instalar las dependencias ("gemas")
-que tu proyecto tenga declaradas en su archivo `Gemfile` al ejecutar el siguiente comando:
-
-```bash
-$ bundle install
-```
-
-> Nota: Bundler debería estar disponible en tu instalación de Ruby, pero si por algún
-> motivo al intentar ejecutar el comando `bundle` obtenés un error indicando que no se
-> encuentra el comando, podés instalarlo mediante el siguiente comando:
->
-> ```bash
-> $ gem install bundler
-> ```
-
-Una vez que la instalación de las dependencias sea exitosa (esto deberías hacerlo solamente
-cuando estés comenzando con la utilización del proyecto), podés comenzar a probar la
-herramienta y a desarrollar tu entrega.
-
-### Estructura de la plantilla
-
-El proyecto te provee una estructura inicial en la cual podés basarte para implementar tu
-entrega. Esta estructura no es necesariamente rígida, pero tené en cuenta que modificarla
-puede requerir algún trabajo adicional de tu parte.
-
-* `lib/`: directorio que contiene todas las clases del modelo y de soporte para la ejecución
-  del programa `bin/rn`.
-  * `lib/rn.rb` es la declaración del namespace `RN`, y las directivas de carga de clases
-    o módulos que estén contenidos directamente por éste (`autoload`).
-  * `lib/rn/` es el directorio que representa el namespace `RN`. Notá la convención de que
-    el uso de un módulo como namespace se refleja en la estructura de archivos del proyecto
-    como un directorio con el mismo nombre que el archivo `.rb` que define el módulo, pero
-    sin la terminación `.rb`. Dentro de este directorio se ubicarán los elementos del
-    proyecto que estén bajo el namespace `RN` - que, también por convención y para facilitar
-    la organización, deberían ser todos. Es en este directorio donde deberías ubicar tus
-    clases de modelo, módulos, clases de soporte, etc. Tené en cuenta que para que todo
-    funcione correctamente, seguramente debas agregar nuevas directivas de carga en la
-    definición del namespace `RN` (o dónde corresponda, según tus decisiones de diseño).
-  * `lib/rn/commands.rb` y `lib/rn/commands/*.rb` son las definiciones de comandos de
-    `dry-cli` que se utilizarán. En estos archivos es donde comenzarás a realizar la
-    implementación de las operaciones en sí, que en esta plantilla están provistas como
-    simples disparadores.
-  * `lib/rn/version.rb` define la versión de la herramienta, utilizando [SemVer](https://semver.org/lang/es/).
-* `bin/`: directorio donde reside cualquier archivo ejecutable, siendo el más notorio `rn`
-  que se utiliza como punto de entrada para el uso de la herramienta.
+* ...
