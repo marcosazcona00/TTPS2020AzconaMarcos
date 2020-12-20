@@ -1,0 +1,15 @@
+<h2> Crear libro </h2>
+
+<% ### Iteramos sobre cada campo del libro %>
+<%= form_for @book do |f| %>
+
+    <% ### Si hay errores, los mostramos %>
+    <% if @book.errors.any? %>
+        <% @book.errors.full_messages.each do |message| %>
+            <%= message %>
+        <% end %>
+    <% end %>
+    <%= f.label :title, 'Titulo' %>
+    <%= f.text_field :title, placeholder: 'Ingrese un titulo' %>
+    <%= f.submit 'Enviar' %>
+<% end %>
