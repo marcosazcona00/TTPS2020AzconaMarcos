@@ -18,7 +18,7 @@ class BooksController < ApplicationController
         @book = Book.new(title: book_values[:title], user_id: current_user.id)
         if @book.save
             ### La creacion fue exitosa
-            redirect_to '/'
+            redirect_to action: 'index'
             return  
         end
         ### La creacion no pudo realizarse
@@ -46,7 +46,7 @@ class BooksController < ApplicationController
         @current_book = current_user.get_book(id: book_id)
         new_title =  params[:book][:title]
         if @current_book.update(title: new_title)
-            redirect_to '/'
+            redirect_to action: 'index'
             return
         end
         #@current_book.errors = book_modify.errors

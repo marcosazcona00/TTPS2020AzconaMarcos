@@ -1,6 +1,11 @@
 <h2> Edit Book "<%= @current_book.title%>" </h2>
 
 <%= form_for @current_book do |f| %>
+    <% if @current_book.errors.any? %>
+        <% @current_book.errors.full_messages.each do |message| %>
+            <%= message %>
+        <% end %>
+    <% end %>
     <%= f.label :title, 'Titulo' %>
     <%= f.text_field :title %>
     <input type="submit" value="Enviar" onclick="return confirm('Esta seguro que desea guardar los nuevos cambios?')">
