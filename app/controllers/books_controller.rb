@@ -55,4 +55,16 @@ class BooksController < ApplicationController
         render 'edit'
     end 
 
+    def destroy
+        book_id = params[:id]
+        if valid_id?(book_id)
+            ### Redirigiar a un 400 Bad Request    
+            redirect_to '/'
+            return
+        end
+        @book = current_user.get_book(id: book_id)
+        @book.destroy
+        redirect_to action: 'index'
+    end
+
 end
