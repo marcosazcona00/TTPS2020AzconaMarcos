@@ -1,7 +1,13 @@
 class BooksController < ApplicationController
+    include ApplicationHelper
+    
     ### Con esto verificamos si a este controlador ingresa un usuario autenticado
     before_action :authenticate_user!
     
+    def index
+        @books = current_user.books
+    end
+
     def new
         ### Esto es lo que le llega al html
         @book = Book.new
@@ -9,21 +15,42 @@ class BooksController < ApplicationController
 
     def create
         book_values = params[:book]
-        @book = Book.create(title: book_values[:title], user_id: current_user.id)
-        if @book.valid?
+        @book = Book.new(title: book_values[:title], user_id: current_user.id)
+        if @book.save
             ### La creacion fue exitosa
             redirect_to '/'
-            return
+            return  
         end
         ### La creacion no pudo realizarse
         render 'new'
     end
 
     def edit
-        puts params
+        ### Validamos que en el id no venga ningun simbolo extra
+        book_id = params[:id]
+        if valid_id?(book_id)
+            ### Redirigiar a un 400 Bad Request    
+            redirect_to '/'
+            return
+        end
+        @current_book = current_user.get_book(id: book_id)
+        if @current_book.nil?
+            ### Redirigir a un forbbidden 400 porque el libro no lo tiene
+            redirect_to '/'
+            return            
+        end
     end
 
     def update
-    end
+        book_id = params[:id]
+        @current_book = current_user.get_book(id: book_id)
+        new_title =  params[:book][:title]
+        if @current_book.update(title: new_title)
+            redirect_to '/'
+            return
+        end
+        #@current_book.errors = book_modify.errors
+        render 'edit'
+    end 
 
 end

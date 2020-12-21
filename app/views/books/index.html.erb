@@ -1,0 +1,9 @@
+<h2> Libros del user <%= current_user.email %> </h2>
+<ul>
+    <% @books.each do |book| %>
+        <li> 
+            Titulo: <%= book.title %>
+            <%= link_to "Editar", edit_book_path(book.id)%>
+        </li>
+    <% end %>
+</ul>

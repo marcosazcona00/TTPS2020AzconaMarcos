@@ -1,4 +1,4 @@
-<h2> Crear libro </h2>
+<h2> New Book </h2>
 
 <% ### Iteramos sobre cada campo del libro %>
 <%= form_for @book do |f| %>
@@ -11,5 +11,5 @@
     <% end %>
     <%= f.label :title, 'Titulo' %>
     <%= f.text_field :title, placeholder: 'Ingrese un titulo' %>
-    <%= f.submit 'Enviar' %>
+    <input type="submit" value="Enviar" onclick="return confirm('Esta seguro que desea crear un nuevo libro?')">
 <% end %>
