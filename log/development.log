@@ -14611,3 +14611,296 @@ Processing by BooksController#index as HTML
 Completed 200 OK in 11ms (Views: 6.8ms | ActiveRecord: 0.9ms | Allocations: 4164)
 
 
+  [1m[35m (0.6ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (22.6ms)[0m  [1m[34mSELECT GET_LOCK('8388172886197449135', 0)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to ChangeFkBook (20201221211511)
+  [1m[35m (750.3ms)[0m  [1m[35mALTER TABLE `books` CHANGE `user_id` `user_id` bigint NOT NULL[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mprimary::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20201221211511')[0m
+  [1m[35m (45.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT RELEASE_LOCK('8388172886197449135')[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT GET_LOCK('8388172886197449135', 0)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to ChangeFKsNoteOptional (20201221212012)
+  [1m[35m (34.0ms)[0m  [1m[35mALTER TABLE `notes` CHANGE `user_id` `user_id` bigint DEFAULT NULL[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT RELEASE_LOCK('8388172886197449135')[0m
+  [1m[35m (32.5ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT GET_LOCK('8388172886197449135', 0)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to ChangeFKsNoteOptional (20201221212012)
+  [1m[35m (43.4ms)[0m  [1m[35mALTER TABLE `notes` CHANGE `user_id` `user_id` bigint DEFAULT NULL[0m
+  [1m[35m (36.6ms)[0m  [1m[35mALTER TABLE `notes` CHANGE `book_id` `book_id` bigint DEFAULT NULL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mprimary::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20201221212012')[0m
+  [1m[35m (58.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT RELEASE_LOCK('8388172886197449135')[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[36mNote Load (0.5ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` LIMIT 11[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.5ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `created_at`, `updated_at`) VALUES ('epe', 'pepe', '2020-12-21 21:21:32.940023', '2020-12-21 21:21:32.940023')[0m
+  [1m[35m (37.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` LIMIT 11[0m
+  [1m[36mNote Load (0.6ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`id` = 1 LIMIT 1[0m
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Destroy (0.5ms)[0m  [1m[31mDELETE FROM `notes` WHERE `notes`.`id` = 1[0m
+  [1m[35m (68.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` LIMIT 11[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` LIMIT 11[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mBook Load (0.4ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 LIMIT 11[0m
+Started GET "/" for 127.0.0.1 at 2020-12-21 18:22:41 -0300
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering vendor/bundle/ruby/2.5.0/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered vendor/bundle/ruby/2.5.0/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 6.5ms | Allocations: 481)
+Completed 200 OK in 18ms (Views: 10.8ms | ActiveRecord: 0.0ms | Allocations: 2859)
+
+
+Started GET "/books" for 127.0.0.1 at 2020-12-21 18:22:44 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (1.1ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:4
+  Rendered books/index.html.erb within layouts/application (Duration: 10.7ms | Allocations: 2442)
+Completed 200 OK in 59ms (Views: 12.6ms | ActiveRecord: 4.1ms | Allocations: 19087)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2020-12-21 18:22:46 -0300
+Processing by BooksController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/new.html.erb within layouts/application
+  Rendered books/new.html.erb within layouts/application (Duration: 3.9ms | Allocations: 1186)
+Completed 200 OK in 21ms (Views: 5.1ms | ActiveRecord: 0.9ms | Allocations: 6755)
+
+
+Started POST "/books" for 127.0.0.1 at 2020-12-21 18:22:50 -0300
+Processing by BooksController#create as HTML
+  Parameters: {"authenticity_token"=>"t2Y3JGA6obK2tkP2KALfksm17LWB1RJ2DJt5awBwE5VNFGTsEuDrsXwPkUvk1cBSxhWZMufHx2JqxR7wKpR5iw==", "book"=>{"title"=>"titulo 1"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/books_controller.rb:19:in `create'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/books_controller.rb:19:in `create'
+DEPRECATION WARNING: Uniqueness validator will no longer enforce case sensitive comparison in Rails 6.1. To continue case sensitive comparison on the :title attribute in Book model, pass `case_sensitive: true` option explicitly to the uniqueness validator. (called from create at /home/marcos/Escritorio/TTPS2020AzconaMarcos/app/controllers/books_controller.rb:19)
+  [1m[36mBook Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `books` WHERE `books`.`title` = BINARY 'titulo 1' AND `books`.`user_id` = 1 LIMIT 1[0m
+  ↳ app/controllers/books_controller.rb:19:in `create'
+  [1m[36mBook Create (0.3ms)[0m  [1m[32mINSERT INTO `books` (`title`, `user_id`, `created_at`, `updated_at`) VALUES ('titulo 1', 1, '2020-12-21 21:22:50.805717', '2020-12-21 21:22:50.805717')[0m
+  ↳ app/controllers/books_controller.rb:19:in `create'
+  [1m[35m (30.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/books_controller.rb:19:in `create'
+Redirected to http://localhost:3000/books
+Completed 302 Found in 79ms (ActiveRecord: 32.4ms | Allocations: 9296)
+
+
+Started GET "/books" for 127.0.0.1 at 2020-12-21 18:22:50 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.5ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:4
+  Rendered books/index.html.erb within layouts/application (Duration: 4.1ms | Allocations: 1040)
+Completed 200 OK in 11ms (Views: 4.7ms | ActiveRecord: 0.9ms | Allocations: 3155)
+
+
+Started DELETE "/books/4" for 127.0.0.1 at 2020-12-21 18:22:51 -0300
+Processing by BooksController#destroy as HTML
+  Parameters: {"authenticity_token"=>"wVcSh3Mrrqf5nk4RtLEmvSJv6cM2fjjYk6k6eRJNhq0zrzGdhHpi5XSqXKUzeJzsnRDpalikkI6Nt1WQY0nBWg==", "id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mBook Load (1.1ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 AND `books`.`id` = 4 LIMIT 1[0m
+  ↳ app/models/user.rb:15:in `get_book'
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/books_controller.rb:66:in `destroy'
+  [1m[36mBook Destroy (0.7ms)[0m  [1m[31mDELETE FROM `books` WHERE `books`.`id` = 4[0m
+  ↳ app/controllers/books_controller.rb:66:in `destroy'
+  [1m[35m (112.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/books_controller.rb:66:in `destroy'
+Redirected to http://localhost:3000/books
+Completed 302 Found in 128ms (ActiveRecord: 115.7ms | Allocations: 4938)
+
+
+Started GET "/books" for 127.0.0.1 at 2020-12-21 18:22:51 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (16.6ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:4
+  Rendered books/index.html.erb within layouts/application (Duration: 19.0ms | Allocations: 815)
+Completed 200 OK in 27ms (Views: 3.6ms | ActiveRecord: 17.2ms | Allocations: 2928)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2020-12-21 18:22:52 -0300
+Processing by BooksController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/new.html.erb within layouts/application
+  Rendered books/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 259)
+Completed 200 OK in 7ms (Views: 2.0ms | ActiveRecord: 0.5ms | Allocations: 2344)
+
+
+Started POST "/books" for 127.0.0.1 at 2020-12-21 18:23:00 -0300
+Processing by BooksController#create as HTML
+  Parameters: {"authenticity_token"=>"CKza8neeoEI5BYxYdUMgR0JNOmbafoSsU6wpkYtXGY7y3ok6BUTqQfO8XuW5lD+HTe1P4bxsUbg18k4KobNzkA==", "book"=>{"title"=>"titulo 1"}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/books_controller.rb:19:in `create'
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/books_controller.rb:19:in `create'
+DEPRECATION WARNING: Uniqueness validator will no longer enforce case sensitive comparison in Rails 6.1. To continue case sensitive comparison on the :title attribute in Book model, pass `case_sensitive: true` option explicitly to the uniqueness validator. (called from create at /home/marcos/Escritorio/TTPS2020AzconaMarcos/app/controllers/books_controller.rb:19)
+  [1m[36mBook Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `books` WHERE `books`.`title` = BINARY 'titulo 1' AND `books`.`user_id` = 1 LIMIT 1[0m
+  ↳ app/controllers/books_controller.rb:19:in `create'
+  [1m[36mBook Create (0.7ms)[0m  [1m[32mINSERT INTO `books` (`title`, `user_id`, `created_at`, `updated_at`) VALUES ('titulo 1', 1, '2020-12-21 21:23:00.034561', '2020-12-21 21:23:00.034561')[0m
+  ↳ app/controllers/books_controller.rb:19:in `create'
+  [1m[35m (36.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/books_controller.rb:19:in `create'
+Redirected to http://localhost:3000/books
+Completed 302 Found in 62ms (ActiveRecord: 40.0ms | Allocations: 6949)
+
+
+Started GET "/books" for 127.0.0.1 at 2020-12-21 18:23:00 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.5ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:4
+  Rendered books/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1013)
+Completed 200 OK in 10ms (Views: 4.9ms | ActiveRecord: 0.9ms | Allocations: 3126)
+
+
+Started GET "/books/new" for 127.0.0.1 at 2020-12-21 18:23:00 -0300
+Processing by BooksController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/new.html.erb within layouts/application
+  Rendered books/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 259)
+Completed 200 OK in 6ms (Views: 2.2ms | ActiveRecord: 0.5ms | Allocations: 2345)
+
+
+Started POST "/books" for 127.0.0.1 at 2020-12-21 18:23:04 -0300
+Processing by BooksController#create as HTML
+  Parameters: {"authenticity_token"=>"GzaCx13OjJMjXfJEhAmK2r1Amh49sosk+AitFhZNUcrhRNEPLxTGkOnkIPlI3pUasuDvmVugXjCeVsqNPKk71A==", "book"=>{"title"=>" titulo 1"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/books_controller.rb:19:in `create'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/books_controller.rb:19:in `create'
+DEPRECATION WARNING: Uniqueness validator will no longer enforce case sensitive comparison in Rails 6.1. To continue case sensitive comparison on the :title attribute in Book model, pass `case_sensitive: true` option explicitly to the uniqueness validator. (called from create at /home/marcos/Escritorio/TTPS2020AzconaMarcos/app/controllers/books_controller.rb:19)
+  [1m[36mBook Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM `books` WHERE `books`.`title` = BINARY 'titulo 1' AND `books`.`user_id` = 1 LIMIT 1[0m
+  ↳ app/controllers/books_controller.rb:19:in `create'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/books_controller.rb:19:in `create'
+  Rendering books/new.html.erb within layouts/application
+  Rendered books/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 422)
+Completed 200 OK in 31ms (Views: 2.9ms | ActiveRecord: 3.0ms | Allocations: 9158)
+
+
+Started POST "/books" for 127.0.0.1 at 2020-12-21 18:23:08 -0300
+Processing by BooksController#create as HTML
+  Parameters: {"authenticity_token"=>"+3buQN707yM6Zr+lCod7Lc3TXc8Fpupo2EqQcKyscfYBBL2IrC6lIPDfbRjGUGTtwnMoSGO0P3y+FPfrhkgb6A==", "book"=>{"title"=>"titulo 2"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/books_controller.rb:19:in `create'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/books_controller.rb:19:in `create'
+DEPRECATION WARNING: Uniqueness validator will no longer enforce case sensitive comparison in Rails 6.1. To continue case sensitive comparison on the :title attribute in Book model, pass `case_sensitive: true` option explicitly to the uniqueness validator. (called from create at /home/marcos/Escritorio/TTPS2020AzconaMarcos/app/controllers/books_controller.rb:19)
+  [1m[36mBook Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `books` WHERE `books`.`title` = BINARY 'titulo 2' AND `books`.`user_id` = 1 LIMIT 1[0m
+  ↳ app/controllers/books_controller.rb:19:in `create'
+  [1m[36mBook Create (0.8ms)[0m  [1m[32mINSERT INTO `books` (`title`, `user_id`, `created_at`, `updated_at`) VALUES ('titulo 2', 1, '2020-12-21 21:23:08.058687', '2020-12-21 21:23:08.058687')[0m
+  ↳ app/controllers/books_controller.rb:19:in `create'
+  [1m[35m (69.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/books_controller.rb:19:in `create'
+Redirected to http://localhost:3000/books
+Completed 302 Found in 101ms (ActiveRecord: 72.4ms | Allocations: 6949)
+
+
+Started GET "/books" for 127.0.0.1 at 2020-12-21 18:23:08 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.6ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:4
+  Rendered books/index.html.erb within layouts/application (Duration: 6.0ms | Allocations: 1212)
+Completed 200 OK in 13ms (Views: 6.4ms | ActiveRecord: 1.1ms | Allocations: 3330)
+
+
+  [1m[36mBook Load (0.5ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 LIMIT 11[0m
+  [1m[36mBook Load (0.7ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 AND `books`.`id` = 5 LIMIT 1[0m
+  [1m[36mNote Load (0.8ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`book_id` = 5 LIMIT 11[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Create (0.6ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `book_id`, `created_at`, `updated_at`) VALUES ('nota 1', 'nota 1', 5, '2020-12-21 21:23:42.107150', '2020-12-21 21:23:42.107150')[0m
+  [1m[35m (72.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mNote Load (0.8ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`book_id` = 5 LIMIT 11[0m
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` LIMIT 11[0m
+Started DELETE "/books/5" for 127.0.0.1 at 2020-12-21 18:24:04 -0300
+Processing by BooksController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Dm3qgK04DeKuTRbhvreSSS6i4uINxev0qTRL4nNyn08kRB+e+fkSQHUVQXKlHmVR/JDvQvG7qfifiH8lPcKhIA==", "id"=>"5"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mBook Load (0.5ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 AND `books`.`id` = 5 LIMIT 1[0m
+  ↳ app/models/user.rb:15:in `get_book'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/books_controller.rb:66:in `destroy'
+  [1m[36mBook Destroy (279.7ms)[0m  [1m[31mDELETE FROM `books` WHERE `books`.`id` = 5[0m
+  ↳ app/controllers/books_controller.rb:66:in `destroy'
+  [1m[35m (50.8ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/books_controller.rb:66:in `destroy'
+Completed 500 Internal Server Error in 349ms (ActiveRecord: 331.6ms | Allocations: 5797)
+
+
+  
+ActiveRecord::InvalidForeignKey (Mysql2::Error: Cannot delete or update a parent row: a foreign key constraint fails (`ttps2020_development`.`notes`, CONSTRAINT `fk_rails_317dc639a3` FOREIGN KEY (`book_id`) REFERENCES `books` (`id`))):
+  
+app/controllers/books_controller.rb:66:in `destroy'
+  [1m[36mNote Load (1.0ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` LIMIT 11[0m
+Started GET "/books" for 127.0.0.1 at 2020-12-21 18:26:07 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.4ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:4
+  Rendered books/index.html.erb within layouts/application (Duration: 13.9ms | Allocations: 5558)
+Completed 200 OK in 44ms (Views: 14.2ms | ActiveRecord: 4.4ms | Allocations: 16518)
+
+
+Started DELETE "/books/5" for 127.0.0.1 at 2020-12-21 18:26:08 -0300
+Processing by BooksController#destroy as HTML
+  Parameters: {"authenticity_token"=>"CJYVlQQH/6y9f9JbxtY3rd69MFvZW+QWIF9hbRORcOciv+CLUMbgDmYnhcjdf8C1DI89+yUlphoW41WqXSFOiA==", "id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mBook Load (0.4ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 AND `books`.`id` = 5 LIMIT 1[0m
+  ↳ app/models/user.rb:15:in `get_book'
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/books_controller.rb:66:in `destroy'
+  [1m[36mNote Destroy (0.4ms)[0m  [1m[31mDELETE FROM `notes` WHERE `notes`.`book_id` = 5[0m
+  ↳ app/controllers/books_controller.rb:66:in `destroy'
+  [1m[36mBook Destroy (151.4ms)[0m  [1m[31mDELETE FROM `books` WHERE `books`.`id` = 5[0m
+  ↳ app/controllers/books_controller.rb:66:in `destroy'
+  [1m[35m (32.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/books_controller.rb:66:in `destroy'
+Redirected to http://localhost:3000/books
+Completed 302 Found in 208ms (ActiveRecord: 187.4ms | Allocations: 7763)
+
+
+Started GET "/books" for 127.0.0.1 at 2020-12-21 18:26:08 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.7ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:4
+  Rendered books/index.html.erb within layouts/application (Duration: 4.3ms | Allocations: 1013)
+Completed 200 OK in 12ms (Views: 5.4ms | ActiveRecord: 2.0ms | Allocations: 3119)
+
+
+  [1m[36mNote Load (0.5ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` LIMIT 11[0m
+  [1m[36mNote Load (0.5ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` LIMIT 11[0m
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`book_id` = 5 LIMIT 11[0m

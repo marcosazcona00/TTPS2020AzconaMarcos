@@ -1,6 +1,8 @@
 class Book < ApplicationRecord
-    has_many :notes
+    ### El dependen permite borrar en cascada
+    has_many :notes, :dependent => :delete_all 
     belongs_to :user
+    
     #El scope parece que se fija si para ese usuario, ese titulo existe.
     validates :title, presence: true, length: { maximum: 50 }, uniqueness: { scope: :user} 
     
