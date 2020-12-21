@@ -33,6 +33,7 @@ class BooksController < ApplicationController
             redirect_to '/'
             return
         end
+        @book = current_user.get_book(id: book_id)
         @current_book = current_user.get_book(id: book_id)
         if @current_book.nil?
             ### Redirigir a un forbbidden 400 porque el libro no lo tiene
@@ -50,6 +51,7 @@ class BooksController < ApplicationController
             return
         end
         #@current_book.errors = book_modify.errors
+        @book = current_user.get_book(id: book_id)
         render 'edit'
     end 
 

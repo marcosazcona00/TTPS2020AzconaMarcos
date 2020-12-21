@@ -11734,3 +11734,214 @@ Processing by BooksController#index as HTML
 Completed 200 OK in 11ms (Views: 5.0ms | ActiveRecord: 1.0ms | Allocations: 3023)
 
 
+Started GET "/books" for 127.0.0.1 at 2020-12-20 21:34:12 -0300
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.6ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:4
+  Rendered books/index.html.erb within layouts/application (Duration: 20.4ms | Allocations: 7356)
+Completed 200 OK in 69ms (Views: 24.1ms | ActiveRecord: 4.0ms | Allocations: 25496)
+
+
+Started GET "/books" for 127.0.0.1 at 2020-12-20 21:34:12 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.5ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:4
+  Rendered books/index.html.erb within layouts/application (Duration: 4.5ms | Allocations: 915)
+Completed 200 OK in 14ms (Views: 5.9ms | ActiveRecord: 1.0ms | Allocations: 3034)
+
+
+Started GET "/books/1/edit" for 127.0.0.1 at 2020-12-20 21:34:14 -0300
+Processing by BooksController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mBook Load (0.4ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 AND `books`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/user.rb:15:in `get_book'
+  Rendering books/edit.html.erb within layouts/application
+  Rendered books/edit.html.erb within layouts/application (Duration: 5.2ms | Allocations: 1205)
+Completed 200 OK in 16ms (Views: 6.6ms | ActiveRecord: 0.8ms | Allocations: 4348)
+
+
+Started PATCH "/books/1" for 127.0.0.1 at 2020-12-20 21:34:15 -0300
+Processing by BooksController#update as HTML
+  Parameters: {"authenticity_token"=>"MvR2VkgB122P7U2ns5EwveAZXivY2xmvMvwX7S/wY+OLseof5O+mgmuj5lz/WKjeukgvm/+dibbH9xDsehp/3g==", "book"=>{"title"=>"libro 3"}, "id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mBook Load (0.9ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 AND `books`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/user.rb:15:in `get_book'
+DEPRECATION WARNING: Uniqueness validator will no longer enforce case sensitive comparison in Rails 6.1. To continue case sensitive comparison on the :title attribute in Book model, pass `case_sensitive: true` option explicitly to the uniqueness validator. (called from update at /home/marcos/Escritorio/TTPS2020AzconaMarcos/app/controllers/books_controller.rb:48)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/books_controller.rb:48:in `update'
+  [1m[36mBook Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM `books` WHERE `books`.`title` = BINARY 'libro 3' AND `books`.`id` != 1 AND `books`.`user_id` = 1 LIMIT 1[0m
+  ↳ app/controllers/books_controller.rb:48:in `update'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/books_controller.rb:48:in `update'
+Redirected to http://localhost:3000/books
+Completed 302 Found in 24ms (ActiveRecord: 2.8ms | Allocations: 6854)
+
+
+Started GET "/books" for 127.0.0.1 at 2020-12-20 21:34:15 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (1.2ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:4
+  Rendered books/index.html.erb within layouts/application (Duration: 20.5ms | Allocations: 912)
+Completed 200 OK in 28ms (Views: 20.6ms | ActiveRecord: 1.7ms | Allocations: 3032)
+
+
+Started GET "/books/1/edit" for 127.0.0.1 at 2020-12-20 21:34:18 -0300
+Processing by BooksController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mBook Load (0.4ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 AND `books`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/user.rb:15:in `get_book'
+  Rendering books/edit.html.erb within layouts/application
+  Rendered books/edit.html.erb within layouts/application (Duration: 1.2ms | Allocations: 292)
+Completed 200 OK in 12ms (Views: 2.3ms | ActiveRecord: 1.3ms | Allocations: 3286)
+
+
+Started PATCH "/books/1" for 127.0.0.1 at 2020-12-20 21:34:20 -0300
+Processing by BooksController#update as HTML
+  Parameters: {"authenticity_token"=>"3fjqyC1xH7pfVTwZbhGJ/sEAaL7bdKjT8C6jCtt1jmxkvXaBgZ9uVbsbl+Ii2BGdm1EZDvwyOMoFJaQLjp+SUQ==", "book"=>{"title"=>"libro 2"}, "id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mBook Load (0.5ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 AND `books`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/user.rb:15:in `get_book'
+DEPRECATION WARNING: Uniqueness validator will no longer enforce case sensitive comparison in Rails 6.1. To continue case sensitive comparison on the :title attribute in Book model, pass `case_sensitive: true` option explicitly to the uniqueness validator. (called from update at /home/marcos/Escritorio/TTPS2020AzconaMarcos/app/controllers/books_controller.rb:48)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/books_controller.rb:48:in `update'
+  [1m[36mBook Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM `books` WHERE `books`.`title` = BINARY 'libro 2' AND `books`.`id` != 1 AND `books`.`user_id` = 1 LIMIT 1[0m
+  ↳ app/controllers/books_controller.rb:48:in `update'
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/books_controller.rb:48:in `update'
+  Rendering books/edit.html.erb within layouts/application
+  Rendered books/edit.html.erb within layouts/application (Duration: 1.3ms | Allocations: 456)
+Completed 200 OK in 24ms (Views: 2.2ms | ActiveRecord: 2.8ms | Allocations: 9385)
+
+
+Started PATCH "/books/1" for 127.0.0.1 at 2020-12-20 21:35:08 -0300
+Processing by BooksController#update as HTML
+  Parameters: {"authenticity_token"=>"3fjqyC1xH7pfVTwZbhGJ/sEAaL7bdKjT8C6jCtt1jmxkvXaBgZ9uVbsbl+Ii2BGdm1EZDvwyOMoFJaQLjp+SUQ==", "book"=>{"title"=>"libro 2"}, "id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mBook Load (0.4ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 AND `books`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/user.rb:15:in `get_book'
+DEPRECATION WARNING: Uniqueness validator will no longer enforce case sensitive comparison in Rails 6.1. To continue case sensitive comparison on the :title attribute in Book model, pass `case_sensitive: true` option explicitly to the uniqueness validator. (called from update at /home/marcos/Escritorio/TTPS2020AzconaMarcos/app/controllers/books_controller.rb:49)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/books_controller.rb:49:in `update'
+  [1m[36mBook Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `books` WHERE `books`.`title` = BINARY 'libro 2' AND `books`.`id` != 1 AND `books`.`user_id` = 1 LIMIT 1[0m
+  ↳ app/controllers/books_controller.rb:49:in `update'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/books_controller.rb:49:in `update'
+  [1m[36mBook Load (0.5ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 AND `books`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/user.rb:15:in `get_book'
+  Rendering books/edit.html.erb within layouts/application
+  Rendered books/edit.html.erb within layouts/application (Duration: 3.1ms | Allocations: 711)
+Completed 200 OK in 55ms (Views: 6.0ms | ActiveRecord: 5.9ms | Allocations: 22246)
+
+
+Started PATCH "/books/1" for 127.0.0.1 at 2020-12-20 21:35:10 -0300
+Processing by BooksController#update as HTML
+  Parameters: {"authenticity_token"=>"KTwkY6wapwlMvzslmaZf5qrUXaSGPToZzMUsPvyY1SeQebgqAPTW5qjxkN7Vb8eF8IUsFKF7qgA5zis/qXLJGg==", "book"=>{"title"=>"libro 1"}, "id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mBook Load (0.4ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 AND `books`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/user.rb:15:in `get_book'
+DEPRECATION WARNING: Uniqueness validator will no longer enforce case sensitive comparison in Rails 6.1. To continue case sensitive comparison on the :title attribute in Book model, pass `case_sensitive: true` option explicitly to the uniqueness validator. (called from update at /home/marcos/Escritorio/TTPS2020AzconaMarcos/app/controllers/books_controller.rb:49)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/books_controller.rb:49:in `update'
+  [1m[36mBook Exists? (2.0ms)[0m  [1m[34mSELECT 1 AS one FROM `books` WHERE `books`.`title` = BINARY 'libro 1' AND `books`.`id` != 1 AND `books`.`user_id` = 1 LIMIT 1[0m
+  ↳ app/controllers/books_controller.rb:49:in `update'
+  [1m[36mBook Update (0.5ms)[0m  [1m[33mUPDATE `books` SET `books`.`title` = 'libro 1', `books`.`updated_at` = '2020-12-21 00:35:10.795882' WHERE `books`.`id` = 1[0m
+  ↳ app/controllers/books_controller.rb:49:in `update'
+  [1m[35m (30.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/books_controller.rb:49:in `update'
+Redirected to http://localhost:3000/books
+Completed 302 Found in 53ms (ActiveRecord: 33.8ms | Allocations: 7502)
+
+
+Started GET "/books" for 127.0.0.1 at 2020-12-20 21:35:10 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.5ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:4
+  Rendered books/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1303)
+Completed 200 OK in 8ms (Views: 3.8ms | ActiveRecord: 0.9ms | Allocations: 3557)
+
+
+Started GET "/books/1/edit" for 127.0.0.1 at 2020-12-20 21:35:12 -0300
+Processing by BooksController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mBook Load (0.5ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 AND `books`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/user.rb:15:in `get_book'
+  [1m[36mCACHE Book Load (0.1ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 AND `books`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/user.rb:15:in `get_book'
+  Rendering books/edit.html.erb within layouts/application
+  Rendered books/edit.html.erb within layouts/application (Duration: 1.0ms | Allocations: 296)
+Completed 200 OK in 14ms (Views: 3.2ms | ActiveRecord: 0.9ms | Allocations: 3973)
+
+
+Started PATCH "/books/1" for 127.0.0.1 at 2020-12-20 21:35:13 -0300
+Processing by BooksController#update as HTML
+  Parameters: {"authenticity_token"=>"31UT8YHJG/iMVsXBAz6ZN2YzIA8Wptxl81tsjUieQf9mEI+4LSdqF2gYbjpP9wFUPGJRvzHgTHwGUGuMHXRdwg==", "book"=>{"title"=>"libro 1"}, "id"=>"1"}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mBook Load (1.2ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 AND `books`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/user.rb:15:in `get_book'
+DEPRECATION WARNING: Uniqueness validator will no longer enforce case sensitive comparison in Rails 6.1. To continue case sensitive comparison on the :title attribute in Book model, pass `case_sensitive: true` option explicitly to the uniqueness validator. (called from update at /home/marcos/Escritorio/TTPS2020AzconaMarcos/app/controllers/books_controller.rb:49)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/books_controller.rb:49:in `update'
+  [1m[36mBook Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM `books` WHERE `books`.`title` = BINARY 'libro 1' AND `books`.`id` != 1 AND `books`.`user_id` = 1 LIMIT 1[0m
+  ↳ app/controllers/books_controller.rb:49:in `update'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/books_controller.rb:49:in `update'
+Redirected to http://localhost:3000/books
+Completed 302 Found in 19ms (ActiveRecord: 5.0ms | Allocations: 5972)
+
+
+Started GET "/books" for 127.0.0.1 at 2020-12-20 21:35:13 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.6ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:4
+  Rendered books/index.html.erb within layouts/application (Duration: 3.2ms | Allocations: 908)
+Completed 200 OK in 8ms (Views: 3.4ms | ActiveRecord: 1.0ms | Allocations: 3024)
+
+
+Started GET "/books/1/edit" for 127.0.0.1 at 2020-12-20 21:35:14 -0300
+Processing by BooksController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mBook Load (0.4ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 AND `books`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/user.rb:15:in `get_book'
+  [1m[36mCACHE Book Load (0.0ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 AND `books`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/user.rb:15:in `get_book'
+  Rendering books/edit.html.erb within layouts/application
+  Rendered books/edit.html.erb within layouts/application (Duration: 1.1ms | Allocations: 293)
+Completed 200 OK in 11ms (Views: 2.3ms | ActiveRecord: 0.9ms | Allocations: 3965)
+
+
+Started PATCH "/books/1" for 127.0.0.1 at 2020-12-20 21:35:15 -0300
+Processing by BooksController#update as HTML
+  Parameters: {"authenticity_token"=>"kkxIAThUgLTZmLUutqZ1pXIZyH2QnmMVQfvFYR6O4m0rCdRIlLrxWz3WHtX6b+3GKEi5zbfY8wy08MJgS2T+UA==", "book"=>{"title"=>"libro 2"}, "id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mBook Load (1.4ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 AND `books`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/user.rb:15:in `get_book'
+DEPRECATION WARNING: Uniqueness validator will no longer enforce case sensitive comparison in Rails 6.1. To continue case sensitive comparison on the :title attribute in Book model, pass `case_sensitive: true` option explicitly to the uniqueness validator. (called from update at /home/marcos/Escritorio/TTPS2020AzconaMarcos/app/controllers/books_controller.rb:49)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/books_controller.rb:49:in `update'
+  [1m[36mBook Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `books` WHERE `books`.`title` = BINARY 'libro 2' AND `books`.`id` != 1 AND `books`.`user_id` = 1 LIMIT 1[0m
+  ↳ app/controllers/books_controller.rb:49:in `update'
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/books_controller.rb:49:in `update'
+  [1m[36mBook Load (0.4ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 AND `books`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/user.rb:15:in `get_book'
+  Rendering books/edit.html.erb within layouts/application
+  Rendered books/edit.html.erb within layouts/application (Duration: 1.8ms | Allocations: 441)
+Completed 200 OK in 25ms (Views: 3.2ms | ActiveRecord: 3.6ms | Allocations: 8378)
+
+
