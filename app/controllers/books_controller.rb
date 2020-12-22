@@ -6,6 +6,8 @@ class BooksController < ApplicationController
     
     def index
         @books = current_user.books
+        book = @books.find_by(title: 'libro 1')
+        puts book.notes.all
     end
 
     def new

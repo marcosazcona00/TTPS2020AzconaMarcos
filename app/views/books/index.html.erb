@@ -5,6 +5,7 @@
         <li> 
             Titulo: <%= book.title %>
             <%= link_to "Edit", edit_book_path(book.id)%>
+            <%= link_to "New Note", new_note_path(), :book_id => book.id %>
             <% ### Ver por qué no anda %>
             <%= button_to 'Delete', book, method: :delete, data: { confirm: 'Seguro que desea eliminar el libro?' } %>
     <% end %>

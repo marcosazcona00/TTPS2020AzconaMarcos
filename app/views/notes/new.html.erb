@@ -1,0 +1,21 @@
+<h2> New Note </h2>
+
+<% ### Iteramos sobre cada campo del libro %>
+<%= form_for @note do |f| %>
+
+    <% ### Si hay errores, los mostramos %>
+    <% if @note.errors.any? %>
+        <% @note.errors.full_messages.each do |message| %>
+            <%= message %>
+        <% end %>
+    <% end %>
+    <p>
+        <%= f.label :title, 'Titulo' %>
+        <%= f.text_field :title, placeholder: 'Ingrese un titulo' %>
+    </p>
+    <p>
+        <%= f.label :content, 'Contenido' %>
+        <%= f.text_area :content %>
+    </p>
+    <input type="submit" value="Enviar" onclick="return confirm('Esta seguro que desea crear un nuevo libro?')">
+<% end %>
