@@ -17051,3 +17051,1983 @@ DEPRECATION WARNING: Uniqueness validator will no longer enforce case sensitive 
   [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
   [1m[36mNote Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'way out' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
   [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mNote Load (0.6ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1 LIMIT 11[0m
+  [1m[36mNote Load (0.9ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1 AND `notes`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe' AND `notes`.`id` != 1 AND `notes`.`user_id` = 1 AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  [1m[36mNote Update (0.5ms)[0m  [1m[33mUPDATE `notes` SET `notes`.`content` = 'pepep', `notes`.`updated_at` = '2020-12-22 14:34:07.506606' WHERE `notes`.`id` = 1[0m
+  [1m[35m (36.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'haash' AND `notes`.`id` != 1 AND `notes`.`user_id` = 1 AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+Started GET "/" for 127.0.0.1 at 2020-12-22 15:49:24 -0300
+  [1m[35m (50.9ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering vendor/bundle/ruby/2.5.0/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered vendor/bundle/ruby/2.5.0/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 17.5ms | Allocations: 481)
+Completed 200 OK in 63ms (Views: 41.1ms | ActiveRecord: 0.0ms | Allocations: 2749)
+
+
+Started GET "/books" for 127.0.0.1 at 2020-12-22 15:49:26 -0300
+Processing by BooksController#index as HTML
+Completed 401 Unauthorized in 32ms (ActiveRecord: 0.0ms | Allocations: 1560)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2020-12-22 15:49:26 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.6ms | Allocations: 658)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 37.4ms | Allocations: 3862)
+Completed 200 OK in 115ms (Views: 52.4ms | ActiveRecord: 39.1ms | Allocations: 12846)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2020-12-22 15:49:28 -0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 25.5ms | Allocations: 219)
+  Rendered devise/shared/_links.html.erb (Duration: 1.0ms | Allocations: 128)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 59.4ms | Allocations: 1968)
+Completed 200 OK in 83ms (Views: 81.2ms | ActiveRecord: 0.0ms | Allocations: 3486)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2020-12-22 15:49:31 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.5ms | Allocations: 136)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 4.8ms | Allocations: 1128)
+Completed 200 OK in 8ms (Views: 6.2ms | ActiveRecord: 0.0ms | Allocations: 1955)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2020-12-22 15:49:32 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"Xc3uzGzFxPsMHIEwvAKZWNahcRDuT+DA1/bqG+089hIL1vyDsfAjF7Jh7IoXg1PN684dIrmm9bxq2ABLjPiv+A==", "user"=>{"email"=>"cesar@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'cesar@gmail.com' ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://localhost:3000/books
+Completed 302 Found in 551ms (ActiveRecord: 0.7ms | Allocations: 13361)
+
+
+Started GET "/books" for 127.0.0.1 at 2020-12-22 15:49:33 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mBook Load (15.6ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 AND `books`.`title` = 'libro 1' LIMIT 1[0m
+  ↳ app/controllers/books_controller.rb:9:in `index'
+  [1m[36mNote Load (0.6ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`book_id` = 1[0m
+  ↳ app/controllers/books_controller.rb:10:in `puts'
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.7ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:4
+  Rendered books/index.html.erb within layouts/application (Duration: 25.9ms | Allocations: 1737)
+Completed 200 OK in 154ms (Views: 27.6ms | ActiveRecord: 50.5ms | Allocations: 23911)
+
+
+Started DELETE "/books/1" for 127.0.0.1 at 2020-12-22 15:49:37 -0300
+Processing by BooksController#destroy as HTML
+  Parameters: {"authenticity_token"=>"uW5uGS2BJxty0W6fJ/wPqH35u/UvXdzbPl5BnjYQ/OkJRDhnzktjc80AseLUhrWxJtv2lg+7oSVRI4AIgGsN7Q==", "id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mBook Load (1.1ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 AND `books`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/user.rb:15:in `get_book'
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/books_controller.rb:68:in `destroy'
+  [1m[36mNote Destroy (1.4ms)[0m  [1m[31mDELETE FROM `notes` WHERE `notes`.`book_id` = 1[0m
+  ↳ app/controllers/books_controller.rb:68:in `destroy'
+  [1m[36mBook Destroy (195.1ms)[0m  [1m[31mDELETE FROM `books` WHERE `books`.`id` = 1[0m
+  ↳ app/controllers/books_controller.rb:68:in `destroy'
+  [1m[35m (90.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/books_controller.rb:68:in `destroy'
+Redirected to http://localhost:3000/books
+Completed 302 Found in 314ms (ActiveRecord: 289.7ms | Allocations: 6552)
+
+
+Started GET "/books" for 127.0.0.1 at 2020-12-22 15:49:37 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mBook Load (0.6ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 AND `books`.`title` = 'libro 1' LIMIT 1[0m
+  ↳ app/controllers/books_controller.rb:9:in `index'
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 1.1ms | Allocations: 3302)
+
+
+  
+NoMethodError (undefined method `notes' for nil:NilClass):
+  
+app/controllers/books_controller.rb:10:in `index'
+Started GET "/books" for 127.0.0.1 at 2020-12-22 15:49:58 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.5ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:4
+  Rendered books/index.html.erb within layouts/application (Duration: 13.4ms | Allocations: 5391)
+Completed 200 OK in 39ms (Views: 12.8ms | ActiveRecord: 4.2ms | Allocations: 16343)
+
+
+Started GET "/" for 127.0.0.1 at 2020-12-23 10:49:35 -0300
+  [1m[35m (131.3ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering vendor/bundle/ruby/2.5.0/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered vendor/bundle/ruby/2.5.0/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 53.4ms | Allocations: 481)
+Completed 200 OK in 149ms (Views: 102.0ms | ActiveRecord: 0.0ms | Allocations: 2749)
+
+
+Started GET "/books" for 127.0.0.1 at 2020-12-23 10:49:39 -0300
+Processing by BooksController#index as HTML
+Completed 401 Unauthorized in 93ms (ActiveRecord: 0.0ms | Allocations: 3238)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2020-12-23 10:49:39 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 23.0ms | Allocations: 658)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 142.3ms | Allocations: 3862)
+Completed 200 OK in 270ms (Views: 174.8ms | ActiveRecord: 36.9ms | Allocations: 12848)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2020-12-23 10:50:01 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 149)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 13.3ms | Allocations: 1196)
+Completed 200 OK in 30ms (Views: 14.6ms | ActiveRecord: 1.2ms | Allocations: 8088)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2020-12-23 10:50:03 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"9sqm+kgAIIH1pw5pNiVcpzti1Wfj7GaqIi/2WVFdHFnal5kLcjVBmn8NYlQx4mzdFcE7QC8Tv/cB19iLko3Isw==", "user"=>{"email"=>"cesar@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'cesar@gmail.com' ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://localhost:3000/books
+Completed 302 Found in 681ms (ActiveRecord: 0.4ms | Allocations: 6830)
+
+
+Started GET "/books" for 127.0.0.1 at 2020-12-23 10:50:04 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (30.8ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:4
+  Rendered books/index.html.erb within layouts/application (Duration: 93.1ms | Allocations: 7363)
+Completed 200 OK in 255ms (Views: 47.8ms | ActiveRecord: 47.7ms | Allocations: 15417)
+
+
+Started GET "/notes/new?book_id=2" for 127.0.0.1 at 2020-12-23 10:50:06 -0300
+Processing by NotesController#new as HTML
+  Parameters: {"book_id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 34.6ms | Allocations: 924)
+Completed 200 OK in 102ms (Views: 36.7ms | ActiveRecord: 50.7ms | Allocations: 9720)
+
+
+Started POST "/notes" for 127.0.0.1 at 2020-12-23 10:50:29 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"q2pWf9kUXHG3/PDkJWH9G5NL/BGaaFRaeGAJhlrP5s4rFFoqVtyCqEo6Kc5Cttt7bJgAt7jzkfqX6jno7wcF4Q==", "note"=>{"title"=>"", "content"=>""}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:16:in `create'
+No template found for NotesController#create, rendering head :no_content
+Completed 204 No Content in 13ms (ActiveRecord: 1.0ms | Allocations: 6503)
+
+
+Started GET "/notes/new?book_id=2" for 127.0.0.1 at 2020-12-23 10:51:06 -0300
+Processing by NotesController#new as HTML
+  Parameters: {"book_id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 406)
+Completed 200 OK in 38ms (Views: 3.0ms | ActiveRecord: 2.7ms | Allocations: 17107)
+
+
+Started POST "/notes" for 127.0.0.1 at 2020-12-23 10:51:08 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"ExplddflcIC80rn1MdmpaP/ETkmRPLdVZAyWXkMAGgSTZGkgWC2uWUEUYN9WDo8IABey77OncvWLhqYw9sj5Kw==", "note"=>{"title"=>"", "content"=>""}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:16:in `create'
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 2.0ms | Allocations: 626)
+Completed 200 OK in 15ms (Views: 3.1ms | ActiveRecord: 1.1ms | Allocations: 5520)
+
+
+Started POST "/notes" for 127.0.0.1 at 2020-12-23 10:51:37 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"ExplddflcIC80rn1MdmpaP/ETkmRPLdVZAyWXkMAGgSTZGkgWC2uWUEUYN9WDo8IABey77OncvWLhqYw9sj5Kw==", "note"=>{"title"=>"", "content"=>""}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:16:in `create'
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 6.0ms | Allocations: 1224)
+Completed 200 OK in 18ms (Views: 8.7ms | ActiveRecord: 1.0ms | Allocations: 6079)
+
+
+Started POST "/notes" for 127.0.0.1 at 2020-12-23 10:51:44 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"ExplddflcIC80rn1MdmpaP/ETkmRPLdVZAyWXkMAGgSTZGkgWC2uWUEUYN9WDo8IABey77OncvWLhqYw9sj5Kw==", "note"=>{"title"=>"", "content"=>""}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mNote Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:16:in `create'
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 2.8ms | Allocations: 897)
+Completed 200 OK in 17ms (Views: 6.5ms | ActiveRecord: 1.2ms | Allocations: 5744)
+
+
+Started POST "/notes" for 127.0.0.1 at 2020-12-23 10:51:46 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"mbISIdISRMAt8enhoZ7ThJvaqiQd3tWhd7Qnx836BhMZzB50XdqaGdA3MMvGSfXkZAlWgj9FEAGYPhepeDLlPA==", "note"=>{"title"=>"", "content"=>""}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:16:in `create'
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 627)
+Completed 200 OK in 11ms (Views: 2.7ms | ActiveRecord: 0.9ms | Allocations: 4479)
+
+
+Started POST "/notes" for 127.0.0.1 at 2020-12-23 10:51:53 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"WKjXtWMIm936Be1ZCVaxzgUNyys5kjkUs2cdjVVG+aHY1tvg7MBFBAfDNHNugZeu+t43jRsJ/LRc7S3j4I4ajg==", "note"=>{"title"=>"", "content"=>""}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:16:in `create'
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1218)
+Completed 200 OK in 14ms (Views: 6.4ms | ActiveRecord: 0.9ms | Allocations: 6057)
+
+
+Started POST "/notes" for 127.0.0.1 at 2020-12-23 10:51:58 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"z+QSIVOtQkembWI5VYhyEkotoub7q0HYStq6AQDHrVNPmh503GWcnluruxMyX1Rytf5eQNkwhHilUIpvtQ9OfA==", "note"=>{"title"=>"", "content"=>""}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mNote Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:16:in `create'
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 4.0ms | Allocations: 2311)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.8ms | Allocations: 6925)
+
+
+  
+ActionView::Template::Error (undefined method `title' for ["Content can't be blank", "Title can't be blank"]:Array):
+     5: 
+     6:     <% ### Si hay errores, los mostramos %>
+     7:     <% if @note.errors.any? %>
+     8:         <% @note.errors.full_messages.title %>
+     9:         <% @note.errors.full_messages.each do |message| %>
+    10:             <%= message %>
+    11:         <% end %>
+  
+app/views/notes/new.html.erb:8
+app/views/notes/new.html.erb:4
+app/controllers/notes_controller.rb:19:in `create'
+Started POST "/notes" for 127.0.0.1 at 2020-12-23 10:52:43 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"z+QSIVOtQkembWI5VYhyEkotoub7q0HYStq6AQDHrVNPmh503GWcnluruxMyX1Rytf5eQNkwhHilUIpvtQ9OfA==", "note"=>{"title"=>"", "content"=>""}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:16:in `create'
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 3.7ms | Allocations: 1927)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 1.0ms | Allocations: 6629)
+
+
+  
+ActionView::Template::Error (undefined method `title' for #<ActiveModel::Errors:0x00005575ce814608>):
+     5: 
+     6:     <% ### Si hay errores, los mostramos %>
+     7:     <% if @note.errors.any? %>
+     8:         <% @note.errors.title %>
+     9:         <% @note.errors.full_messages.each do |message| %>
+    10:             <%= message %>
+    11:         <% end %>
+  
+app/views/notes/new.html.erb:8
+app/views/notes/new.html.erb:4
+app/controllers/notes_controller.rb:19:in `create'
+Started POST "/notes" for 127.0.0.1 at 2020-12-23 10:52:53 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"z+QSIVOtQkembWI5VYhyEkotoub7q0HYStq6AQDHrVNPmh503GWcnluruxMyX1Rytf5eQNkwhHilUIpvtQ9OfA==", "note"=>{"title"=>"", "content"=>""}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:16:in `create'
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 2.1ms | Allocations: 944)
+Completed 200 OK in 16ms (Views: 5.6ms | ActiveRecord: 1.3ms | Allocations: 5793)
+
+
+Started POST "/notes" for 127.0.0.1 at 2020-12-23 10:52:58 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"z+QSIVOtQkembWI5VYhyEkotoub7q0HYStq6AQDHrVNPmh503GWcnluruxMyX1Rytf5eQNkwhHilUIpvtQ9OfA==", "note"=>{"title"=>"", "content"=>""}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:16:in `create'
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 2.3ms | Allocations: 952)
+Completed 200 OK in 14ms (Views: 5.1ms | ActiveRecord: 0.9ms | Allocations: 5794)
+
+
+Started POST "/notes" for 127.0.0.1 at 2020-12-23 10:53:07 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"z+QSIVOtQkembWI5VYhyEkotoub7q0HYStq6AQDHrVNPmh503GWcnluruxMyX1Rytf5eQNkwhHilUIpvtQ9OfA==", "note"=>{"title"=>"", "content"=>""}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:16:in `create'
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.8ms | Allocations: 624)
+Completed 200 OK in 14ms (Views: 4.9ms | ActiveRecord: 1.0ms | Allocations: 5464)
+
+
+Started POST "/notes" for 127.0.0.1 at 2020-12-23 10:53:12 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"m3yhwBxhQRFvImE/SyMfvxAfRx1mD/FOepLRqeSz+CobAq2Vk6mfyJLkuBUs9Dnf78y7u0SUNO6VGOHHUXsbBQ==", "note"=>{"title"=>"", "content"=>""}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:16:in `create'
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 351)
+Completed 200 OK in 14ms (Views: 1.9ms | ActiveRecord: 0.9ms | Allocations: 4197)
+
+
+Started GET "/notes" for 127.0.0.1 at 2020-12-23 10:55:46 -0300
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/index.html.erb within layouts/application
+  Rendered notes/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 83)
+Completed 200 OK in 21ms (Views: 2.5ms | ActiveRecord: 1.8ms | Allocations: 10109)
+
+
+Started GET "/books" for 127.0.0.1 at 2020-12-23 10:55:49 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (1.1ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:4
+  Rendered books/index.html.erb within layouts/application (Duration: 18.7ms | Allocations: 5671)
+Completed 200 OK in 29ms (Views: 17.3ms | ActiveRecord: 4.8ms | Allocations: 10183)
+
+
+Started GET "/notes/new?book_id=2" for 127.0.0.1 at 2020-12-23 10:55:51 -0300
+Processing by NotesController#new as HTML
+  Parameters: {"book_id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.5ms | Allocations: 706)
+Completed 200 OK in 17ms (Views: 2.3ms | ActiveRecord: 1.4ms | Allocations: 8820)
+
+
+Started GET "/books" for 127.0.0.1 at 2020-12-23 10:56:29 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.4ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:5
+  Rendered books/index.html.erb within layouts/application (Duration: 5.2ms | Allocations: 1334)
+Completed 200 OK in 14ms (Views: 8.7ms | ActiveRecord: 0.8ms | Allocations: 4431)
+
+
+Started GET "/books" for 127.0.0.1 at 2020-12-23 10:56:37 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.4ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:5
+  Rendered books/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 1333)
+Completed 200 OK in 12ms (Views: 6.1ms | ActiveRecord: 0.8ms | Allocations: 4431)
+
+
+Started GET "/books" for 127.0.0.1 at 2020-12-23 10:57:05 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.5ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:8
+  Rendered books/index.html.erb within layouts/application (Duration: 4.0ms | Allocations: 1399)
+Completed 200 OK in 10ms (Views: 5.8ms | ActiveRecord: 0.8ms | Allocations: 4496)
+
+
+Started GET "/notes/new" for 127.0.0.1 at 2020-12-23 10:57:06 -0300
+Processing by NotesController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 3.1ms | Allocations: 650)
+Completed 200 OK in 16ms (Views: 10.1ms | ActiveRecord: 0.4ms | Allocations: 3465)
+
+
+Started GET "/notes/new?book_id=2" for 127.0.0.1 at 2020-12-23 10:57:19 -0300
+Processing by NotesController#new as HTML
+  Parameters: {"book_id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 0.9ms | Allocations: 340)
+Completed 200 OK in 7ms (Views: 1.7ms | ActiveRecord: 0.4ms | Allocations: 2494)
+
+
+Started GET "/notes/new" for 127.0.0.1 at 2020-12-23 10:57:27 -0300
+Processing by NotesController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 340)
+Completed 200 OK in 7ms (Views: 1.8ms | ActiveRecord: 0.4ms | Allocations: 2485)
+
+
+Started POST "/notes" for 127.0.0.1 at 2020-12-23 10:58:25 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"XclHdUGm7BiPESXitMRHQQauhrv9vHpPK19W/SWyK5Hdt0sgzm4ywXLX/MjTE2Eh+X16Hd8nv+/E1WaTkHrIvg==", "note"=>{"title"=>"", "content"=>""}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:18:in `create'
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.3ms | Allocations: 636)
+Completed 200 OK in 38ms (Views: 2.7ms | ActiveRecord: 3.4ms | Allocations: 19721)
+
+
+Started POST "/notes" for 127.0.0.1 at 2020-12-23 10:58:39 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"XO6AAABOUjZCcsNUzJfunQ2+BY2ZLFrRDnodCTTh2knckIxVj4aM77+0Gn6rQMj98m35K7u3n3Hh8C1ngSk5Zg==", "note"=>{"title"=>"1", "content"=>"1"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '1' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:18:in `create'
+No template found for NotesController#create, rendering head :no_content
+Completed 204 No Content in 10ms (ActiveRecord: 0.9ms | Allocations: 4734)
+
+
+Started POST "/notes" for 127.0.0.1 at 2020-12-23 10:58:46 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"XO6AAABOUjZCcsNUzJfunQ2+BY2ZLFrRDnodCTTh2knckIxVj4aM77+0Gn6rQMj98m35K7u3n3Hh8C1ngSk5Zg==", "note"=>{"title"=>"111", "content"=>"111"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '111' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:18:in `create'
+No template found for NotesController#create, rendering head :no_content
+Completed 204 No Content in 9ms (ActiveRecord: 1.1ms | Allocations: 3011)
+
+
+Started POST "/notes" for 127.0.0.1 at 2020-12-23 10:59:13 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"XclHdUGm7BiPESXitMRHQQauhrv9vHpPK19W/SWyK5Hdt0sgzm4ywXLX/MjTE2Eh+X16Hd8nv+/E1WaTkHrIvg==", "note"=>{"title"=>"", "content"=>""}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mNote Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:18:in `create'
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.9ms | Allocations: 636)
+Completed 200 OK in 43ms (Views: 3.3ms | ActiveRecord: 3.7ms | Allocations: 19732)
+
+
+Started POST "/notes" for 127.0.0.1 at 2020-12-23 10:59:15 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"4l1L1K5z0xpcyaYJzCx0Imjl1L4DQfZbFTlUX3HhZbpiI0eBIbsNw6EPfyOr+1JClzYoGCHaM/v6s2QxxCmGlQ==", "note"=>{"title"=>"111", "content"=>"111"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '111' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:18:in `create'
+Completed 500 Internal Server Error in 125ms (ActiveRecord: 1.0ms | Allocations: 57714)
+
+
+  
+NoMethodError (undefined method `to' for #<NotesController:0x00005575ce081058>
+Did you mean?  t):
+  
+app/controllers/notes_controller.rb:19:in `create'
+Started POST "/notes" for 127.0.0.1 at 2020-12-23 10:59:22 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"XclHdUGm7BiPESXitMRHQQauhrv9vHpPK19W/SWyK5Hdt0sgzm4ywXLX/MjTE2Eh+X16Hd8nv+/E1WaTkHrIvg==", "note"=>{"title"=>"", "content"=>""}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:18:in `create'
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.9ms | Allocations: 636)
+Completed 200 OK in 38ms (Views: 3.3ms | ActiveRecord: 3.2ms | Allocations: 19784)
+
+
+Started POST "/notes" for 127.0.0.1 at 2020-12-23 10:59:39 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"XclHdUGm7BiPESXitMRHQQauhrv9vHpPK19W/SWyK5Hdt0sgzm4ywXLX/MjTE2Eh+X16Hd8nv+/E1WaTkHrIvg==", "note"=>{"title"=>"", "content"=>""}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:18:in `create'
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 3.4ms | Allocations: 636)
+Completed 200 OK in 62ms (Views: 5.1ms | ActiveRecord: 3.5ms | Allocations: 19768)
+
+
+Started POST "/notes" for 127.0.0.1 at 2020-12-23 10:59:41 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"crbz5ZWJ508nrtbxJDBX8nJqcv6EqlGKL9OHqV7h/WfyyP+wGkE5ltpoD9tD53GSjbmOWKYxlCrAWbfH6ykeSA==", "note"=>{"title"=>"111", "content"=>"111"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '111' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:18:in `create'
+No template found for NotesController#create, rendering head :no_content
+Completed 204 No Content in 9ms (ActiveRecord: 1.0ms | Allocations: 3001)
+
+
+Started GET "/books" for 127.0.0.1 at 2020-12-23 10:59:47 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.4ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:8
+  Rendered books/index.html.erb within layouts/application (Duration: 12.9ms | Allocations: 5452)
+Completed 200 OK in 20ms (Views: 13.3ms | ActiveRecord: 1.8ms | Allocations: 8119)
+
+
+Started GET "/notes/new" for 127.0.0.1 at 2020-12-23 10:59:49 -0300
+Processing by NotesController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.2ms | Allocations: 340)
+Completed 200 OK in 8ms (Views: 2.4ms | ActiveRecord: 0.5ms | Allocations: 2504)
+
+
+Started POST "/notes" for 127.0.0.1 at 2020-12-23 10:59:51 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"OJBcAyM49VyqVKBgZCL1FGqJBzw4bz0LEBC3fn9JJl647lBWrPArhVeSeUoD9dN0lVr7mhr0+Kv/mocQyoHFcQ==", "note"=>{"title"=>"", "content"=>""}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:18:in `create'
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.4ms | Allocations: 622)
+Completed 200 OK in 12ms (Views: 2.2ms | ActiveRecord: 1.1ms | Allocations: 4485)
+
+
+Started POST "/notes" for 127.0.0.1 at 2020-12-23 11:00:52 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"OJBcAyM49VyqVKBgZCL1FGqJBzw4bz0LEBC3fn9JJl647lBWrPArhVeSeUoD9dN0lVr7mhr0+Kv/mocQyoHFcQ==", "note"=>{"title"=>"", "content"=>""}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:19:in `create'
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.6ms | Allocations: 636)
+Completed 200 OK in 37ms (Views: 2.9ms | ActiveRecord: 3.5ms | Allocations: 19716)
+
+
+Started GET "/notes/new?book_id=2" for 127.0.0.1 at 2020-12-23 11:00:56 -0300
+Processing by NotesController#new as HTML
+  Parameters: {"book_id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 340)
+Completed 200 OK in 7ms (Views: 1.8ms | ActiveRecord: 0.5ms | Allocations: 2944)
+
+
+Started POST "/notes" for 127.0.0.1 at 2020-12-23 11:01:00 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"EQiUC4YZeQMTJ2/3obMLhyzZiysC/mnllzEVtXBTXxGRdpheCdGn2u7htt3GZC3n0wp3jSBlrEV4uyXbxZu8Pg==", "note"=>{"title"=>"", "content"=>""}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:19:in `create'
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.5ms | Allocations: 622)
+Completed 200 OK in 12ms (Views: 2.6ms | ActiveRecord: 1.1ms | Allocations: 4487)
+
+
+Started POST "/notes" for 127.0.0.1 at 2020-12-23 11:01:23 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"u/cDDLM3fgrQR05KkvcIMB4yW/hPvL/fDW9fnoAG79c7iQ9ZPP+g0y2Bl2D1IC5Q4eGnXm0nen/i5W/wNc4M+A==", "note"=>{"title"=>"", "content"=>""}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:20:in `create'
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.4ms | Allocations: 636)
+Completed 200 OK in 43ms (Views: 2.5ms | ActiveRecord: 3.8ms | Allocations: 19687)
+
+
+Started POST "/notes" for 127.0.0.1 at 2020-12-23 11:01:27 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"AmtdzAh8RkhItrReIh+wA/D/xIEcs6ZrCL3QSn9yjPuCFVGZh7SYkbVwbXRFyJZjDyw4Jz4oY8vnN+Akyrpv1A==", "note"=>{"title"=>"", "content"=>""}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:20:in `create'
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.6ms | Allocations: 622)
+Completed 200 OK in 11ms (Views: 2.5ms | ActiveRecord: 1.1ms | Allocations: 4482)
+
+
+Started GET "/books" for 127.0.0.1 at 2020-12-23 11:11:50 -0300
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.4ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 LIMIT 11[0m
+  [1m[36mCACHE Book Load (0.0ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 LIMIT 11[0m
+  [1m[36mCACHE Book Load (0.0ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 LIMIT 11[0m
+  [1m[36mCACHE Book Load (0.0ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 LIMIT 11[0m
+  Rendered books/index.html.erb within layouts/application (Duration: 242.7ms | Allocations: 95528)
+Completed 500 Internal Server Error in 287ms (ActiveRecord: 3.4ms | Allocations: 113451)
+
+
+  
+ActionView::Template::Error (undefined method `new_note_path' for #<#<Class:0x00005581f9ad47d0>:0x00005581f9b31890>
+Did you mean?  new_book_path
+               note_path):
+    3: <ul>
+    4:     <li> 
+    5:         Cuaderno Global 
+    6:         <%= link_to "New Note", new_note_path(:book_id => nil) %>
+    7:     </li>
+    8:     <% @books.each do |book| %>
+    9:         <li> 
+  
+app/views/books/index.html.erb:6
+Started GET "/books" for 127.0.0.1 at 2020-12-23 11:12:02 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  Rendered books/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1291)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.4ms | Allocations: 4241)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"update", :book_id=>nil, :controller=>"notes"}, missing required keys: [:id]):
+    3: <ul>
+    4:     <li> 
+    5:         Cuaderno Global 
+    6:         <%= link_to "New Note", note_path(:book_id => nil) %>
+    7:     </li>
+    8:     <% @books.each do |book| %>
+    9:         <li> 
+  
+app/views/books/index.html.erb:6
+Started GET "/books" for 127.0.0.1 at 2020-12-23 11:12:11 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  Rendered books/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1290)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.4ms | Allocations: 4179)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"update", :controller=>"notes", :id=>nil}, possible unmatched constraints: [:id]):
+    3: <ul>
+    4:     <li> 
+    5:         Cuaderno Global 
+    6:         <%= link_to "New Note", note_path(:id => nil) %>
+    7:     </li>
+    8:     <% @books.each do |book| %>
+    9:         <li> 
+  
+app/views/books/index.html.erb:6
+Started GET "/books" for 127.0.0.1 at 2020-12-23 11:12:29 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  Rendered books/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 1290)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.5ms | Allocations: 4178)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"update", :controller=>"notes", :id=>nil}, possible unmatched constraints: [:id]):
+    3: <ul>
+    4:     <li> 
+    5:         Cuaderno Global 
+    6:         <%= link_to "New Note", note_path(:id => nil) %>
+    7:     </li>
+    8:     <% @books.each do |book| %>
+    9:         <li> 
+  
+app/views/books/index.html.erb:6
+Started GET "/books" for 127.0.0.1 at 2020-12-23 11:12:34 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.4ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:8
+  Rendered books/index.html.erb within layouts/application (Duration: 5.4ms | Allocations: 1675)
+Completed 200 OK in 13ms (Views: 7.9ms | ActiveRecord: 0.8ms | Allocations: 4818)
+
+
+Started GET "/books" for 127.0.0.1 at 2020-12-23 11:12:38 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.4ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:8
+  Rendered books/index.html.erb within layouts/application (Duration: 4.6ms | Allocations: 1398)
+Completed 200 OK in 12ms (Views: 7.1ms | ActiveRecord: 0.8ms | Allocations: 4502)
+
+
+Started GET "/notes/-1" for 127.0.0.1 at 2020-12-23 11:12:40 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/notes/-1"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/notes/-1" for 127.0.0.1 at 2020-12-23 11:12:46 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/notes/-1"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/books" for 127.0.0.1 at 2020-12-23 11:12:48 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.4ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 LIMIT 11[0m
+  [1m[36mCACHE Book Load (0.0ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 LIMIT 11[0m
+  [1m[36mCACHE Book Load (0.0ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 LIMIT 11[0m
+  [1m[36mCACHE Book Load (0.0ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 LIMIT 11[0m
+  Rendered books/index.html.erb within layouts/application (Duration: 204.2ms | Allocations: 88899)
+Completed 500 Internal Server Error in 210ms (ActiveRecord: 0.9ms | Allocations: 91760)
+
+
+  
+ActionView::Template::Error (undefined method `new_note_path' for #<#<Class:0x00005581f8c96010>:0x00005581f8c94148>
+Did you mean?  new_book_path
+               note_path):
+    3: <ul>
+    4:     <li> 
+    5:         Cuaderno Global 
+    6:         <%= link_to "New Note", new_note_path(:id => -1) %>
+    7:     </li>
+    8:     <% @books.each do |book| %>
+    9:         <li> 
+  
+app/views/books/index.html.erb:6
+Started GET "/books" for 127.0.0.1 at 2020-12-23 11:12:54 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (1.5ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 LIMIT 11[0m
+  [1m[36mCACHE Book Load (0.0ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 LIMIT 11[0m
+  [1m[36mCACHE Book Load (0.0ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 LIMIT 11[0m
+  [1m[36mCACHE Book Load (0.0ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 LIMIT 11[0m
+  Rendered books/index.html.erb within layouts/application (Duration: 215.1ms | Allocations: 88597)
+Completed 500 Internal Server Error in 220ms (ActiveRecord: 2.0ms | Allocations: 90614)
+
+
+  
+ActionView::Template::Error (undefined method `new_note_path' for #<#<Class:0x00005581f8c96010>:0x00005581fa3efa40>
+Did you mean?  new_book_path
+               note_path):
+    3: <ul>
+    4:     <li> 
+    5:         Cuaderno Global 
+    6:         <%= link_to "New Note", new_note_path(:id => -1) %>
+    7:     </li>
+    8:     <% @books.each do |book| %>
+    9:         <li> 
+  
+app/views/books/index.html.erb:6
+Started GET "/notes/new" for 127.0.0.1 at 2020-12-23 11:13:37 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/notes/new"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/books" for 127.0.0.1 at 2020-12-23 11:13:40 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  Rendered books/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 1249)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.5ms | Allocations: 4110)
+
+
+  
+ActionView::Template::Error (wrong number of arguments (given 4, expected 0..3)):
+    3: <ul>
+    4:     <li> 
+    5:         Cuaderno Global 
+    6:         <%= link_to "New Note", note_path(:id => -1), {:action => :new}, :method => :get %>
+    7:     </li>
+    8:     <% @books.each do |book| %>
+    9:         <li> 
+  
+app/views/books/index.html.erb:6
+Started GET "/books" for 127.0.0.1 at 2020-12-23 11:14:33 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.5ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:8
+  Rendered books/index.html.erb within layouts/application (Duration: 4.0ms | Allocations: 1415)
+Completed 200 OK in 15ms (Views: 7.7ms | ActiveRecord: 1.4ms | Allocations: 4519)
+
+
+Started GET "/notes/-1" for 127.0.0.1 at 2020-12-23 11:14:35 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/notes/-1"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/books" for 127.0.0.1 at 2020-12-23 11:14:39 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.6ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:8
+  Rendered books/index.html.erb within layouts/application (Duration: 4.1ms | Allocations: 1136)
+Completed 200 OK in 10ms (Views: 4.6ms | ActiveRecord: 1.0ms | Allocations: 3250)
+
+
+Started GET "/books" for 127.0.0.1 at 2020-12-23 11:16:36 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.4ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:8
+  Rendered books/index.html.erb within layouts/application (Duration: 12.8ms | Allocations: 5467)
+Completed 200 OK in 34ms (Views: 12.3ms | ActiveRecord: 3.5ms | Allocations: 16383)
+
+
+Started GET "/books" for 127.0.0.1 at 2020-12-23 11:18:13 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.5ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 LIMIT 11[0m
+  [1m[36mCACHE Book Load (0.0ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 LIMIT 11[0m
+  [1m[36mCACHE Book Load (0.0ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 LIMIT 11[0m
+  [1m[36mCACHE Book Load (0.0ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 LIMIT 11[0m
+  Rendered books/index.html.erb within layouts/application (Duration: 205.8ms | Allocations: 88916)
+Completed 500 Internal Server Error in 214ms (ActiveRecord: 1.2ms | Allocations: 91789)
+
+
+  
+ActionView::Template::Error (undefined method `new_note_path' for #<#<Class:0x00005581f8c59458>:0x00005581f8c49d00>
+Did you mean?  new_book_path
+               note_path):
+    3: <ul>
+    4:     <li> 
+    5:         Cuaderno Global 
+    6:         <%= new_note_path()%>
+    7:         <%= link_to "New Note", note_path(:id => -1),:action => :new ,:method => :get %>
+    8:     </li>
+    9:     <% @books.each do |book| %>
+  
+app/views/books/index.html.erb:6
+Started GET "/books" for 127.0.0.1 at 2020-12-23 11:30:04 -0300
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.5ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:9
+  Rendered books/index.html.erb within layouts/application (Duration: 14.7ms | Allocations: 5685)
+Completed 200 OK in 35ms (Views: 16.4ms | ActiveRecord: 1.1ms | Allocations: 17449)
+
+
+Started GET "/notes/-1" for 127.0.0.1 at 2020-12-23 11:30:05 -0300
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for NotesController):
+  
+actionpack (6.0.3.4) lib/abstract_controller/base.rb:131:in `process'
+actionview (6.0.3.4) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.3) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/cookies.rb:648:in `call'
+activerecord (6.0.3.4) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.4) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/books" for 127.0.0.1 at 2020-12-23 11:30:13 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.5ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:8
+  Rendered books/index.html.erb within layouts/application (Duration: 6.2ms | Allocations: 1387)
+Completed 200 OK in 16ms (Views: 9.5ms | ActiveRecord: 1.3ms | Allocations: 4497)
+
+
+Started GET "/books" for 127.0.0.1 at 2020-12-23 11:30:26 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.5ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:8
+  Rendered books/index.html.erb within layouts/application (Duration: 6.7ms | Allocations: 1400)
+Completed 200 OK in 16ms (Views: 10.5ms | ActiveRecord: 0.9ms | Allocations: 4499)
+
+
+Started GET "/notes/0/new" for 127.0.0.1 at 2020-12-23 11:30:26 -0300
+Processing by NotesController#new as HTML
+  Parameters: {"id"=>"0"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1250)
+Completed 200 OK in 21ms (Views: 4.9ms | ActiveRecord: 1.7ms | Allocations: 10107)
+
+
+Started POST "/notes" for 127.0.0.1 at 2020-12-23 11:30:36 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"MwQAUEgZYf/hwOVf2+z51zTvPNOAmTjQKoUlW22ufxyzegwFx9G/JhwGPHW8O9+3yzzAdaIC/XDFDxU12GacMw==", "note"=>{"title"=>"", "content"=>""}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:16:in `create'
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.8ms | Allocations: 634)
+Completed 200 OK in 14ms (Views: 2.9ms | ActiveRecord: 1.0ms | Allocations: 7364)
+
+
+Started GET "/books" for 127.0.0.1 at 2020-12-23 11:31:57 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.5ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:8
+  Rendered books/index.html.erb within layouts/application (Duration: 5.4ms | Allocations: 1399)
+Completed 200 OK in 15ms (Views: 8.6ms | ActiveRecord: 0.9ms | Allocations: 4503)
+
+
+Started GET "/notes/2/new" for 127.0.0.1 at 2020-12-23 11:31:57 -0300
+Processing by NotesController#new as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 2.1ms | Allocations: 647)
+Completed 200 OK in 9ms (Views: 4.6ms | ActiveRecord: 0.5ms | Allocations: 3469)
+
+
+Started GET "/notes/2/new" for 127.0.0.1 at 2020-12-23 11:37:22 -0300
+Processing by NotesController#new as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.1ms | Allocations: 1138)
+Completed 500 Internal Server Error in 40ms (ActiveRecord: 2.6ms | Allocations: 18481)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <h2> New Note </h2>
+
+<% ### Iteramos sobre cada campo del libro %>
+<%= form_for :url => { :action => :prompt_user }, @note do |f| %>
+    <% ### Si hay errores, los mostramos %>
+    <% if @note.errors.any? %>
+        <% @note.errors.full_messages.each do |message| %>
+            <%= message %>
+        <% end %>
+    <% end %>
+    <p>
+        <%= f.label :title, 'Titulo' %>
+        <%= f.text_field :title, placeholder: 'Ingrese un titulo' %>
+    </p>
+    <p>
+        <%= f.label :content, 'Contenido' %>
+        <%= f.text_area :content %>
+    </p>
+    <input type="submit" value="Enviar" onclick="return confirm('Esta seguro que desea crear un nuevo libro?')">
+<% end %>
+):
+1:    <h2> New Note </h2>
+2:    
+3:    <% ### Iteramos sobre cada campo del libro %>
+4:    <%= form_for :url => { :action => :prompt_user }, @note do |f| %>
+5:        <% ### Si hay errores, los mostramos %>
+6:        <% if @note.errors.any? %>
+7:            <% @note.errors.full_messages.each do |message| %>
+8:                <%= message %>
+9:            <% end %>
+10:        <% end %>
+11:        <p>
+12:            <%= f.label :title, 'Titulo' %>
+13:            <%= f.text_field :title, placeholder: 'Ingrese un titulo' %>
+14:        </p>
+15:        <p>
+16:            <%= f.label :content, 'Contenido' %>
+17:            <%= f.text_area :content %>
+18:        </p>
+19:        <input type="submit" value="Enviar" onclick="return confirm('Esta seguro que desea crear un nuevo libro?')">
+20:    <% end %>
+  
+app/views/notes/new.html.erb:4: syntax error, unexpected keyword_do_block, expecting =>
+app/views/notes/new.html.erb:7: syntax error, unexpected keyword_do_block, expecting keyword_end
+app/views/notes/new.html.erb:20: syntax error, unexpected keyword_end, expecting end-of-input
+app/views/notes/new.html.erb:4: syntax error, unexpected keyword_do_block, expecting =>
+app/views/notes/new.html.erb:7: syntax error, unexpected keyword_do_block, expecting keyword_end
+app/views/notes/new.html.erb:20: syntax error, unexpected keyword_end, expecting end-of-input
+app/views/notes/new.html.erb:4: syntax error, unexpected keyword_do_block, expecting =>
+app/views/notes/new.html.erb:7: syntax error, unexpected keyword_do_block, expecting keyword_end
+app/views/notes/new.html.erb:20: syntax error, unexpected keyword_end, expecting end-of-input
+app/views/notes/new.html.erb:4: syntax error, unexpected keyword_do_block, expecting =>
+app/views/notes/new.html.erb:7: syntax error, unexpected keyword_do_block, expecting keyword_end
+app/views/notes/new.html.erb:20: syntax error, unexpected keyword_end, expecting end-of-input
+app/views/notes/new.html.erb:4: syntax error, unexpected keyword_do_block, expecting =>
+app/views/notes/new.html.erb:7: syntax error, unexpected keyword_do_block, expecting keyword_end
+app/views/notes/new.html.erb:20: syntax error, unexpected keyword_end, expecting end-of-input
+app/views/notes/new.html.erb:4: syntax error, unexpected keyword_do_block, expecting =>
+app/views/notes/new.html.erb:7: syntax error, unexpected keyword_do_block, expecting keyword_end
+app/views/notes/new.html.erb:20: syntax error, unexpected keyword_end, expecting end-of-input
+Started GET "/notes/2/new" for 127.0.0.1 at 2020-12-23 11:37:46 -0300
+Processing by NotesController#new as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 1200)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.5ms | Allocations: 4108)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <h2> New Note </h2>
+
+<% ### Iteramos sobre cada campo del libro %>
+<%= form_for :url => { :action => :create }, @note do |f| %>
+    <% ### Si hay errores, los mostramos %>
+    <% if @note.errors.any? %>
+        <% @note.errors.full_messages.each do |message| %>
+            <%= message %>
+        <% end %>
+    <% end %>
+    <p>
+        <%= f.label :title, 'Titulo' %>
+        <%= f.text_field :title, placeholder: 'Ingrese un titulo' %>
+    </p>
+    <p>
+        <%= f.label :content, 'Contenido' %>
+        <%= f.text_area :content %>
+    </p>
+    <input type="submit" value="Enviar" onclick="return confirm('Esta seguro que desea crear un nuevo libro?')">
+<% end %>
+):
+1:    <h2> New Note </h2>
+2:    
+3:    <% ### Iteramos sobre cada campo del libro %>
+4:    <%= form_for :url => { :action => :create }, @note do |f| %>
+5:        <% ### Si hay errores, los mostramos %>
+6:        <% if @note.errors.any? %>
+7:            <% @note.errors.full_messages.each do |message| %>
+8:                <%= message %>
+9:            <% end %>
+10:        <% end %>
+11:        <p>
+12:            <%= f.label :title, 'Titulo' %>
+13:            <%= f.text_field :title, placeholder: 'Ingrese un titulo' %>
+14:        </p>
+15:        <p>
+16:            <%= f.label :content, 'Contenido' %>
+17:            <%= f.text_area :content %>
+18:        </p>
+19:        <input type="submit" value="Enviar" onclick="return confirm('Esta seguro que desea crear un nuevo libro?')">
+20:    <% end %>
+  
+app/views/notes/new.html.erb:4: syntax error, unexpected keyword_do_block, expecting =>
+app/views/notes/new.html.erb:7: syntax error, unexpected keyword_do_block, expecting keyword_end
+app/views/notes/new.html.erb:20: syntax error, unexpected keyword_end, expecting end-of-input
+app/views/notes/new.html.erb:4: syntax error, unexpected keyword_do_block, expecting =>
+app/views/notes/new.html.erb:7: syntax error, unexpected keyword_do_block, expecting keyword_end
+app/views/notes/new.html.erb:20: syntax error, unexpected keyword_end, expecting end-of-input
+app/views/notes/new.html.erb:4: syntax error, unexpected keyword_do_block, expecting =>
+app/views/notes/new.html.erb:7: syntax error, unexpected keyword_do_block, expecting keyword_end
+app/views/notes/new.html.erb:20: syntax error, unexpected keyword_end, expecting end-of-input
+app/views/notes/new.html.erb:4: syntax error, unexpected keyword_do_block, expecting =>
+app/views/notes/new.html.erb:7: syntax error, unexpected keyword_do_block, expecting keyword_end
+app/views/notes/new.html.erb:20: syntax error, unexpected keyword_end, expecting end-of-input
+app/views/notes/new.html.erb:4: syntax error, unexpected keyword_do_block, expecting =>
+app/views/notes/new.html.erb:7: syntax error, unexpected keyword_do_block, expecting keyword_end
+app/views/notes/new.html.erb:20: syntax error, unexpected keyword_end, expecting end-of-input
+app/views/notes/new.html.erb:4: syntax error, unexpected keyword_do_block, expecting =>
+app/views/notes/new.html.erb:7: syntax error, unexpected keyword_do_block, expecting keyword_end
+app/views/notes/new.html.erb:20: syntax error, unexpected keyword_end, expecting end-of-input
+Started GET "/notes/2/new" for 127.0.0.1 at 2020-12-23 11:37:57 -0300
+Processing by NotesController#new as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.5ms | Allocations: 1190)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.5ms | Allocations: 4098)
+
+
+  
+ActionView::Template::Error (wrong number of arguments (given 3, expected 1..2)):
+    1: <h2> New Note </h2>
+    2: 
+    3: <% ### Iteramos sobre cada campo del libro %>
+    4: <%= form_for :note, @note, :url => { :action => :create } do |f| %>
+    5:     <% ### Si hay errores, los mostramos %>
+    6:     <% if @note.errors.any? %>
+    7:         <% @note.errors.full_messages.each do |message| %>
+  
+app/views/notes/new.html.erb:4
+Started GET "/notes/2/new" for 127.0.0.1 at 2020-12-23 11:38:07 -0300
+Processing by NotesController#new as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1323)
+Completed 200 OK in 12ms (Views: 6.4ms | ActiveRecord: 0.5ms | Allocations: 4467)
+
+
+Started GET "/notes/2/new" for 127.0.0.1 at 2020-12-23 11:38:25 -0300
+Processing by NotesController#new as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.8ms | Allocations: 714)
+Completed 200 OK in 10ms (Views: 4.2ms | ActiveRecord: 0.6ms | Allocations: 3856)
+
+
+Started GET "/notes/2/new" for 127.0.0.1 at 2020-12-23 11:38:37 -0300
+Processing by NotesController#new as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.4ms | Allocations: 698)
+Completed 200 OK in 8ms (Views: 3.9ms | ActiveRecord: 0.5ms | Allocations: 3833)
+
+
+Started GET "/notes/0/new" for 127.0.0.1 at 2020-12-23 11:39:26 -0300
+Processing by NotesController#new as HTML
+  Parameters: {"id"=>"0"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1023)
+Completed 200 OK in 33ms (Views: 2.7ms | ActiveRecord: 2.5ms | Allocations: 17729)
+
+
+Started POST "/notes/0" for 127.0.0.1 at 2020-12-23 11:39:35 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"Vl9w1Tw44F42FCDcAfNWJMbjm8BHrKvNp8JaykCWGxpXso9fFxGnDfdKVtfm2qVGu4apTfhzYIPpev2jEEVgIw==", "note"=>{"title"=>"", "content"=>""}, "id"=>"0"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mNote Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:17:in `create'
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.9ms | Allocations: 673)
+Completed 200 OK in 12ms (Views: 3.1ms | ActiveRecord: 1.1ms | Allocations: 5592)
+
+
+Started GET "/books" for 127.0.0.1 at 2020-12-23 11:39:52 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  Rendered books/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1293)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.5ms | Allocations: 4164)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"new", :controller=>"notes", :id=>nil}, possible unmatched constraints: [:id]):
+    3: <ul>
+    4:     <li> 
+    5:         Cuaderno Global 
+    6:         <%= link_to "New Note",new_note_path(:id => nil) %>
+    7:     </li>
+    8:     <% @books.each do |book| %>
+    9:         <li> 
+  
+app/views/books/index.html.erb:6
+Started GET "/books" for 127.0.0.1 at 2020-12-23 11:41:01 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (1.0ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:8
+  Rendered books/index.html.erb within layouts/application (Duration: 18.7ms | Allocations: 5802)
+Completed 200 OK in 28ms (Views: 19.6ms | ActiveRecord: 2.9ms | Allocations: 8907)
+
+
+Started GET "/notes/id/new" for 127.0.0.1 at 2020-12-23 11:41:02 -0300
+Processing by NotesController#new as HTML
+  Parameters: {"id"=>"id"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 697)
+Completed 200 OK in 11ms (Views: 3.6ms | ActiveRecord: 1.3ms | Allocations: 3528)
+
+
+Started GET "/books" for 127.0.0.1 at 2020-12-23 11:41:17 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  Rendered books/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 1190)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.4ms | Allocations: 4053)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <h2> User books <%= current_user.email %> </h2>
+<%= link_to "New Book", new_book_path()%>
+<ul>
+    <li> 
+        Cuaderno Global 
+        <%= link_to "New Note",new_note_path(:id => ) %>
+    </li>
+    <% @books.each do |book| %>
+        <li> 
+            Titulo: <%= book.title %>
+            <%= link_to "Edit", edit_book_path(book.id)%>
+            <%= link_to "New Note",new_note_path(:id => book.id) %>
+            <% ### Ver por qué no anda %>
+            <%= button_to 'Delete', book, method: :delete, data: { confirm: 'Seguro que desea eliminar el libro?' } %>
+        </li>
+    <% end %>
+</ul>
+):
+1:    <h2> User books <%= current_user.email %> </h2>
+2:    <%= link_to "New Book", new_book_path()%>
+3:    <ul>
+4:        <li> 
+5:            Cuaderno Global 
+6:            <%= link_to "New Note",new_note_path(:id => ) %>
+7:        </li>
+8:        <% @books.each do |book| %>
+9:            <li> 
+10:                Titulo: <%= book.title %>
+11:                <%= link_to "Edit", edit_book_path(book.id)%>
+12:                <%= link_to "New Note",new_note_path(:id => book.id) %>
+13:                <% ### Ver por qué no anda %>
+14:                <%= button_to 'Delete', book, method: :delete, data: { confirm: 'Seguro que desea eliminar el libro?' } %>
+15:            </li>
+16:        <% end %>
+17:    </ul>
+  
+app/views/books/index.html.erb:6: syntax error, unexpected ')'
+app/views/books/index.html.erb:8: syntax error, unexpected keyword_do_block, expecting ')'
+app/views/books/index.html.erb:16: syntax error, unexpected keyword_end, expecting ')'
+app/views/books/index.html.erb:19: syntax error, unexpected keyword_end, expecting ')'
+app/views/books/index.html.erb:6: syntax error, unexpected ')'
+app/views/books/index.html.erb:8: syntax error, unexpected keyword_do_block, expecting ')'
+app/views/books/index.html.erb:16: syntax error, unexpected keyword_end, expecting ')'
+app/views/books/index.html.erb:19: syntax error, unexpected keyword_end, expecting ')'
+app/views/books/index.html.erb:6: syntax error, unexpected ')'
+app/views/books/index.html.erb:8: syntax error, unexpected keyword_do_block, expecting ')'
+app/views/books/index.html.erb:16: syntax error, unexpected keyword_end, expecting ')'
+app/views/books/index.html.erb:19: syntax error, unexpected keyword_end, expecting ')'
+app/views/books/index.html.erb:6: syntax error, unexpected ')'
+app/views/books/index.html.erb:8: syntax error, unexpected keyword_do_block, expecting ')'
+app/views/books/index.html.erb:16: syntax error, unexpected keyword_end, expecting ')'
+app/views/books/index.html.erb:19: syntax error, unexpected keyword_end, expecting ')'
+app/views/books/index.html.erb:6: syntax error, unexpected ')'
+app/views/books/index.html.erb:8: syntax error, unexpected keyword_do_block, expecting ')'
+app/views/books/index.html.erb:16: syntax error, unexpected keyword_end, expecting ')'
+app/views/books/index.html.erb:19: syntax error, unexpected keyword_end, expecting ')'
+app/views/books/index.html.erb:6: syntax error, unexpected ')'
+app/views/books/index.html.erb:8: syntax error, unexpected keyword_do_block, expecting ')'
+app/views/books/index.html.erb:16: syntax error, unexpected keyword_end, expecting ')'
+app/views/books/index.html.erb:19: syntax error, unexpected keyword_end, expecting ')'
+Started GET "/books" for 127.0.0.1 at 2020-12-23 11:41:22 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.4ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:8
+  Rendered books/index.html.erb within layouts/application (Duration: 4.1ms | Allocations: 1401)
+Completed 200 OK in 11ms (Views: 5.9ms | ActiveRecord: 1.0ms | Allocations: 4506)
+
+
+Started GET "/notes//new" for 127.0.0.1 at 2020-12-23 11:41:23 -0300
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for NotesController):
+  
+actionpack (6.0.3.4) lib/abstract_controller/base.rb:131:in `process'
+actionview (6.0.3.4) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.3) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/cookies.rb:648:in `call'
+activerecord (6.0.3.4) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.4) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/notes//new" for 127.0.0.1 at 2020-12-23 11:41:28 -0300
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for NotesController):
+  
+actionpack (6.0.3.4) lib/abstract_controller/base.rb:131:in `process'
+actionview (6.0.3.4) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.3) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/cookies.rb:648:in `call'
+activerecord (6.0.3.4) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.4) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/books" for 127.0.0.1 at 2020-12-23 11:41:29 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.4ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:8
+  Rendered books/index.html.erb within layouts/application (Duration: 4.6ms | Allocations: 1402)
+Completed 200 OK in 11ms (Views: 6.7ms | ActiveRecord: 0.9ms | Allocations: 4503)
+
+
+Started GET "/notes/0/new" for 127.0.0.1 at 2020-12-23 11:41:30 -0300
+Processing by NotesController#new as HTML
+  Parameters: {"id"=>"0"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 2.1ms | Allocations: 697)
+Completed 200 OK in 10ms (Views: 4.0ms | ActiveRecord: 0.5ms | Allocations: 3522)
+
+
+Started POST "/notes/0" for 127.0.0.1 at 2020-12-23 11:42:15 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"Mt9O4P4bqnE3pw+eQyD/uR318b+1zf1KrbKyoaiGGrYzMrFq1TLtIvb5eZWkCQzbYJDDMgoSNgTjChXI+FVhjw==", "note"=>{"title"=>"", "content"=>""}, "id"=>"0"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/notes_controller.rb:17:in `create'
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:17:in `create'
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/notes_controller.rb:17:in `create'
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1263)
+Completed 200 OK in 46ms (Views: 3.3ms | ActiveRecord: 4.9ms | Allocations: 22658)
+
+
+Started POST "/notes/0" for 127.0.0.1 at 2020-12-23 11:42:19 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"vhy21NEUQnsf/Jc16YtKs2eeNexLybITGn7Mi2i4Vyu/8Ule+j0FKN6i4T4OornRGvsHYfQWeV1UxmviOGssEg==", "note"=>{"title"=>"pepe", "content"=>"1"}, "id"=>"0"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/notes_controller.rb:17:in `create'
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:17:in `create'
+  [1m[36mNote Create (38.9ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `created_at`, `updated_at`) VALUES ('pepe', '1', '2020-12-23 14:42:19.712635', '2020-12-23 14:42:19.712635')[0m
+  ↳ app/controllers/notes_controller.rb:17:in `create'
+  [1m[35m (72.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/notes_controller.rb:17:in `create'
+Completed 500 Internal Server Error in 262ms (ActiveRecord: 113.3ms | Allocations: 60529)
+
+
+  
+NoMethodError (undefined method `to' for #<NotesController:0x00007f8311474550>
+Did you mean?  t):
+  
+app/controllers/notes_controller.rb:19:in `create'
+Started POST "/notes/0" for 127.0.0.1 at 2020-12-23 11:42:27 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"vhy21NEUQnsf/Jc16YtKs2eeNexLybITGn7Mi2i4Vyu/8Ule+j0FKN6i4T4OornRGvsHYfQWeV1UxmviOGssEg==", "note"=>{"title"=>"pepe", "content"=>"1"}, "id"=>"0"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/notes_controller.rb:17:in `create'
+  [1m[36mNote Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:17:in `create'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/notes_controller.rb:17:in `create'
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 2.8ms | Allocations: 1120)
+Completed 200 OK in 46ms (Views: 4.6ms | ActiveRecord: 4.3ms | Allocations: 22253)
+
+
+Started POST "/notes/0" for 127.0.0.1 at 2020-12-23 11:42:32 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"vBdSkYsPPrDgs7zMFocGxPGHYByHF5eeSWIJGk8w0Zy9+q0boCZ54yHtysfxrvWmjOJSkTjIXNAH2q5zH+OqpQ==", "note"=>{"title"=>"1pepe", "content"=>"1"}, "id"=>"0"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/notes_controller.rb:17:in `create'
+  [1m[36mNote Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '1pepe' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:17:in `create'
+  [1m[36mNote Create (0.5ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `created_at`, `updated_at`) VALUES ('1pepe', '1', '2020-12-23 14:42:32.367949', '2020-12-23 14:42:32.367949')[0m
+  ↳ app/controllers/notes_controller.rb:17:in `create'
+  [1m[35m (43.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/notes_controller.rb:17:in `create'
+Redirected to http://localhost:3000/books
+Completed 302 Found in 60ms (ActiveRecord: 45.0ms | Allocations: 5690)
+
+
+Started GET "/books" for 127.0.0.1 at 2020-12-23 11:42:32 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.7ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:8
+  Rendered books/index.html.erb within layouts/application (Duration: 11.9ms | Allocations: 5452)
+Completed 200 OK in 19ms (Views: 11.3ms | ActiveRecord: 2.7ms | Allocations: 8163)
+
+
+Started GET "/notes/0/new" for 127.0.0.1 at 2020-12-23 11:42:35 -0300
+Processing by NotesController#new as HTML
+  Parameters: {"id"=>"0"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.3ms | Allocations: 389)
+Completed 200 OK in 7ms (Views: 2.6ms | ActiveRecord: 0.4ms | Allocations: 2543)
+
+
+Started POST "/notes/0" for 127.0.0.1 at 2020-12-23 11:42:40 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"Zp+poJo6tVV2Ir3+Ts6Mt0DT63GpUgkF49MXA1RJ7OlnclYqsRPyBrd8y/Wp53/VPbbZ/BaNwkuta7BqBJqX0A==", "note"=>{"title"=>" 1pepe", "content"=>"1\r\n\r\n"}, "id"=>"0"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/notes_controller.rb:17:in `create'
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '1pepe' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:17:in `create'
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/notes_controller.rb:17:in `create'
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.6ms | Allocations: 539)
+Completed 200 OK in 17ms (Views: 2.6ms | ActiveRecord: 1.6ms | Allocations: 6304)
+
+
+Started GET "/notes/2/new" for 127.0.0.1 at 2020-12-23 11:42:47 -0300
+Processing by NotesController#new as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 390)
+Completed 200 OK in 7ms (Views: 1.9ms | ActiveRecord: 0.7ms | Allocations: 2545)
+
+
+Started POST "/notes/2" for 127.0.0.1 at 2020-12-23 11:42:50 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"3x8SNvnLMcHfrbE30sZquKIOWHrgec1isIJfooSq1jfqu03fqPCrBA8JLOdlHSx1c3FAFFlK/DWOrC3Cgu/1Rw==", "note"=>{"title"=>"1pepe", "content"=>"1"}, "id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/notes_controller.rb:17:in `create'
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '1pepe' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:17:in `create'
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/notes_controller.rb:17:in `create'
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 539)
+Completed 200 OK in 17ms (Views: 3.4ms | ActiveRecord: 1.4ms | Allocations: 6304)
+
+
+Started POST "/notes/2" for 127.0.0.1 at 2020-12-23 11:43:30 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"J1UcCfP2bA1EC214YLXXsXe54fZPi/Tyr13hWDaIqIgS8UPgos32yJSv8KjXbpF8psb5mPa4xaWRc5M4MM2L+A==", "note"=>{"title"=>"1pepe", "content"=>"1"}, "id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '1pepe' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:18:in `create'
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.5ms | Allocations: 1115)
+Completed 200 OK in 41ms (Views: 2.5ms | ActiveRecord: 2.7ms | Allocations: 19869)
+
+
+Started POST "/notes/2" for 127.0.0.1 at 2020-12-23 11:43:44 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"J1UcCfP2bA1EC214YLXXsXe54fZPi/Tyr13hWDaIqIgS8UPgos32yJSv8KjXbpF8psb5mPa4xaWRc5M4MM2L+A==", "note"=>{"title"=>"1pepe", "content"=>"1"}, "id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '1pepe' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:19:in `create'
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.6ms | Allocations: 1114)
+Completed 200 OK in 46ms (Views: 2.6ms | ActiveRecord: 3.2ms | Allocations: 19910)
+
+
+Started POST "/notes/2" for 127.0.0.1 at 2020-12-23 11:44:11 -0300
+  
+SyntaxError (/home/marcos/Escritorio/TTPS2020AzconaMarcos/app/controllers/notes_controller.rb:27: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/notes_controller.rb:27: syntax error, unexpected end-of-input, expecting keyword_end
+app/controllers/notes_controller.rb:27: syntax error, unexpected end-of-input, expecting keyword_end
+app/controllers/notes_controller.rb:27: syntax error, unexpected end-of-input, expecting keyword_end
+Started POST "/notes/2" for 127.0.0.1 at 2020-12-23 11:44:19 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"J1UcCfP2bA1EC214YLXXsXe54fZPi/Tyr13hWDaIqIgS8UPgos32yJSv8KjXbpF8psb5mPa4xaWRc5M4MM2L+A==", "note"=>{"title"=>"1pepe", "content"=>"1"}, "id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '1pepe' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:19:in `create'
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.8ms | Allocations: 1114)
+Completed 200 OK in 39ms (Views: 3.0ms | ActiveRecord: 2.7ms | Allocations: 19945)
+
+
+Started GET "/notes/0/new" for 127.0.0.1 at 2020-12-23 11:44:24 -0300
+Processing by NotesController#new as HTML
+  Parameters: {"id"=>"0"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.1ms | Allocations: 389)
+Completed 200 OK in 9ms (Views: 2.9ms | ActiveRecord: 0.8ms | Allocations: 2984)
+
+
+Started POST "/notes/0" for 127.0.0.1 at 2020-12-23 11:44:25 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"RPvnAa08kxTtvmyLey2al1zY7uIsy3uSfvFBtwMWYbhFFhiLhhXURyzgGoCcBGn1Ib3cb5MUsNwwSebeU8UagQ==", "note"=>{"title"=>"", "content"=>""}, "id"=>"0"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mNote Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:19:in `create'
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.8ms | Allocations: 671)
+Completed 200 OK in 14ms (Views: 3.0ms | ActiveRecord: 1.4ms | Allocations: 4539)
+
+
+Started POST "/notes/0" for 127.0.0.1 at 2020-12-23 11:45:04 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"RPvnAa08kxTtvmyLey2al1zY7uIsy3uSfvFBtwMWYbhFFhiLhhXURyzgGoCcBGn1Ib3cb5MUsNwwSebeU8UagQ==", "note"=>{"title"=>"", "content"=>""}, "id"=>"0"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:20:in `create'
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1252)
+Completed 200 OK in 50ms (Views: 3.4ms | ActiveRecord: 3.5ms | Allocations: 20323)
+
+
+Started POST "/notes/0" for 127.0.0.1 at 2020-12-23 11:45:16 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"RPvnAa08kxTtvmyLey2al1zY7uIsy3uSfvFBtwMWYbhFFhiLhhXURyzgGoCcBGn1Ib3cb5MUsNwwSebeU8UagQ==", "note"=>{"title"=>"", "content"=>""}, "id"=>"0"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:19:in `create'
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 2.0ms | Allocations: 1252)
+Completed 200 OK in 42ms (Views: 3.1ms | ActiveRecord: 3.1ms | Allocations: 20345)
+
+
+Started POST "/notes/0" for 127.0.0.1 at 2020-12-23 11:45:25 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"RPvnAa08kxTtvmyLey2al1zY7uIsy3uSfvFBtwMWYbhFFhiLhhXURyzgGoCcBGn1Ib3cb5MUsNwwSebeU8UagQ==", "note"=>{"title"=>"", "content"=>""}, "id"=>"0"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mNote Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:19:in `create'
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1252)
+Completed 200 OK in 48ms (Views: 3.2ms | ActiveRecord: 3.7ms | Allocations: 20392)
+
+
+Started GET "/notes/2/new" for 127.0.0.1 at 2020-12-23 11:45:31 -0300
+Processing by NotesController#new as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 389)
+Completed 200 OK in 6ms (Views: 1.8ms | ActiveRecord: 0.4ms | Allocations: 2988)
+
+
+Started POST "/notes/2" for 127.0.0.1 at 2020-12-23 11:45:33 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"J8XfAKSrVn4mqeYjQrk+AU/632u7WUkZ81E4OmZiXtUSYYDp9ZDMu/YNe/P1YnjMnoXHBQJqeE7Nf0paYCd9pQ==", "note"=>{"title"=>"", "content"=>""}, "id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mNote Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY '' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:19:in `create'
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 2.2ms | Allocations: 671)
+Completed 200 OK in 16ms (Views: 5.8ms | ActiveRecord: 0.9ms | Allocations: 4546)
+
+
+Started POST "/notes/2" for 127.0.0.1 at 2020-12-23 11:46:04 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"vli3rvXAa+0cerJWzm8/3pluon76OvxHFc9SnHMgPuOL/OhHpPvxKMzeL4Z5tHkTSBG6EEMJzRAr4SD8dWUdkw==", "note"=>{"title"=>"alberto", "content"=>"1"}, "id"=>"2"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 500 Internal Server Error in 249ms (ActiveRecord: 2.3ms | Allocations: 115757)
+
+
+  
+NameError (undefined local variable or method `id' for #<NotesController:0x00007f83111537e0>):
+  
+app/controllers/notes_controller.rb:17:in `create'
+Started POST "/notes/2" for 127.0.0.1 at 2020-12-23 11:46:11 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"vli3rvXAa+0cerJWzm8/3pluon76OvxHFc9SnHMgPuOL/OhHpPvxKMzeL4Z5tHkTSBG6EEMJzRAr4SD8dWUdkw==", "note"=>{"title"=>"alberto", "content"=>"1"}, "id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/notes_controller.rb:18:in `create'
+  [1m[36mBook Load (0.3ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:18:in `create'
+  [1m[36mNote Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'alberto' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:18:in `create'
+  [1m[36mNote Create (0.5ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `book_id`, `created_at`, `updated_at`) VALUES ('alberto', '1', 2, '2020-12-23 14:46:11.856227', '2020-12-23 14:46:11.856227')[0m
+  ↳ app/controllers/notes_controller.rb:18:in `create'
+  [1m[35m (104.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/notes_controller.rb:18:in `create'
+Redirected to http://localhost:3000/books
+Completed 302 Found in 160ms (ActiveRecord: 110.1ms | Allocations: 25825)
+
+
+Started GET "/books" for 127.0.0.1 at 2020-12-23 11:46:11 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.4ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:8
+  Rendered books/index.html.erb within layouts/application (Duration: 4.0ms | Allocations: 1952)
+Completed 200 OK in 10ms (Views: 4.9ms | ActiveRecord: 0.9ms | Allocations: 4649)
+
+
+Started GET "/notes/2/new" for 127.0.0.1 at 2020-12-23 11:46:14 -0300
+Processing by NotesController#new as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1017)
+Completed 200 OK in 10ms (Views: 4.6ms | ActiveRecord: 0.6ms | Allocations: 3330)
+
+
+Started POST "/notes/2" for 127.0.0.1 at 2020-12-23 11:46:19 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"/sC3acnYHuLJEUl1kv6ynZv1sbDwH/IvbXYVUxPlRgnLZOiAmOOEJxm11KUlJfRQSoqp3kksw3hTWGczFaBleQ==", "note"=>{"title"=>"alberto ", "content"=>"11"}, "id"=>"2"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/notes_controller.rb:18:in `create'
+  [1m[36mBook Load (2.0ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:18:in `create'
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'alberto' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:18:in `create'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/notes_controller.rb:18:in `create'
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 2.2ms | Allocations: 541)
+Completed 200 OK in 23ms (Views: 3.6ms | ActiveRecord: 4.2ms | Allocations: 7496)
+
+
+Started GET "/notes/0/new" for 127.0.0.1 at 2020-12-23 11:46:21 -0300
+Processing by NotesController#new as HTML
+  Parameters: {"id"=>"0"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.3ms | Allocations: 389)
+Completed 200 OK in 6ms (Views: 2.1ms | ActiveRecord: 0.6ms | Allocations: 2532)
+
+
+Started POST "/notes/0" for 127.0.0.1 at 2020-12-23 11:46:26 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"9HeQosjZ38qfopm1uW4w/9wSXiLeDQQQOwYIV/ckURj1mm8o4/CYmV78775eR8OdoXdsr2HSz151vq8+p/cqIQ==", "note"=>{"title"=>"alberto ", "content"=>"1"}, "id"=>"0"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/notes_controller.rb:18:in `create'
+  [1m[36mNote Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'alberto' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:18:in `create'
+  [1m[36mNote Create (0.4ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `created_at`, `updated_at`) VALUES ('alberto', '1', '2020-12-23 14:46:26.324773', '2020-12-23 14:46:26.324773')[0m
+  ↳ app/controllers/notes_controller.rb:18:in `create'
+  [1m[35m (72.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/notes_controller.rb:18:in `create'
+Redirected to http://localhost:3000/books
+Completed 302 Found in 89ms (ActiveRecord: 74.0ms | Allocations: 5636)
+
+
+Started GET "/books" for 127.0.0.1 at 2020-12-23 11:46:26 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.4ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:8
+  Rendered books/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1112)
+Completed 200 OK in 10ms (Views: 4.0ms | ActiveRecord: 1.4ms | Allocations: 3220)
+
+
+Started GET "/notes/2/new" for 127.0.0.1 at 2020-12-23 11:47:30 -0300
+Processing by NotesController#new as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1021)
+Completed 200 OK in 46ms (Views: 4.3ms | ActiveRecord: 3.6ms | Allocations: 17714)
+
+
+Started POST "/notes/2" for 127.0.0.1 at 2020-12-23 11:47:35 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"KCVgxxTisFEXAp5l1Gyk7ohvPzL6/BH+NLoLdrKLLisdgT8uRdkqlMemA7Vjt+IjWRAnXEPPIKkKlHkWtM4NWw==", "note"=>{"title"=>"pepeito", "content"=>"1"}, "id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/notes_controller.rb:20:in `create'
+  [1m[36mBook Load (0.5ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:20:in `create'
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepeito' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:20:in `create'
+  [1m[36mNote Create (1.3ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `book_id`, `created_at`, `updated_at`) VALUES ('pepeito', '1', 2, '2020-12-23 14:47:35.563098', '2020-12-23 14:47:35.563098')[0m
+  ↳ app/controllers/notes_controller.rb:20:in `create'
+  [1m[35m (66.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/notes_controller.rb:20:in `create'
+Redirected to http://localhost:3000/books
+Completed 302 Found in 101ms (ActiveRecord: 70.3ms | Allocations: 11771)
+
+
+Started GET "/books" for 127.0.0.1 at 2020-12-23 11:47:35 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.6ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:8
+  Rendered books/index.html.erb within layouts/application (Duration: 5.1ms | Allocations: 2020)
+Completed 200 OK in 12ms (Views: 6.3ms | ActiveRecord: 1.1ms | Allocations: 4293)
+
+
+Started GET "/notes/0/new" for 127.0.0.1 at 2020-12-23 11:47:36 -0300
+Processing by NotesController#new as HTML
+  Parameters: {"id"=>"0"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.5ms | Allocations: 389)
+Completed 200 OK in 10ms (Views: 4.5ms | ActiveRecord: 0.5ms | Allocations: 2539)
+
+
+Started POST "/notes/0" for 127.0.0.1 at 2020-12-23 11:47:43 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"giA8hWSv1k4yWeqVcGKYODjbEP1I5AQmy+QBao9TmH2DzcMPT4aRHfMHnJ6XS2taRb4icPc7z2iFXKYD34DjRA==", "note"=>{"title"=>"  pepeito", "content"=>"1"}, "id"=>"0"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/notes_controller.rb:20:in `create'
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepeito' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:20:in `create'
+  [1m[36mNote Create (1.1ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `created_at`, `updated_at`) VALUES ('pepeito', '1', '2020-12-23 14:47:43.086571', '2020-12-23 14:47:43.086571')[0m
+  ↳ app/controllers/notes_controller.rb:20:in `create'
+  [1m[35m (83.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/notes_controller.rb:20:in `create'
+Redirected to http://localhost:3000/books
+Completed 302 Found in 102ms (ActiveRecord: 85.4ms | Allocations: 5640)
+
+
+Started GET "/books" for 127.0.0.1 at 2020-12-23 11:47:43 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.5ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:8
+  Rendered books/index.html.erb within layouts/application (Duration: 4.1ms | Allocations: 1112)
+Completed 200 OK in 9ms (Views: 4.5ms | ActiveRecord: 0.8ms | Allocations: 3232)
+
+
+Started GET "/notes/0/new" for 127.0.0.1 at 2020-12-23 11:47:44 -0300
+Processing by NotesController#new as HTML
+  Parameters: {"id"=>"0"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 1.1ms | Allocations: 389)
+Completed 200 OK in 8ms (Views: 2.2ms | ActiveRecord: 0.6ms | Allocations: 2542)
+
+
+Started POST "/notes/0" for 127.0.0.1 at 2020-12-23 11:47:48 -0300
+Processing by NotesController#create as HTML
+  Parameters: {"authenticity_token"=>"BHYwWg7a2IVSR056ikvF2zkOEal1wZYKklF4v4b/dD4Fm8/QJfOf1pMZOHFtYja5RGsjJMoeXUTc6d/W1iwPBw==", "note"=>{"title"=>"   pepeito", "content"=>"1\r\n\r\n"}, "id"=>"0"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/notes_controller.rb:20:in `create'
+  [1m[36mNote Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepeito' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  ↳ app/controllers/notes_controller.rb:20:in `create'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/notes_controller.rb:20:in `create'
+  Rendering notes/new.html.erb within layouts/application
+  Rendered notes/new.html.erb within layouts/application (Duration: 2.1ms | Allocations: 541)
+Completed 200 OK in 19ms (Views: 3.2ms | ActiveRecord: 2.1ms | Allocations: 6297)
+
+

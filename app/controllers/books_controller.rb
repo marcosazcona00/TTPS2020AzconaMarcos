@@ -2,12 +2,9 @@ class BooksController < ApplicationController
     include ApplicationHelper
     
     ### Con esto verificamos si a este controlador ingresa un usuario autenticado
-    before_action :authenticate_user!
     
     def index
         @books = current_user.books
-        book = @books.find_by(title: 'libro 1')
-        puts book.notes.all
     end
 
     def new
@@ -68,5 +65,4 @@ class BooksController < ApplicationController
         @book.destroy
         redirect_to action: 'index'
     end
-
 end

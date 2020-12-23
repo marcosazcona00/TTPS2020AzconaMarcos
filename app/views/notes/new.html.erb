@@ -1,8 +1,7 @@
 <h2> New Note </h2>
 
 <% ### Iteramos sobre cada campo del libro %>
-<%= form_for @note do |f| %>
-
+<%= form_for  @note, :url => { :action => :create }, :method => :post do |f| %>
     <% ### Si hay errores, los mostramos %>
     <% if @note.errors.any? %>
         <% @note.errors.full_messages.each do |message| %>
