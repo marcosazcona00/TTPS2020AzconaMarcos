@@ -1,0 +1,18 @@
+<h2> Edit Note "<%= @note.title%>" </h2>
+
+<%= form_for @current_note do |f| %>
+    <% if @current_note.errors.any? %>
+        <% @current_note.errors.full_messages.each do |message| %>
+            <%= message %>
+        <% end %>
+    <% end %>
+    <p>
+        <%= f.label :title, 'Titulo' %>
+        <%= f.text_field :title %>
+    </p>
+    <p>
+        <%= f.label :content, 'Content' %>
+        <%= f.text_area :content %>
+    </p>
+    <input type="submit" value="Enviar" onclick="return confirm('Esta seguro que desea guardar los nuevos cambios?')">
+<% end %>
