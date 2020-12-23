@@ -2,15 +2,17 @@
 <%= link_to "New Book", new_book_path()%>
 <ul>
     <li> 
-        Cuaderno Global 
+        Cajon global 
+        <%= notes_path %>
+        <%= link_to 'List Notes', notes_path() %>
         <%= link_to "New Note",new_note_path(:id => 0) %>
     </li>
     <% @books.each do |book| %>
         <li> 
             Titulo: <%= book.title %>
+            <%= link_to 'List Notes', notes_path(:id => book.id) %>
             <%= link_to "Edit", edit_book_path(book.id)%>
             <%= link_to "New Note",new_note_path(:id => book.id) %>
-            <% ### Ver por qué no anda %>
             <%= button_to 'Delete', book, method: :delete, data: { confirm: 'Seguro que desea eliminar el libro?' } %>
         </li>
     <% end %>

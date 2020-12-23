@@ -9,6 +9,14 @@ class Note < ApplicationRecord
     ###:uniqueness => {case_sensitive: true, :scope => [:user, :book]}
     validates :title, presence: true, length: { maximum: 50 }, :uniqueness => {case_sensitive: true, :scope => [:user, :book]}
 
+    def initialize(args)
+        if !args.nil?
+            if !args[:book_id].nil?
+                args[:user_id] = nil
+            end
+        end
+        super
+    end
 
     def strip_whitespaces
         self.title = if !title.nil? then title.strip end

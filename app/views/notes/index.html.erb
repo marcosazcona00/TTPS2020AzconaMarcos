@@ -1,0 +1,11 @@
+<h2> Notes book "Poner nombre titulo libro" </h2>
+<ul>
+    <% @notes.each do |note| %>
+        <li> 
+            <strong>Title:</strong> <%= note.title %>
+            <p>
+                <strong>Content:</strong> <%= note.content %>
+            </p>
+        </li>
+    <% end %>
+</ul>

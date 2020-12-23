@@ -15,16 +15,10 @@ class User < ApplicationRecord
     return books.find_by(**args)
   end
 
-  def has_new_book?(old_title,new_title)
-      '''
-        Verifica que el libro existente y el nuevo libro modificado sean distintos
-        True si el libro ya existia.
-        False si es el mismo libro (no cambio) o el libro no existe 
-      '''
-      book_new_title = get_book(title: new_title)
-      if book_new_title.nil?
-        return false
-      end
-      return get_book(title: old_title) != get_book(title: new_title)
+  def get_notes_book(book_id)
+    if book_id.nil?
+      return self.notes
     end
+    return self.get_book(id: book_id).notes
+  end
 end
