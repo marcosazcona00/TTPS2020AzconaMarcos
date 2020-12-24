@@ -52,4 +52,11 @@ class NotesController < ApplicationController
         @note = Note.find(note_id)
         render 'edit'
     end 
+    
+    def destroy
+        note_id = params[:id]
+        note = Note.find(note_id)
+        note.destroy
+        redirect_to action: 'index'
+    end
 end

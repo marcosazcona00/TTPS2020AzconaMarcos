@@ -7,6 +7,8 @@
                 <strong>Content:</strong> <%= note.content %>
             </p>
             <%= link_to "Edit", edit_note_path(note.id)%>
+            <%= button_to 'Delete', note, method: :delete, data: { confirm: 'Seguro que desea eliminar la nota?' } %>
+
         </li>
     <% end %>
 </ul>
