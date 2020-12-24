@@ -23556,3 +23556,1894 @@ Processing by NotesController#create as HTML
 Completed 200 OK in 20ms (Views: 2.9ms | ActiveRecord: 2.0ms | Allocations: 7600)
 
 
+Started GET "/" for 127.0.0.1 at 2020-12-24 16:56:39 -0300
+  [1m[35m (409.0ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering vendor/bundle/ruby/2.5.0/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered vendor/bundle/ruby/2.5.0/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 36.4ms | Allocations: 481)
+Completed 200 OK in 263ms (Views: 138.4ms | ActiveRecord: 0.0ms | Allocations: 2750)
+
+
+Started GET "/books" for 127.0.0.1 at 2020-12-24 16:56:44 -0300
+Processing by BooksController#index as HTML
+Completed 401 Unauthorized in 118ms (ActiveRecord: 0.0ms | Allocations: 1562)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2020-12-24 16:56:44 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 2.2ms | Allocations: 658)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 338.6ms | Allocations: 3866)
+Completed 200 OK in 477ms (Views: 368.2ms | ActiveRecord: 48.0ms | Allocations: 12864)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2020-12-24 16:56:47 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"0ZsoW/+uWF3HRcNRJYKaRNOFsvro4pk41iTOildG/AFsomqb+FrepZBV0VPeo2XvwJKGqtKsbX+07jPCSqCprA==", "user"=>{"email"=>"cesar@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'cesar@gmail.com' ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://localhost:3000/books
+Completed 302 Found in 818ms (ActiveRecord: 0.6ms | Allocations: 6821)
+
+
+Started GET "/books" for 127.0.0.1 at 2020-12-24 16:56:47 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (83.2ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:10
+  Rendered books/index.html.erb within layouts/application (Duration: 165.1ms | Allocations: 7818)
+Completed 200 OK in 279ms (Views: 75.5ms | ActiveRecord: 95.2ms | Allocations: 15824)
+
+
+Started GET "/notes" for 127.0.0.1 at 2020-12-24 16:56:49 -0300
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1[0m
+  ↳ app/views/notes/index.html.erb:3
+  Rendered notes/index.html.erb within layouts/application (Duration: 55.2ms | Allocations: 8393)
+Completed 500 Internal Server Error in 143ms (ActiveRecord: 38.1ms | Allocations: 12482)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"export", :controller=>"notes"}):
+     7:                 <strong>Content:</strong> <%= note.content %>
+     8:             </p>
+     9:             <%= link_to "Edit", edit_note_path(note.id)%>
+    10:             <%= link_to "Export", :controller => :notes, :action => :export %>
+    11:             <%= button_to 'Delete', note, method: :delete, data: { confirm: 'Seguro que desea eliminar la nota?' } %>
+    12: 
+    13:         </li>
+  
+app/views/notes/index.html.erb:10
+app/views/notes/index.html.erb:3
+Started GET "/notes" for 127.0.0.1 at 2020-12-24 16:58:28 -0300
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.6ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1[0m
+  ↳ app/views/notes/index.html.erb:3
+  Rendered notes/index.html.erb within layouts/application (Duration: 6.3ms | Allocations: 2101)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 1.1ms | Allocations: 5049)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"export", :controller=>"notes"}):
+     7:                 <strong>Content:</strong> <%= note.content %>
+     8:             </p>
+     9:             <%= link_to "Edit", edit_note_path(note.id)%>
+    10:             <%= link_to "Export", :controller => :notes, :action => 'export' %>
+    11:             <%= button_to 'Delete', note, method: :delete, data: { confirm: 'Seguro que desea eliminar la nota?' } %>
+    12: 
+    13:         </li>
+  
+app/views/notes/index.html.erb:10
+app/views/notes/index.html.erb:3
+Started GET "/notes" for 127.0.0.1 at 2020-12-24 16:58:33 -0300
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1[0m
+  ↳ app/views/notes/index.html.erb:3
+  Rendered notes/index.html.erb within layouts/application (Duration: 5.3ms | Allocations: 2095)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.9ms | Allocations: 4977)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"export", :controller=>"notes"}):
+     7:                 <strong>Content:</strong> <%= note.content %>
+     8:             </p>
+     9:             <%= link_to "Edit", edit_note_path(note.id)%>
+    10:             <%= link_to "Export", :controller => 'notes', :action => 'export' %>
+    11:             <%= button_to 'Delete', note, method: :delete, data: { confirm: 'Seguro que desea eliminar la nota?' } %>
+    12: 
+    13:         </li>
+  
+app/views/notes/index.html.erb:10
+app/views/notes/index.html.erb:3
+Started GET "/notes/1/export" for 127.0.0.1 at 2020-12-24 16:59:11 -0300
+Processing by NotesController#export as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 406 Not Acceptable in 11ms (ActiveRecord: 0.5ms | Allocations: 3943)
+
+
+  
+ActionController::MissingExactTemplate (NotesController#export is missing a template for request formats: text/html):
+  
+actionpack (6.0.3.4) lib/action_controller/metal/implicit_render.rb:45:in `default_render'
+actionpack (6.0.3.4) lib/action_controller/metal/basic_implicit_render.rb:6:in `block in send_action'
+actionpack (6.0.3.4) lib/action_controller/metal/basic_implicit_render.rb:6:in `tap'
+actionpack (6.0.3.4) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (6.0.3.4) lib/abstract_controller/base.rb:195:in `process_action'
+actionpack (6.0.3.4) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (6.0.3.4) lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+activesupport (6.0.3.4) lib/active_support/callbacks.rb:135:in `run_callbacks'
+actionpack (6.0.3.4) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (6.0.3.4) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (6.0.3.4) lib/action_controller/metal/instrumentation.rb:33:in `block in process_action'
+activesupport (6.0.3.4) lib/active_support/notifications.rb:180:in `block in instrument'
+activesupport (6.0.3.4) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (6.0.3.4) lib/active_support/notifications.rb:180:in `instrument'
+actionpack (6.0.3.4) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (6.0.3.4) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+activerecord (6.0.3.4) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.3.4) lib/abstract_controller/base.rb:136:in `process'
+actionview (6.0.3.4) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.3) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/cookies.rb:648:in `call'
+activerecord (6.0.3.4) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.4) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/notes/1/export" for 127.0.0.1 at 2020-12-24 16:59:31 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/notes/1/export"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/notes/:1/export" for 127.0.0.1 at 2020-12-24 17:00:08 -0300
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/notes/:1/export"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/notes/:1/export" for 127.0.0.1 at 2020-12-24 17:01:10 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/notes/:1/export"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/books" for 127.0.0.1 at 2020-12-24 17:01:14 -0300
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.6ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  ↳ app/views/books/index.html.erb:10
+  Rendered books/index.html.erb within layouts/application (Duration: 22.6ms | Allocations: 7851)
+Completed 200 OK in 63ms (Views: 23.1ms | ActiveRecord: 9.0ms | Allocations: 24663)
+
+
+Started GET "/notes" for 127.0.0.1 at 2020-12-24 17:01:15 -0300
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.6ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1[0m
+  ↳ app/views/notes/index.html.erb:3
+  Rendered notes/index.html.erb within layouts/application (Duration: 17.8ms | Allocations: 8406)
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 2.7ms | Allocations: 12488)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"export", :controller=>"notes", :method=>:post}):
+     7:                 <strong>Content:</strong> <%= note.content %>
+     8:             </p>
+     9:             <%= link_to "Edit", edit_note_path(note.id)%>
+    10:             <%= link_to "Export", :controller => 'notes', :action => 'export', method: :post %>
+    11:             <%= button_to 'Delete', note, method: :delete, data: { confirm: 'Seguro que desea eliminar la nota?' } %>
+    12: 
+    13:         </li>
+  
+app/views/notes/index.html.erb:10
+app/views/notes/index.html.erb:3
+Started GET "/notes" for 127.0.0.1 at 2020-12-24 17:01:27 -0300
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.6ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1[0m
+  ↳ app/views/notes/index.html.erb:3
+  Rendered notes/index.html.erb within layouts/application (Duration: 5.5ms | Allocations: 1337)
+Completed 200 OK in 13ms (Views: 7.4ms | ActiveRecord: 1.1ms | Allocations: 4465)
+
+
+Started GET "/notes" for 127.0.0.1 at 2020-12-24 17:01:45 -0300
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.5ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1[0m
+  ↳ app/views/notes/index.html.erb:3
+  Rendered notes/index.html.erb within layouts/application (Duration: 4.8ms | Allocations: 1282)
+Completed 200 OK in 12ms (Views: 7.6ms | ActiveRecord: 0.9ms | Allocations: 4408)
+
+
+Started GET "/notes/17" for 127.0.0.1 at 2020-12-24 17:01:48 -0300
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for NotesController):
+  
+actionpack (6.0.3.4) lib/abstract_controller/base.rb:131:in `process'
+actionview (6.0.3.4) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.3) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/cookies.rb:648:in `call'
+activerecord (6.0.3.4) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.4) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/notes" for 127.0.0.1 at 2020-12-24 17:02:26 -0300
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.6ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1[0m
+  ↳ app/views/notes/index.html.erb:3
+  Rendered notes/index.html.erb within layouts/application (Duration: 4.4ms | Allocations: 1256)
+Completed 200 OK in 13ms (Views: 6.4ms | ActiveRecord: 1.1ms | Allocations: 4372)
+
+
+Started GET "/notes" for 127.0.0.1 at 2020-12-24 17:02:36 -0300
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.5ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1[0m
+  ↳ app/views/notes/index.html.erb:3
+  Rendered notes/index.html.erb within layouts/application (Duration: 4.6ms | Allocations: 1264)
+Completed 200 OK in 19ms (Views: 8.8ms | ActiveRecord: 2.0ms | Allocations: 4377)
+
+
+Started GET "/notes/17" for 127.0.0.1 at 2020-12-24 17:02:39 -0300
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for NotesController):
+  
+actionpack (6.0.3.4) lib/abstract_controller/base.rb:131:in `process'
+actionview (6.0.3.4) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.3) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/cookies.rb:648:in `call'
+activerecord (6.0.3.4) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.4) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/notes" for 127.0.0.1 at 2020-12-24 17:02:53 -0300
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.6ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1[0m
+  ↳ app/views/notes/index.html.erb:3
+  Rendered notes/index.html.erb within layouts/application (Duration: 5.9ms | Allocations: 1271)
+Completed 200 OK in 15ms (Views: 8.2ms | ActiveRecord: 1.3ms | Allocations: 4408)
+
+
+Started GET "/notes/17" for 127.0.0.1 at 2020-12-24 17:02:59 -0300
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for NotesController):
+  
+actionpack (6.0.3.4) lib/abstract_controller/base.rb:131:in `process'
+actionview (6.0.3.4) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.3) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/cookies.rb:648:in `call'
+activerecord (6.0.3.4) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.4) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/notes" for 127.0.0.1 at 2020-12-24 17:04:57 -0300
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1[0m
+  ↳ app/views/notes/index.html.erb:3
+  Rendered notes/index.html.erb within layouts/application (Duration: 455.2ms | Allocations: 170911)
+Completed 500 Internal Server Error in 503ms (ActiveRecord: 4.3ms | Allocations: 188512)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `notes' for #<#<Class:0x00007f70c8844b40>:0x00007f70c883b0e0>
+Did you mean?  note
+               @notes):
+     7:                 <strong>Content:</strong> <%= note.content %>
+     8:             </p>
+     9:             <%= link_to "Edit", edit_note_path(note.id)%>
+    10:             <%= link_to "Export", notes %>
+    11:             <%= button_to 'Delete', note, method: :delete, data: { confirm: 'Seguro que desea eliminar la nota?' } %>
+    12: 
+    13:         </li>
+  
+app/views/notes/index.html.erb:10
+app/views/notes/index.html.erb:3
+Started GET "/notes" for 127.0.0.1 at 2020-12-24 17:05:11 -0300
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.5ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1[0m
+  ↳ app/views/notes/index.html.erb:3
+  Rendered notes/index.html.erb within layouts/application (Duration: 401.5ms | Allocations: 162539)
+Completed 500 Internal Server Error in 414ms (ActiveRecord: 1.0ms | Allocations: 165503)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `notes' for #<#<Class:0x00007f70c86366f0>:0x00007f70c86345d0>
+Did you mean?  note
+               @notes):
+     7:                 <strong>Content:</strong> <%= note.content %>
+     8:             </p>
+     9:             <%= link_to "Edit", edit_note_path(note.id)%>
+    10:             <%= link_to "Export", notes, :action => :export %>
+    11:             <%= button_to 'Delete', note, method: :delete, data: { confirm: 'Seguro que desea eliminar la nota?' } %>
+    12: 
+    13:         </li>
+  
+app/views/notes/index.html.erb:10
+app/views/notes/index.html.erb:3
+Started GET "/notes" for 127.0.0.1 at 2020-12-24 17:05:17 -0300
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.5ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1[0m
+  ↳ app/views/notes/index.html.erb:3
+  Rendered notes/index.html.erb within layouts/application (Duration: 404.3ms | Allocations: 162673)
+Completed 500 Internal Server Error in 413ms (ActiveRecord: 1.2ms | Allocations: 165575)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `notes' for #<#<Class:0x00007f70c8762790>:0x00007f70c8760918>
+Did you mean?  note
+               @notes):
+     7:                 <strong>Content:</strong> <%= note.content %>
+     8:             </p>
+     9:             <%= link_to "Edit", edit_note_path(note.id)%>
+    10:             <%= link_to "Export", notes, :action => "export" %>
+    11:             <%= button_to 'Delete', note, method: :delete, data: { confirm: 'Seguro que desea eliminar la nota?' } %>
+    12: 
+    13:         </li>
+  
+app/views/notes/index.html.erb:10
+app/views/notes/index.html.erb:3
+Started GET "/notes" for 127.0.0.1 at 2020-12-24 17:05:27 -0300
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.9ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1[0m
+  ↳ app/views/notes/index.html.erb:3
+  Rendered notes/index.html.erb within layouts/application (Duration: 6.0ms | Allocations: 1347)
+Completed 200 OK in 14ms (Views: 8.8ms | ActiveRecord: 1.3ms | Allocations: 4501)
+
+
+Started GET "/notes" for 127.0.0.1 at 2020-12-24 17:05:37 -0300
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1[0m
+  ↳ app/views/notes/index.html.erb:3
+  Rendered notes/index.html.erb within layouts/application (Duration: 5.1ms | Allocations: 1278)
+Completed 200 OK in 16ms (Views: 8.5ms | ActiveRecord: 1.0ms | Allocations: 4392)
+
+
+Started GET "/notes" for 127.0.0.1 at 2020-12-24 17:05:47 -0300
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (2.6ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1[0m
+  ↳ app/views/notes/index.html.erb:3
+  Rendered notes/index.html.erb within layouts/application (Duration: 8.3ms | Allocations: 1272)
+Completed 200 OK in 15ms (Views: 8.0ms | ActiveRecord: 3.1ms | Allocations: 4401)
+
+
+Started GET "/notes" for 127.0.0.1 at 2020-12-24 17:06:24 -0300
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.5ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1[0m
+  ↳ app/views/notes/index.html.erb:3
+  Rendered notes/index.html.erb within layouts/application (Duration: 7.4ms | Allocations: 2673)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 1.0ms | Allocations: 5548)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"export", :controller=>"notes"}):
+     7:                 <strong>Content:</strong> <%= note.content %>
+     8:             </p>
+     9:             <%= link_to "Edit", edit_note_path(note.id)%>
+    10:             <%= link_to "Export", :controller => "notes", :action => "export" %>
+    11:             <%= button_to 'Delete', note, method: :delete, data: { confirm: 'Seguro que desea eliminar la nota?' } %>
+    12: 
+    13:         </li>
+  
+app/views/notes/index.html.erb:10
+app/views/notes/index.html.erb:3
+Started GET "/notes" for 127.0.0.1 at 2020-12-24 17:06:54 -0300
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.6ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1[0m
+  ↳ app/views/notes/index.html.erb:3
+  Rendered notes/index.html.erb within layouts/application (Duration: 6.5ms | Allocations: 2095)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 1.1ms | Allocations: 4975)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"export", :controller=>"notes"}):
+     7:                 <strong>Content:</strong> <%= note.content %>
+     8:             </p>
+     9:             <%= link_to "Edit", edit_note_path(note.id)%>
+    10:             <%= link_to "Export",{ :controller => "notes", :action => "export" }%>
+    11:             <%= button_to 'Delete', note, method: :delete, data: { confirm: 'Seguro que desea eliminar la nota?' } %>
+    12: 
+    13:         </li>
+  
+app/views/notes/index.html.erb:10
+app/views/notes/index.html.erb:3
+Started GET "/notes" for 127.0.0.1 at 2020-12-24 17:09:02 -0300
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.5ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1[0m
+  ↳ app/views/notes/index.html.erb:3
+  Rendered notes/index.html.erb within layouts/application (Duration: 5.6ms | Allocations: 2015)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.9ms | Allocations: 4895)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"notes"}, missing required keys: [:id]):
+     6:             <p>
+     7:                 <strong>Content:</strong> <%= note.content %>
+     8:             </p>
+     9:             <%= note_url %>
+    10:             <%= link_to "Edit", edit_note_path(note.id)%>
+    11:             <%= button_to 'Delete', note, method: :delete, data: { confirm: 'Seguro que desea eliminar la nota?' } %>
+    12: 
+  
+app/views/notes/index.html.erb:9
+app/views/notes/index.html.erb:3
+Started GET "/notes" for 127.0.0.1 at 2020-12-24 17:09:11 -0300
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.6ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1[0m
+  ↳ app/views/notes/index.html.erb:3
+  Rendered notes/index.html.erb within layouts/application (Duration: 5.3ms | Allocations: 1261)
+Completed 200 OK in 14ms (Views: 8.2ms | ActiveRecord: 1.1ms | Allocations: 4384)
+
+
+Started GET "/notes" for 127.0.0.1 at 2020-12-24 17:09:20 -0300
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1[0m
+  ↳ app/views/notes/index.html.erb:3
+  Rendered notes/index.html.erb within layouts/application (Duration: 200.7ms | Allocations: 83239)
+Completed 500 Internal Server Error in 209ms (ActiveRecord: 1.1ms | Allocations: 86110)
+
+
+  
+ActionView::Template::Error (undefined method `note_export_url' for #<#<Class:0x00007f70c83e1be8>:0x00007f70c83d6a18>
+Did you mean?  notes_url):
+     6:             <p>
+     7:                 <strong>Content:</strong> <%= note.content %>
+     8:             </p>
+     9:             <%= note_export_url(note.id) %>
+    10:             <%= link_to "Edit", edit_note_path(note.id)%>
+    11:             <%= button_to 'Delete', note, method: :delete, data: { confirm: 'Seguro que desea eliminar la nota?' } %>
+    12: 
+  
+app/views/notes/index.html.erb:9
+app/views/notes/index.html.erb:3
+Started GET "/notes" for 127.0.0.1 at 2020-12-24 17:09:43 -0300
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (1.0ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1[0m
+  ↳ app/views/notes/index.html.erb:3
+  Rendered notes/index.html.erb within layouts/application (Duration: 202.7ms | Allocations: 83251)
+Completed 500 Internal Server Error in 209ms (ActiveRecord: 1.6ms | Allocations: 86127)
+
+
+  
+ActionView::Template::Error (undefined method `notes_export_url' for #<#<Class:0x0000556f2af82a70>:0x0000556f2af7bce8>
+Did you mean?  notes_url):
+     6:             <p>
+     7:                 <strong>Content:</strong> <%= note.content %>
+     8:             </p>
+     9:             <%= notes_export_url(note.id) %>
+    10:             <%= link_to "Edit", edit_note_path(note.id)%>
+    11:             <%= button_to 'Delete', note, method: :delete, data: { confirm: 'Seguro que desea eliminar la nota?' } %>
+    12: 
+  
+app/views/notes/index.html.erb:9
+app/views/notes/index.html.erb:3
+Started GET "/notes" for 127.0.0.1 at 2020-12-24 17:09:49 -0300
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.6ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1[0m
+  ↳ app/views/notes/index.html.erb:3
+  Rendered notes/index.html.erb within layouts/application (Duration: 5.7ms | Allocations: 1258)
+Completed 200 OK in 14ms (Views: 8.0ms | ActiveRecord: 1.0ms | Allocations: 4374)
+
+
+Started GET "/notes" for 127.0.0.1 at 2020-12-24 17:10:01 -0300
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.6ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1[0m
+  ↳ app/views/notes/index.html.erb:3
+  Rendered notes/index.html.erb within layouts/application (Duration: 4.9ms | Allocations: 1243)
+Completed 200 OK in 15ms (Views: 8.1ms | ActiveRecord: 1.0ms | Allocations: 4355)
+
+
+Started GET "/notes" for 127.0.0.1 at 2020-12-24 17:10:08 -0300
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.5ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1[0m
+  ↳ app/views/notes/index.html.erb:3
+  Rendered notes/index.html.erb within layouts/application (Duration: 192.1ms | Allocations: 83239)
+Completed 500 Internal Server Error in 201ms (ActiveRecord: 1.1ms | Allocations: 86125)
+
+
+  
+ActionView::Template::Error (undefined method `note_export_path' for #<#<Class:0x00007f70c87dc310>:0x00007f70c87c2500>
+Did you mean?  note_path):
+     6:             <p>
+     7:                 <strong>Content:</strong> <%= note.content %>
+     8:             </p>
+     9:             <%= note_export_path(note.id) %>
+    10:             <%= link_to "Edit", edit_note_path(note.id)%>
+    11:             <%= button_to 'Delete', note, method: :delete, data: { confirm: 'Seguro que desea eliminar la nota?' } %>
+    12: 
+  
+app/views/notes/index.html.erb:9
+app/views/notes/index.html.erb:3
+Started GET "/notes/1/export" for 127.0.0.1 at 2020-12-24 17:10:25 -0300
+Processing by NotesController#export as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 406 Not Acceptable in 22ms (ActiveRecord: 1.8ms | Allocations: 10845)
+
+
+  
+ActionController::MissingExactTemplate (NotesController#export is missing a template for request formats: text/html):
+  
+actionpack (6.0.3.4) lib/action_controller/metal/implicit_render.rb:45:in `default_render'
+actionpack (6.0.3.4) lib/action_controller/metal/basic_implicit_render.rb:6:in `block in send_action'
+actionpack (6.0.3.4) lib/action_controller/metal/basic_implicit_render.rb:6:in `tap'
+actionpack (6.0.3.4) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (6.0.3.4) lib/abstract_controller/base.rb:195:in `process_action'
+actionpack (6.0.3.4) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (6.0.3.4) lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+activesupport (6.0.3.4) lib/active_support/callbacks.rb:135:in `run_callbacks'
+actionpack (6.0.3.4) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (6.0.3.4) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (6.0.3.4) lib/action_controller/metal/instrumentation.rb:33:in `block in process_action'
+activesupport (6.0.3.4) lib/active_support/notifications.rb:180:in `block in instrument'
+activesupport (6.0.3.4) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (6.0.3.4) lib/active_support/notifications.rb:180:in `instrument'
+actionpack (6.0.3.4) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (6.0.3.4) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+activerecord (6.0.3.4) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.3.4) lib/abstract_controller/base.rb:136:in `process'
+actionview (6.0.3.4) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.3) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/cookies.rb:648:in `call'
+activerecord (6.0.3.4) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.4) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/notes" for 127.0.0.1 at 2020-12-24 17:10:50 -0300
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1[0m
+  ↳ app/views/notes/index.html.erb:3
+  Rendered notes/index.html.erb within layouts/application (Duration: 206.8ms | Allocations: 88802)
+Completed 500 Internal Server Error in 230ms (ActiveRecord: 4.2ms | Allocations: 99973)
+
+
+  
+ActionView::Template::Error (undefined method `export_note_path' for #<#<Class:0x0000556f2b0fa740>:0x0000556f2b0e9ff8>):
+     6:             <p>
+     7:                 <strong>Content:</strong> <%= note.content %>
+     8:             </p>
+     9:             <%= export_note_path(note.id) %>
+    10:             <%= link_to "Edit", edit_note_path(note.id)%>
+    11:             <%= button_to 'Delete', note, method: :delete, data: { confirm: 'Seguro que desea eliminar la nota?' } %>
+    12: 
+  
+app/views/notes/index.html.erb:9
+app/views/notes/index.html.erb:3
+Started GET "/notes" for 127.0.0.1 at 2020-12-24 17:10:59 -0300
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.5ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1[0m
+  ↳ app/views/notes/index.html.erb:3
+  Rendered notes/index.html.erb within layouts/application (Duration: 6.6ms | Allocations: 1295)
+Completed 200 OK in 15ms (Views: 9.6ms | ActiveRecord: 1.1ms | Allocations: 4415)
+
+
+Started GET "/notes" for 127.0.0.1 at 2020-12-24 17:14:04 -0300
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.5ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1[0m
+  ↳ app/views/notes/index.html.erb:3
+  Rendered notes/index.html.erb within layouts/application (Duration: 226.6ms | Allocations: 83195)
+Completed 500 Internal Server Error in 236ms (ActiveRecord: 1.1ms | Allocations: 86080)
+
+
+  
+ActionView::Template::Error (undefined method `export_note_path' for #<#<Class:0x00007f70c87c0480>:0x00007f70c87ab030>):
+     6:             <p>
+     7:                 <strong>Content:</strong> <%= note.content %>
+     8:             </p>
+     9:             <%= link_to 'Export', export_note_path(note.id), method: :put %>
+    10:             <%= link_to "Edit", edit_note_path(note.id)%>
+    11:             <%= button_to 'Delete', note, method: :delete, data: { confirm: 'Seguro que desea eliminar la nota?' } %>
+    12: 
+  
+app/views/notes/index.html.erb:9
+app/views/notes/index.html.erb:3
+Started GET "/notes" for 127.0.0.1 at 2020-12-24 17:14:32 -0300
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/index.html.erb within layouts/application
+  Rendered notes/index.html.erb within layouts/application (Duration: 4.3ms | Allocations: 1147)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.6ms | Allocations: 4031)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <h2> Notes book "Poner nombre titulo libro" </h2>
+<ul>
+    <% @notes.each do |note| %>
+        <li> 
+            <strong>Title:</strong> <%= note.title %>
+            <p>
+                <strong>Content:</strong> <%= note.content %>
+            </p>
+            <%= link_to 'Export', export_note_path(note.id), method: :put, :action :export %>
+            <%= link_to "Edit", edit_note_path(note.id)%>
+            <%= button_to 'Delete', note, method: :delete, data: { confirm: 'Seguro que desea eliminar la nota?' } %>
+
+        </li>
+    <% end %>
+</ul>
+):
+1:    <h2> Notes book "Poner nombre titulo libro" </h2>
+2:    <ul>
+3:        <% @notes.each do |note| %>
+4:            <li> 
+5:                <strong>Title:</strong> <%= note.title %>
+6:                <p>
+7:                    <strong>Content:</strong> <%= note.content %>
+8:                </p>
+9:                <%= link_to 'Export', export_note_path(note.id), method: :put, :action :export %>
+10:                <%= link_to "Edit", edit_note_path(note.id)%>
+11:                <%= button_to 'Delete', note, method: :delete, data: { confirm: 'Seguro que desea eliminar la nota?' } %>
+12:    
+13:            </li>
+14:        <% end %>
+15:    </ul>
+  
+app/views/notes/index.html.erb:9: syntax error, unexpected ':', expecting =>
+app/views/notes/index.html.erb:9: syntax error, unexpected ':', expecting =>
+app/views/notes/index.html.erb:9: syntax error, unexpected ':', expecting =>
+app/views/notes/index.html.erb:9: syntax error, unexpected ':', expecting =>
+app/views/notes/index.html.erb:9: syntax error, unexpected ':', expecting =>
+app/views/notes/index.html.erb:9: syntax error, unexpected ':', expecting =>
+Started GET "/notes" for 127.0.0.1 at 2020-12-24 17:14:44 -0300
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/index.html.erb within layouts/application
+  Rendered notes/index.html.erb within layouts/application (Duration: 1.3ms | Allocations: 1148)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.5ms | Allocations: 4031)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <h2> Notes book "Poner nombre titulo libro" </h2>
+<ul>
+    <% @notes.each do |note| %>
+        <li> 
+            <strong>Title:</strong> <%= note.title %>
+            <p>
+                <strong>Content:</strong> <%= note.content %>
+            </p>
+            <%= link_to 'Export', note_path(note.id), method: :put, :action :export %>
+            <%= link_to "Edit", edit_note_path(note.id)%>
+            <%= button_to 'Delete', note, method: :delete, data: { confirm: 'Seguro que desea eliminar la nota?' } %>
+
+        </li>
+    <% end %>
+</ul>
+):
+1:    <h2> Notes book "Poner nombre titulo libro" </h2>
+2:    <ul>
+3:        <% @notes.each do |note| %>
+4:            <li> 
+5:                <strong>Title:</strong> <%= note.title %>
+6:                <p>
+7:                    <strong>Content:</strong> <%= note.content %>
+8:                </p>
+9:                <%= link_to 'Export', note_path(note.id), method: :put, :action :export %>
+10:                <%= link_to "Edit", edit_note_path(note.id)%>
+11:                <%= button_to 'Delete', note, method: :delete, data: { confirm: 'Seguro que desea eliminar la nota?' } %>
+12:    
+13:            </li>
+14:        <% end %>
+15:    </ul>
+  
+app/views/notes/index.html.erb:9: syntax error, unexpected ':', expecting =>
+app/views/notes/index.html.erb:9: syntax error, unexpected ':', expecting =>
+app/views/notes/index.html.erb:9: syntax error, unexpected ':', expecting =>
+app/views/notes/index.html.erb:9: syntax error, unexpected ':', expecting =>
+app/views/notes/index.html.erb:9: syntax error, unexpected ':', expecting =>
+app/views/notes/index.html.erb:9: syntax error, unexpected ':', expecting =>
+Started GET "/notes" for 127.0.0.1 at 2020-12-24 17:15:04 -0300
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/index.html.erb within layouts/application
+  Rendered notes/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1147)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.5ms | Allocations: 4030)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <h2> Notes book "Poner nombre titulo libro" </h2>
+<ul>
+    <% @notes.each do |note| %>
+        <li> 
+            <strong>Title:</strong> <%= note.title %>
+            <p>
+                <strong>Content:</strong> <%= note.content %>
+            </p>
+            <%= link_to 'Export', note_path(note.id),:action :export,method: :put %>
+            <%= link_to "Edit", edit_note_path(note.id)%>
+            <%= button_to 'Delete', note, method: :delete, data: { confirm: 'Seguro que desea eliminar la nota?' } %>
+
+        </li>
+    <% end %>
+</ul>
+):
+1:    <h2> Notes book "Poner nombre titulo libro" </h2>
+2:    <ul>
+3:        <% @notes.each do |note| %>
+4:            <li> 
+5:                <strong>Title:</strong> <%= note.title %>
+6:                <p>
+7:                    <strong>Content:</strong> <%= note.content %>
+8:                </p>
+9:                <%= link_to 'Export', note_path(note.id),:action :export,method: :put %>
+10:                <%= link_to "Edit", edit_note_path(note.id)%>
+11:                <%= button_to 'Delete', note, method: :delete, data: { confirm: 'Seguro que desea eliminar la nota?' } %>
+12:    
+13:            </li>
+14:        <% end %>
+15:    </ul>
+  
+app/views/notes/index.html.erb:9: syntax error, unexpected ':', expecting ')'
+app/views/notes/index.html.erb:9: syntax error, unexpected ':', expecting ')'
+app/views/notes/index.html.erb:9: syntax error, unexpected ':', expecting ')'
+app/views/notes/index.html.erb:9: syntax error, unexpected ':', expecting ')'
+app/views/notes/index.html.erb:9: syntax error, unexpected ':', expecting ')'
+app/views/notes/index.html.erb:9: syntax error, unexpected ':', expecting ')'
+Started GET "/notes" for 127.0.0.1 at 2020-12-24 17:15:39 -0300
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (2.1ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1[0m
+  ↳ app/views/notes/index.html.erb:3
+  Rendered notes/index.html.erb within layouts/application (Duration: 197.1ms | Allocations: 83231)
+Completed 500 Internal Server Error in 204ms (ActiveRecord: 2.6ms | Allocations: 86115)
+
+
+  
+ActionView::Template::Error (undefined method `note_export_path' for #<#<Class:0x00007f70c823fd58>:0x00007f70c823d260>
+Did you mean?  note_path):
+     6:             <p>
+     7:                 <strong>Content:</strong> <%= note.content %>
+     8:             </p>
+     9:             <%= link_to 'Export', note_export_path(note.id),method: :put %>
+    10:             <%= link_to "Edit", edit_note_path(note.id)%>
+    11:             <%= button_to 'Delete', note, method: :delete, data: { confirm: 'Seguro que desea eliminar la nota?' } %>
+    12: 
+  
+app/views/notes/index.html.erb:9
+app/views/notes/index.html.erb:3
+Started GET "/notes" for 127.0.0.1 at 2020-12-24 17:15:56 -0300
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.8ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1[0m
+  ↳ app/views/notes/index.html.erb:3
+  Rendered notes/index.html.erb within layouts/application (Duration: 210.4ms | Allocations: 83235)
+Completed 500 Internal Server Error in 220ms (ActiveRecord: 2.1ms | Allocations: 86119)
+
+
+  
+ActionView::Template::Error (undefined method `note_export_path' for #<#<Class:0x00007f70c82ff810>:0x00007f70c82fc520>
+Did you mean?  note_path):
+     6:             <p>
+     7:                 <strong>Content:</strong> <%= note.content %>
+     8:             </p>
+     9:             <%= link_to 'Export', note_export_path(note.id),method: :put, remote: true %>
+    10:             <%= link_to "Edit", edit_note_path(note.id)%>
+    11:             <%= button_to 'Delete', note, method: :delete, data: { confirm: 'Seguro que desea eliminar la nota?' } %>
+    12: 
+  
+app/views/notes/index.html.erb:9
+app/views/notes/index.html.erb:3
+Started GET "/notes" for 127.0.0.1 at 2020-12-24 17:16:10 -0300
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.5ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1[0m
+  ↳ app/views/notes/index.html.erb:3
+  Rendered notes/index.html.erb within layouts/application (Duration: 203.9ms | Allocations: 83265)
+Completed 500 Internal Server Error in 213ms (ActiveRecord: 2.0ms | Allocations: 86149)
+
+
+  
+ActionView::Template::Error (undefined method `notes_export_path' for #<#<Class:0x00007f70c8425ac8>:0x00007f70c842e448>
+Did you mean?  notes_path):
+     6:             <p>
+     7:                 <strong>Content:</strong> <%= note.content %>
+     8:             </p>
+     9:             <%= link_to 'Export', notes_export_path(note.id),method: :put, remote: true %>
+    10:             <%= link_to "Edit", edit_note_path(note.id)%>
+    11:             <%= button_to 'Delete', note, method: :delete, data: { confirm: 'Seguro que desea eliminar la nota?' } %>
+    12: 
+  
+app/views/notes/index.html.erb:9
+app/views/notes/index.html.erb:3
+Started GET "/notes" for 127.0.0.1 at 2020-12-24 17:16:18 -0300
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1[0m
+  ↳ app/views/notes/index.html.erb:3
+  Rendered notes/index.html.erb within layouts/application (Duration: 5.1ms | Allocations: 1277)
+Completed 200 OK in 15ms (Views: 7.8ms | ActiveRecord: 1.6ms | Allocations: 4401)
+
+
+Started GET "/notes" for 127.0.0.1 at 2020-12-24 17:16:33 -0300
+Processing by NotesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering notes/index.html.erb within layouts/application
+  [1m[36mNote Load (1.6ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1[0m
+  ↳ app/views/notes/index.html.erb:3
+  Rendered notes/index.html.erb within layouts/application (Duration: 8.2ms | Allocations: 1282)
+Completed 200 OK in 16ms (Views: 9.2ms | ActiveRecord: 2.0ms | Allocations: 4399)
+
+
+Started GET "/notes/17" for 127.0.0.1 at 2020-12-24 17:16:37 -0300
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for NotesController):
+  
+actionpack (6.0.3.4) lib/abstract_controller/base.rb:131:in `process'
+actionview (6.0.3.4) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.4) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.4) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.3) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/cookies.rb:648:in `call'
+activerecord (6.0.3.4) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.4) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+  [1m[35m (0.7ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mNote Load (0.6ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1 LIMIT 11[0m
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1 AND `notes`.`id` = 17 LIMIT 1[0m
+  [1m[35m (0.6ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.6ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT GET_LOCK('8388172886197449135', 0)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to AddContentExportedNote (20201224202131)
+  [1m[35m (1369.4ms)[0m  [1m[35mALTER TABLE `notes` ADD `exported_content` text[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mprimary::SchemaMigration Create (19.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20201224202131')[0m
+  [1m[35m (81.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT RELEASE_LOCK('8388172886197449135')[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1 AND `notes`.`id` = 17 LIMIT 1[0m
+  [1m[35m (0.6ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1 AND `notes`.`id` = 17 LIMIT 1[0m
+  [1m[35m (0.6ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mNote Load (0.5ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1 AND `notes`.`id` = 17 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe1' AND `notes`.`id` != 17 AND `notes`.`user_id` = 1 AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  [1m[36mNote Update (0.5ms)[0m  [1m[33mUPDATE `notes` SET `notes`.`updated_at` = '2020-12-24 20:26:00.258132', `notes`.`exported_content` = '<p>pepe</p>\n' WHERE `notes`.`id` = 17[0m
+  [1m[35m (110.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mNote Load (0.6ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1 AND `notes`.`id` = 17 LIMIT 1[0m
+  [1m[35m (0.6ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mBook Load (0.4ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 LIMIT 11[0m
+  [1m[36mBook Load (0.9ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 AND `books`.`id` = 2 LIMIT 1[0m
+  [1m[36mNote Load (0.5ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`book_id` = 2 LIMIT 11[0m
+  [1m[36mNote Load (0.8ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`book_id` = 2 LIMIT 11[0m
+  [1m[36mNote Load (0.6ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`book_id` = 2[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nota 26' AND `notes`.`id` != 4 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[36mNote Update (0.6ms)[0m  [1m[33mUPDATE `notes` SET `notes`.`exported_content` = '<p>Nota 1</p>\n', `notes`.`updated_at` = '2020-12-24 20:28:08.553650' WHERE `notes`.`id` = 4[0m
+  [1m[35m (67.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nota 2' AND `notes`.`id` != 7 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[36mNote Update (0.6ms)[0m  [1m[33mUPDATE `notes` SET `notes`.`exported_content` = '<p>Nota 2</p>\n', `notes`.`updated_at` = '2020-12-24 20:28:08.630995' WHERE `notes`.`id` = 7[0m
+  [1m[35m (55.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'dejaria' AND `notes`.`id` != 9 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[36mNote Update (0.6ms)[0m  [1m[33mUPDATE `notes` SET `notes`.`exported_content` = '<p>2</p>\n', `notes`.`updated_at` = '2020-12-24 20:28:08.694863' WHERE `notes`.`id` = 9[0m
+  [1m[35m (45.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'esa' AND `notes`.`id` != 10 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[36mNote Update (0.6ms)[0m  [1m[33mUPDATE `notes` SET `notes`.`exported_content` = '<p>esa</p>\n', `notes`.`updated_at` = '2020-12-24 20:28:08.747156' WHERE `notes`.`id` = 10[0m
+  [1m[35m (65.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nueva nota papapapa' AND `notes`.`id` != 12 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[36mNote Update (0.6ms)[0m  [1m[33mUPDATE `notes` SET `notes`.`exported_content` = '<p>2</p>\n', `notes`.`updated_at` = '2020-12-24 20:28:08.823142' WHERE `notes`.`id` = 12[0m
+  [1m[35m (50.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mNote Load (0.9ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`book_id` = 2 LIMIT 11[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mBook Load (0.6ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  [1m[36mNote Load (0.8ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`book_id` = 2[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nota 26' AND `notes`.`id` != 4 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nota 2' AND `notes`.`id` != 7 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'dejaria' AND `notes`.`id` != 9 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'esa' AND `notes`.`id` != 10 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nueva nota papapapa' AND `notes`.`id` != 12 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`book_id` = 3[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe' AND `notes`.`id` != 13 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 3 LIMIT 1[0m
+  [1m[36mNote Update (0.4ms)[0m  [1m[33mUPDATE `notes` SET `notes`.`exported_content` = '<p>2</p>\n', `notes`.`updated_at` = '2020-12-24 20:29:44.874613' WHERE `notes`.`id` = 13[0m
+  [1m[35m (36.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'dejaria' AND `notes`.`id` != 14 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 3 LIMIT 1[0m
+  [1m[36mNote Update (0.4ms)[0m  [1m[33mUPDATE `notes` SET `notes`.`exported_content` = '<p>21</p>\n', `notes`.`updated_at` = '2020-12-24 20:29:44.917544' WHERE `notes`.`id` = 14[0m
+  [1m[35m (110.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe1' AND `notes`.`id` != 17 AND `notes`.`user_id` = 1 AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'nota no exportada' AND `notes`.`user_id` = 1 AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  [1m[36mNote Create (0.4ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `user_id`, `created_at`, `updated_at`) VALUES ('nota no exportada', 'pepito', 1, '2020-12-24 20:30:20.569651', '2020-12-24 20:30:20.569651')[0m
+  [1m[35m (101.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mBook Load (0.7ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 LIMIT 11[0m
+  [1m[36mBook Load (0.8ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 AND `books`.`id` = 3 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'nota no exportada libro 3' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 3 LIMIT 1[0m
+  [1m[36mNote Create (0.5ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `book_id`, `created_at`, `updated_at`) VALUES ('nota no exportada libro 3', 'no exportada 3', 3, '2020-12-24 20:30:56.864901', '2020-12-24 20:30:56.864901')[0m
+  [1m[35m (30.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mNote Load (0.8ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1 AND `notes`.`content_exported` IS NULL LIMIT 1[0m
+  [1m[36mNote Load (0.9ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1 AND `notes`.`exported_content` IS NULL LIMIT 1[0m
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`book_id` = 3 AND `notes`.`exported_content` IS NULL LIMIT 1[0m
+  [1m[36mBook Load (0.6ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 LIMIT 11[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nota 26' AND `notes`.`id` != 4 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nota 2' AND `notes`.`id` != 7 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'dejaria' AND `notes`.`id` != 9 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'esa' AND `notes`.`id` != 10 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nueva nota papapapa' AND `notes`.`id` != 12 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe' AND `notes`.`id` != 13 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 3 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'dejaria' AND `notes`.`id` != 14 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 3 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe1' AND `notes`.`id` != 17 AND `notes`.`user_id` = 1 AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (4.8ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'nota no exportada' AND `notes`.`id` != 18 AND `notes`.`user_id` = 1 AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  [1m[36mNote Update (1.1ms)[0m  [1m[33mUPDATE `notes` SET `notes`.`updated_at` = '2020-12-24 20:31:48.723233', `notes`.`exported_content` = '<p>pepito</p>\n' WHERE `notes`.`id` = 18[0m
+  [1m[35m (52.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mNote Load (0.5ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`book_id` = 3 AND `notes`.`exported_content` IS NULL LIMIT 1[0m
+  [1m[36mNote Load (0.8ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1 AND `notes`.`exported_content` IS NULL LIMIT 1[0m
+  [1m[36mNote Load (0.6ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`book_id` = 3[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe' AND `notes`.`id` != 13 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 3 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'dejaria' AND `notes`.`id` != 14 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 3 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'nota no exportada libro 3' AND `notes`.`id` != 19 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 3 LIMIT 1[0m
+  [1m[36mNote Update (0.6ms)[0m  [1m[33mUPDATE `notes` SET `notes`.`updated_at` = '2020-12-24 20:32:24.537632', `notes`.`exported_content` = '<p>no exportada 3</p>\n' WHERE `notes`.`id` = 19[0m
+  [1m[35m (74.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mNote Load (2.5ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`book_id` = 3 AND `notes`.`exported_content` IS NULL LIMIT 1[0m
+DEPRECATION WARNING: Uniqueness validator will no longer enforce case sensitive comparison in Rails 6.1. To continue case sensitive comparison on the :title attribute in Book model, pass `case_sensitive: true` option explicitly to the uniqueness validator. (called from irb_binding at (irb):19)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBook Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `books` WHERE `books`.`title` = BINARY 'nuevito' AND `books`.`user_id` = 1 LIMIT 1[0m
+  [1m[36mBook Create (0.6ms)[0m  [1m[32mINSERT INTO `books` (`title`, `user_id`, `created_at`, `updated_at`) VALUES ('nuevito', 1, '2020-12-24 20:32:51.959776', '2020-12-24 20:32:51.959776')[0m
+  [1m[35m (58.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mBook Load (0.8ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 AND `books`.`id` = 5 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 5 LIMIT 1[0m
+  [1m[36mNote Create (1.2ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `book_id`, `created_at`, `updated_at`) VALUES ('pepe', 'pepe', 5, '2020-12-24 20:33:20.383731', '2020-12-24 20:33:20.383731')[0m
+  [1m[35m (105.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nota 26' AND `notes`.`id` != 4 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nota 2' AND `notes`.`id` != 7 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'dejaria' AND `notes`.`id` != 9 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'esa' AND `notes`.`id` != 10 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (3.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nueva nota papapapa' AND `notes`.`id` != 12 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe' AND `notes`.`id` != 13 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 3 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'dejaria' AND `notes`.`id` != 14 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 3 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`book_id` = 5[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe' AND `notes`.`id` != 20 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 5 LIMIT 1[0m
+  [1m[36mNote Update (0.3ms)[0m  [1m[33mUPDATE `notes` SET `notes`.`exported_content` = '<p>pepe</p>\n', `notes`.`updated_at` = '2020-12-24 20:33:27.891680' WHERE `notes`.`id` = 20[0m
+  [1m[35m (36.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe1' AND `notes`.`id` != 17 AND `notes`.`user_id` = 1 AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'nota no exportada' AND `notes`.`id` != 18 AND `notes`.`user_id` = 1 AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mNote Load (0.8ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`book_id` = 5 LIMIT 11[0m
+DEPRECATION WARNING: Uniqueness validator will no longer enforce case sensitive comparison in Rails 6.1. To continue case sensitive comparison on the :title attribute in Book model, pass `case_sensitive: true` option explicitly to the uniqueness validator. (called from irb_binding at (irb):28)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBook Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `books` WHERE `books`.`title` = BINARY 'nuevito' AND `books`.`user_id` = 1 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+DEPRECATION WARNING: Uniqueness validator will no longer enforce case sensitive comparison in Rails 6.1. To continue case sensitive comparison on the :title attribute in Book model, pass `case_sensitive: true` option explicitly to the uniqueness validator. (called from irb_binding at (irb):29)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBook Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `books` WHERE `books`.`title` = BINARY 'nuevito2' AND `books`.`user_id` = 1 LIMIT 1[0m
+  [1m[36mBook Create (0.4ms)[0m  [1m[32mINSERT INTO `books` (`title`, `user_id`, `created_at`, `updated_at`) VALUES ('nuevito2', 1, '2020-12-24 20:33:55.347892', '2020-12-24 20:33:55.347892')[0m
+  [1m[35m (112.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`book_id` = 5 LIMIT 11[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe2' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 5 LIMIT 1[0m
+  [1m[36mNote Create (0.4ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `book_id`, `created_at`, `updated_at`) VALUES ('pepe2', 'pepe', 5, '2020-12-24 20:34:07.013417', '2020-12-24 20:34:07.013417')[0m
+  [1m[35m (50.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mNote Load (0.9ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`book_id` = 5 LIMIT 11[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nota 26' AND `notes`.`id` != 4 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nota 2' AND `notes`.`id` != 7 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'dejaria' AND `notes`.`id` != 9 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'esa' AND `notes`.`id` != 10 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nueva nota papapapa' AND `notes`.`id` != 12 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe' AND `notes`.`id` != 13 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 3 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'dejaria' AND `notes`.`id` != 14 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 3 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe' AND `notes`.`id` != 20 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 5 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`book_id` = 6[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe1' AND `notes`.`id` != 17 AND `notes`.`user_id` = 1 AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'nota no exportada' AND `notes`.`id` != 18 AND `notes`.`user_id` = 1 AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`book_id` = 5 LIMIT 11[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nota 26' AND `notes`.`id` != 4 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nota 2' AND `notes`.`id` != 7 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'dejaria' AND `notes`.`id` != 9 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'esa' AND `notes`.`id` != 10 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nueva nota papapapa' AND `notes`.`id` != 12 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe' AND `notes`.`id` != 13 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 3 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'dejaria' AND `notes`.`id` != 14 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 3 LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe' AND `notes`.`id` != 20 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 5 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe1' AND `notes`.`id` != 17 AND `notes`.`user_id` = 1 AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'nota no exportada' AND `notes`.`id` != 18 AND `notes`.`user_id` = 1 AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nota 26' AND `notes`.`id` != 4 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nota 2' AND `notes`.`id` != 7 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'dejaria' AND `notes`.`id` != 9 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (3.4ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'esa' AND `notes`.`id` != 10 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nueva nota papapapa' AND `notes`.`id` != 12 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe' AND `notes`.`id` != 13 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 3 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'dejaria' AND `notes`.`id` != 14 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 3 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe' AND `notes`.`id` != 20 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 5 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe1' AND `notes`.`id` != 17 AND `notes`.`user_id` = 1 AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'nota no exportada' AND `notes`.`id` != 18 AND `notes`.`user_id` = 1 AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nota 26' AND `notes`.`id` != 4 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nota 2' AND `notes`.`id` != 7 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'dejaria' AND `notes`.`id` != 9 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'esa' AND `notes`.`id` != 10 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nueva nota papapapa' AND `notes`.`id` != 12 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe' AND `notes`.`id` != 13 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 3 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'dejaria' AND `notes`.`id` != 14 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 3 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe' AND `notes`.`id` != 20 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 5 LIMIT 1[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe1' AND `notes`.`id` != 17 AND `notes`.`user_id` = 1 AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'nota no exportada' AND `notes`.`id` != 18 AND `notes`.`user_id` = 1 AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nota 26' AND `notes`.`id` != 4 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nota 2' AND `notes`.`id` != 7 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (3.1ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'dejaria' AND `notes`.`id` != 9 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'esa' AND `notes`.`id` != 10 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nueva nota papapapa' AND `notes`.`id` != 12 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe' AND `notes`.`id` != 13 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 3 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'dejaria' AND `notes`.`id` != 14 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 3 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe' AND `notes`.`id` != 20 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 5 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe1' AND `notes`.`id` != 17 AND `notes`.`user_id` = 1 AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'nota no exportada' AND `notes`.`id` != 18 AND `notes`.`user_id` = 1 AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe3' AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 5 LIMIT 1[0m
+  [1m[36mNote Create (0.4ms)[0m  [1m[32mINSERT INTO `notes` (`title`, `content`, `book_id`, `created_at`, `updated_at`) VALUES ('pepe3', 'pepe', 5, '2020-12-24 20:34:48.451799', '2020-12-24 20:34:48.451799')[0m
+  [1m[35m (69.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mNote Load (1.1ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`book_id` = 5 LIMIT 11[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nota 26' AND `notes`.`id` != 4 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nota 2' AND `notes`.`id` != 7 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'dejaria' AND `notes`.`id` != 9 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'esa' AND `notes`.`id` != 10 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nueva nota papapapa' AND `notes`.`id` != 12 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe' AND `notes`.`id` != 13 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 3 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'dejaria' AND `notes`.`id` != 14 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 3 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe' AND `notes`.`id` != 20 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 5 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe1' AND `notes`.`id` != 17 AND `notes`.`user_id` = 1 AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'nota no exportada' AND `notes`.`id` != 18 AND `notes`.`user_id` = 1 AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mNote Load (0.5ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`book_id` = 5 LIMIT 11[0m
+  [1m[36mNote Load (0.5ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`book_id` = 5 LIMIT 11[0m
+  [1m[36mNote Load (0.5ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`book_id` = 5 LIMIT 11[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nota 26' AND `notes`.`id` != 4 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nota 2' AND `notes`.`id` != 7 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'dejaria' AND `notes`.`id` != 9 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'esa' AND `notes`.`id` != 10 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nueva nota papapapa' AND `notes`.`id` != 12 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe' AND `notes`.`id` != 13 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 3 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'dejaria' AND `notes`.`id` != 14 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 3 LIMIT 1[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe' AND `notes`.`id` != 20 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 5 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe1' AND `notes`.`id` != 17 AND `notes`.`user_id` = 1 AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'nota no exportada' AND `notes`.`id` != 18 AND `notes`.`user_id` = 1 AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mNote Load (1.0ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`book_id` = 5 LIMIT 11[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nota 26' AND `notes`.`id` != 4 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nota 2' AND `notes`.`id` != 7 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'dejaria' AND `notes`.`id` != 9 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'esa' AND `notes`.`id` != 10 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nueva nota papapapa' AND `notes`.`id` != 12 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe' AND `notes`.`id` != 13 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 3 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'dejaria' AND `notes`.`id` != 14 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 3 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (2.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe' AND `notes`.`id` != 20 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 5 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe1' AND `notes`.`id` != 17 AND `notes`.`user_id` = 1 AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'nota no exportada' AND `notes`.`id` != 18 AND `notes`.`user_id` = 1 AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nota 26' AND `notes`.`id` != 4 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nota 2' AND `notes`.`id` != 7 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'dejaria' AND `notes`.`id` != 9 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'esa' AND `notes`.`id` != 10 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nueva nota papapapa' AND `notes`.`id` != 12 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe' AND `notes`.`id` != 13 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 3 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'dejaria' AND `notes`.`id` != 14 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 3 LIMIT 1[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe' AND `notes`.`id` != 20 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 5 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe1' AND `notes`.`id` != 17 AND `notes`.`user_id` = 1 AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'nota no exportada' AND `notes`.`id` != 18 AND `notes`.`user_id` = 1 AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nota 26' AND `notes`.`id` != 4 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nota 2' AND `notes`.`id` != 7 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'dejaria' AND `notes`.`id` != 9 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'esa' AND `notes`.`id` != 10 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nueva nota papapapa' AND `notes`.`id` != 12 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe' AND `notes`.`id` != 13 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 3 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'dejaria' AND `notes`.`id` != 14 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 3 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe' AND `notes`.`id` != 20 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 5 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe1' AND `notes`.`id` != 17 AND `notes`.`user_id` = 1 AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'nota no exportada' AND `notes`.`id` != 18 AND `notes`.`user_id` = 1 AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (3.7ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nota 26' AND `notes`.`id` != 4 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (1.9ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nota 2' AND `notes`.`id` != 7 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'dejaria' AND `notes`.`id` != 9 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'esa' AND `notes`.`id` != 10 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nueva nota papapapa' AND `notes`.`id` != 12 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe' AND `notes`.`id` != 13 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 3 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'dejaria' AND `notes`.`id` != 14 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 3 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe' AND `notes`.`id` != 20 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 5 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe1' AND `notes`.`id` != 17 AND `notes`.`user_id` = 1 AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'nota no exportada' AND `notes`.`id` != 18 AND `notes`.`user_id` = 1 AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mNote Load (0.9ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`book_id` = 5 LIMIT 11[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nota 26' AND `notes`.`id` != 4 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (6.3ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nota 2' AND `notes`.`id` != 7 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'dejaria' AND `notes`.`id` != 9 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'esa' AND `notes`.`id` != 10 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nueva nota papapapa' AND `notes`.`id` != 12 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe' AND `notes`.`id` != 13 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 3 LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'dejaria' AND `notes`.`id` != 14 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 3 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe' AND `notes`.`id` != 20 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 5 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe1' AND `notes`.`id` != 17 AND `notes`.`user_id` = 1 AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'nota no exportada' AND `notes`.`id` != 18 AND `notes`.`user_id` = 1 AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mNote Load (0.6ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`book_id` = 5 LIMIT 11[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mBook Load (0.3ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 AND `books`.`id` = 4 LIMIT 1[0m
+  [1m[36mBook Load (0.6ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 LIMIT 11[0m
+  [1m[36mBook Load (0.8ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 LIMIT 11[0m
+  [1m[36mBook Load (0.8ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 AND `books`.`id` = 5 LIMIT 1[0m
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`book_id` = 5 LIMIT 11[0m
+  [1m[36mBook Load (0.9ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+  [1m[36mNote Load (0.8ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`book_id` = 2[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nota 26' AND `notes`.`id` != 4 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nota 2' AND `notes`.`id` != 7 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'dejaria' AND `notes`.`id` != 9 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (2.7ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'esa' AND `notes`.`id` != 10 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (3.0ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'Nueva nota papapapa' AND `notes`.`id` != 12 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 2 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`book_id` = 3[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe' AND `notes`.`id` != 13 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 3 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'dejaria' AND `notes`.`id` != 14 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 3 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'nota no exportada libro 3' AND `notes`.`id` != 19 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 3 LIMIT 1[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mNote Load (4.3ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`book_id` = 5[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe' AND `notes`.`id` != 20 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 5 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe2' AND `notes`.`id` != 21 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 5 LIMIT 1[0m
+  [1m[36mNote Update (0.4ms)[0m  [1m[33mUPDATE `notes` SET `notes`.`exported_content` = '<p>pepe</p>\n', `notes`.`updated_at` = '2020-12-24 20:36:45.053797' WHERE `notes`.`id` = 21[0m
+  [1m[35m (37.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe3' AND `notes`.`id` != 22 AND `notes`.`user_id` IS NULL AND `notes`.`book_id` = 5 LIMIT 1[0m
+  [1m[36mNote Update (0.4ms)[0m  [1m[33mUPDATE `notes` SET `notes`.`exported_content` = '<p>pepe</p>\n', `notes`.`updated_at` = '2020-12-24 20:36:45.097224' WHERE `notes`.`id` = 22[0m
+  [1m[35m (59.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`book_id` = 6[0m
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'pepe1' AND `notes`.`id` != 17 AND `notes`.`user_id` = 1 AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mNote Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`title` = BINARY 'nota no exportada' AND `notes`.`id` != 18 AND `notes`.`user_id` = 1 AND `notes`.`book_id` IS NULL LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`book_id` = 5 LIMIT 11[0m

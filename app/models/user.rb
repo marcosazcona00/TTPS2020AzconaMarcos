@@ -21,4 +21,10 @@ class User < ApplicationRecord
     end
     return self.get_book(id: book_id).notes
   end
+
+  def export_all
+    books.each { |book| book.export}
+    notes.each { |note| note.export}
+  end
+
 end

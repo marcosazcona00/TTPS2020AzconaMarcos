@@ -59,4 +59,8 @@ class NotesController < ApplicationController
         note.destroy
         redirect_to action: 'index'
     end
+
+    def export
+        puts 'En el export'
+    end
 end

@@ -22,4 +22,10 @@ class Note < ApplicationRecord
         self.title = if !title.nil? then title.strip end
         self.content = if !content.nil? then content.strip end
     end
+
+    def export
+        new_exported_content = Kramdown::Document.new(content).to_html
+        self.exported_content = new_exported_content
+        self.save()
+    end
 end

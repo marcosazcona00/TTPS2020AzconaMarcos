@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :notes, path_names: { new: ':id/new' }, except: [:create]
   post '/notes/:id' => 'notes#create' 
   
+  #put '/notes/:id/export' => 'notes#export'
   #get '/notes/:id/new' => 'notes#new' 
   #post '/notes/:id' => 'notes#create' 
 

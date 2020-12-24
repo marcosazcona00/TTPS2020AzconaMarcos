@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_21_212012) do
+ActiveRecord::Schema.define(version: 2020_12_24_202131) do
 
   create_table "books", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "title", limit: 50, null: false
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2020_12_21_212012) do
     t.bigint "book_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "exported_content"
     t.index ["book_id"], name: "index_notes_on_book_id"
     t.index ["user_id"], name: "index_notes_on_user_id"
   end

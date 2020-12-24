@@ -29,6 +29,9 @@ class Book < ApplicationRecord
         return User.find_by(id: user_id)
     end
 
+    def export
+        notes.each { |note| note.export}
+    end
 
     def has_note?(note_title)
         ### Este metodo verifica si, dentro de un libro, existe una nota
