@@ -17,9 +17,9 @@ class Book < ApplicationRecord
         notes.each { |note| note.export}
     end
 
-    def has_note?(note_title)
-        ### Este metodo verifica si, dentro de un libro, existe una nota
-        return notes.exists?(title: note_title)
-    end
+    #def has_note?(note_title)
+    #    ### Este metodo verifica si, dentro de un libro, existe una nota
+    #    return notes.exists?(title: note_title)
+    #end
 
 end

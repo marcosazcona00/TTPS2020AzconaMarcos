@@ -4,10 +4,11 @@
     <title>Ttps2020</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
   </head>
 
   <body>
+    <%= render 'layouts/navigation' %>
+    <% ### yield lo que hace es como en vue el <router-view>, en vez de reemplazar el componente reemplaza el controlador que se esta ejecutando %>
     <%= yield %>
   </body>
 </html>

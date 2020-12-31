@@ -25,7 +25,12 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+# Gem to export text to rich text
 gem 'kramdown', '~> 1.8.0'
+
+# Gems to styling
+gem 'bootstrap', '~> 5.0.0.alpha3'
+gem 'jquery-rails'
 
 gem 'devise'
 

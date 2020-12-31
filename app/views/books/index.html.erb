@@ -1,7 +1,11 @@
 <% if @books.empty? %>
-    <h1> Aun no ha creado cuadernos </h1>
+    <div class="alert alert-warning">
+        <h2> Aun no ha creado cuadernos </h1>
+    </div>
 <% else %>
-    <h2> User books <%= current_user.email %> </h2>
+    <div class="alert alert-info">
+        <h2> User books <%= current_user.email %> </h2>
+    </div>
 <% end %>
 <%= button_to 'Export all', export_all_book_path(:id => 0), method: :put %>
 <%= link_to "New Book", new_book_path()%>
