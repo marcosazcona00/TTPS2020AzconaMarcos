@@ -1,7 +1,7 @@
-<h2> New Note </h2>
+<h2> New Note <%= if @book.nil? then 'Cajon global' else @book.title end %> </h2>
 
 <% ### Iteramos sobre cada campo del libro %>
-<%= form_for  @note, :url => { :action => :create }, :method => :post do |f| %>
+<%= form_for  @note, :url => { :action => :create , :id_book => @id_book}, :method => :post do |f| %>
     <% ### Si hay errores, los mostramos %>
     <% if @note.errors.any? %>
         <% @note.errors.full_messages.each do |message| %>
@@ -16,5 +16,8 @@
         <%= f.label :content, 'Contenido' %>
         <%= f.text_area :content %>
     </p>
-    <input type="submit" value="Enviar" onclick="return confirm('Esta seguro que desea crear un nuevo libro?')">
+    <p>
+        <input type="submit" value="Enviar" onclick="return confirm('Esta seguro que desea crear un nuevo libro?')">
+        <%= link_to 'Volver', notes_path(:id_book => @id_book) %>
+    </p>
 <% end %>

@@ -1,4 +1,10 @@
-<h2> Notes book "Poner nombre titulo libro" </h2>
+<% if @notes.empty? %>
+    <h1> Aun no hay notas para el cuaderno  <%= if @book.nil? then 'Cajon Global' else @book.title end %>  </h1>
+<% else %>
+    <h2> Notes book <%= if @book.nil? then 'Cajon Global' else @book.title end%> </h2>
+<% end %>
+<%= link_to "New Note",new_note_path(:id_book => @id_book) %>
+
 <ul>
     <% @notes.each do |note| %>
         <li> 
@@ -6,10 +12,9 @@
             <p>
                 <strong>Content:</strong> <%= note.content %>
             </p>
-            <%= link_to 'Export', note_path(note.id),method: :put, action: :export, remote: true %>
+            <%= button_to 'Export',export_note_path(note.id), method: :put %>
             <%= link_to "Edit", edit_note_path(note.id)%>
             <%= button_to 'Delete', note, method: :delete, data: { confirm: 'Seguro que desea eliminar la nota?' } %>
-
         </li>
     <% end %>
 </ul>

@@ -9,7 +9,12 @@
             <%= message %>
         <% end %>
     <% end %>
-    <%= f.label :title, 'Titulo' %>
-    <%= f.text_field :title, placeholder: 'Ingrese un titulo' %>
-    <input type="submit" value="Enviar" onclick="return confirm('Esta seguro que desea crear un nuevo libro?')">
+    <p>
+        <%= f.label :title, 'Titulo' %>
+        <%= f.text_field :title, placeholder: 'Ingrese un titulo' %>
+    </p>
+    <p>
+        <input type="submit" value="Enviar" onclick="return confirm('Esta seguro que desea crear un nuevo libro?')">
+        <%= link_to 'Back', books_path() %>
+    </p>
 <% end %>

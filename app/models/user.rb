@@ -12,7 +12,12 @@ class User < ApplicationRecord
     '''
       Devuelve la instancia de un libro
     '''
-    return books.find_by(**args)
+    book = books.find_by(**args)
+    if !book.nil?
+      return book
+    else
+      raise ActiveRecord::RecordNotFound 
+    end
   end
 
   def get_notes_book(book_id)
@@ -20,6 +25,10 @@ class User < ApplicationRecord
       return self.notes
     end
     return self.get_book(id: book_id).notes
+  end
+
+  def export_global
+    notes.each { |note| note.export }
   end
 
   def export_all

@@ -7,7 +7,7 @@ class Note < ApplicationRecord
 
     ### Con este uniqueness validamos que la nota para un usuario en uno de sus libros no exista
     ###:uniqueness => {case_sensitive: true, :scope => [:user, :book]}
-    validates :title, presence: true, length: { maximum: 50 }, :uniqueness => {case_sensitive: true, :scope => [:user, :book]}
+    validates :title, presence: true, length: { maximum: 50 }, :uniqueness => {case_sensitive: false, :scope => [:user, :book]}
 
     def initialize(args)
         if !args.nil?
@@ -20,7 +20,7 @@ class Note < ApplicationRecord
 
     def strip_whitespaces
         self.title = if !title.nil? then title.strip end
-        self.content = if !content.nil? then content.strip end
+        self.content = if !content.nil? then content end
     end
 
     def export

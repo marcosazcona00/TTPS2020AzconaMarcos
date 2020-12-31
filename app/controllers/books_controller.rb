@@ -1,8 +1,4 @@
-class BooksController < ApplicationController
-    include ApplicationHelper
-    
-    ### Con esto verificamos si a este controlador ingresa un usuario autenticado
-    
+class BooksController < ApplicationController    
     def index
         @books = current_user.books
     end
@@ -26,12 +22,8 @@ class BooksController < ApplicationController
 
     def edit
         ### Validamos que en el id no venga ningun simbolo extra
+        ### TODO cambiar el :id por :book_id
         book_id = params[:id]
-        if valid_id?(book_id)
-            ### Redirigiar a un 400 Bad Request    
-            redirect_to '/'
-            return
-        end
         @book = current_user.get_book(id: book_id)
         @current_book = current_user.get_book(id: book_id)
         if @current_book.nil?
@@ -56,13 +48,29 @@ class BooksController < ApplicationController
 
     def destroy
         book_id = params[:id]
-        if valid_id?(book_id)
-            ### Redirigiar a un 400 Bad Request    
-            redirect_to '/'
-            return
-        end
         @book = current_user.get_book(id: book_id)
         @book.destroy
         redirect_to action: 'index'
+    end
+
+    def export
+        id_book = params[:id]
+        if id_book.to_i != 0
+            ### Si no llego nil, significa que no es el cajon global
+            ### Verificamos si existe
+            begin
+                book = current_user.get_book(id: id_book)
+            rescue ActiveRecord::RecordNotFound
+                redirect_to '/'
+                return
+            end
+            book.export
+        else
+            current_user.export_global
+        end
+    end
+
+    def export_all
+        current_user.export_all
     end
 end

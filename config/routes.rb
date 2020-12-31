@@ -1,12 +1,19 @@
 Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :books
-  resources :notes, path_names: { new: ':id/new' }, except: [:create]
-  post '/notes/:id' => 'notes#create' 
-  
-  #put '/notes/:id/export' => 'notes#export'
-  #get '/notes/:id/new' => 'notes#new' 
-  #post '/notes/:id' => 'notes#create' 
 
+  resources :books do
+    member do
+      put 'export'
+      put 'export_all'
+    end
+  end
+
+  resources :notes do
+    member do
+      put 'export'
+    end
+  end    
+
+  put '/books/export_all', to: 'books#export_all' 
 end
