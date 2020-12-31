@@ -1,6 +1,11 @@
 class BooksController < ApplicationController    
+    #after_action :validate_pagination
+    before_action :validate_book_id
+
     def index
         @books = current_user.books
+        #@books = current_user.books.page(params[:page])
+        #@total_pages = @books.page().total_pages
     end
 
     def new
@@ -22,8 +27,7 @@ class BooksController < ApplicationController
 
     def edit
         ### Validamos que en el id no venga ningun simbolo extra
-        ### TODO cambiar el :id por :book_id
-        book_id = params[:id]
+        book_id = params[:id_book]
         @book = current_user.get_book(id: book_id)
         @current_book = current_user.get_book(id: book_id)
         if @current_book.nil?
@@ -34,7 +38,7 @@ class BooksController < ApplicationController
     end
 
     def update
-        book_id = params[:id]
+        book_id = params[:id_book]
         @current_book = current_user.get_book(id: book_id)
         new_title =  params[:book][:title]
         if @current_book.update(title: new_title)
@@ -47,14 +51,14 @@ class BooksController < ApplicationController
     end 
 
     def destroy
-        book_id = params[:id]
+        book_id = params[:id_book]
         @book = current_user.get_book(id: book_id)
         @book.destroy
         redirect_to action: 'index'
     end
 
     def export
-        id_book = params[:id]
+        id_book = params[:id_book]
         if id_book.to_i != 0
             ### Si no llego nil, significa que no es el cajon global
             ### Verificamos si existe

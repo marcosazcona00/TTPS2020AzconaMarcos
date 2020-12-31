@@ -32,6 +32,9 @@ gem 'kramdown', '~> 1.8.0'
 gem 'bootstrap', '~> 5.0.0.alpha3'
 gem 'jquery-rails'
 
+#Gem for Pagination
+gem 'kaminari'
+
 gem 'devise'
 
 # Reduces boot times through caching; required in config/boot.rb

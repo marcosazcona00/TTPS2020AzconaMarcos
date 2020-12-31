@@ -5,22 +5,22 @@
 <% else %>
     <div class="alert alert-info">
         <h2> User books <%= current_user.email %> </h2>
-    </div>
+    </div
 <% end %>
-<%= button_to 'Export all', export_all_book_path(:id => 0), method: :put %>
-<%= link_to "New Book", new_book_path()%>
+<%= button_to 'Export all', export_all_book_path(:id_book => 0), method: :put %>
+<%= link_to "New Book", new_book_path() %>
 <ul>
     <li> 
         Global 
         <%= link_to 'List Notes', notes_path() %>
-        <%= button_to 'Export', export_book_path(:id => 0), method: :put %>
+        <%= button_to 'Export', export_book_path(:id_book => 0), method: :put %>
     </li>
     <% @books.each do |book| %>
         <li> 
             Titile: <%= book.title %>
             <%= link_to 'List Notes', notes_path(:id_book => book.id) %>
             <%= link_to "Edit", edit_book_path(book.id)%>
-            <%= button_to 'Export', export_book_path(:id => book.id), method: :put %>
+            <%= button_to 'Export', export_book_path(:id_book => book.id), method: :put %>
             <%= button_to 'Delete', book, method: :delete, confirm: 'Seguro que desea eliminar el libro?'  %>
         </li>
     <% end %>

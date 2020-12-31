@@ -1,6 +1,6 @@
 class NotesController < ApplicationController
-    include BooksHelper
-    include NotesHelper
+    #include BooksHelper
+    #include NotesHelper
 
     before_action :validate_book_id, :validate_note_id
 
@@ -24,7 +24,11 @@ class NotesController < ApplicationController
             redirect_to action: 'index', id_book: book_id 
             return
         end
-        render 'new'
+        ### Reinicializamos el valor de @id_book porque se pierde
+        @id_book = book_id
+        
+        ### Al hacer el POST, en algunos casos el render pierde el id_book, por lo que lo pasamos explicitamente
+        render 'new', :id_book => @id_book
     end
 
     def edit

@@ -1,6 +1,7 @@
 <h2> New Note <%= if @book.nil? then 'Cajon global' else @book.title end %> </h2>
 
 <% ### Iteramos sobre cada campo del libro %>
+ID <%= @id_book %>
 <%= form_for  @note, :url => { :action => :create , :id_book => @id_book}, :method => :post do |f| %>
     <% ### Si hay errores, los mostramos %>
     <% if @note.errors.any? %>
