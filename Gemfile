@@ -29,7 +29,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'kramdown', '~> 1.8.0'
 
 # Gems to styling
-gem 'bootstrap', '~> 5.0.0.alpha3'
+gem 'bootstrap'
 gem 'jquery-rails'
 
 #Gem for Pagination

@@ -1,10 +1,13 @@
 <% if @notes.empty? %>
-    <h1> Aun no hay notas para el cuaderno  <%= if @book.nil? then 'Cajon Global' else @book.title end %>  </h1>
+    <div class="alert alert-warning">
+        <h1> Aun no hay notas para el cuaderno  <%= if @book.nil? then 'Cajon Global' else @book.title end %>  </h1>
+    </div>
 <% else %>
-    <h2> Notes book <%= if @book.nil? then 'Cajon Global' else @book.title end%> </h2>
+    <div class="alert alert-info">
+        <h2> Notes book <%= if @book.nil? then 'Cajon Global' else @book.title end%> </h2>
+    </div>
 <% end %>
-<%= link_to "New Note",new_note_path(:id_book => @id_book) %>
-
+<%= link_to "New Note",new_note_path(:id_book => @id_book), class: "btn btn-success" %>
 <ul>
     <% @notes.each do |note| %>
         <li> 

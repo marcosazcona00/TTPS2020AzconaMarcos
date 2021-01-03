@@ -1,7 +1,4 @@
 class NotesController < ApplicationController
-    #include BooksHelper
-    #include NotesHelper
-
     before_action :validate_book_id, :validate_note_id
 
     def index

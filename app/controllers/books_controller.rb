@@ -28,7 +28,6 @@ class BooksController < ApplicationController
     def edit
         ### Validamos que en el id no venga ningun simbolo extra
         book_id = params[:id_book]
-        @book = current_user.get_book(id: book_id)
         @current_book = current_user.get_book(id: book_id)
         if @current_book.nil?
             ### Redirigir a un forbbidden 400 porque el libro no lo tiene
@@ -51,26 +50,17 @@ class BooksController < ApplicationController
     end 
 
     def destroy
-        book_id = params[:id_book]
-        @book = current_user.get_book(id: book_id)
         @book.destroy
         redirect_to action: 'index'
     end
 
     def export
-        id_book = params[:id_book]
-        if id_book.to_i != 0
-            ### Si no llego nil, significa que no es el cajon global
-            ### Verificamos si existe
-            begin
-                book = current_user.get_book(id: id_book)
-            rescue ActiveRecord::RecordNotFound
-                redirect_to '/'
-                return
-            end
-            book.export
-        else
+        id_book = params[:id_book]        
+        if id_book.to_i == 0
+            ### Si el id_book es 0 significa que se exporta del global
             current_user.export_global
+        else
+            @book.export
         end
     end
 
