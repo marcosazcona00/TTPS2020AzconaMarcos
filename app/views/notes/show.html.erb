@@ -1,0 +1,39 @@
+<style>
+li {
+    margin-left: 10px; 
+}
+</style>
+<div class="card" style="margin: 0 auto ;width: 30%; margin-top: 20px">
+    <div class="card-body">
+        <h3 class="card-title"> <strong> Title </strong> <%= @note.title %> </h3>
+        <hr>
+        <h3> <strong> Content </strong> </h3>
+        <p>
+            <%= @note.content %>
+        </p>
+        <p>
+            <ul style="list-style: none; display: flex;">
+                <li>
+                    <%= button_to 'Export',export_note_path(@note.id), method: :put, class: "btn btn-secondary" %>
+                </li>
+
+                <li>
+                    <%= link_to "Edit", edit_note_path(@note.id), class: "btn btn-primary" %>
+                </li>
+
+                <li>
+                    <%= button_to 'Delete', @note, method: :delete, data: { confirm: 'Seguro que desea eliminar la nota?' }, class: "btn btn-danger" %>
+                </li>
+            </ul>
+        </p>
+    </div>
+</div>
+<% if !@note.exported_content.nil? %>
+    <div class="card" style="margin: 0 auto;width: 30%; margin-top: 20px">
+        <div class="card-body">
+            <h3 class="card-title"> <strong> Exported content for </strong> <%= @note.title %> </h3>
+            <hr>
+            <%= @note.exported_content.html_safe %> 
+        </div>
+    </div>
+<% end %>

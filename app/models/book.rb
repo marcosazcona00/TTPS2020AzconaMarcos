@@ -16,5 +16,12 @@ class Book < ApplicationRecord
         notes.each { |note| note.export}
     end
 
+    def has_note?(note_id)
+        return notes.exists?(id: note_id)
+    end 
+
+    def get_note(note_id)
+        return notes.find_by(id: note_id)
+    end
 
 end

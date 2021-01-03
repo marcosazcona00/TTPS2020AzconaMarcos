@@ -3,6 +3,7 @@ li {
     margin-left: 10px
 }
 </style>
+
 <% if @books.empty? %>
     <div class="alert alert-warning">
         <h2> Aun no ha creado cuadernos </h1>
@@ -12,14 +13,18 @@ li {
         <h2> User books <%= current_user.email %> </h2>
     </div>
 <% end %>
+
 <ul style="display: flex; list-style: none; padding: 0">
     <li>
         <%= link_to "New Book", new_book_path(), class: "btn btn-success" %>
     </li>
-    <li>
-        <%= button_to 'Export all', export_all_book_path(:id_book => 0), method: :put, class: "btn btn-secondary" %>
-    </li>
+    <% if !@books.empty? %>
+        <li>
+            <%= button_to 'Export all', export_all_book_path(:id_book => 0), method: :put, class: "btn btn-secondary" %>
+        </li>
+    <% end %>
 </ul>
+
 <table class="table table-striped">
     <thead>
       <tr>

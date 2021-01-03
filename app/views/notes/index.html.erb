@@ -1,3 +1,8 @@
+<style>
+li {
+    margin-left: 10px
+}
+</style>
 <% if @notes.empty? %>
     <div class="alert alert-warning">
         <h1> Aun no hay notas para el cuaderno  <%= if @book.nil? then 'Cajon Global' else @book.title end %>  </h1>
@@ -7,17 +12,39 @@
         <h2> Notes book <%= if @book.nil? then 'Cajon Global' else @book.title end%> </h2>
     </div>
 <% end %>
+
 <%= link_to "New Note",new_note_path(:id_book => @id_book), class: "btn btn-success" %>
-<ul>
-    <% @notes.each do |note| %>
-        <li> 
-            <strong>Title:</strong> <%= note.title %>
-            <p>
-                <strong>Content:</strong> <%= note.content %>
-            </p>
-            <%= button_to 'Export',export_note_path(note.id), method: :put %>
-            <%= link_to "Edit", edit_note_path(note.id)%>
-            <%= button_to 'Delete', note, method: :delete, data: { confirm: 'Seguro que desea eliminar la nota?' } %>
-        </li>
-    <% end %>
-</ul>
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+          <th> Note Name</th>
+          <th> Options </th>
+
+      </tr>
+    </thead>
+    <tbody>
+        <% @notes.each do |note| %>
+        <tr>
+            <td>  <%= note.title %> </td>
+            <td>
+                <ul style="list-style: none; display: flex">
+                    <li>
+                        <%= link_to "Show", note_path(note.id), class: "btn btn-light" %>
+                    </li>
+                    <li>
+                        <%= link_to "Edit", edit_note_path(note.id), class: "btn btn-primary" %>
+                    </li>
+                    <li>
+                        <%= button_to 'Export',export_note_path(note.id), method: :put, class: "btn btn-secondary" %>
+                    </li>
+                    <li>
+                        <%= button_to 'Delete', note, method: :delete, data: { confirm: 'Seguro que desea eliminar la nota?' }, class: "btn btn-danger" %>
+                    </li>
+
+                </ul>
+            </td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>

@@ -1,25 +1,24 @@
-
-<% ### Iteramos sobre cada campo del libro %>
 <div class="card" style="margin: 0 auto; width: 40%; margin-top: 20px">
     <div class="card-body">
-    <h3 class="card-title">New Book</h3>
-    <%= form_for @book do |f| %>
-        <% ### Si hay errores, los mostramos %>
-        <% if @book.errors.any? %>
-            <% @book.errors.full_messages.each do |message| %>
-                <div class="alert alert-danger" role="alert">
-                    <%= message %>
-                </div>
+        <h3 class="card-title">New Book</h3>
+        <% ### Iteramos sobre cada campo del libro %>
+        <%= form_for @book do |f| %>
+            <% ### Si hay errores, los mostramos %>
+            <% if @book.errors.any? %>
+                <% @book.errors.full_messages.each do |message| %>
+                    <div class="alert alert-danger" role="alert">
+                        <%= message %>
+                    </div>
+                <% end %>
             <% end %>
+            <p>
+                <%= f.label :title, 'Title' %>
+                <%= f.text_field :title, placeholder: 'New Title', class: "form-control" %>
+            </p>
+            <p>
+                <input type="submit" value="Send" class="btn btn-success" onclick="return confirm('Esta seguro que desea crear un nuevo libro?')">
+                <%= link_to 'Back', books_path(), class: "btn btn-danger" %>
+            </p>
         <% end %>
-        <p>
-            <%= f.label :title, 'Title' %>
-            <%= f.text_field :title, placeholder: 'New Title', class: "form-control" %>
-        </p>
-        <p>
-            <input type="submit" value="Send" class="btn btn-success" onclick="return confirm('Esta seguro que desea crear un nuevo libro?')">
-            <%= link_to 'Back', books_path(), class: "btn btn-danger" %>
-        </p>
-    <% end %>
   </div>
 </div>

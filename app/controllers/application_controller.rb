@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
             ### Si no llego nil, significa que no es el cajon global
             ### Verificamos si existe
             begin
-                @note = Note.find(note_id)
+                @note = current_user.get_note(note_id)
             rescue ActiveRecord::RecordNotFound
                 redirect_to '/'
                 return

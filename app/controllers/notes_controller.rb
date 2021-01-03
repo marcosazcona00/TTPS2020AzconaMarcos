@@ -1,6 +1,9 @@
 class NotesController < ApplicationController
     before_action :validate_book_id, :validate_note_id
 
+    def show
+    end
+
     def index
         @id_book = params[:id_book]
         @notes = current_user.get_notes_book(@id_book) 
@@ -59,5 +62,7 @@ class NotesController < ApplicationController
 
     def export
         @note.export
+        redirect_to action: 'index', id_book: @note.book_id 
+
     end
 end
