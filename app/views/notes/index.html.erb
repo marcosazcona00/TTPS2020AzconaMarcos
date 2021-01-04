@@ -24,6 +24,7 @@ li {
       </tr>
     </thead>
     <tbody>
+        <%= paginate @notes %>
         <% @notes.each do |note| %>
         <tr>
             <td>  <%= note.title %> </td>

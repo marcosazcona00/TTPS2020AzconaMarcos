@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: ttps2020_production
-  username: ttps2020
-  password: <%= ENV['TTPS2020_DATABASE_PASSWORD'] %>
+  username: root
+  password: Asdfgh*147258

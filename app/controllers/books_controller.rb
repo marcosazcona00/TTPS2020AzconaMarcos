@@ -1,11 +1,9 @@
 class BooksController < ApplicationController    
-    #after_action :validate_pagination
-    before_action :validate_book_id
+    before_action :set_book, except: [:index, :new, :create, :export_all, :export]
 
     def index
-        @books = current_user.books
-        #@books = current_user.books.page(params[:page])
-        #@total_pages = @books.page().total_pages
+        @books = current_user.books.page(params[:page])
+        @total_pages = @books.page().total_pages
     end
 
     def new
@@ -60,6 +58,7 @@ class BooksController < ApplicationController
             ### Si el id_book es 0 significa que se exporta del global
             current_user.export_global
         else
+            self.set_book()
             @book.export
         end
     end

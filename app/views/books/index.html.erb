@@ -47,6 +47,7 @@ li {
                 </ul>
             </td>
         </tr>
+        <%= paginate @books %>
         <% @books.each do |book| %>
             <tr>
                 <td data-th="Book Name"> <%= book.title %> </td>

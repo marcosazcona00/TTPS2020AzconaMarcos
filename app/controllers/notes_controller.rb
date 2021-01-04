@@ -1,12 +1,16 @@
 class NotesController < ApplicationController
-    before_action :validate_book_id, :validate_note_id
-
+    before_action :set_book, except: [:edit, :update, :detroy, :export]
+    before_action :set_note, except: [:index, :new, :create]
+        
     def show
     end
 
     def index
         @id_book = params[:id_book]
-        @notes = current_user.get_notes_book(@id_book) 
+        #@notes = current_user.get_notes_book(@id_book) 
+        @notes = current_user.get_notes_book(@id_book) .page(params[:page])
+        @total_pages = @notes.page().total_pages
+
     end
 
     def new
@@ -63,6 +67,11 @@ class NotesController < ApplicationController
     def export
         @note.export
         redirect_to action: 'index', id_book: @note.book_id 
-
     end
+
+    def set_note
+        note_id = params[:id]
+        @note = current_user.get_note(note_id)
+    end
+
 end
