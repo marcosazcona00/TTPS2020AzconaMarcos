@@ -25,6 +25,7 @@ class NotesController < ApplicationController
 
         @note = Note.new(title: title, content: content, book_id: book_id, user_id: current_user.id)  
         if @note.save
+            flash[:notice] = "The note #{@note.title} has been created succesfully"
             redirect_to action: 'index', id_book: book_id 
             return
         end
@@ -47,6 +48,8 @@ class NotesController < ApplicationController
         new_content = params[:note][:content]
         
         if @current_note.update(title: new_title,content: new_content)
+            flash[:notice] = "The note #{@current_note.title} has been updated succesfully"
+
             redirect_to action: 'index', id_book: @current_note.book_id 
             return
         end
@@ -61,11 +64,14 @@ class NotesController < ApplicationController
         note = Note.find(note_id)
         book_id = note.book_id
         note.destroy
+        flash[:notice] = "The note #{note.title} has been deleted succesfully"
         redirect_to action: 'index', id_book: book_id
     end
 
     def export
         @note.export
+        flash[:notice] = "The note #{@note.title} has been exported succesfully"
+
         redirect_to action: 'index', id_book: @note.book_id 
     end
 

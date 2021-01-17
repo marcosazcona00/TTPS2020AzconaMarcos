@@ -17,4 +17,9 @@ Rails.application.routes.draw do
 
   put '/books/export_all', to: 'books#export_all'
   
+  authenticated :user do
+    ### Redireccion al listado de libros una vez logueado
+    root 'books#index', as: :authenticated_root
+  end
+  
 end

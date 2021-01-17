@@ -16,6 +16,7 @@ class BooksController < ApplicationController
         @book = Book.new(title: book_values[:title], user_id: current_user.id)
         if @book.save
             ### La creacion fue exitosa
+            flash[:notice] = "The book #{@book.title} has been created succesfully"
             redirect_to action: 'index'
             return  
         end
@@ -39,6 +40,7 @@ class BooksController < ApplicationController
         @current_book = current_user.get_book(id: book_id)
         new_title =  params[:book][:title]
         if @current_book.update(title: new_title)
+            flash[:notice] = "The book #{@current_book.title} has been updated succesfully"
             redirect_to action: 'index'
             return
         end
@@ -49,6 +51,7 @@ class BooksController < ApplicationController
 
     def destroy
         @book.destroy
+        flash[:notice] = "The book #{@book.title} has been deleted succesfully"
         redirect_to action: 'index'
     end
 
@@ -57,13 +60,18 @@ class BooksController < ApplicationController
         if id_book.to_i == 0
             ### Si el id_book es 0 significa que se exporta del global
             current_user.export_global
+            flash[:notice] = "The global book has been exported succesfully"
         else
             self.set_book()
             @book.export
+            flash[:notice] = "The book #{@book.title} has been exported succesfully"
         end
+        redirect_to action: 'index'
     end
 
     def export_all
+        flash[:notice] = "All books has been exported succesfully"
         current_user.export_all
+        redirect_to action: 'index'
     end
 end

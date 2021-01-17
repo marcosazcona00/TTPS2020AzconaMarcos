@@ -1,5 +1,5 @@
 class Book < ApplicationRecord
-    ### El dependen permite borrar en cascada
+    ### El dependent permite borrar en cascada
     has_many :notes, :dependent => :delete_all 
     belongs_to :user
     
