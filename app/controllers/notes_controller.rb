@@ -8,7 +8,7 @@ class NotesController < ApplicationController
     def index
         @id_book = params[:id_book]
         #@notes = current_user.get_notes_book(@id_book) 
-        @notes = current_user.get_notes_book(@id_book) .page(params[:page])
+        @notes = current_user.get_notes_book(@id_book).page(params[:page])
         @total_pages = @notes.page().total_pages
 
     end
@@ -60,11 +60,9 @@ class NotesController < ApplicationController
     end 
     
     def destroy
-        note_id = params[:id]
-        note = Note.find(note_id)
-        book_id = note.book_id
-        note.destroy
-        flash[:notice] = "The note #{note.title} has been deleted succesfully"
+        book_id = @note.book_id
+        @note.destroy
+        flash[:notice] = "The note #{@note.title} has been deleted succesfully"
         redirect_to action: 'index', id_book: book_id
     end
 
@@ -79,5 +77,4 @@ class NotesController < ApplicationController
         note_id = params[:id]
         @note = current_user.get_note(note_id)
     end
-
 end
