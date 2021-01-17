@@ -1,0 +1,15 @@
+//= require ./bootstrap/dom/data
+//= require ./bootstrap/dom/event-handler
+//= require ./bootstrap/dom/manipulator
+//= require ./bootstrap/toast
+//= require ./bootstrap/dom/selector-engine
+//= require ./bootstrap/dropdown
+//= require ./bootstrap/alert
+//= require ./bootstrap/tooltip
+//= require ./bootstrap/collapse
+//= require ./bootstrap/modal
+//= require ./bootstrap/tab
+//= require ./bootstrap/scrollspy
+//= require ./bootstrap/button
+//= require ./bootstrap/carousel
+//= require ./bootstrap/popover

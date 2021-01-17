@@ -1,0 +1,55 @@
+<style>
+li {
+    margin-left: 10px
+}
+</style>
+<div class="alert alert-info">
+    <% if @notes.empty? %>
+        <h1> Aun no hay notas para el cuaderno  <%= if @book.nil? then 'Cajon Global' else @book.title end %>  </h1>
+    <% else %>
+        <h2> Notes book <%= if @book.nil? then 'Cajon Global' else @book.title end%> </h2>
+    <% end %>
+</div>
+
+<% if flash[:notice] %>
+  <div class="alert alert-warning">
+    <h3> <%= flash[:notice] %> </h3>
+  </div>
+<% end %>
+
+<%= link_to "New Note",new_note_path(:id_book => @id_book), class: "btn btn-success" %>
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+          <th> Note Name</th>
+          <th> Options </th>
+
+      </tr>
+    </thead>
+    <tbody>
+        <%= paginate @notes %>
+        <% @notes.each do |note| %>
+        <tr>
+            <td>  <%= note.title %> </td>
+            <td>
+                <ul style="list-style: none; display: flex">
+                    <li>
+                        <%= link_to "Show", note_path(note.id), class: "btn btn-light" %>
+                    </li>
+                    <li>
+                        <%= link_to "Edit", edit_note_path(note.id), class: "btn btn-primary" %>
+                    </li>
+                    <li>
+                        <%= button_to 'Export',export_note_path(note.id), method: :put, class: "btn btn-secondary" %>
+                    </li>
+                    <li>
+                        <%= button_to 'Delete', note, method: :delete, data: { confirm: 'Seguro que desea eliminar la nota?' }, class: "btn btn-danger" %>
+                    </li>
+
+                </ul>
+            </td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>

@@ -1,0 +1,77 @@
+<style>
+li {
+    margin-left: 10px
+}
+</style>
+
+<div class="alert alert-info">
+    <% if @books.empty? %>
+        <h2> Aun no ha creado cuadernos </h1>
+    <% else %>
+        <h2> User books <%= current_user.email %> </h2>
+    <% end %>
+</div>
+
+<% if flash[:notice] %>
+  <div class="alert alert-warning">
+    <h3> <%= flash[:notice] %> </h3>
+  </div>
+<% end %>
+
+<ul style="display: flex; list-style: none; padding: 0">
+    <li>
+        <%= link_to "New Book", new_book_path(), class: "btn btn-success" %>
+    </li>
+    <% if !@books.empty? %>
+        <li>
+            <%= button_to 'Export all', export_all_book_path(:id_book => 0), method: :put, class: "btn btn-secondary" %>
+        </li>
+    <% end %>
+</ul>
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+          <th> Book Name</th>
+          <th> Options </th>
+
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td data-th="Book Name"> Global </td>
+            <td data-th="Options"> 
+                <ul style="list-style: none; display: flex">
+                    <li>
+                        <%= link_to 'List Notes', notes_path(), class: "btn btn-light" %>
+                    </li>
+                    <li>
+                        <%= button_to 'Export', export_book_path(:id_book => 0), method: :put, class: "btn btn-secondary" %>     
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <%= paginate @books %>
+        <% @books.each do |book| %>
+            <tr>
+                <td data-th="Book Name"> <%= book.title %> </td>
+                <td>
+                    <ul style="list-style: none; display: flex">
+                        <li>
+                            <%= link_to 'List Notes', notes_path(:id_book => book.id), class: "btn btn-light" %>
+                        </li>
+                        <li>
+                            <%= button_to 'Export', export_book_path(:id_book => book.id), method: :put, class: "btn btn-secondary" %>
+                        </li>
+                        <li>
+                            <%= link_to "Edit", edit_book_path(book.id), class: "btn btn-primary"%>
+                        </li>
+                        <li>
+                            <%= button_to 'Delete', book, method: :delete, confirm: 'Seguro que desea eliminar el libro?', class: "btn btn-danger"  %>
+                        </li>
+
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

@@ -1,0 +1,29 @@
+<div class="card" style="margin: 0 auto; width: 40%; margin-top: 20px">
+    <div class="card-body">
+        <h3 class="card-title"> New Note <%= if @book.nil? then 'Cajon global' else @book.title end %> </h3>
+
+        <% ### Iteramos sobre cada campo del libro %>
+        <%= form_for  @note, :url => { :action => :create , :id_book => @id_book}, :method => :post do |f| %>
+            <% ### Si hay errores, los mostramos %>
+            <% if @note.errors.any? %>
+                <% @note.errors.full_messages.each do |message| %>
+                    <div class="alert alert-danger" role="alert">
+                        <%= message %>
+                    </div>
+                <% end %>
+            <% end %>
+            <p>
+                <%= f.label :title, 'Title' %>
+                <%= f.text_field :title, placeholder: 'New title', class: "form-control" %>
+            </p>
+            <p>
+                <%= f.label :content, 'Content' %>
+                <%= f.text_area :content, class: "form-control" %>
+            </p>
+            <p>
+                <input type="submit" value="Enviar" class="btn btn-success" onclick="return confirm('Esta seguro que desea crear un nuevo libro?')">
+                <%= link_to 'Back', notes_path(:id_book => @id_book), class: "btn btn-danger" %>
+            </p>
+        <% end %>
+    </div>
+</div>

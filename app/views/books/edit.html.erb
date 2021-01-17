@@ -1,0 +1,22 @@
+<div class="card" style="margin: 0 auto; width: 40%; margin-top: 20px">
+    <div class="card-body">
+        <h3 class="card-title"> Edit Book "<%= @book.title%>" </h2>
+        <%= form_for @current_book do |f| %>
+            <% if @current_book.errors.any? %>
+                <% @current_book.errors.full_messages.each do |message| %>
+                    <div class="alert alert-danger" role="alert">
+                        <%= message %>
+                    </div>
+                <% end %>
+            <% end %>
+            <p>
+                <%= f.label :title, 'Title' %>
+                <%= f.text_field :title, class: "form-control" %>
+            </p>
+            <p>
+                <input type="submit" value="Enviar" class="btn btn-success" onclick="return confirm('Esta seguro que desea guardar los nuevos cambios?')">
+                <%= link_to 'Back', books_path(), class: "btn btn-danger"%>
+            </p>
+        <% end %>
+    </div>
+</div>
