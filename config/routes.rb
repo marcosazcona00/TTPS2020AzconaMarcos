@@ -21,5 +21,8 @@ Rails.application.routes.draw do
     ### Redireccion al listado de libros una vez logueado
     root 'books#index', as: :authenticated_root
   end
-  
+
+  #unauthenticated :user do
+  #  root 'application', as: :unauthenticated_root 
+  #end
 end

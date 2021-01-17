@@ -6235,3 +6235,80 @@ F, [2021-01-16T19:01:32.698637 #24510] FATAL -- : [adfbdbf2-d854-4a22-b95d-33ab5
 [adfbdbf2-d854-4a22-b95d-33ab5ab95b75] NoMethodError (undefined method `title' for nil:NilClass):
 [adfbdbf2-d854-4a22-b95d-33ab5ab95b75]   
 [adfbdbf2-d854-4a22-b95d-33ab5ab95b75] app/controllers/books_controller.rb:67:in `export'
+I, [2021-01-16T23:13:32.642463 #32466]  INFO -- : [2a85544f-27e1-494e-8fa2-9472d8b418f6] Started GET "/" for 127.0.0.1 at 2021-01-16 23:13:32 -0300
+F, [2021-01-16T23:13:32.651182 #32466] FATAL -- : [2a85544f-27e1-494e-8fa2-9472d8b418f6]   
+[2a85544f-27e1-494e-8fa2-9472d8b418f6] ActionController::RoutingError (No route matches [GET] "/"):
+[2a85544f-27e1-494e-8fa2-9472d8b418f6]   
+[2a85544f-27e1-494e-8fa2-9472d8b418f6] actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+[2a85544f-27e1-494e-8fa2-9472d8b418f6] actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+[2a85544f-27e1-494e-8fa2-9472d8b418f6] railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+[2a85544f-27e1-494e-8fa2-9472d8b418f6] railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+[2a85544f-27e1-494e-8fa2-9472d8b418f6] activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+[2a85544f-27e1-494e-8fa2-9472d8b418f6] activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+[2a85544f-27e1-494e-8fa2-9472d8b418f6] activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+[2a85544f-27e1-494e-8fa2-9472d8b418f6] railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+[2a85544f-27e1-494e-8fa2-9472d8b418f6] actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+[2a85544f-27e1-494e-8fa2-9472d8b418f6] actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+[2a85544f-27e1-494e-8fa2-9472d8b418f6] rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+[2a85544f-27e1-494e-8fa2-9472d8b418f6] rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+[2a85544f-27e1-494e-8fa2-9472d8b418f6] activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+[2a85544f-27e1-494e-8fa2-9472d8b418f6] actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+[2a85544f-27e1-494e-8fa2-9472d8b418f6] rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+[2a85544f-27e1-494e-8fa2-9472d8b418f6] actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:76:in `call'
+[2a85544f-27e1-494e-8fa2-9472d8b418f6] railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+[2a85544f-27e1-494e-8fa2-9472d8b418f6] puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+[2a85544f-27e1-494e-8fa2-9472d8b418f6] puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+[2a85544f-27e1-494e-8fa2-9472d8b418f6] puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+[2a85544f-27e1-494e-8fa2-9472d8b418f6] puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+[2a85544f-27e1-494e-8fa2-9472d8b418f6] puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+I, [2021-01-16T23:13:39.344387 #32466]  INFO -- : [a685ddfc-d149-410b-84ea-ff9223841183] Started GET "/books" for 127.0.0.1 at 2021-01-16 23:13:39 -0300
+I, [2021-01-16T23:13:39.346428 #32466]  INFO -- : [a685ddfc-d149-410b-84ea-ff9223841183] Processing by BooksController#index as HTML
+I, [2021-01-16T23:13:39.348780 #32466]  INFO -- : [a685ddfc-d149-410b-84ea-ff9223841183] Completed 401 Unauthorized in 2ms (Allocations: 919)
+I, [2021-01-16T23:13:39.362746 #32466]  INFO -- : [9211799f-5aa1-4b33-b28d-3077ba1291bf] Started GET "/users/sign_in" for 127.0.0.1 at 2021-01-16 23:13:39 -0300
+I, [2021-01-16T23:13:39.363757 #32466]  INFO -- : [9211799f-5aa1-4b33-b28d-3077ba1291bf] Processing by Devise::SessionsController#new as HTML
+D, [2021-01-16T23:13:39.369711 #32466] DEBUG -- : [9211799f-5aa1-4b33-b28d-3077ba1291bf]   [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+I, [2021-01-16T23:13:39.384983 #32466]  INFO -- : [9211799f-5aa1-4b33-b28d-3077ba1291bf]   Rendering devise/sessions/new.html.erb within layouts/application
+I, [2021-01-16T23:13:39.401778 #32466]  INFO -- : [9211799f-5aa1-4b33-b28d-3077ba1291bf]   Rendered devise/shared/_links.html.erb (Duration: 1.8ms | Allocations: 661)
+I, [2021-01-16T23:13:39.401949 #32466]  INFO -- : [9211799f-5aa1-4b33-b28d-3077ba1291bf]   Rendered devise/sessions/new.html.erb within layouts/application (Duration: 16.8ms | Allocations: 2430)
+I, [2021-01-16T23:13:39.404211 #32466]  INFO -- : [9211799f-5aa1-4b33-b28d-3077ba1291bf]   Rendered layouts/_navigation.html.erb (Duration: 0.9ms | Allocations: 248)
+I, [2021-01-16T23:13:39.404909 #32466]  INFO -- : [9211799f-5aa1-4b33-b28d-3077ba1291bf] Completed 200 OK in 41ms (Views: 22.0ms | ActiveRecord: 2.2ms | Allocations: 14024)
+I, [2021-01-16T23:13:39.498903 #32466]  INFO -- : [9a0975f5-1862-4699-8c8a-83b839d8e2ab] Started GET "/favicon.ico" for 127.0.0.1 at 2021-01-16 23:13:39 -0300
+F, [2021-01-16T23:13:39.499619 #32466] FATAL -- : [9a0975f5-1862-4699-8c8a-83b839d8e2ab]   
+[9a0975f5-1862-4699-8c8a-83b839d8e2ab] ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+[9a0975f5-1862-4699-8c8a-83b839d8e2ab]   
+[9a0975f5-1862-4699-8c8a-83b839d8e2ab] actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+[9a0975f5-1862-4699-8c8a-83b839d8e2ab] actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+[9a0975f5-1862-4699-8c8a-83b839d8e2ab] railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+[9a0975f5-1862-4699-8c8a-83b839d8e2ab] railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+[9a0975f5-1862-4699-8c8a-83b839d8e2ab] activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+[9a0975f5-1862-4699-8c8a-83b839d8e2ab] activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+[9a0975f5-1862-4699-8c8a-83b839d8e2ab] activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+[9a0975f5-1862-4699-8c8a-83b839d8e2ab] railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+[9a0975f5-1862-4699-8c8a-83b839d8e2ab] actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+[9a0975f5-1862-4699-8c8a-83b839d8e2ab] actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+[9a0975f5-1862-4699-8c8a-83b839d8e2ab] rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+[9a0975f5-1862-4699-8c8a-83b839d8e2ab] rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+[9a0975f5-1862-4699-8c8a-83b839d8e2ab] activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+[9a0975f5-1862-4699-8c8a-83b839d8e2ab] actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+[9a0975f5-1862-4699-8c8a-83b839d8e2ab] rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+[9a0975f5-1862-4699-8c8a-83b839d8e2ab] actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:76:in `call'
+[9a0975f5-1862-4699-8c8a-83b839d8e2ab] railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+[9a0975f5-1862-4699-8c8a-83b839d8e2ab] puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+[9a0975f5-1862-4699-8c8a-83b839d8e2ab] puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+[9a0975f5-1862-4699-8c8a-83b839d8e2ab] puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+[9a0975f5-1862-4699-8c8a-83b839d8e2ab] puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+[9a0975f5-1862-4699-8c8a-83b839d8e2ab] puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+I, [2021-01-16T23:14:19.397919 #32466]  INFO -- : [0b414220-f01f-4df0-a23d-600317ef2ab2] Started GET "/users/sign_in" for 127.0.0.1 at 2021-01-16 23:14:19 -0300
+I, [2021-01-16T23:14:19.398937 #32466]  INFO -- : [0b414220-f01f-4df0-a23d-600317ef2ab2] Processing by Devise::SessionsController#new as HTML
+I, [2021-01-16T23:14:19.400680 #32466]  INFO -- : [0b414220-f01f-4df0-a23d-600317ef2ab2]   Rendering devise/sessions/new.html.erb within layouts/application
+I, [2021-01-16T23:14:19.403002 #32466]  INFO -- : [0b414220-f01f-4df0-a23d-600317ef2ab2]   Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 136)
+I, [2021-01-16T23:14:19.403140 #32466]  INFO -- : [0b414220-f01f-4df0-a23d-600317ef2ab2]   Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1207)
+I, [2021-01-16T23:14:19.403734 #32466]  INFO -- : [0b414220-f01f-4df0-a23d-600317ef2ab2]   Rendered layouts/_navigation.html.erb (Duration: 0.2ms | Allocations: 61)
+I, [2021-01-16T23:14:19.404098 #32466]  INFO -- : [0b414220-f01f-4df0-a23d-600317ef2ab2] Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 0.0ms | Allocations: 2161)
+I, [2021-01-16T23:14:19.918550 #32466]  INFO -- : [c1735a0d-31ae-4276-a4fc-0aa853d4f197] Started GET "/users/sign_in" for 127.0.0.1 at 2021-01-16 23:14:19 -0300
+I, [2021-01-16T23:14:19.919928 #32466]  INFO -- : [c1735a0d-31ae-4276-a4fc-0aa853d4f197] Processing by Devise::SessionsController#new as HTML
+I, [2021-01-16T23:14:19.922368 #32466]  INFO -- : [c1735a0d-31ae-4276-a4fc-0aa853d4f197]   Rendering devise/sessions/new.html.erb within layouts/application
+I, [2021-01-16T23:14:19.925673 #32466]  INFO -- : [c1735a0d-31ae-4276-a4fc-0aa853d4f197]   Rendered devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 136)
+I, [2021-01-16T23:14:19.925834 #32466]  INFO -- : [c1735a0d-31ae-4276-a4fc-0aa853d4f197]   Rendered devise/sessions/new.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1198)
+I, [2021-01-16T23:14:19.926337 #32466]  INFO -- : [c1735a0d-31ae-4276-a4fc-0aa853d4f197]   Rendered layouts/_navigation.html.erb (Duration: 0.2ms | Allocations: 61)
+I, [2021-01-16T23:14:19.926773 #32466]  INFO -- : [c1735a0d-31ae-4276-a4fc-0aa853d4f197] Completed 200 OK in 7ms (Views: 4.9ms | ActiveRecord: 0.0ms | Allocations: 2140)
