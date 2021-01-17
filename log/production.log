@@ -6312,3 +6312,493 @@ I, [2021-01-16T23:14:19.925673 #32466]  INFO -- : [c1735a0d-31ae-4276-a4fc-0aa85
 I, [2021-01-16T23:14:19.925834 #32466]  INFO -- : [c1735a0d-31ae-4276-a4fc-0aa853d4f197]   Rendered devise/sessions/new.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1198)
 I, [2021-01-16T23:14:19.926337 #32466]  INFO -- : [c1735a0d-31ae-4276-a4fc-0aa853d4f197]   Rendered layouts/_navigation.html.erb (Duration: 0.2ms | Allocations: 61)
 I, [2021-01-16T23:14:19.926773 #32466]  INFO -- : [c1735a0d-31ae-4276-a4fc-0aa853d4f197] Completed 200 OK in 7ms (Views: 4.9ms | ActiveRecord: 0.0ms | Allocations: 2140)
+I, [2021-01-17T11:35:29.150829 #14984]  INFO -- : [4ab65ca8-79cb-48ef-9367-5ec9266654b9] Started GET "/books" for 127.0.0.1 at 2021-01-17 11:35:29 -0300
+I, [2021-01-17T11:35:29.153092 #14984]  INFO -- : [4ab65ca8-79cb-48ef-9367-5ec9266654b9] Processing by BooksController#index as HTML
+I, [2021-01-17T11:35:29.163474 #14984]  INFO -- : [4ab65ca8-79cb-48ef-9367-5ec9266654b9] Completed 401 Unauthorized in 10ms (Allocations: 968)
+I, [2021-01-17T11:35:29.176003 #14984]  INFO -- : [8ac5e081-fe33-4486-ae38-102aae334d1a] Started GET "/users/sign_in" for 127.0.0.1 at 2021-01-17 11:35:29 -0300
+I, [2021-01-17T11:35:29.176917 #14984]  INFO -- : [8ac5e081-fe33-4486-ae38-102aae334d1a] Processing by Devise::SessionsController#new as HTML
+D, [2021-01-17T11:35:29.183131 #14984] DEBUG -- : [8ac5e081-fe33-4486-ae38-102aae334d1a]   [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+I, [2021-01-17T11:35:29.213048 #14984]  INFO -- : [8ac5e081-fe33-4486-ae38-102aae334d1a]   Rendering devise/sessions/new.html.erb within layouts/application
+I, [2021-01-17T11:35:29.217331 #14984]  INFO -- : [8ac5e081-fe33-4486-ae38-102aae334d1a]   Rendered devise/shared/_links.html.erb (Duration: 1.0ms | Allocations: 658)
+I, [2021-01-17T11:35:29.217454 #14984]  INFO -- : [8ac5e081-fe33-4486-ae38-102aae334d1a]   Rendered devise/sessions/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 2469)
+I, [2021-01-17T11:35:29.219430 #14984]  INFO -- : [8ac5e081-fe33-4486-ae38-102aae334d1a]   Rendered layouts/_navigation.html.erb (Duration: 1.3ms | Allocations: 374)
+I, [2021-01-17T11:35:29.219889 #14984]  INFO -- : [8ac5e081-fe33-4486-ae38-102aae334d1a] Completed 200 OK in 43ms (Views: 9.5ms | ActiveRecord: 13.2ms | Allocations: 14189)
+I, [2021-01-17T11:35:30.501066 #14984]  INFO -- : [eaa5120d-bc80-4919-b645-9c3ef053cef1] Started POST "/users/sign_in" for 127.0.0.1 at 2021-01-17 11:35:30 -0300
+I, [2021-01-17T11:35:30.501854 #14984]  INFO -- : [eaa5120d-bc80-4919-b645-9c3ef053cef1] Processing by Devise::SessionsController#create as HTML
+I, [2021-01-17T11:35:30.501952 #14984]  INFO -- : [eaa5120d-bc80-4919-b645-9c3ef053cef1]   Parameters: {"authenticity_token"=>"pqZlQ5UwYL42y8I6tIPNJNGPVFTnj6WNiJEZ1r3sK0DNbh3FKO2DHNbWAyDkMSZbOndmTV5Ofd9nbwNfkUTEHQ==", "user"=>{"email"=>"cesar@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Send"}
+D, [2021-01-17T11:35:30.508604 #14984] DEBUG -- : [eaa5120d-bc80-4919-b645-9c3ef053cef1]   [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'cesar@gmail.com' ORDER BY `users`.`id` ASC LIMIT 1[0m
+I, [2021-01-17T11:35:30.776710 #14984]  INFO -- : [eaa5120d-bc80-4919-b645-9c3ef053cef1] Redirected to http://localhost:3000/books
+I, [2021-01-17T11:35:30.777022 #14984]  INFO -- : [eaa5120d-bc80-4919-b645-9c3ef053cef1] Completed 302 Found in 275ms (ActiveRecord: 0.9ms | Allocations: 4890)
+I, [2021-01-17T11:35:30.785529 #14984]  INFO -- : [14fdee6c-499e-4b49-b817-37f262ffb769] Started GET "/books" for 127.0.0.1 at 2021-01-17 11:35:30 -0300
+I, [2021-01-17T11:35:30.786323 #14984]  INFO -- : [14fdee6c-499e-4b49-b817-37f262ffb769] Processing by BooksController#index as HTML
+D, [2021-01-17T11:35:30.788152 #14984] DEBUG -- : [14fdee6c-499e-4b49-b817-37f262ffb769]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+D, [2021-01-17T11:35:30.792645 #14984] DEBUG -- : [14fdee6c-499e-4b49-b817-37f262ffb769]   [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM `books` WHERE `books`.`user_id` = 1[0m
+I, [2021-01-17T11:35:30.796317 #14984]  INFO -- : [14fdee6c-499e-4b49-b817-37f262ffb769]   Rendering books/index.html.erb within layouts/application
+D, [2021-01-17T11:35:30.798938 #14984] DEBUG -- : [14fdee6c-499e-4b49-b817-37f262ffb769]   [1m[36mBook Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `books` WHERE `books`.`user_id` = 1 LIMIT 1 OFFSET 0[0m
+D, [2021-01-17T11:35:30.799696 #14984] DEBUG -- : [14fdee6c-499e-4b49-b817-37f262ffb769]   [1m[36mCACHE Book Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM `books` WHERE `books`.`user_id` = 1 LIMIT 1 OFFSET 0[0m
+D, [2021-01-17T11:35:30.800772 #14984] DEBUG -- : [14fdee6c-499e-4b49-b817-37f262ffb769]   [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `books` WHERE `books`.`user_id` = 1[0m
+D, [2021-01-17T11:35:30.803392 #14984] DEBUG -- : [14fdee6c-499e-4b49-b817-37f262ffb769]   [1m[36mBook Load (0.5ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 LIMIT 2 OFFSET 0[0m
+I, [2021-01-17T11:35:30.803661 #14984]  INFO -- : [14fdee6c-499e-4b49-b817-37f262ffb769]   Rendered books/index.html.erb within layouts/application (Duration: 7.2ms | Allocations: 2360)
+I, [2021-01-17T11:35:30.804418 #14984]  INFO -- : [14fdee6c-499e-4b49-b817-37f262ffb769]   Rendered layouts/_navigation.html.erb (Duration: 0.3ms | Allocations: 191)
+I, [2021-01-17T11:35:30.804693 #14984]  INFO -- : [14fdee6c-499e-4b49-b817-37f262ffb769] Completed 200 OK in 18ms (Views: 9.6ms | ActiveRecord: 2.7ms | Allocations: 5364)
+D, [2021-01-17T11:35:50.998663 #15076] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+D, [2021-01-17T11:35:51.060423 #15076] DEBUG -- :   [1m[35m (47.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+D, [2021-01-17T11:35:51.089877 #15076] DEBUG -- :   [1m[35m (19.8ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+D, [2021-01-17T11:35:51.092076 #15076] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+D, [2021-01-17T11:35:51.094126 #15076] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+D, [2021-01-17T11:35:51.095978 #15076] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+D, [2021-01-17T11:35:51.097783 #15076] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+D, [2021-01-17T11:36:53.210841 #15171] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+D, [2021-01-17T11:36:53.226600 #15171] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+D, [2021-01-17T11:36:53.231747 #15171] DEBUG -- :   [1m[35m (0.5ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+D, [2021-01-17T11:36:53.233284 #15171] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+D, [2021-01-17T11:36:53.234695 #15171] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+D, [2021-01-17T11:36:53.235864 #15171] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+D, [2021-01-17T11:36:53.237164 #15171] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+D, [2021-01-17T11:38:22.016440 #16161] DEBUG -- :   [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+D, [2021-01-17T11:38:22.031783 #16161] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+D, [2021-01-17T11:38:22.036771 #16161] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+D, [2021-01-17T11:38:22.038055 #16161] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+D, [2021-01-17T11:38:22.039806 #16161] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+D, [2021-01-17T11:38:22.041242 #16161] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+D, [2021-01-17T11:38:22.042857 #16161] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+D, [2021-01-17T11:38:29.194823 #16239] DEBUG -- :   [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+D, [2021-01-17T11:38:30.170495 #16239] DEBUG -- :   [1m[35m (975.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS `ttps2020_production`[0m
+D, [2021-01-17T11:38:30.173880 #16239] DEBUG -- :   [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+D, [2021-01-17T11:38:30.175137 #16239] DEBUG -- :   [1m[35m (0.5ms)[0m  [1m[35mCREATE DATABASE `ttps2020_production` DEFAULT CHARACTER SET `utf8mb4`[0m
+D, [2021-01-17T11:38:30.190202 #16239] DEBUG -- :   [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+D, [2021-01-17T11:38:30.191326 #16239] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `books` CASCADE[0m
+D, [2021-01-17T11:38:30.463223 #16239] DEBUG -- :   [1m[35m (270.1ms)[0m  [1m[35mCREATE TABLE `books` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `title` varchar(50) NOT NULL, `user_id` bigint NOT NULL, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL,  INDEX `index_books_on_user_id`  (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4[0m
+D, [2021-01-17T11:38:30.464668 #16239] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS `notes` CASCADE[0m
+D, [2021-01-17T11:38:30.808659 #16239] DEBUG -- :   [1m[35m (341.2ms)[0m  [1m[35mCREATE TABLE `notes` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `title` varchar(50) NOT NULL, `content` text NOT NULL, `user_id` bigint, `book_id` bigint, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL, `exported_content` text,  INDEX `index_notes_on_book_id`  (`book_id`),  INDEX `index_notes_on_user_id`  (`user_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4[0m
+D, [2021-01-17T11:38:30.810199 #16239] DEBUG -- :   [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS `users` CASCADE[0m
+D, [2021-01-17T11:38:31.194003 #16239] DEBUG -- :   [1m[35m (380.7ms)[0m  [1m[35mCREATE TABLE `users` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `email` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(255) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL, UNIQUE INDEX `index_users_on_email`  (`email`), UNIQUE INDEX `index_users_on_reset_password_token`  (`reset_password_token`)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4[0m
+D, [2021-01-17T11:38:31.822828 #16239] DEBUG -- :   [1m[35m (627.7ms)[0m  [1m[35mALTER TABLE `books` ADD CONSTRAINT `fk_rails_bc582ddd02`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+D, [2021-01-17T11:38:32.603175 #16239] DEBUG -- :   [1m[35m (779.4ms)[0m  [1m[35mALTER TABLE `notes` ADD CONSTRAINT `fk_rails_317dc639a3`
+FOREIGN KEY (`book_id`)
+  REFERENCES `books` (`id`)
+[0m
+D, [2021-01-17T11:38:33.340424 #16239] DEBUG -- :   [1m[35m (736.7ms)[0m  [1m[35mALTER TABLE `notes` ADD CONSTRAINT `fk_rails_7f2323ad43`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+D, [2021-01-17T11:38:33.585600 #16239] DEBUG -- :   [1m[35m (242.2ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL PRIMARY KEY)[0m
+D, [2021-01-17T11:38:33.600119 #16239] DEBUG -- :   [1m[35m (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+D, [2021-01-17T11:38:33.635651 #16239] DEBUG -- :   [1m[35m (34.1ms)[0m  [1m[32mINSERT INTO `schema_migrations` (version) VALUES (20201224202131)[0m
+D, [2021-01-17T11:38:33.668768 #16239] DEBUG -- :   [1m[35m (32.6ms)[0m  [1m[32mINSERT INTO `schema_migrations` (version) VALUES
+(20201219022206),
+(20201219023210),
+(20201219023221),
+(20201221211511),
+(20201221212012);
+
+[0m
+D, [2021-01-17T11:38:34.038143 #16239] DEBUG -- :   [1m[35m (367.0ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) NOT NULL PRIMARY KEY, `value` varchar(255), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+D, [2021-01-17T11:38:34.045594 #16239] DEBUG -- :   [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+D, [2021-01-17T11:38:34.057340 #16239] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+D, [2021-01-17T11:38:34.057933 #16239] DEBUG -- :   [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'production', '2021-01-17 14:38:34.056168', '2021-01-17 14:38:34.056168')[0m
+D, [2021-01-17T11:38:34.088171 #16239] DEBUG -- :   [1m[35m (29.8ms)[0m  [1m[35mCOMMIT[0m
+D, [2021-01-17T11:38:34.091576 #16239] DEBUG -- :   [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+D, [2021-01-17T11:38:34.095081 #16239] DEBUG -- :   [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'schema_sha1' LIMIT 1[0m
+D, [2021-01-17T11:38:34.097276 #16239] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+D, [2021-01-17T11:38:34.097951 #16239] DEBUG -- :   [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('schema_sha1', '2cc0ea3d2b9496be4bc75fbc741a80ea7945cc09', '2021-01-17 14:38:34.095750', '2021-01-17 14:38:34.095750')[0m
+D, [2021-01-17T11:38:34.129956 #16239] DEBUG -- :   [1m[35m (31.6ms)[0m  [1m[35mCOMMIT[0m
+D, [2021-01-17T11:38:34.133105 #16239] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+D, [2021-01-17T11:38:34.139252 #16239] DEBUG -- :   [1m[35m (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+I, [2021-01-17T11:38:56.140411 #16461]  INFO -- : [940e668f-bb25-4899-89b2-f85628e339e1] Started GET "/" for 127.0.0.1 at 2021-01-17 11:38:56 -0300
+D, [2021-01-17T11:38:56.153775 #16461] DEBUG -- : [940e668f-bb25-4899-89b2-f85628e339e1]   [1m[35m (0.5ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+D, [2021-01-17T11:38:56.160534 #16461] DEBUG -- : [940e668f-bb25-4899-89b2-f85628e339e1]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+F, [2021-01-17T11:38:56.164965 #16461] FATAL -- : [940e668f-bb25-4899-89b2-f85628e339e1]   
+[940e668f-bb25-4899-89b2-f85628e339e1] ActionController::RoutingError (No route matches [GET] "/"):
+[940e668f-bb25-4899-89b2-f85628e339e1]   
+[940e668f-bb25-4899-89b2-f85628e339e1] actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+[940e668f-bb25-4899-89b2-f85628e339e1] actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+[940e668f-bb25-4899-89b2-f85628e339e1] railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+[940e668f-bb25-4899-89b2-f85628e339e1] railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+[940e668f-bb25-4899-89b2-f85628e339e1] activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+[940e668f-bb25-4899-89b2-f85628e339e1] activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+[940e668f-bb25-4899-89b2-f85628e339e1] activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+[940e668f-bb25-4899-89b2-f85628e339e1] railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+[940e668f-bb25-4899-89b2-f85628e339e1] actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+[940e668f-bb25-4899-89b2-f85628e339e1] actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+[940e668f-bb25-4899-89b2-f85628e339e1] rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+[940e668f-bb25-4899-89b2-f85628e339e1] rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+[940e668f-bb25-4899-89b2-f85628e339e1] activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+[940e668f-bb25-4899-89b2-f85628e339e1] actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+[940e668f-bb25-4899-89b2-f85628e339e1] rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+[940e668f-bb25-4899-89b2-f85628e339e1] actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:76:in `call'
+[940e668f-bb25-4899-89b2-f85628e339e1] railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+[940e668f-bb25-4899-89b2-f85628e339e1] puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+[940e668f-bb25-4899-89b2-f85628e339e1] puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+[940e668f-bb25-4899-89b2-f85628e339e1] puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+[940e668f-bb25-4899-89b2-f85628e339e1] puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+[940e668f-bb25-4899-89b2-f85628e339e1] puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+I, [2021-01-17T11:39:00.720286 #16461]  INFO -- : [846131b3-02c8-4eab-824f-7f3e0e06356d] Started GET "/" for 127.0.0.1 at 2021-01-17 11:39:00 -0300
+D, [2021-01-17T11:39:00.722453 #16461] DEBUG -- : [846131b3-02c8-4eab-824f-7f3e0e06356d]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+F, [2021-01-17T11:39:00.723651 #16461] FATAL -- : [846131b3-02c8-4eab-824f-7f3e0e06356d]   
+[846131b3-02c8-4eab-824f-7f3e0e06356d] ActionController::RoutingError (No route matches [GET] "/"):
+[846131b3-02c8-4eab-824f-7f3e0e06356d]   
+[846131b3-02c8-4eab-824f-7f3e0e06356d] actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+[846131b3-02c8-4eab-824f-7f3e0e06356d] actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+[846131b3-02c8-4eab-824f-7f3e0e06356d] railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+[846131b3-02c8-4eab-824f-7f3e0e06356d] railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+[846131b3-02c8-4eab-824f-7f3e0e06356d] activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+[846131b3-02c8-4eab-824f-7f3e0e06356d] activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+[846131b3-02c8-4eab-824f-7f3e0e06356d] activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+[846131b3-02c8-4eab-824f-7f3e0e06356d] railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+[846131b3-02c8-4eab-824f-7f3e0e06356d] actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+[846131b3-02c8-4eab-824f-7f3e0e06356d] actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+[846131b3-02c8-4eab-824f-7f3e0e06356d] rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+[846131b3-02c8-4eab-824f-7f3e0e06356d] rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+[846131b3-02c8-4eab-824f-7f3e0e06356d] activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+[846131b3-02c8-4eab-824f-7f3e0e06356d] actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+[846131b3-02c8-4eab-824f-7f3e0e06356d] rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+[846131b3-02c8-4eab-824f-7f3e0e06356d] actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:76:in `call'
+[846131b3-02c8-4eab-824f-7f3e0e06356d] railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+[846131b3-02c8-4eab-824f-7f3e0e06356d] puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+[846131b3-02c8-4eab-824f-7f3e0e06356d] puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+[846131b3-02c8-4eab-824f-7f3e0e06356d] puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+[846131b3-02c8-4eab-824f-7f3e0e06356d] puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+[846131b3-02c8-4eab-824f-7f3e0e06356d] puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+I, [2021-01-17T11:39:00.851214 #16461]  INFO -- : [dc329028-5c94-4b10-b27e-4736bacf5d63] Started GET "/favicon.ico" for 127.0.0.1 at 2021-01-17 11:39:00 -0300
+F, [2021-01-17T11:39:00.852127 #16461] FATAL -- : [dc329028-5c94-4b10-b27e-4736bacf5d63]   
+[dc329028-5c94-4b10-b27e-4736bacf5d63] ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+[dc329028-5c94-4b10-b27e-4736bacf5d63]   
+[dc329028-5c94-4b10-b27e-4736bacf5d63] actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+[dc329028-5c94-4b10-b27e-4736bacf5d63] actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+[dc329028-5c94-4b10-b27e-4736bacf5d63] railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+[dc329028-5c94-4b10-b27e-4736bacf5d63] railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+[dc329028-5c94-4b10-b27e-4736bacf5d63] activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+[dc329028-5c94-4b10-b27e-4736bacf5d63] activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+[dc329028-5c94-4b10-b27e-4736bacf5d63] activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+[dc329028-5c94-4b10-b27e-4736bacf5d63] railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+[dc329028-5c94-4b10-b27e-4736bacf5d63] actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+[dc329028-5c94-4b10-b27e-4736bacf5d63] actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+[dc329028-5c94-4b10-b27e-4736bacf5d63] rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+[dc329028-5c94-4b10-b27e-4736bacf5d63] rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+[dc329028-5c94-4b10-b27e-4736bacf5d63] activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+[dc329028-5c94-4b10-b27e-4736bacf5d63] actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+[dc329028-5c94-4b10-b27e-4736bacf5d63] rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+[dc329028-5c94-4b10-b27e-4736bacf5d63] actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:76:in `call'
+[dc329028-5c94-4b10-b27e-4736bacf5d63] railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+[dc329028-5c94-4b10-b27e-4736bacf5d63] puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+[dc329028-5c94-4b10-b27e-4736bacf5d63] puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+[dc329028-5c94-4b10-b27e-4736bacf5d63] puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+[dc329028-5c94-4b10-b27e-4736bacf5d63] puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+[dc329028-5c94-4b10-b27e-4736bacf5d63] puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+I, [2021-01-17T11:39:06.803962 #16461]  INFO -- : [71c3715d-9579-4ab9-bcda-b80968d8635a] Started GET "/books" for 127.0.0.1 at 2021-01-17 11:39:06 -0300
+I, [2021-01-17T11:39:06.804847 #16461]  INFO -- : [71c3715d-9579-4ab9-bcda-b80968d8635a] Processing by BooksController#index as HTML
+D, [2021-01-17T11:39:06.806970 #16461] DEBUG -- : [71c3715d-9579-4ab9-bcda-b80968d8635a]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+I, [2021-01-17T11:39:06.807506 #16461]  INFO -- : [71c3715d-9579-4ab9-bcda-b80968d8635a] Completed 401 Unauthorized in 2ms (ActiveRecord: 0.4ms | Allocations: 693)
+I, [2021-01-17T11:39:06.825982 #16461]  INFO -- : [d4145cdf-b3f7-4cbb-8f4d-c3e550d98b17] Started GET "/users/sign_in" for 127.0.0.1 at 2021-01-17 11:39:06 -0300
+I, [2021-01-17T11:39:06.826998 #16461]  INFO -- : [d4145cdf-b3f7-4cbb-8f4d-c3e550d98b17] Processing by Devise::SessionsController#new as HTML
+I, [2021-01-17T11:39:06.840494 #16461]  INFO -- : [d4145cdf-b3f7-4cbb-8f4d-c3e550d98b17]   Rendering devise/sessions/new.html.erb within layouts/application
+I, [2021-01-17T11:39:06.845628 #16461]  INFO -- : [d4145cdf-b3f7-4cbb-8f4d-c3e550d98b17]   Rendered devise/shared/_links.html.erb (Duration: 1.3ms | Allocations: 658)
+I, [2021-01-17T11:39:06.845903 #16461]  INFO -- : [d4145cdf-b3f7-4cbb-8f4d-c3e550d98b17]   Rendered devise/sessions/new.html.erb within layouts/application (Duration: 5.2ms | Allocations: 2464)
+I, [2021-01-17T11:39:06.848116 #16461]  INFO -- : [d4145cdf-b3f7-4cbb-8f4d-c3e550d98b17]   Rendered layouts/_navigation.html.erb (Duration: 0.8ms | Allocations: 374)
+I, [2021-01-17T11:39:06.848625 #16461]  INFO -- : [d4145cdf-b3f7-4cbb-8f4d-c3e550d98b17] Completed 200 OK in 21ms (Views: 10.3ms | ActiveRecord: 0.0ms | Allocations: 11800)
+I, [2021-01-17T11:39:06.956567 #16461]  INFO -- : [64c1c0cc-aef5-41d2-bbb1-0631acd29ec0] Started GET "/favicon.ico" for 127.0.0.1 at 2021-01-17 11:39:06 -0300
+F, [2021-01-17T11:39:06.957391 #16461] FATAL -- : [64c1c0cc-aef5-41d2-bbb1-0631acd29ec0]   
+[64c1c0cc-aef5-41d2-bbb1-0631acd29ec0] ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+[64c1c0cc-aef5-41d2-bbb1-0631acd29ec0]   
+[64c1c0cc-aef5-41d2-bbb1-0631acd29ec0] actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+[64c1c0cc-aef5-41d2-bbb1-0631acd29ec0] actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+[64c1c0cc-aef5-41d2-bbb1-0631acd29ec0] railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+[64c1c0cc-aef5-41d2-bbb1-0631acd29ec0] railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+[64c1c0cc-aef5-41d2-bbb1-0631acd29ec0] activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+[64c1c0cc-aef5-41d2-bbb1-0631acd29ec0] activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+[64c1c0cc-aef5-41d2-bbb1-0631acd29ec0] activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+[64c1c0cc-aef5-41d2-bbb1-0631acd29ec0] railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+[64c1c0cc-aef5-41d2-bbb1-0631acd29ec0] actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+[64c1c0cc-aef5-41d2-bbb1-0631acd29ec0] actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+[64c1c0cc-aef5-41d2-bbb1-0631acd29ec0] rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+[64c1c0cc-aef5-41d2-bbb1-0631acd29ec0] rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+[64c1c0cc-aef5-41d2-bbb1-0631acd29ec0] activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+[64c1c0cc-aef5-41d2-bbb1-0631acd29ec0] actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+[64c1c0cc-aef5-41d2-bbb1-0631acd29ec0] rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+[64c1c0cc-aef5-41d2-bbb1-0631acd29ec0] actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:76:in `call'
+[64c1c0cc-aef5-41d2-bbb1-0631acd29ec0] railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+[64c1c0cc-aef5-41d2-bbb1-0631acd29ec0] puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+[64c1c0cc-aef5-41d2-bbb1-0631acd29ec0] puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+[64c1c0cc-aef5-41d2-bbb1-0631acd29ec0] puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+[64c1c0cc-aef5-41d2-bbb1-0631acd29ec0] puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+[64c1c0cc-aef5-41d2-bbb1-0631acd29ec0] puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+I, [2021-01-17T11:39:08.598352 #16461]  INFO -- : [de23bab6-6d93-46f0-9c80-bd548a057006] Started GET "/users/sign_up" for 127.0.0.1 at 2021-01-17 11:39:08 -0300
+I, [2021-01-17T11:39:08.599772 #16461]  INFO -- : [de23bab6-6d93-46f0-9c80-bd548a057006] Processing by Devise::RegistrationsController#new as HTML
+I, [2021-01-17T11:39:08.603210 #16461]  INFO -- : [de23bab6-6d93-46f0-9c80-bd548a057006]   Rendering devise/registrations/new.html.erb within layouts/application
+I, [2021-01-17T11:39:08.606089 #16461]  INFO -- : [de23bab6-6d93-46f0-9c80-bd548a057006]   Rendered devise/shared/_error_messages.html.erb (Duration: 0.7ms | Allocations: 218)
+I, [2021-01-17T11:39:08.608185 #16461]  INFO -- : [de23bab6-6d93-46f0-9c80-bd548a057006]   Rendered devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 128)
+I, [2021-01-17T11:39:08.608296 #16461]  INFO -- : [de23bab6-6d93-46f0-9c80-bd548a057006]   Rendered devise/registrations/new.html.erb within layouts/application (Duration: 4.9ms | Allocations: 2080)
+I, [2021-01-17T11:39:08.608886 #16461]  INFO -- : [de23bab6-6d93-46f0-9c80-bd548a057006]   Rendered layouts/_navigation.html.erb (Duration: 0.3ms | Allocations: 127)
+I, [2021-01-17T11:39:08.609150 #16461]  INFO -- : [de23bab6-6d93-46f0-9c80-bd548a057006] Completed 200 OK in 9ms (Views: 7.4ms | ActiveRecord: 0.0ms | Allocations: 3888)
+I, [2021-01-17T11:39:09.332417 #16461]  INFO -- : [39a48339-e901-44b3-9e22-75a4e5c1c5ae] Started GET "/users/sign_in" for 127.0.0.1 at 2021-01-17 11:39:09 -0300
+I, [2021-01-17T11:39:09.333497 #16461]  INFO -- : [39a48339-e901-44b3-9e22-75a4e5c1c5ae] Processing by Devise::SessionsController#new as HTML
+I, [2021-01-17T11:39:09.335913 #16461]  INFO -- : [39a48339-e901-44b3-9e22-75a4e5c1c5ae]   Rendering devise/sessions/new.html.erb within layouts/application
+I, [2021-01-17T11:39:09.340502 #16461]  INFO -- : [39a48339-e901-44b3-9e22-75a4e5c1c5ae]   Rendered devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 136)
+I, [2021-01-17T11:39:09.340661 #16461]  INFO -- : [39a48339-e901-44b3-9e22-75a4e5c1c5ae]   Rendered devise/sessions/new.html.erb within layouts/application (Duration: 4.5ms | Allocations: 1229)
+I, [2021-01-17T11:39:09.341596 #16461]  INFO -- : [39a48339-e901-44b3-9e22-75a4e5c1c5ae]   Rendered layouts/_navigation.html.erb (Duration: 0.5ms | Allocations: 127)
+I, [2021-01-17T11:39:09.342094 #16461]  INFO -- : [39a48339-e901-44b3-9e22-75a4e5c1c5ae] Completed 200 OK in 8ms (Views: 6.6ms | ActiveRecord: 0.0ms | Allocations: 2235)
+I, [2021-01-17T11:39:23.777176 #16461]  INFO -- : [a94639d3-3c9c-4e47-9769-f148d297d52e] Started POST "/users/sign_in" for 127.0.0.1 at 2021-01-17 11:39:23 -0300
+I, [2021-01-17T11:39:23.778121 #16461]  INFO -- : [a94639d3-3c9c-4e47-9769-f148d297d52e] Processing by Devise::SessionsController#create as HTML
+I, [2021-01-17T11:39:23.778276 #16461]  INFO -- : [a94639d3-3c9c-4e47-9769-f148d297d52e]   Parameters: {"authenticity_token"=>"AFrMlcfTbtdOlYDwFhQpAlKkYy7pQW/M55NFKvsWSiZjTh6z2Z7SxGZ4i/XSES7igk7lTASPVQKhgBpjOEygCw==", "user"=>{"email"=>"cesar@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Send"}
+D, [2021-01-17T11:39:23.782583 #16461] DEBUG -- : [a94639d3-3c9c-4e47-9769-f148d297d52e]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'cesar@gmail.com' ORDER BY `users`.`id` ASC LIMIT 1[0m
+I, [2021-01-17T11:39:23.782923 #16461]  INFO -- : [a94639d3-3c9c-4e47-9769-f148d297d52e] Completed 401 Unauthorized in 5ms (ActiveRecord: 0.5ms | Allocations: 1027)
+I, [2021-01-17T11:39:23.784144 #16461]  INFO -- : [a94639d3-3c9c-4e47-9769-f148d297d52e] Processing by Devise::SessionsController#new as HTML
+I, [2021-01-17T11:39:23.784258 #16461]  INFO -- : [a94639d3-3c9c-4e47-9769-f148d297d52e]   Parameters: {"authenticity_token"=>"AFrMlcfTbtdOlYDwFhQpAlKkYy7pQW/M55NFKvsWSiZjTh6z2Z7SxGZ4i/XSES7igk7lTASPVQKhgBpjOEygCw==", "user"=>{"email"=>"cesar@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Send"}
+I, [2021-01-17T11:39:24.052731 #16461]  INFO -- : [a94639d3-3c9c-4e47-9769-f148d297d52e]   Rendering devise/sessions/new.html.erb within layouts/application
+I, [2021-01-17T11:39:24.055520 #16461]  INFO -- : [a94639d3-3c9c-4e47-9769-f148d297d52e]   Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 136)
+I, [2021-01-17T11:39:24.055663 #16461]  INFO -- : [a94639d3-3c9c-4e47-9769-f148d297d52e]   Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.8ms | Allocations: 1222)
+I, [2021-01-17T11:39:24.056291 #16461]  INFO -- : [a94639d3-3c9c-4e47-9769-f148d297d52e]   Rendered layouts/_navigation.html.erb (Duration: 0.3ms | Allocations: 86)
+I, [2021-01-17T11:39:24.056640 #16461]  INFO -- : [a94639d3-3c9c-4e47-9769-f148d297d52e] Completed 200 OK in 272ms (Views: 4.1ms | ActiveRecord: 0.0ms | Allocations: 3271)
+I, [2021-01-17T11:39:24.160680 #16461]  INFO -- : [977e2d6a-a8b1-4567-b834-833de1339989] Started GET "/favicon.ico" for 127.0.0.1 at 2021-01-17 11:39:24 -0300
+F, [2021-01-17T11:39:24.161452 #16461] FATAL -- : [977e2d6a-a8b1-4567-b834-833de1339989]   
+[977e2d6a-a8b1-4567-b834-833de1339989] ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+[977e2d6a-a8b1-4567-b834-833de1339989]   
+[977e2d6a-a8b1-4567-b834-833de1339989] actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+[977e2d6a-a8b1-4567-b834-833de1339989] actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+[977e2d6a-a8b1-4567-b834-833de1339989] railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+[977e2d6a-a8b1-4567-b834-833de1339989] railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+[977e2d6a-a8b1-4567-b834-833de1339989] activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+[977e2d6a-a8b1-4567-b834-833de1339989] activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+[977e2d6a-a8b1-4567-b834-833de1339989] activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+[977e2d6a-a8b1-4567-b834-833de1339989] railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+[977e2d6a-a8b1-4567-b834-833de1339989] actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+[977e2d6a-a8b1-4567-b834-833de1339989] actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+[977e2d6a-a8b1-4567-b834-833de1339989] rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+[977e2d6a-a8b1-4567-b834-833de1339989] rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+[977e2d6a-a8b1-4567-b834-833de1339989] activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+[977e2d6a-a8b1-4567-b834-833de1339989] actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+[977e2d6a-a8b1-4567-b834-833de1339989] rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+[977e2d6a-a8b1-4567-b834-833de1339989] actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:76:in `call'
+[977e2d6a-a8b1-4567-b834-833de1339989] railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+[977e2d6a-a8b1-4567-b834-833de1339989] puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+[977e2d6a-a8b1-4567-b834-833de1339989] puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+[977e2d6a-a8b1-4567-b834-833de1339989] puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+[977e2d6a-a8b1-4567-b834-833de1339989] puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+[977e2d6a-a8b1-4567-b834-833de1339989] puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+I, [2021-01-17T11:39:26.464701 #16461]  INFO -- : [4c04ae49-6e57-43a0-bfce-d576a03d072d] Started GET "/users/sign_up" for 127.0.0.1 at 2021-01-17 11:39:26 -0300
+I, [2021-01-17T11:39:26.465903 #16461]  INFO -- : [4c04ae49-6e57-43a0-bfce-d576a03d072d] Processing by Devise::RegistrationsController#new as HTML
+I, [2021-01-17T11:39:26.468588 #16461]  INFO -- : [4c04ae49-6e57-43a0-bfce-d576a03d072d]   Rendering devise/registrations/new.html.erb within layouts/application
+I, [2021-01-17T11:39:26.469542 #16461]  INFO -- : [4c04ae49-6e57-43a0-bfce-d576a03d072d]   Rendered devise/shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 15)
+I, [2021-01-17T11:39:26.473681 #16461]  INFO -- : [4c04ae49-6e57-43a0-bfce-d576a03d072d]   Rendered devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 79)
+I, [2021-01-17T11:39:26.473927 #16461]  INFO -- : [4c04ae49-6e57-43a0-bfce-d576a03d072d]   Rendered devise/registrations/new.html.erb within layouts/application (Duration: 5.0ms | Allocations: 1238)
+I, [2021-01-17T11:39:26.474890 #16461]  INFO -- : [4c04ae49-6e57-43a0-bfce-d576a03d072d]   Rendered layouts/_navigation.html.erb (Duration: 0.5ms | Allocations: 121)
+I, [2021-01-17T11:39:26.475326 #16461]  INFO -- : [4c04ae49-6e57-43a0-bfce-d576a03d072d] Completed 200 OK in 9ms (Views: 7.4ms | ActiveRecord: 0.0ms | Allocations: 2147)
+I, [2021-01-17T11:39:29.908522 #16461]  INFO -- : [3c0ab300-0e68-4fdc-9378-de74869302e8] Started POST "/users" for 127.0.0.1 at 2021-01-17 11:39:29 -0300
+I, [2021-01-17T11:39:29.910033 #16461]  INFO -- : [3c0ab300-0e68-4fdc-9378-de74869302e8] Processing by Devise::RegistrationsController#create as HTML
+I, [2021-01-17T11:39:29.910255 #16461]  INFO -- : [3c0ab300-0e68-4fdc-9378-de74869302e8]   Parameters: {"authenticity_token"=>"axmfSDy+B3MNjZ3tM4QoBq/Oq8td3/JNOQSLcQ54iu+jyq4drl5R1UHOEWXX5F11g+7zxPTmxYKbRGv5Jnd9ug==", "user"=>{"email"=>"cesar@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Send"}
+D, [2021-01-17T11:39:30.172420 #16461] DEBUG -- : [3c0ab300-0e68-4fdc-9378-de74869302e8]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+D, [2021-01-17T11:39:30.172977 #16461] DEBUG -- : [3c0ab300-0e68-4fdc-9378-de74869302e8]   [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'cesar@gmail.com' LIMIT 1[0m
+D, [2021-01-17T11:39:30.174671 #16461] DEBUG -- : [3c0ab300-0e68-4fdc-9378-de74869302e8]   [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `created_at`, `updated_at`) VALUES ('cesar@gmail.com', '$2a$12$OZ7iIcYvAdeA7XYdH9YE9OV9bAz4gDnB16pxPUAVboImFeNCRBvNK', '2021-01-17 14:39:30.173331', '2021-01-17 14:39:30.173331')[0m
+D, [2021-01-17T11:39:30.311644 #16461] DEBUG -- : [3c0ab300-0e68-4fdc-9378-de74869302e8]   [1m[35m (136.5ms)[0m  [1m[35mCOMMIT[0m
+I, [2021-01-17T11:39:30.319432 #16461]  INFO -- : [3c0ab300-0e68-4fdc-9378-de74869302e8] Redirected to http://localhost:3000/books
+I, [2021-01-17T11:39:30.319855 #16461]  INFO -- : [3c0ab300-0e68-4fdc-9378-de74869302e8] Completed 302 Found in 409ms (ActiveRecord: 137.4ms | Allocations: 3616)
+I, [2021-01-17T11:39:30.329438 #16461]  INFO -- : [efb1fa07-d626-4a57-86a6-d03b35a62573] Started GET "/books" for 127.0.0.1 at 2021-01-17 11:39:30 -0300
+I, [2021-01-17T11:39:30.330294 #16461]  INFO -- : [efb1fa07-d626-4a57-86a6-d03b35a62573] Processing by BooksController#index as HTML
+D, [2021-01-17T11:39:30.332650 #16461] DEBUG -- : [efb1fa07-d626-4a57-86a6-d03b35a62573]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+D, [2021-01-17T11:39:30.338187 #16461] DEBUG -- : [efb1fa07-d626-4a57-86a6-d03b35a62573]   [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM `books` WHERE `books`.`user_id` = 1[0m
+I, [2021-01-17T11:39:30.340320 #16461]  INFO -- : [efb1fa07-d626-4a57-86a6-d03b35a62573]   Rendering books/index.html.erb within layouts/application
+D, [2021-01-17T11:39:30.342731 #16461] DEBUG -- : [efb1fa07-d626-4a57-86a6-d03b35a62573]   [1m[36mBook Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `books` WHERE `books`.`user_id` = 1 LIMIT 1 OFFSET 0[0m
+D, [2021-01-17T11:39:30.343615 #16461] DEBUG -- : [efb1fa07-d626-4a57-86a6-d03b35a62573]   [1m[36mCACHE Book Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM `books` WHERE `books`.`user_id` = 1 LIMIT 1 OFFSET 0[0m
+D, [2021-01-17T11:39:30.344811 #16461] DEBUG -- : [efb1fa07-d626-4a57-86a6-d03b35a62573]   [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `books` WHERE `books`.`user_id` = 1[0m
+D, [2021-01-17T11:39:30.347374 #16461] DEBUG -- : [efb1fa07-d626-4a57-86a6-d03b35a62573]   [1m[36mBook Load (0.4ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 LIMIT 2 OFFSET 0[0m
+I, [2021-01-17T11:39:30.347562 #16461]  INFO -- : [efb1fa07-d626-4a57-86a6-d03b35a62573]   Rendered books/index.html.erb within layouts/application (Duration: 7.1ms | Allocations: 2349)
+I, [2021-01-17T11:39:30.348670 #16461]  INFO -- : [efb1fa07-d626-4a57-86a6-d03b35a62573]   Rendered layouts/_navigation.html.erb (Duration: 0.7ms | Allocations: 191)
+I, [2021-01-17T11:39:30.349203 #16461]  INFO -- : [efb1fa07-d626-4a57-86a6-d03b35a62573] Completed 200 OK in 19ms (Views: 9.1ms | ActiveRecord: 3.3ms | Allocations: 5353)
+I, [2021-01-17T11:39:31.900767 #16461]  INFO -- : [8114b6fe-31d7-4a1f-bfc3-c30dfca83a85] Started GET "/books" for 127.0.0.1 at 2021-01-17 11:39:31 -0300
+I, [2021-01-17T11:39:31.902290 #16461]  INFO -- : [8114b6fe-31d7-4a1f-bfc3-c30dfca83a85] Processing by BooksController#index as HTML
+D, [2021-01-17T11:39:31.905240 #16461] DEBUG -- : [8114b6fe-31d7-4a1f-bfc3-c30dfca83a85]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+D, [2021-01-17T11:39:31.907887 #16461] DEBUG -- : [8114b6fe-31d7-4a1f-bfc3-c30dfca83a85]   [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM `books` WHERE `books`.`user_id` = 1[0m
+I, [2021-01-17T11:39:31.908942 #16461]  INFO -- : [8114b6fe-31d7-4a1f-bfc3-c30dfca83a85]   Rendering books/index.html.erb within layouts/application
+D, [2021-01-17T11:39:31.910367 #16461] DEBUG -- : [8114b6fe-31d7-4a1f-bfc3-c30dfca83a85]   [1m[36mBook Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `books` WHERE `books`.`user_id` = 1 LIMIT 1 OFFSET 0[0m
+D, [2021-01-17T11:39:31.911367 #16461] DEBUG -- : [8114b6fe-31d7-4a1f-bfc3-c30dfca83a85]   [1m[36mCACHE Book Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM `books` WHERE `books`.`user_id` = 1 LIMIT 1 OFFSET 0[0m
+D, [2021-01-17T11:39:31.912898 #16461] DEBUG -- : [8114b6fe-31d7-4a1f-bfc3-c30dfca83a85]   [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `books` WHERE `books`.`user_id` = 1[0m
+D, [2021-01-17T11:39:31.914176 #16461] DEBUG -- : [8114b6fe-31d7-4a1f-bfc3-c30dfca83a85]   [1m[36mBook Load (0.5ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 LIMIT 2 OFFSET 0[0m
+I, [2021-01-17T11:39:31.914498 #16461]  INFO -- : [8114b6fe-31d7-4a1f-bfc3-c30dfca83a85]   Rendered books/index.html.erb within layouts/application (Duration: 5.4ms | Allocations: 1019)
+I, [2021-01-17T11:39:31.915557 #16461]  INFO -- : [8114b6fe-31d7-4a1f-bfc3-c30dfca83a85]   Rendered layouts/_navigation.html.erb (Duration: 0.6ms | Allocations: 182)
+I, [2021-01-17T11:39:31.915993 #16461]  INFO -- : [8114b6fe-31d7-4a1f-bfc3-c30dfca83a85] Completed 200 OK in 13ms (Views: 6.4ms | ActiveRecord: 2.0ms | Allocations: 2696)
+I, [2021-01-17T11:39:33.072900 #16461]  INFO -- : [618ad733-7750-48ca-a939-c2e0e7241774] Started GET "/books/new" for 127.0.0.1 at 2021-01-17 11:39:33 -0300
+I, [2021-01-17T11:39:33.074041 #16461]  INFO -- : [618ad733-7750-48ca-a939-c2e0e7241774] Processing by BooksController#new as HTML
+D, [2021-01-17T11:39:33.077292 #16461] DEBUG -- : [618ad733-7750-48ca-a939-c2e0e7241774]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+I, [2021-01-17T11:39:33.087982 #16461]  INFO -- : [618ad733-7750-48ca-a939-c2e0e7241774]   Rendering books/new.html.erb within layouts/application
+I, [2021-01-17T11:39:33.090883 #16461]  INFO -- : [618ad733-7750-48ca-a939-c2e0e7241774]   Rendered books/new.html.erb within layouts/application (Duration: 2.7ms | Allocations: 700)
+I, [2021-01-17T11:39:33.091958 #16461]  INFO -- : [618ad733-7750-48ca-a939-c2e0e7241774]   Rendered layouts/_navigation.html.erb (Duration: 0.6ms | Allocations: 196)
+I, [2021-01-17T11:39:33.092413 #16461]  INFO -- : [618ad733-7750-48ca-a939-c2e0e7241774] Completed 200 OK in 18ms (Views: 4.5ms | ActiveRecord: 1.1ms | Allocations: 5284)
+I, [2021-01-17T11:39:35.762803 #16461]  INFO -- : [6d6255c1-e27e-4c04-b542-6044e34f334f] Started POST "/books" for 127.0.0.1 at 2021-01-17 11:39:35 -0300
+I, [2021-01-17T11:39:35.763858 #16461]  INFO -- : [6d6255c1-e27e-4c04-b542-6044e34f334f] Processing by BooksController#create as HTML
+I, [2021-01-17T11:39:35.763987 #16461]  INFO -- : [6d6255c1-e27e-4c04-b542-6044e34f334f]   Parameters: {"authenticity_token"=>"KOkpDBIW8kJESzcV1OpW/DGJ7VrlVzubpFVx1i/uLrGwt7deJNdyqpojHOdOdQmGJHeppa+rtQhKOfI/Je5PKQ==", "book"=>{"title"=>"Pepe2"}}
+D, [2021-01-17T11:39:35.766581 #16461] DEBUG -- : [6d6255c1-e27e-4c04-b542-6044e34f334f]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+D, [2021-01-17T11:39:35.769225 #16461] DEBUG -- : [6d6255c1-e27e-4c04-b542-6044e34f334f]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+D, [2021-01-17T11:39:35.770072 #16461] DEBUG -- : [6d6255c1-e27e-4c04-b542-6044e34f334f]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+D, [2021-01-17T11:39:35.780453 #16461] DEBUG -- : [6d6255c1-e27e-4c04-b542-6044e34f334f]   [1m[36mBook Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `books` WHERE `books`.`title` = 'Pepe2' AND `books`.`user_id` = 1 LIMIT 1[0m
+D, [2021-01-17T11:39:35.782797 #16461] DEBUG -- : [6d6255c1-e27e-4c04-b542-6044e34f334f]   [1m[36mBook Create (0.4ms)[0m  [1m[32mINSERT INTO `books` (`title`, `user_id`, `created_at`, `updated_at`) VALUES ('Pepe2', 1, '2021-01-17 14:39:35.780863', '2021-01-17 14:39:35.780863')[0m
+D, [2021-01-17T11:39:35.817548 #16461] DEBUG -- : [6d6255c1-e27e-4c04-b542-6044e34f334f]   [1m[35m (34.1ms)[0m  [1m[35mCOMMIT[0m
+I, [2021-01-17T11:39:35.819574 #16461]  INFO -- : [6d6255c1-e27e-4c04-b542-6044e34f334f] Redirected to http://localhost:3000/books
+I, [2021-01-17T11:39:35.820044 #16461]  INFO -- : [6d6255c1-e27e-4c04-b542-6044e34f334f] Completed 302 Found in 56ms (ActiveRecord: 36.2ms | Allocations: 2586)
+I, [2021-01-17T11:39:35.829906 #16461]  INFO -- : [b16c2de3-8bff-4032-96cb-7b6f6a054e69] Started GET "/books" for 127.0.0.1 at 2021-01-17 11:39:35 -0300
+I, [2021-01-17T11:39:35.830694 #16461]  INFO -- : [b16c2de3-8bff-4032-96cb-7b6f6a054e69] Processing by BooksController#index as HTML
+D, [2021-01-17T11:39:35.833475 #16461] DEBUG -- : [b16c2de3-8bff-4032-96cb-7b6f6a054e69]   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+D, [2021-01-17T11:39:35.836410 #16461] DEBUG -- : [b16c2de3-8bff-4032-96cb-7b6f6a054e69]   [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM `books` WHERE `books`.`user_id` = 1[0m
+I, [2021-01-17T11:39:35.837487 #16461]  INFO -- : [b16c2de3-8bff-4032-96cb-7b6f6a054e69]   Rendering books/index.html.erb within layouts/application
+D, [2021-01-17T11:39:35.838863 #16461] DEBUG -- : [b16c2de3-8bff-4032-96cb-7b6f6a054e69]   [1m[36mBook Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `books` WHERE `books`.`user_id` = 1 LIMIT 1 OFFSET 0[0m
+D, [2021-01-17T11:39:35.839715 #16461] DEBUG -- : [b16c2de3-8bff-4032-96cb-7b6f6a054e69]   [1m[36mCACHE Book Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM `books` WHERE `books`.`user_id` = 1 LIMIT 1 OFFSET 0[0m
+D, [2021-01-17T11:39:35.841026 #16461] DEBUG -- : [b16c2de3-8bff-4032-96cb-7b6f6a054e69]   [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `books` WHERE `books`.`user_id` = 1[0m
+D, [2021-01-17T11:39:35.842314 #16461] DEBUG -- : [b16c2de3-8bff-4032-96cb-7b6f6a054e69]   [1m[36mBook Load (0.5ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 LIMIT 2 OFFSET 0[0m
+I, [2021-01-17T11:39:35.843595 #16461]  INFO -- : [b16c2de3-8bff-4032-96cb-7b6f6a054e69]   Rendered books/index.html.erb within layouts/application (Duration: 6.0ms | Allocations: 1664)
+I, [2021-01-17T11:39:35.844347 #16461]  INFO -- : [b16c2de3-8bff-4032-96cb-7b6f6a054e69]   Rendered layouts/_navigation.html.erb (Duration: 0.4ms | Allocations: 180)
+I, [2021-01-17T11:39:35.844683 #16461]  INFO -- : [b16c2de3-8bff-4032-96cb-7b6f6a054e69] Completed 200 OK in 14ms (Views: 6.6ms | ActiveRecord: 2.3ms | Allocations: 3339)
+I, [2021-01-17T11:39:39.977039 #16461]  INFO -- : [9c5aba61-4042-422e-938a-f267a23b912f] Started GET "/books/new" for 127.0.0.1 at 2021-01-17 11:39:39 -0300
+I, [2021-01-17T11:39:39.977901 #16461]  INFO -- : [9c5aba61-4042-422e-938a-f267a23b912f] Processing by BooksController#new as HTML
+D, [2021-01-17T11:39:39.980335 #16461] DEBUG -- : [9c5aba61-4042-422e-938a-f267a23b912f]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+I, [2021-01-17T11:39:39.981677 #16461]  INFO -- : [9c5aba61-4042-422e-938a-f267a23b912f]   Rendering books/new.html.erb within layouts/application
+I, [2021-01-17T11:39:39.982934 #16461]  INFO -- : [9c5aba61-4042-422e-938a-f267a23b912f]   Rendered books/new.html.erb within layouts/application (Duration: 1.1ms | Allocations: 296)
+I, [2021-01-17T11:39:39.983764 #16461]  INFO -- : [9c5aba61-4042-422e-938a-f267a23b912f]   Rendered layouts/_navigation.html.erb (Duration: 0.5ms | Allocations: 193)
+I, [2021-01-17T11:39:39.984052 #16461]  INFO -- : [9c5aba61-4042-422e-938a-f267a23b912f] Completed 200 OK in 6ms (Views: 2.7ms | ActiveRecord: 0.5ms | Allocations: 1439)
+I, [2021-01-17T11:39:44.067694 #16461]  INFO -- : [37827f69-aa39-4f9d-805e-7d8076a8bec8] Started POST "/books" for 127.0.0.1 at 2021-01-17 11:39:44 -0300
+I, [2021-01-17T11:39:44.068707 #16461]  INFO -- : [37827f69-aa39-4f9d-805e-7d8076a8bec8] Processing by BooksController#create as HTML
+I, [2021-01-17T11:39:44.068831 #16461]  INFO -- : [37827f69-aa39-4f9d-805e-7d8076a8bec8]   Parameters: {"authenticity_token"=>"WymRYpwkRir6texy+k9FaRppgZ27Yi9FcgfkePISGC3Ddw8wquXGwiTdx4Bg0BoTD5fFYvGeodaca2eR+BJ5tQ==", "book"=>{"title"=>"  pePe2"}}
+D, [2021-01-17T11:39:44.071446 #16461] DEBUG -- : [37827f69-aa39-4f9d-805e-7d8076a8bec8]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+D, [2021-01-17T11:39:44.073894 #16461] DEBUG -- : [37827f69-aa39-4f9d-805e-7d8076a8bec8]   [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+D, [2021-01-17T11:39:44.074732 #16461] DEBUG -- : [37827f69-aa39-4f9d-805e-7d8076a8bec8]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+D, [2021-01-17T11:39:44.076506 #16461] DEBUG -- : [37827f69-aa39-4f9d-805e-7d8076a8bec8]   [1m[36mBook Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `books` WHERE `books`.`title` = 'pePe2' AND `books`.`user_id` = 1 LIMIT 1[0m
+D, [2021-01-17T11:39:44.078291 #16461] DEBUG -- : [37827f69-aa39-4f9d-805e-7d8076a8bec8]   [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+I, [2021-01-17T11:39:44.079172 #16461]  INFO -- : [37827f69-aa39-4f9d-805e-7d8076a8bec8]   Rendering books/new.html.erb within layouts/application
+I, [2021-01-17T11:39:44.080665 #16461]  INFO -- : [37827f69-aa39-4f9d-805e-7d8076a8bec8]   Rendered books/new.html.erb within layouts/application (Duration: 1.4ms | Allocations: 478)
+I, [2021-01-17T11:39:44.081344 #16461]  INFO -- : [37827f69-aa39-4f9d-805e-7d8076a8bec8]   Rendered layouts/_navigation.html.erb (Duration: 0.4ms | Allocations: 182)
+I, [2021-01-17T11:39:44.081662 #16461]  INFO -- : [37827f69-aa39-4f9d-805e-7d8076a8bec8] Completed 200 OK in 13ms (Views: 2.8ms | ActiveRecord: 1.9ms | Allocations: 2919)
+I, [2021-01-17T11:39:46.445244 #16461]  INFO -- : [a48db09a-bd0a-489e-aee0-5e694b220f65] Started POST "/books" for 127.0.0.1 at 2021-01-17 11:39:46 -0300
+I, [2021-01-17T11:39:46.447888 #16461]  INFO -- : [a48db09a-bd0a-489e-aee0-5e694b220f65] Processing by BooksController#create as HTML
+I, [2021-01-17T11:39:46.448054 #16461]  INFO -- : [a48db09a-bd0a-489e-aee0-5e694b220f65]   Parameters: {"authenticity_token"=>"nW9+BsNl5BIcROAE7tSu8kWaCSjun6DHyWfL02nn6UIFMeBU9aRk+sIsy/Z0S/GIUGRN16RjLlQnC0g6Y+eI2g==", "book"=>{"title"=>"pePe3"}}
+D, [2021-01-17T11:39:46.450465 #16461] DEBUG -- : [a48db09a-bd0a-489e-aee0-5e694b220f65]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+D, [2021-01-17T11:39:46.452692 #16461] DEBUG -- : [a48db09a-bd0a-489e-aee0-5e694b220f65]   [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+D, [2021-01-17T11:39:46.453361 #16461] DEBUG -- : [a48db09a-bd0a-489e-aee0-5e694b220f65]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+D, [2021-01-17T11:39:46.455664 #16461] DEBUG -- : [a48db09a-bd0a-489e-aee0-5e694b220f65]   [1m[36mBook Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `books` WHERE `books`.`title` = 'pePe3' AND `books`.`user_id` = 1 LIMIT 1[0m
+D, [2021-01-17T11:39:46.458007 #16461] DEBUG -- : [a48db09a-bd0a-489e-aee0-5e694b220f65]   [1m[36mBook Create (0.7ms)[0m  [1m[32mINSERT INTO `books` (`title`, `user_id`, `created_at`, `updated_at`) VALUES ('pePe3', 1, '2021-01-17 14:39:46.456033', '2021-01-17 14:39:46.456033')[0m
+D, [2021-01-17T11:39:46.526330 #16461] DEBUG -- : [a48db09a-bd0a-489e-aee0-5e694b220f65]   [1m[35m (67.7ms)[0m  [1m[35mCOMMIT[0m
+I, [2021-01-17T11:39:46.526912 #16461]  INFO -- : [a48db09a-bd0a-489e-aee0-5e694b220f65] Redirected to http://localhost:3000/books
+I, [2021-01-17T11:39:46.527094 #16461]  INFO -- : [a48db09a-bd0a-489e-aee0-5e694b220f65] Completed 302 Found in 79ms (ActiveRecord: 70.4ms | Allocations: 1776)
+I, [2021-01-17T11:39:46.537131 #16461]  INFO -- : [8b974ff2-f27c-407d-a01d-4894bbe77f63] Started GET "/books" for 127.0.0.1 at 2021-01-17 11:39:46 -0300
+I, [2021-01-17T11:39:46.538005 #16461]  INFO -- : [8b974ff2-f27c-407d-a01d-4894bbe77f63] Processing by BooksController#index as HTML
+D, [2021-01-17T11:39:46.540211 #16461] DEBUG -- : [8b974ff2-f27c-407d-a01d-4894bbe77f63]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+D, [2021-01-17T11:39:46.542747 #16461] DEBUG -- : [8b974ff2-f27c-407d-a01d-4894bbe77f63]   [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM `books` WHERE `books`.`user_id` = 1[0m
+I, [2021-01-17T11:39:46.543604 #16461]  INFO -- : [8b974ff2-f27c-407d-a01d-4894bbe77f63]   Rendering books/index.html.erb within layouts/application
+D, [2021-01-17T11:39:46.544656 #16461] DEBUG -- : [8b974ff2-f27c-407d-a01d-4894bbe77f63]   [1m[36mBook Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `books` WHERE `books`.`user_id` = 1 LIMIT 1 OFFSET 0[0m
+D, [2021-01-17T11:39:46.545655 #16461] DEBUG -- : [8b974ff2-f27c-407d-a01d-4894bbe77f63]   [1m[36mCACHE Book Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM `books` WHERE `books`.`user_id` = 1 LIMIT 1 OFFSET 0[0m
+D, [2021-01-17T11:39:46.548026 #16461] DEBUG -- : [8b974ff2-f27c-407d-a01d-4894bbe77f63]   [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `books` WHERE `books`.`user_id` = 1[0m
+D, [2021-01-17T11:39:46.549749 #16461] DEBUG -- : [8b974ff2-f27c-407d-a01d-4894bbe77f63]   [1m[36mBook Load (0.5ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 LIMIT 2 OFFSET 0[0m
+I, [2021-01-17T11:39:46.553105 #16461]  INFO -- : [8b974ff2-f27c-407d-a01d-4894bbe77f63]   Rendered books/index.html.erb within layouts/application (Duration: 9.3ms | Allocations: 2072)
+I, [2021-01-17T11:39:46.554446 #16461]  INFO -- : [8b974ff2-f27c-407d-a01d-4894bbe77f63]   Rendered layouts/_navigation.html.erb (Duration: 0.7ms | Allocations: 180)
+I, [2021-01-17T11:39:46.555221 #16461]  INFO -- : [8b974ff2-f27c-407d-a01d-4894bbe77f63] Completed 200 OK in 17ms (Views: 10.9ms | ActiveRecord: 1.7ms | Allocations: 3747)
+I, [2021-01-17T11:39:50.789856 #16461]  INFO -- : [bb61fc02-a5f0-441f-bd1c-4137ff26ad3c] Started GET "/books/2/edit" for 127.0.0.1 at 2021-01-17 11:39:50 -0300
+I, [2021-01-17T11:39:50.790811 #16461]  INFO -- : [bb61fc02-a5f0-441f-bd1c-4137ff26ad3c] Processing by BooksController#edit as HTML
+I, [2021-01-17T11:39:50.790913 #16461]  INFO -- : [bb61fc02-a5f0-441f-bd1c-4137ff26ad3c]   Parameters: {"id_book"=>"2"}
+D, [2021-01-17T11:39:50.795186 #16461] DEBUG -- : [bb61fc02-a5f0-441f-bd1c-4137ff26ad3c]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+D, [2021-01-17T11:39:50.797673 #16461] DEBUG -- : [bb61fc02-a5f0-441f-bd1c-4137ff26ad3c]   [1m[36mBook Load (0.5ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 AND `books`.`id` = 2 LIMIT 1[0m
+D, [2021-01-17T11:39:50.799410 #16461] DEBUG -- : [bb61fc02-a5f0-441f-bd1c-4137ff26ad3c]   [1m[36mCACHE Book Load (0.0ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 AND `books`.`id` = 2 LIMIT 1[0m
+I, [2021-01-17T11:39:50.800714 #16461]  INFO -- : [bb61fc02-a5f0-441f-bd1c-4137ff26ad3c]   Rendering books/edit.html.erb within layouts/application
+I, [2021-01-17T11:39:50.802995 #16461]  INFO -- : [bb61fc02-a5f0-441f-bd1c-4137ff26ad3c]   Rendered books/edit.html.erb within layouts/application (Duration: 2.1ms | Allocations: 647)
+I, [2021-01-17T11:39:50.804004 #16461]  INFO -- : [bb61fc02-a5f0-441f-bd1c-4137ff26ad3c]   Rendered layouts/_navigation.html.erb (Duration: 0.5ms | Allocations: 185)
+I, [2021-01-17T11:39:50.804553 #16461]  INFO -- : [bb61fc02-a5f0-441f-bd1c-4137ff26ad3c] Completed 200 OK in 13ms (Views: 4.1ms | ActiveRecord: 1.1ms | Allocations: 2492)
+I, [2021-01-17T11:39:53.230694 #16461]  INFO -- : [82a8e05b-72e1-4fc2-a584-c7e287771ca1] Started PATCH "/books/2" for 127.0.0.1 at 2021-01-17 11:39:53 -0300
+I, [2021-01-17T11:39:53.231799 #16461]  INFO -- : [82a8e05b-72e1-4fc2-a584-c7e287771ca1] Processing by BooksController#update as HTML
+I, [2021-01-17T11:39:53.231930 #16461]  INFO -- : [82a8e05b-72e1-4fc2-a584-c7e287771ca1]   Parameters: {"authenticity_token"=>"EMWTsWq702Rdqnj3bmkwejrhGFwrXBah8ASHH7eqxDjLPZpJ8fuHLEwfChhnTN5IBe4WPLE2D1ocuYv/+n2i2A==", "book"=>{"title"=>"pePe2"}, "id_book"=>"2"}
+D, [2021-01-17T11:39:53.235148 #16461] DEBUG -- : [82a8e05b-72e1-4fc2-a584-c7e287771ca1]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+D, [2021-01-17T11:39:53.237434 #16461] DEBUG -- : [82a8e05b-72e1-4fc2-a584-c7e287771ca1]   [1m[36mBook Load (0.5ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 AND `books`.`id` = 2 LIMIT 1[0m
+D, [2021-01-17T11:39:53.238727 #16461] DEBUG -- : [82a8e05b-72e1-4fc2-a584-c7e287771ca1]   [1m[36mCACHE Book Load (0.0ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 AND `books`.`id` = 2 LIMIT 1[0m
+D, [2021-01-17T11:39:53.240442 #16461] DEBUG -- : [82a8e05b-72e1-4fc2-a584-c7e287771ca1]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+D, [2021-01-17T11:39:53.241359 #16461] DEBUG -- : [82a8e05b-72e1-4fc2-a584-c7e287771ca1]   [1m[36mBook Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `books` WHERE `books`.`title` = 'pePe2' AND `books`.`id` != 2 AND `books`.`user_id` = 1 LIMIT 1[0m
+D, [2021-01-17T11:39:53.242886 #16461] DEBUG -- : [82a8e05b-72e1-4fc2-a584-c7e287771ca1]   [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+D, [2021-01-17T11:39:53.244675 #16461] DEBUG -- : [82a8e05b-72e1-4fc2-a584-c7e287771ca1]   [1m[36mBook Load (0.4ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 AND `books`.`id` = 2 LIMIT 1[0m
+I, [2021-01-17T11:39:53.245433 #16461]  INFO -- : [82a8e05b-72e1-4fc2-a584-c7e287771ca1]   Rendering books/edit.html.erb within layouts/application
+I, [2021-01-17T11:39:53.246641 #16461]  INFO -- : [82a8e05b-72e1-4fc2-a584-c7e287771ca1]   Rendered books/edit.html.erb within layouts/application (Duration: 1.1ms | Allocations: 504)
+I, [2021-01-17T11:39:53.247168 #16461]  INFO -- : [82a8e05b-72e1-4fc2-a584-c7e287771ca1]   Rendered layouts/_navigation.html.erb (Duration: 0.3ms | Allocations: 182)
+I, [2021-01-17T11:39:53.247372 #16461]  INFO -- : [82a8e05b-72e1-4fc2-a584-c7e287771ca1] Completed 200 OK in 15ms (Views: 2.2ms | ActiveRecord: 2.6ms | Allocations: 3461)
+I, [2021-01-17T11:39:54.845735 #16461]  INFO -- : [0dfa33d6-f694-43fb-9ce1-3e5f6b2eedc3] Started GET "/books" for 127.0.0.1 at 2021-01-17 11:39:54 -0300
+I, [2021-01-17T11:39:54.846602 #16461]  INFO -- : [0dfa33d6-f694-43fb-9ce1-3e5f6b2eedc3] Processing by BooksController#index as HTML
+D, [2021-01-17T11:39:54.849007 #16461] DEBUG -- : [0dfa33d6-f694-43fb-9ce1-3e5f6b2eedc3]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+D, [2021-01-17T11:39:54.851459 #16461] DEBUG -- : [0dfa33d6-f694-43fb-9ce1-3e5f6b2eedc3]   [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM `books` WHERE `books`.`user_id` = 1[0m
+I, [2021-01-17T11:39:54.852216 #16461]  INFO -- : [0dfa33d6-f694-43fb-9ce1-3e5f6b2eedc3]   Rendering books/index.html.erb within layouts/application
+D, [2021-01-17T11:39:54.853251 #16461] DEBUG -- : [0dfa33d6-f694-43fb-9ce1-3e5f6b2eedc3]   [1m[36mBook Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `books` WHERE `books`.`user_id` = 1 LIMIT 1 OFFSET 0[0m
+D, [2021-01-17T11:39:54.854602 #16461] DEBUG -- : [0dfa33d6-f694-43fb-9ce1-3e5f6b2eedc3]   [1m[36mCACHE Book Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM `books` WHERE `books`.`user_id` = 1 LIMIT 1 OFFSET 0[0m
+D, [2021-01-17T11:39:54.856795 #16461] DEBUG -- : [0dfa33d6-f694-43fb-9ce1-3e5f6b2eedc3]   [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `books` WHERE `books`.`user_id` = 1[0m
+D, [2021-01-17T11:39:54.860064 #16461] DEBUG -- : [0dfa33d6-f694-43fb-9ce1-3e5f6b2eedc3]   [1m[36mBook Load (2.1ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 LIMIT 2 OFFSET 0[0m
+I, [2021-01-17T11:39:54.862825 #16461]  INFO -- : [0dfa33d6-f694-43fb-9ce1-3e5f6b2eedc3]   Rendered books/index.html.erb within layouts/application (Duration: 10.5ms | Allocations: 2071)
+I, [2021-01-17T11:39:54.863767 #16461]  INFO -- : [0dfa33d6-f694-43fb-9ce1-3e5f6b2eedc3]   Rendered layouts/_navigation.html.erb (Duration: 0.5ms | Allocations: 180)
+I, [2021-01-17T11:39:54.864273 #16461]  INFO -- : [0dfa33d6-f694-43fb-9ce1-3e5f6b2eedc3] Completed 200 OK in 17ms (Views: 9.7ms | ActiveRecord: 3.5ms | Allocations: 3739)
+I, [2021-01-17T11:39:56.755933 #16461]  INFO -- : [688366db-f9b6-4e02-87de-382ebbd85164] Started PUT "/books/0/export_all" for 127.0.0.1 at 2021-01-17 11:39:56 -0300
+I, [2021-01-17T11:39:56.756913 #16461]  INFO -- : [688366db-f9b6-4e02-87de-382ebbd85164] Processing by BooksController#export_all as HTML
+I, [2021-01-17T11:39:56.757006 #16461]  INFO -- : [688366db-f9b6-4e02-87de-382ebbd85164]   Parameters: {"authenticity_token"=>"PDuW/ZEhNM/yOQzIJI643JQQcaaVpqJtfIqAPdkv47da31iT3RarCAObCQEdGze354cLvDg6aADGaceRAo8CeQ==", "id_book"=>"0"}
+D, [2021-01-17T11:39:56.759449 #16461] DEBUG -- : [688366db-f9b6-4e02-87de-382ebbd85164]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+D, [2021-01-17T11:39:56.761804 #16461] DEBUG -- : [688366db-f9b6-4e02-87de-382ebbd85164]   [1m[36mBook Load (0.5ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1[0m
+D, [2021-01-17T11:39:56.767678 #16461] DEBUG -- : [688366db-f9b6-4e02-87de-382ebbd85164]   [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`book_id` = 1[0m
+D, [2021-01-17T11:39:56.770961 #16461] DEBUG -- : [688366db-f9b6-4e02-87de-382ebbd85164]   [1m[36mNote Load (0.6ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`book_id` = 2[0m
+D, [2021-01-17T11:39:56.773584 #16461] DEBUG -- : [688366db-f9b6-4e02-87de-382ebbd85164]   [1m[36mNote Load (0.5ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`user_id` = 1[0m
+I, [2021-01-17T11:39:56.774253 #16461]  INFO -- : [688366db-f9b6-4e02-87de-382ebbd85164] Redirected to http://localhost:3000/books
+I, [2021-01-17T11:39:56.774525 #16461]  INFO -- : [688366db-f9b6-4e02-87de-382ebbd85164] Completed 302 Found in 17ms (ActiveRecord: 3.8ms | Allocations: 2977)
+I, [2021-01-17T11:39:56.784969 #16461]  INFO -- : [4b11e5e5-2293-4e25-b820-3191b285326c] Started GET "/books" for 127.0.0.1 at 2021-01-17 11:39:56 -0300
+I, [2021-01-17T11:39:56.785977 #16461]  INFO -- : [4b11e5e5-2293-4e25-b820-3191b285326c] Processing by BooksController#index as HTML
+D, [2021-01-17T11:39:56.788035 #16461] DEBUG -- : [4b11e5e5-2293-4e25-b820-3191b285326c]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+D, [2021-01-17T11:39:56.789792 #16461] DEBUG -- : [4b11e5e5-2293-4e25-b820-3191b285326c]   [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM `books` WHERE `books`.`user_id` = 1[0m
+I, [2021-01-17T11:39:56.790391 #16461]  INFO -- : [4b11e5e5-2293-4e25-b820-3191b285326c]   Rendering books/index.html.erb within layouts/application
+D, [2021-01-17T11:39:56.791222 #16461] DEBUG -- : [4b11e5e5-2293-4e25-b820-3191b285326c]   [1m[36mBook Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `books` WHERE `books`.`user_id` = 1 LIMIT 1 OFFSET 0[0m
+D, [2021-01-17T11:39:56.791901 #16461] DEBUG -- : [4b11e5e5-2293-4e25-b820-3191b285326c]   [1m[36mCACHE Book Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM `books` WHERE `books`.`user_id` = 1 LIMIT 1 OFFSET 0[0m
+D, [2021-01-17T11:39:56.793066 #16461] DEBUG -- : [4b11e5e5-2293-4e25-b820-3191b285326c]   [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `books` WHERE `books`.`user_id` = 1[0m
+D, [2021-01-17T11:39:56.794756 #16461] DEBUG -- : [4b11e5e5-2293-4e25-b820-3191b285326c]   [1m[36mBook Load (0.5ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 LIMIT 2 OFFSET 0[0m
+I, [2021-01-17T11:39:56.797514 #16461]  INFO -- : [4b11e5e5-2293-4e25-b820-3191b285326c]   Rendered books/index.html.erb within layouts/application (Duration: 7.0ms | Allocations: 2072)
+I, [2021-01-17T11:39:56.798489 #16461]  INFO -- : [4b11e5e5-2293-4e25-b820-3191b285326c]   Rendered layouts/_navigation.html.erb (Duration: 0.5ms | Allocations: 180)
+I, [2021-01-17T11:39:56.798936 #16461]  INFO -- : [4b11e5e5-2293-4e25-b820-3191b285326c] Completed 200 OK in 13ms (Views: 7.8ms | ActiveRecord: 1.6ms | Allocations: 3757)
+I, [2021-01-17T11:39:58.123498 #16461]  INFO -- : [df337bf1-fa1f-424f-a585-73dad13dbe75] Started GET "/notes?id_book=1" for 127.0.0.1 at 2021-01-17 11:39:58 -0300
+I, [2021-01-17T11:39:58.125038 #16461]  INFO -- : [df337bf1-fa1f-424f-a585-73dad13dbe75] Processing by NotesController#index as HTML
+I, [2021-01-17T11:39:58.125187 #16461]  INFO -- : [df337bf1-fa1f-424f-a585-73dad13dbe75]   Parameters: {"id_book"=>"1"}
+D, [2021-01-17T11:39:58.128088 #16461] DEBUG -- : [df337bf1-fa1f-424f-a585-73dad13dbe75]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+D, [2021-01-17T11:39:58.130227 #16461] DEBUG -- : [df337bf1-fa1f-424f-a585-73dad13dbe75]   [1m[36mBook Load (0.5ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 AND `books`.`id` = 1 LIMIT 1[0m
+D, [2021-01-17T11:39:58.131952 #16461] DEBUG -- : [df337bf1-fa1f-424f-a585-73dad13dbe75]   [1m[36mCACHE Book Load (0.0ms)[0m  [1m[34mSELECT `books`.* FROM `books` WHERE `books`.`user_id` = 1 AND `books`.`id` = 1 LIMIT 1[0m
+D, [2021-01-17T11:39:58.134951 #16461] DEBUG -- : [df337bf1-fa1f-424f-a585-73dad13dbe75]   [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM `notes` WHERE `notes`.`book_id` = 1[0m
+I, [2021-01-17T11:39:58.137698 #16461]  INFO -- : [df337bf1-fa1f-424f-a585-73dad13dbe75]   Rendering notes/index.html.erb within layouts/application
+D, [2021-01-17T11:39:58.188426 #16461] DEBUG -- : [df337bf1-fa1f-424f-a585-73dad13dbe75]   [1m[36mNote Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `notes` WHERE `notes`.`book_id` = 1 LIMIT 1 OFFSET 0[0m
+D, [2021-01-17T11:39:58.190721 #16461] DEBUG -- : [df337bf1-fa1f-424f-a585-73dad13dbe75]   [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `notes` WHERE `notes`.`book_id` = 1[0m
+D, [2021-01-17T11:39:58.192288 #16461] DEBUG -- : [df337bf1-fa1f-424f-a585-73dad13dbe75]   [1m[36mNote Load (0.6ms)[0m  [1m[34mSELECT `notes`.* FROM `notes` WHERE `notes`.`book_id` = 1 LIMIT 2 OFFSET 0[0m
+I, [2021-01-17T11:39:58.192596 #16461]  INFO -- : [df337bf1-fa1f-424f-a585-73dad13dbe75]   Rendered notes/index.html.erb within layouts/application (Duration: 54.7ms | Allocations: 1210)
+I, [2021-01-17T11:39:58.193683 #16461]  INFO -- : [df337bf1-fa1f-424f-a585-73dad13dbe75]   Rendered layouts/_navigation.html.erb (Duration: 0.6ms | Allocations: 187)
+I, [2021-01-17T11:39:58.194134 #16461]  INFO -- : [df337bf1-fa1f-424f-a585-73dad13dbe75] Completed 200 OK in 69ms (Views: 56.8ms | ActiveRecord: 2.9ms | Allocations: 4375)
+I, [2021-01-17T11:40:00.281012 #16461]  INFO -- : [cc2ae353-d558-44fc-b8d1-c639d3bd9413] Started DELETE "/users/sign_out" for 127.0.0.1 at 2021-01-17 11:40:00 -0300
+I, [2021-01-17T11:40:00.282318 #16461]  INFO -- : [cc2ae353-d558-44fc-b8d1-c639d3bd9413] Processing by Devise::SessionsController#destroy as HTML
+I, [2021-01-17T11:40:00.282434 #16461]  INFO -- : [cc2ae353-d558-44fc-b8d1-c639d3bd9413]   Parameters: {"authenticity_token"=>"QGEkeMqWZ4UfTkRGlPD+PTud8s18LNUyrlCHV1esvFDVnvuDatZHLEDJpUvd4F91YGvYpEfLMuBurmD7eHs6IA=="}
+D, [2021-01-17T11:40:00.284687 #16461] DEBUG -- : [cc2ae353-d558-44fc-b8d1-c639d3bd9413]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+I, [2021-01-17T11:40:00.289308 #16461]  INFO -- : [cc2ae353-d558-44fc-b8d1-c639d3bd9413] Redirected to http://localhost:3000/
+I, [2021-01-17T11:40:00.289586 #16461]  INFO -- : [cc2ae353-d558-44fc-b8d1-c639d3bd9413] Completed 302 Found in 7ms (ActiveRecord: 0.4ms | Allocations: 1758)
+I, [2021-01-17T11:40:00.300110 #16461]  INFO -- : [e57ae8dd-cb26-4e8b-a3b6-3aebece430fb] Started GET "/" for 127.0.0.1 at 2021-01-17 11:40:00 -0300
+F, [2021-01-17T11:40:00.301540 #16461] FATAL -- : [e57ae8dd-cb26-4e8b-a3b6-3aebece430fb]   
+[e57ae8dd-cb26-4e8b-a3b6-3aebece430fb] ActionController::RoutingError (No route matches [GET] "/"):
+[e57ae8dd-cb26-4e8b-a3b6-3aebece430fb]   
+[e57ae8dd-cb26-4e8b-a3b6-3aebece430fb] actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+[e57ae8dd-cb26-4e8b-a3b6-3aebece430fb] actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+[e57ae8dd-cb26-4e8b-a3b6-3aebece430fb] railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+[e57ae8dd-cb26-4e8b-a3b6-3aebece430fb] railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+[e57ae8dd-cb26-4e8b-a3b6-3aebece430fb] activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+[e57ae8dd-cb26-4e8b-a3b6-3aebece430fb] activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+[e57ae8dd-cb26-4e8b-a3b6-3aebece430fb] activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+[e57ae8dd-cb26-4e8b-a3b6-3aebece430fb] railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+[e57ae8dd-cb26-4e8b-a3b6-3aebece430fb] actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+[e57ae8dd-cb26-4e8b-a3b6-3aebece430fb] actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+[e57ae8dd-cb26-4e8b-a3b6-3aebece430fb] rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+[e57ae8dd-cb26-4e8b-a3b6-3aebece430fb] rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+[e57ae8dd-cb26-4e8b-a3b6-3aebece430fb] activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+[e57ae8dd-cb26-4e8b-a3b6-3aebece430fb] actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+[e57ae8dd-cb26-4e8b-a3b6-3aebece430fb] rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+[e57ae8dd-cb26-4e8b-a3b6-3aebece430fb] actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:76:in `call'
+[e57ae8dd-cb26-4e8b-a3b6-3aebece430fb] railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+[e57ae8dd-cb26-4e8b-a3b6-3aebece430fb] puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+[e57ae8dd-cb26-4e8b-a3b6-3aebece430fb] puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+[e57ae8dd-cb26-4e8b-a3b6-3aebece430fb] puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+[e57ae8dd-cb26-4e8b-a3b6-3aebece430fb] puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+[e57ae8dd-cb26-4e8b-a3b6-3aebece430fb] puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+D, [2021-01-17T11:41:09.519856 #17011] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+D, [2021-01-17T11:41:09.526918 #17011] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+D, [2021-01-17T11:41:09.527672 #17011] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[34mSELECT GET_LOCK('4295408241492955545', 0)[0m
+D, [2021-01-17T11:41:09.541388 #17011] DEBUG -- :   [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+D, [2021-01-17T11:41:09.545940 #17011] DEBUG -- :   [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+D, [2021-01-17T11:41:09.551787 #17011] DEBUG -- :   [1m[35m (0.3ms)[0m  [1m[34mSELECT RELEASE_LOCK('4295408241492955545')[0m
