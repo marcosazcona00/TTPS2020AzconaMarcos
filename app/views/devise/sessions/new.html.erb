@@ -1,6 +1,7 @@
 <div class="card" style="margin: 0 auto; width: 40%; margin-top: 20px">
   <div class="card-body">
     <h3 class="card-title">Sign In</h3>
+
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
         <%= f.label :email %><br />

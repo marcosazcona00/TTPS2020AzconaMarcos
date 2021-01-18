@@ -1,11 +1,11 @@
-current directory: /home/marcos/Escritorio/ttps2020/vendor/bundle/ruby/2.5.0/gems/bcrypt-3.1.16/ext/mri
-/usr/bin/ruby2.5 -r ./siteconf20201218-27411-13ldlmk.rb extconf.rb
+current directory: /home/marcos/Escritorio/TTPS2020AzconaMarcos/vendor/bundle/ruby/2.5.0/gems/bcrypt-3.1.16/ext/mri
+/usr/bin/ruby2.5 -r ./siteconf20210118-23419-3szy81.rb extconf.rb
 creating Makefile
 
-current directory: /home/marcos/Escritorio/ttps2020/vendor/bundle/ruby/2.5.0/gems/bcrypt-3.1.16/ext/mri
+current directory: /home/marcos/Escritorio/TTPS2020AzconaMarcos/vendor/bundle/ruby/2.5.0/gems/bcrypt-3.1.16/ext/mri
 make "DESTDIR=" clean
 
-current directory: /home/marcos/Escritorio/ttps2020/vendor/bundle/ruby/2.5.0/gems/bcrypt-3.1.16/ext/mri
+current directory: /home/marcos/Escritorio/TTPS2020AzconaMarcos/vendor/bundle/ruby/2.5.0/gems/bcrypt-3.1.16/ext/mri
 make "DESTDIR="
 compiling bcrypt_ext.c
 compiling crypt_blowfish.c
@@ -17,6 +17,6 @@ wrapper.c:182:60: warning: ‘struct crypt_data’ declared inside parameter lis
 gcc  -D__SKIP_GNU -Wdate-time -D_FORTIFY_SOURCE=2    -c -o x86.o x86.S
 linking shared-object bcrypt_ext.so
 
-current directory: /home/marcos/Escritorio/ttps2020/vendor/bundle/ruby/2.5.0/gems/bcrypt-3.1.16/ext/mri
+current directory: /home/marcos/Escritorio/TTPS2020AzconaMarcos/vendor/bundle/ruby/2.5.0/gems/bcrypt-3.1.16/ext/mri
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 bcrypt_ext.so ./.gem.20201218-27411-xd548a
+/usr/bin/install -c -m 0755 bcrypt_ext.so ./.gem.20210118-23419-1wblmfr

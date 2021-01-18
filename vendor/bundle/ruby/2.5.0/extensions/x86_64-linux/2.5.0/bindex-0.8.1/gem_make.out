@@ -1,15 +1,15 @@
-current directory: /home/marcos/Escritorio/ttps2020/vendor/bundle/ruby/2.5.0/gems/bindex-0.8.1/ext/skiptrace
-/usr/bin/ruby2.5 -r ./siteconf20201218-15488-em8012.rb extconf.rb
+current directory: /home/marcos/Escritorio/TTPS2020AzconaMarcos/vendor/bundle/ruby/2.5.0/gems/bindex-0.8.1/ext/skiptrace
+/usr/bin/ruby2.5 -r ./siteconf20210118-23419-1w6g4ei.rb extconf.rb
 creating Makefile
 
-current directory: /home/marcos/Escritorio/ttps2020/vendor/bundle/ruby/2.5.0/gems/bindex-0.8.1/ext/skiptrace
+current directory: /home/marcos/Escritorio/TTPS2020AzconaMarcos/vendor/bundle/ruby/2.5.0/gems/bindex-0.8.1/ext/skiptrace
 make "DESTDIR=" clean
 
-current directory: /home/marcos/Escritorio/ttps2020/vendor/bundle/ruby/2.5.0/gems/bindex-0.8.1/ext/skiptrace
+current directory: /home/marcos/Escritorio/TTPS2020AzconaMarcos/vendor/bundle/ruby/2.5.0/gems/bindex-0.8.1/ext/skiptrace
 make "DESTDIR="
 compiling cruby.c
 linking shared-object skiptrace/internal/cruby.so
 
-current directory: /home/marcos/Escritorio/ttps2020/vendor/bundle/ruby/2.5.0/gems/bindex-0.8.1/ext/skiptrace
+current directory: /home/marcos/Escritorio/TTPS2020AzconaMarcos/vendor/bundle/ruby/2.5.0/gems/bindex-0.8.1/ext/skiptrace
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 cruby.so ./.gem.20201218-15488-u0b11n/skiptrace/internal
+/usr/bin/install -c -m 0755 cruby.so ./.gem.20210118-23419-a6x03l/skiptrace/internal

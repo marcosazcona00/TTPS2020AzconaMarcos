@@ -1,5 +1,5 @@
-current directory: /home/marcos/Escritorio/ttps2020/vendor/bundle/ruby/2.5.0/gems/mysql2-0.5.3/ext/mysql2
-/usr/bin/ruby2.5 -r ./siteconf20201218-15488-4b16c0.rb extconf.rb
+current directory: /home/marcos/Escritorio/TTPS2020AzconaMarcos/vendor/bundle/ruby/2.5.0/gems/mysql2-0.5.3/ext/mysql2
+/usr/bin/ruby2.5 -r ./siteconf20210118-23419-10r3cs4.rb extconf.rb
 checking for rb_absint_size()... yes
 checking for rb_absint_singlebit_p()... yes
 checking for rb_wait_for_single_fd()... yes
@@ -27,10 +27,10 @@ Setting rpath to /usr/lib/x86_64-linux-gnu
 -----
 creating Makefile
 
-current directory: /home/marcos/Escritorio/ttps2020/vendor/bundle/ruby/2.5.0/gems/mysql2-0.5.3/ext/mysql2
+current directory: /home/marcos/Escritorio/TTPS2020AzconaMarcos/vendor/bundle/ruby/2.5.0/gems/mysql2-0.5.3/ext/mysql2
 make "DESTDIR=" clean
 
-current directory: /home/marcos/Escritorio/ttps2020/vendor/bundle/ruby/2.5.0/gems/mysql2-0.5.3/ext/mysql2
+current directory: /home/marcos/Escritorio/TTPS2020AzconaMarcos/vendor/bundle/ruby/2.5.0/gems/mysql2-0.5.3/ext/mysql2
 make "DESTDIR="
 compiling client.c
 compiling infile.c
@@ -39,6 +39,6 @@ compiling result.c
 compiling statement.c
 linking shared-object mysql2/mysql2.so
 
-current directory: /home/marcos/Escritorio/ttps2020/vendor/bundle/ruby/2.5.0/gems/mysql2-0.5.3/ext/mysql2
+current directory: /home/marcos/Escritorio/TTPS2020AzconaMarcos/vendor/bundle/ruby/2.5.0/gems/mysql2-0.5.3/ext/mysql2
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 mysql2.so ./.gem.20201218-15488-1el7foy/mysql2
+/usr/bin/install -c -m 0755 mysql2.so ./.gem.20210118-23419-mupa6w/mysql2
