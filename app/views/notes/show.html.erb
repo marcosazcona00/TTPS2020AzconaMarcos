@@ -20,9 +20,11 @@ li {
                 <li>
                     <%= link_to "Edit", edit_note_path(@note.id), class: "btn btn-primary" %>
                 </li>
-
                 <li>
+                </li>
                     <%= button_to 'Delete', @note, method: :delete, data: { confirm: 'Seguro que desea eliminar la nota?' }, class: "btn btn-danger" %>
+                <li>
+                    <%= link_to "Download", download_note_path(@note.id), class: "btn btn-primary" %>
                 </li>
             </ul>
         </p>

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :notes do
     member do
       put 'export'
+      get 'download'
     end
   end    
 

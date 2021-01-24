@@ -20,7 +20,6 @@ class Note < ApplicationRecord
 
     def strip_whitespaces
         self.title = if !title.nil? then title.strip end
-        self.content = if !content.nil? then content end
     end
 
     def export

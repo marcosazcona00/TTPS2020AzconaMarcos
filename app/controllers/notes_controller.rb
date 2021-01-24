@@ -66,10 +66,14 @@ class NotesController < ApplicationController
         redirect_to action: 'index', id_book: book_id
     end
 
+    def download
+        @note.export
+        send_data @note.exported_content, :filename => "#{@note.title}.html"
+    end
+
     def export
         @note.export
         flash[:notice] = "The note #{@note.title} has been exported succesfully"
-
         redirect_to action: 'show', id_book: @note.book_id 
     end
 
