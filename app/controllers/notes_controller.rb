@@ -70,7 +70,7 @@ class NotesController < ApplicationController
         @note.export
         flash[:notice] = "The note #{@note.title} has been exported succesfully"
 
-        redirect_to action: 'index', id_book: @note.book_id 
+        redirect_to action: 'show', id_book: @note.book_id 
     end
 
     def set_note
