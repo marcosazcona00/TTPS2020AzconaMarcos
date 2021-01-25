@@ -1,7 +1,8 @@
 class NotesController < ApplicationController
     before_action :set_book, except: [:edit, :update, :detroy, :export]
     before_action :set_note, except: [:index, :new, :create]
-        
+    before_action :set_id_book, only: [:index, :new]
+
     def show
     end
 
@@ -17,19 +18,19 @@ class NotesController < ApplicationController
     def create
         title =  params[:note][:title]
         content =  params[:note][:content]
-        book_id = params[:id_book]
+        @id_book = params[:id_book]
 
-        @note = Note.new(title: title, content: content, book_id: book_id, user_id: current_user.id)  
+        @note = Note.new(title: title, content: content, book_id: @id_book, user_id: current_user.id)  
         if @note.save
             flash[:notice] = "The note #{@note.title} has been created succesfully"
-            redirect_to action: 'index', id_book: book_id 
+            redirect_to action: 'index', id_book: @id_book
             return
         end
         ### Reinicializamos el valor de @id_book porque se pierde
-        @book = current_user.get_book(id: book_id)
+        @book = current_user.get_book(id: @id_book)
         
         ### Al hacer el POST, en algunos casos el render pierde el id_book, por lo que lo pasamos explicitamente
-        render 'new', :id_book => @book.id
+        render 'new', :id_book => @id_book
     end
 
     def edit
@@ -73,5 +74,10 @@ class NotesController < ApplicationController
     def set_note
         note_id = params[:id]
         @note = current_user.get_note(note_id)
+    end
+
+    
+    def set_id_book
+        @id_book = if !@book.nil? then @book.id else nil end
     end
 end
