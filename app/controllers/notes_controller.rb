@@ -26,9 +26,15 @@ class NotesController < ApplicationController
             redirect_to action: 'index', id_book: @id_book
             return
         end
-        ### Reinicializamos el valor de @id_book porque se pierde
-        @book = current_user.get_book(id: @id_book)
         
+        # Reinicializamos book. Si el cuaderno es el global, reinicializamos a nil. En caso contrario, obtenemos el cuaderno.
+        if @id_book.nil? 
+            # Si es el cuaderno global
+            @book = nil
+        else
+            @book = current_user.get_book(id: @id_book)
+        end
+
         ### Al hacer el POST, en algunos casos el render pierde el id_book, por lo que lo pasamos explicitamente
         render 'new', :id_book => @id_book
     end

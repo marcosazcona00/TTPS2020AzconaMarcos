@@ -14,10 +14,12 @@
  *= require_self
  */
 
-@import 'bootstrap';
-@import "bootstrap-sprockets";
-
 .ul-operations {
+    padding: 0;
     list-style: none; 
     display: flex
+}
+
+.li-operations {
+    margin-left: 10px;
 }

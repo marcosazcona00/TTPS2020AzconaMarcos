@@ -28,10 +28,6 @@ gem 'jbuilder', '~> 2.7'
 # Gem to export text to rich text
 gem 'kramdown', '~> 1.8.0'
 
-# Gems to styling
-gem 'bootstrap'
-gem 'jquery-rails'
-
 #Gem for Pagination
 gem 'kaminari'
 

@@ -1,8 +1,3 @@
-<style>
-li {
-    margin-left: 10px
-}
-</style>
 <div class="alert alert-info">
     <% if @notes.empty? %>
         <h1> Aun no hay notas para el cuaderno  <%= if @book.nil? then 'Cajon Global' else @book.title end %>  </h1>
@@ -17,7 +12,7 @@ li {
   </div>
 <% end %>
 
-<%= link_to "New Note",new_note_path(:id_book => if !@book.nil? then @book.id else nil end), class: "btn btn-success" %>
+<%= link_to "New Note",new_note_path(:id_book => if !@book.nil? then @book.id else nil end), class: "btn btn-success li-operations" %>
 
 <table class="table table-striped">
     <thead>
@@ -33,17 +28,17 @@ li {
         <tr>
             <td>  <%= note.title %> </td>
             <td>
-                <ul style="list-style: none; display: flex">
-                    <li>
+                <ul class="ul-operations">
+                    <li class="li-operations">
                         <%= link_to "Show", note_path(note.id), class: "btn btn-light" %>
                     </li>
-                    <li>
+                    <li class="li-operations">
                         <%= link_to "Edit", edit_note_path(note.id), class: "btn btn-primary" %>
                     </li>
-                    <li>
+                    <li class="li-operations">
                         <%= button_to 'Export',export_note_path(note.id), method: :put, class: "btn btn-secondary" %>
                     </li>
-                    <li>
+                    <li class="li-operations">
                         <%= button_to 'Delete', note, method: :delete, data: { confirm: 'Seguro que desea eliminar la nota?' }, class: "btn btn-danger" %>
                     </li>
 
