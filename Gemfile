@@ -26,7 +26,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'image_processing', '~> 1.2'
 
 # Gem to export text to rich text
-gem 'kramdown', '~> 1.8.0'
+gem 'kramdown', '~> 2.3.0'
 
 #Gem for Pagination
 gem 'kaminari'
