@@ -1,9 +1,9 @@
 <div class="card" style="margin: 0 auto; width: 40%; margin-top: 20px">
     <div class="card-body">
-        <h3 class="card-title"> Edit Book "<%= @book.title%>" </h2>
-        <%= form_for @current_book do |f| %>
-            <% if @current_book.errors.any? %>
-                <% @current_book.errors.full_messages.each do |message| %>
+        <h3 class="card-title"> Edit Book "<%= @current_book.title%>" </h2>
+        <%= form_for @book do |f| %>
+            <% if @book.errors.any? %>
+                <% @book.errors.full_messages.each do |message| %>
                     <div class="alert alert-danger" role="alert">
                         <%= message %>
                     </div>

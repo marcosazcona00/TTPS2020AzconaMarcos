@@ -17,7 +17,7 @@ li {
   </div>
 <% end %>
 
-<%= link_to "New Note",new_note_path(:id_book => @id_book), class: "btn btn-success" %>
+<%= link_to "New Note",new_note_path(:id_book => if !@book.nil? then @book.id else nil end), class: "btn btn-success" %>
 
 <table class="table table-striped">
     <thead>

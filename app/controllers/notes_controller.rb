@@ -6,15 +6,11 @@ class NotesController < ApplicationController
     end
 
     def index
-        @id_book = params[:id_book]
-        #@notes = current_user.get_notes_book(@id_book) 
-        @notes = current_user.get_notes_book(@id_book).page(params[:page])
+        @notes = current_user.get_notes_book(params[:id_book]).page(params[:page])
         @total_pages = @notes.page().total_pages
-
     end
 
     def new
-        @id_book = params[:id_book]
         @note = Note.new
     end
 
@@ -30,40 +26,37 @@ class NotesController < ApplicationController
             return
         end
         ### Reinicializamos el valor de @id_book porque se pierde
-        @id_book = book_id
+        @book = current_user.get_book(id: book_id)
         
         ### Al hacer el POST, en algunos casos el render pierde el id_book, por lo que lo pasamos explicitamente
-        render 'new', :id_book => @id_book
+        render 'new', :id_book => @book.id
     end
 
     def edit
-        note_id = params[:id]
-        @current_note = Note.find(note_id)
+        @current_note = @note
     end
 
     def update
         note_id = params[:id]
-        @current_note = Note.find(note_id)
         new_title = params[:note][:title]
         new_content = params[:note][:content]
         
-        if @current_note.update(title: new_title,content: new_content)
-            flash[:notice] = "The note #{@current_note.title} has been updated succesfully"
+        if @note.update(title: new_title,content: new_content)
+            flash[:notice] = "The note #{@note.title} has been updated succesfully"
 
-            redirect_to action: 'index', id_book: @current_note.book_id 
+            redirect_to action: 'index', id_book: @note.book_id 
             return
         end
 
-        ### Reinstanciamos la nota para editarla
-        @note = Note.find(note_id)
+        # Reinstanciamos la nota para no perder la informacion original de la nota
+        @current_note = Note.find(note_id)
         render 'edit'
     end 
     
     def destroy
-        book_id = @note.book_id
         @note.destroy
         flash[:notice] = "The note #{@note.title} has been deleted succesfully"
-        redirect_to action: 'index', id_book: book_id
+        redirect_to action: 'index', id_book: @note.book_id
     end
 
     def download

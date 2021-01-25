@@ -1,9 +1,9 @@
 <div class="card" style="margin: 0 auto; width: 40%; margin-top: 20px">
     <div class="card-body">
-        <h3 class="card-title"> Edit Note "<%= @note.title%>" </h2>
-        <%= form_for @current_note do |f| %>
-            <% if @current_note.errors.any? %>
-                <% @current_note.errors.full_messages.each do |message| %>
+        <h3 class="card-title"> Edit Note "<%= @current_note.title%>" </h2>
+        <%= form_for @note do |f| %>
+            <% if @note.errors.any? %>
+                <% @note.errors.full_messages.each do |message| %>
                     <div class="alert alert-danger" role="alert">
                         <%= message %>
                     </div>

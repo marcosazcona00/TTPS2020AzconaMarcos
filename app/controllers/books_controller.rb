@@ -7,7 +7,6 @@ class BooksController < ApplicationController
     end
 
     def new
-        ### Esto es lo que le llega al html
         @book = Book.new
     end
 
@@ -15,37 +14,28 @@ class BooksController < ApplicationController
         book_values = params[:book]
         @book = Book.new(title: book_values[:title], user_id: current_user.id)
         if @book.save
-            ### La creacion fue exitosa
             flash[:notice] = "The book #{@book.title} has been created succesfully"
             redirect_to action: 'index'
             return  
         end
-        ### La creacion no pudo realizarse
         render 'new'
     end
 
     def edit
-        ### Validamos que en el id no venga ningun simbolo extra
-        book_id = params[:id_book]
-        @current_book = current_user.get_book(id: book_id)
-        if @current_book.nil?
-            ### Redirigir a un forbbidden 400 porque el libro no lo tiene
-            redirect_to '/'
-            return            
-        end
+        #current_book representa el libro no modificado
+        @current_book = @book
     end
 
     def update
         book_id = params[:id_book]
-        @current_book = current_user.get_book(id: book_id)
         new_title =  params[:book][:title]
-        if @current_book.update(title: new_title)
-            flash[:notice] = "The book #{@current_book.title} has been updated succesfully"
+        if @book.update(title: new_title)
+            flash[:notice] = "The book #{@book.title} has been updated succesfully"
             redirect_to action: 'index'
             return
         end
-        #@current_book.errors = book_modify.errors
-        @book = current_user.get_book(id: book_id)
+        # Como no pudo actualizarse pero el book cambia de todas formas, reseteamos el current book
+        @current_book = current_user.get_book(id: book_id)
         render 'edit'
     end 
 
@@ -58,7 +48,7 @@ class BooksController < ApplicationController
     def export
         id_book = params[:id_book]        
         if id_book.to_i == 0
-            ### Si el id_book es 0 significa que se exporta del global
+            # Si el id_book es 0 significa que se exporta del global
             current_user.export_global
             flash[:notice] = "The global book has been exported succesfully"
         else
