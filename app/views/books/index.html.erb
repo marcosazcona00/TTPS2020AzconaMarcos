@@ -42,6 +42,9 @@
                     <li class="li-operations">
                         <%= button_to 'Export', export_book_path(:id_book => 0), method: :put, class: "btn btn-secondary" %>     
                     </li>
+                    <li class="li-operations">
+                        <%= button_to 'Delete', book_path(:id_book => 0), method: :delete, confirm: 'Seguro que desea eliminar el libro?', class: "btn btn-danger"  %>
+                    </li>
                 </ul>
             </td>
         </tr>

@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :books
-  has_many :notes
+  has_many :notes, dependent: :destroy
   ### notes representa las notas que estan en el "global"
 
   devise :database_authenticatable, :registerable,
@@ -50,5 +50,9 @@ class User < ApplicationRecord
       end
     end
     return note
+  end
+
+  def delete_global_notes()
+    self.notes.delete_all
   end
 end

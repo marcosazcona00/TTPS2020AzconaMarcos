@@ -40,8 +40,15 @@ class BooksController < ApplicationController
     end 
 
     def destroy
-        @book.destroy
-        flash[:notice] = "The book #{@book.title} has been deleted succesfully"
+        puts 'Destroy'
+        if params[:id_book].to_i == 0
+            # Borramos las notas del cuaderno global
+            current_user.delete_global_notes()
+            flash[:notice] = "The notes of global book has been deleted succesfully"
+        else
+            @book.destroy
+            flash[:notice] = "The book #{@book.title} has been deleted succesfully"
+        end
         redirect_to action: 'index'
     end
 
@@ -50,7 +57,7 @@ class BooksController < ApplicationController
         if id_book.to_i == 0
             # Si el id_book es 0 significa que se exporta del global
             current_user.export_global
-            flash[:notice] = "The global book has been exported succesfully"
+            flash[:booknotice] = "The global book has been exported succesfully"
         else
             self.set_book()
             @book.export
