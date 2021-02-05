@@ -18,7 +18,7 @@
     </li>
     <% if !@books.empty? %>
         <li>
-            <%= button_to 'Export all', export_all_book_path(:id_book => 0), method: :put, class: "btn btn-secondary li-operations" %>
+            <%= button_to 'Export all', book_export_all_path(), method: :put, class: "btn btn-secondary li-operations" %>
         </li>
     <% end %>
 </ul>
@@ -40,7 +40,8 @@
                         <%= link_to 'List Notes', notes_path(), class: "btn btn-light" %>
                     </li>
                     <li class="li-operations">
-                        <%= button_to 'Export', export_book_path(:id_book => 0), method: :put, class: "btn btn-secondary" %>     
+                        <%= button_to 'Export', book_export_path(:id_book => nil), method: :put, class: "btn btn-secondary" %>     
+
                     </li>
                     <li class="li-operations">
                         <%= button_to 'Delete', book_path(:id_book => 0), method: :delete, confirm: 'Seguro que desea eliminar el libro?', class: "btn btn-danger"  %>
@@ -58,7 +59,7 @@
                             <%= link_to 'List Notes', notes_path(:id_book => book.id), class: "btn btn-light" %>
                         </li>
                         <li class="li-operations">
-                            <%= button_to 'Export', export_book_path(:id_book => book.id), method: :put, class: "btn btn-secondary" %>
+                            <%= button_to 'Export', book_export_path(:id_book => book.id), method: :put, class: "btn btn-secondary" %>     
                         </li>
                         <li class="li-operations">
                             <%= link_to "Edit", edit_book_path(book.id), class: "btn btn-primary"%>
