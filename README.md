@@ -1,4 +1,7 @@
 ### Trabajo Final TTPS Ruby 2020
+# Requisitos
+* Ruby (>=2.5)
+* Bundler installado. En caso de no tenerlo ejecutar `gem install bundler`
 
 # Modelo
 * La clase `Book` representa los cuadernos de los usuarios registrados en la aplicación
@@ -7,17 +10,15 @@
 
 # Gemas
 * Ejecutar el comando `bundle install` para cargar las gemas correspondientes
-* Se utiliza la gema `Kramdown` para el exportación, `Devise` para el CRUD de usuarios y manejo de sesiones, `Kaminari` para la paginación
+* Se utiliza la gema `Kramdown` para el exportación de notas, `Devise` para el CRUD de usuarios y manejo de sesiones, y `Kaminari` para la paginación
 
 # Base de Datos
-* Se utiliza el motor `mysql`
-* En el archivo `config/database.yml` modificar los campos *username:* y *password:* con sus datos de DBMS
+* Se utiliza el motor `sqlite3`
 
 # Migraciones Production
-* Ejecutar el comando `export RAILS_ENV=production` para configurar el ambiente de ejecución a producción
-* Ejecutar el comando `rails db:reset DISABLE_DATABASE_ENVIRONMENT_CHECK=1` en caso de que las base de datos *ttps2020_production* ya exista
-* En caso de que no existan, ejecutar el comando `rails db:create DISABLE_DATABASE_ENVIRONMENT_CHECK=1`
-* En ambos casos, luego ejecutar `rails db:migrate DISABLE_DATABASE_ENVIRONMENT_CHECK=1`
+* Ejecutar el comando `export RAILS_ENV=production` para configurar el ambiente de ejecución a producción. En caso de no poder realizar dicha acción, antes de cada comando insertar la linea `RAILS_ENV=production`, ejemplo: `RAILS_ENV=production rails db:migrate`
+* Luego creamos la base de datos de producción ejecutando `rails db:create`
+* Finalmente realizar las migraciones con `rails db:migrate`
 
 # Aplicacion
-* Para la ejecución del servidor, ejecutar el comando `rails s` 
+* Para la ejecución del servidor, ejecutar el comando `RAILS_ENV=production rails s` 
