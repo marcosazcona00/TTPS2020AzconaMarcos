@@ -59,8 +59,7 @@ class NotesController < ApplicationController
     end
 
     def export
-        @note.content_to_html
-        send_data @note.exported_content, :filename => "#{@note.title}.html"
+        send_data @note.content_to_html, :filename => "#{@note.title}.html"
     end
 
     def set_note
