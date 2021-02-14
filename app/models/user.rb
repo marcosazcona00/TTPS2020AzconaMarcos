@@ -8,51 +8,30 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
-  def get_book(args)
-    '''
-      Devuelve la instancia de un libro
-    '''
-    book = books.find_by(**args)
-    if !book.nil?
-      return book
-    else
-      raise ActiveRecord::RecordNotFound 
-    end
+
+  def global_notes
+    # Devuelve las notas que no tienen asociadas un cuaderno
+    return self.notes.where(book_id: nil)
   end
 
   def get_notes_book(book_id)
+    # Devuelve las notas de un cuaderno particular
     if book_id.nil?
-      return self.notes
+      return self.global_notes()
     end
-    return self.get_book(id: book_id).notes
+    return self.books.find(book_id).notes
   end
 
   def export_global
-    notes.each { |note| note.export }
+    self.global_notes().each { |note| note.export }
+  end
+
+  def delete_global_notes()
+    self.global_notes().delete_all
   end
 
   def export_all
     books.each { |book| book.export}
-    notes.each { |note| note.export}
-  end
-
-  def get_note(note_id)
-    note = notes.find_by(id: note_id) ### Nos fijamos entre las notas del cuaderno global
-    if note.nil?
-      ### Si no esta en el global, buscamos entre los cuadernos creados por el usuario.
-      
-      ### Devuelve la instancia del cuaderno que tenga la nota. Si la nota no existe para ese usuario, retorna nil
-      book = books.select { |book| book.has_note?(note_id)}[0] 
-      if !book.nil?
-        note = book.get_note(note_id)
-      else
-        raise ActiveRecord::RecordNotFound 
-      end
-    end
-    return note
-  end
-
-  def delete_global_notes()
-    self.notes.delete_all
+    self.export_global()
   end
 end

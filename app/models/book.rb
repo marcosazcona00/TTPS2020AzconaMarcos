@@ -7,6 +7,15 @@ class Book < ApplicationRecord
     validates :title, presence: true, length: { maximum: 50 }, uniqueness: {case_sensitive: false, scope: :user}
     
     before_validation :strip_whitespaces
+    
+    validate :has_global_name?, on: [:create, :update] 
+
+    def has_global_name?
+        # Valida que el global book ya no exista
+        if title.downcase == 'global'
+            errors.add(:title, "has already been taken ")
+        end
+    end
 
     def strip_whitespaces
         self.title = if !title.nil? then title.strip end
@@ -15,13 +24,4 @@ class Book < ApplicationRecord
     def export
         notes.each { |note| note.export}
     end
-
-    def has_note?(note_id)
-        return notes.exists?(id: note_id)
-    end 
-
-    def get_note(note_id)
-        return notes.find_by(id: note_id)
-    end
-
 end

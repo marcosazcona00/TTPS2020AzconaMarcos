@@ -6,7 +6,8 @@ class ApplicationController < ActionController::Base
         ### Esto si falla tira un 404 en produccion
         id_book = params[:id_book]
         if !id_book.nil? and id_book.to_i != 0     
-            @book = current_user.get_book(id: id_book)
+            #@book = current_user.get_book(id: id_book)
+            @book = current_user.books.find(id_book)
         end
     end
     

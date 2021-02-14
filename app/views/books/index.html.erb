@@ -32,24 +32,28 @@
       </tr>
     </thead>
     <tbody>
+
+        <% if @books.current_page == 1%>
         <tr>
             <td data-th="Book Name"> Global </td>
             <td data-th="Options"> 
                 <ul class="ul-operations">
                     <li class="li-operations">
-                        <%= link_to 'List Notes', notes_path(), class: "btn btn-light" %>
+                        <%= link_to 'List Notes ', notes_path(), class: "btn btn-light" %>
                     </li>
                     <li class="li-operations">
-                        <%= button_to 'Export', book_export_path(:id_book => nil), method: :put, class: "btn btn-secondary" %>     
+                        <%= button_to 'Export Notes', book_export_path(:id_book => nil), method: :put, class: "btn btn-secondary" %>     
 
                     </li>
                     <li class="li-operations">
-                        <%= button_to 'Delete', book_path(:id_book => 0), method: :delete, confirm: 'Seguro que desea eliminar el libro?', class: "btn btn-danger"  %>
+                        <%= button_to 'Delete Notes', book_path(:id_book => 0), method: :delete, confirm: 'Seguro que desea eliminar el libro?', class: "btn btn-danger"  %>
                     </li>
                 </ul>
             </td>
         </tr>
+        <% end %>
         <%= paginate @books %>
+
         <% @books.each do |book| %>
             <tr>
                 <td data-th="Book Name"> <%= book.title %> </td>

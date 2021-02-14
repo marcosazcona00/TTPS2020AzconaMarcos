@@ -1,4 +1,7 @@
+require 'zip'
+
 class BooksController < ApplicationController    
+    include BooksHelper
     before_action :set_book, except: [:index, :new, :create, :export_all, :export]
 
     def index
@@ -10,9 +13,9 @@ class BooksController < ApplicationController
         @book = Book.new
     end
 
-    def create
-        book_values = params[:book]
-        @book = Book.new(title: book_values[:title], user_id: current_user.id)
+    def create        
+        @book = Book.new(book_params)
+        @book.user = current_user
         if @book.save
             flash[:notice] = "The book #{@book.title} has been created succesfully"
             redirect_to action: 'index'
@@ -28,14 +31,13 @@ class BooksController < ApplicationController
 
     def update
         book_id = params[:id_book]
-        new_title =  params[:book][:title]
-        if @book.update(title: new_title)
+        if @book.update(book_params)
             flash[:notice] = "The book #{@book.title} has been updated succesfully"
             redirect_to action: 'index'
             return
         end
         # Como no pudo actualizarse pero el book cambia de todas formas, reseteamos el current book
-        @current_book = current_user.get_book(id: book_id)
+        @current_book = current_user.books.find(book_id)
         render 'edit'
     end 
 
@@ -54,20 +56,53 @@ class BooksController < ApplicationController
     def export
         id_book = params[:id_book]        
         if id_book.nil?
-            # Si el id_book es nil significa que se exporta del global
-            current_user.export_global
-            flash[:notice] = "The global book has been exported succesfully"
+            notes_to_export = current_user.global_notes()
+            book_title = 'Global'
         else
             self.set_book()
-            @book.export
-            flash[:notice] = "The book #{@book.title} has been exported succesfully"
+            notes_to_export = @book.notes
+            book_title = @book.title
         end
-        redirect_to action: 'index'
+
+        if !notes_to_export.empty?
+            zipped_content = export_helper(notes_to_export, 'html')
+            send_data zipped_content.sysread, filename: "#{book_title}.zip", :type => 'application/zip'
+        else
+            flash[:notice] = 'The book that you try to export is empty'
+            return redirect_to action: 'index'
+        end
     end
 
     def export_all
-        flash[:notice] = "All books has been exported succesfully"
-        current_user.export_all
-        redirect_to action: 'index'
+        has_exported = false
+        compiled_book = Zip::OutputStream.write_buffer do |zip_book|
+            current_user.books.each do |book|
+                if !book.notes.empty?
+                    has_exported = true
+                    zipped_content = export_helper(book.notes, 'html')
+                    zip_book.put_next_entry("#{book.title}.zip")
+                    zip_book << zipped_content.sysread
+                end
+                
+            end
+            if !current_user.global_notes.empty?
+                has_exported = true
+                zipped_content = export_helper(current_user.global_notes, 'html')
+                zip_book.put_next_entry("Global.zip")
+                zip_book << zipped_content.sysread
+            end
+        end
+        if has_exported
+            compiled_book.rewind
+            send_data compiled_book.sysread, filename: "exported_books.zip", :type => 'application/zip'
+        else
+            flash[:notice] = 'Nothin exported'
+            return redirect_to action: 'index'
+        end
+    end
+
+    private
+    def book_params
+        params.require(:book).permit(:title)
     end
 end
