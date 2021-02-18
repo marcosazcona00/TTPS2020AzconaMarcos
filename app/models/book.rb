@@ -21,7 +21,4 @@ class Book < ApplicationRecord
         self.title = if !title.nil? then title.strip end
     end
  
-    def export
-        notes.each { |note| note.export}
-    end
 end
